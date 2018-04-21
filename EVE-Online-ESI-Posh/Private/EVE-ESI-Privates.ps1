@@ -3,11 +3,17 @@
 function test-EVE-ESI-Result ($result) {
 $VerbosePreference = $global:VerbosePreference
 
+    if ($result.Headers.'X-Esi-Error-Limit-Remain' -lt 10) { 
+        Write-Verbose "Error Limit reached, throttling" 
+        start-sleep -Seconds $([int]$($result.Headers.'X-Esi-Error-Limit-Reset')+2) -Verbose
+    }
+
+
     # Is Result Valid
     if ($result.StatusCode -ne 200) {
         Write-Verbose "ErrorCode: $($result.Statuscode)  ErrorMsg: $($result.StatusDescription)" ; 
         Write-Output  "ErrorCode: $($result.Statuscode)  ErrorMsg: $($result.StatusDescription)" ; 
-        retuen $false
+        return $false
         break
     }
     if ($result.StatusCode -eq 200) {
@@ -44,7 +50,7 @@ $VerbosePreference = $global:VerbosePreference
 function out-EVE-ESI ($result,$outformat) {
     $VerbosePreference = $global:VerbosePreference
 
-    Write-Verbose  "OutPut Format: $outputformat"
+    Write-Verbose  "OutPut Format: $outformat"
     if ($outformat -eq "json") { return $result } 
     if ($outformat -eq "PS") { return ($result | ConvertFrom-Json) } 
 }
