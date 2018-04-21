@@ -33,60 +33,6 @@ $eveuniverseancestriesPS = get-eve-universe-ancestries -datasource Tranquility -
 
 
 
-language 
- - de
- - en-us
-
-user_agent 
- - Client identifier, takes precedence over headers
-
-X-User-Agent
- - Client identifier, takes precedence over User-Agent
-
- curl -X GET "https://esi.tech.ccp.is/latest/universe/ancestries/?datasource=tranquility&language=en-us" -H  "accept: application/json"
-
-
- function get-eveitemmovingaverage ($typeid,$region,$AverageDays) {
-
-    #    $typeid = "23919"
-    
-        if ($typeid -eq $Null) { break }
-        if ($region -eq $Null) { $marketregion = "10000002" }  # The Forge 
-        if ($region -ne $Null) { $marketregion = $region }
-        if ($AverageDays -eq $Null) { [int]$MovingAverageDays = "10" } 
-        if ($AverageDays -ne $Null) { [int]$MovingAverageDays = "$AverageDays" } 
-    
-        # Get Price History for "The Forge" 
-        $header = @{ 'Content-Type' = "application/json" }
-        $uri = "https://esi.tech.ccp.is/latest/markets/"+$marketregion+"/history/?type_id="+$typeid+"&datasource=tranquility"
-        $itempricehistory = $Null
-        $itempricehistory = Invoke-RestMethod -Uri $uri -Method Get -Headers $header -TimeoutSec 60
-    
-    
-        if ($itempricehistory -eq $Null) { 
-        [int]$retry = 0
-        
-        do {
-        $retry += 1
-        Start-Sleep -Seconds (10*$retry)
-        $itempricehistory = Invoke-RestMethod -Uri $uri -Method Get -Headers $header -TimeoutSec 60
-        } until ($retry -gt "2")  
-        }
-    
-        if ($itempricehistory -eq $Null) { 
-        Write-Output "Missing: $typeid $marketregion $MovingAverageDays" | Out-File "C:\temp\eveprices-log\test.txt" -Append
-        }
-    
-            
-        [decimal]$SMA = ($itempricehistory | Sort-Object date | select -last $MovingAverageDays | Measure-Object 'highest' -Average).Average
-        $Multiplier = (2/($MovingAverageDays+1)) 
-        $Close = ($itempricehistory | Sort-Object date | select -last 1).Average 
-        $ItemMovingAverage = ($Close-$SMA)*$Multiplier+$SMA
-        
-        $ItemMovingAverage
-        
-    }
-    
 
     function get-ccpUniverseStructures ($locationID, $token) {
 
