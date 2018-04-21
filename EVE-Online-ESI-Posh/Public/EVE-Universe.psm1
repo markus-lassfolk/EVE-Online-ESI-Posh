@@ -333,7 +333,7 @@ function find-eve-universe-ids {
         [ValidateSet("Tranquility","singularity")]
         [String]
         $datasource,
-        []
+        [PSObject]
         $names,
         [ValidateSet("en-us","ru","de","fr","ja","zh")]
         [String]
@@ -350,7 +350,11 @@ function find-eve-universe-ids {
         'Accept' = 'application/json'
     }
 
-    $result = Invoke-WebRequest -Uri $uri -Method Get -Headers $header
+    $body = @{
+     "Vipeer"
+    }
+
+    $result = Invoke-WebRequest -Uri $uri -Method Post -Headers $header -Body ($body | ConvertTo-Json) 
     $testresult = test-EVE-ESI-Result -result $result
     return (out-EVE-ESI -outformat $outformat -result $result)
 }
