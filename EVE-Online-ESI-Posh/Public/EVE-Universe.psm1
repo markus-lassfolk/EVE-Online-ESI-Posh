@@ -342,33 +342,26 @@ function find-eve-universe-ids {
         [String]
         $outformat
     ) 
+<#
+    # Work in progress
+break ; 
+
+
 #   Example URI
-#   https://esi.tech.ccp.is/latest/universe/groups/1886/?datasource=tranquility&language=en-us
+#   'curl -X POST "https://esi.tech.ccp.is/latest/universe/ids/?datasource=tranquility&language=en-us" -H  "accept: application/json" -H  "Content-Type: application/json" -d "[  \"Ripeer\",\"Vipeer\"]"' 
+
+    $datasource = "tranquility"
+    $language = "en-us"
 
     $uri = $baseUri+"latest/universe/ids/?Datasource="+$datasource+"&language="+$language
     $header = @{
         'Accept' = 'application/json'
     }
 
-
-    $testing2 = New-Object System.Object
-
-    $testing2 | Add-Member -MemberType NoteProperty -Name Names -Value "Vipeer" -Force
-    $testing2 | ConvertTo-Json
-
-    $postParams = @{names='vipeer'}
-    Invoke-WebRequest -Uri $uri -Method POST -Body $postParams -ContentType "application/json" 
-    Invoke-RestMethod -Method Post -Uri $uri -Body $postParams -ContentType "application/json" -Verbose
-
-    Invoke-WebRequest -Uri $uri -Method Post -Headers $header  -Body ($testing2 | ConvertTo-Json)
-
-    Invoke-WebRequest $uri -ContentType "application/json" -Method POST -Body "{ 'Names':'Vipeer', 'Names':'Ripeer'}"
-
-
     $result =   Invoke-WebRequest -Uri $uri -Method Post -Headers $header  -Body $parameters
     $testresult = test-EVE-ESI-Result -result $result
     return (out-EVE-ESI -outformat $outformat -result $result)
+#>
 }
 
 
-curl -X POST "https://esi.tech.ccp.is/latest/universe/ids/?datasource=tranquility&language=en-us" -H  "accept: application/json" -H  "Content-Type: application/json" -d "[  \"Ripeer\",\"Vipeer\"]"

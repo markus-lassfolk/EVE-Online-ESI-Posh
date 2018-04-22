@@ -68,3 +68,13 @@ function set-verbose {
     Write-Verbose "Verbose Enabled"
 }
 
+
+
+function invoke-EVEWebRequest ($Uri, $Header, $Method, $body, $parameters, $retrycount, $outformat) { 
+
+    $result = Invoke-WebRequest -Uri $uri -Method $Method -Headers $header
+
+    $testresult = test-EVE-ESI-Result -result $result
+
+    return $result
+}
