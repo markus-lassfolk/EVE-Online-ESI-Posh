@@ -35,10 +35,23 @@ $LatestJSON.Content | ConvertFrom-Json | select basepath
 ($LatestJSON.Content | ConvertFrom-Json).host
 ($LatestJSON.Content | ConvertFrom-Json).info
 
+($LatestJSON.Content | ConvertFrom-Json)
+
 $EVESSODataSources = ($LatestJSON.Content | ConvertFrom-Json).parameters.datasource.enum 
 $EVEESILanguages = ($LatestJSON.Content | ConvertFrom-Json).parameters.language.enum
 $EVESSOAuthorizationURL = ($LatestJSON.Content | ConvertFrom-Json).securitydefinitions.evesso.authorizationurl
 $EVESSOScopes = ($LatestJSON.Content | ConvertFrom-Json).securitydefinitions.evesso.scopes
 $EVEESIPaths = ($LatestJSON.Content | ConvertFrom-Json).paths
 
+
+$AllEndpoints = (($LatestJSON.Content | ConvertFrom-Json).paths | get-member | where MemberType -eq "NoteProperty" ).Name
+
+$ALlTags = foreach ($EndPoint in $AllEndpoints ) {
+
+    ($LatestJSON.Content | ConvertFrom-Json).paths.$($EndPoint).get.tags
+
+}
+
+
+($ALlTags | select -unique).join(",")
 
