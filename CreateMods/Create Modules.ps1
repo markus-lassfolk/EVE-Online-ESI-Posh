@@ -47,17 +47,34 @@ $NewESIFunctionFile = New-Item -ItemType File -Name ($($NewFunction.ESITags)+".p
 # Build Function
 Add-Content $NewESIFunctionFile "function $($NewFunction.FunctionName) { "
 Add-Content $NewESIFunctionFile " "
-
+Add-Content $NewESIFunctionFile "<# "
+Add-Content $NewESIFunctionFile ".SYNOPSIS"
+Add-Content $NewESIFunctionFile $NewFunction.ESISummary
+Add-Content $NewESIFunctionFile " "
+Add-Content $NewESIFunctionFile ".DESCRIPTION"
+Add-Content $NewESIFunctionFile $NewFunction.ESIDescription
+Add-Content $NewESIFunctionFile " "
+Add-Content $NewESIFunctionFile "#>"
+Add-Content $NewESIFunctionFile " "
 
 # Build ParamBlock 
-Add-Content $NewESIFunctionFile "        Param( "
+Add-Content $NewESIFunctionFile "    Param( "
+
+$Newstring = '            [string]'
+Add-Content $NewESIFunctionFile $Newstring
+$Newstring = '            $URI = "https://esi.tech.ccp.is/latest'+$($NewFunction.ESIPath)+'",'
+Add-Content $NewESIFunctionFile $Newstring
+
 [int]$NewFunctionParamterNumber = "0"
 foreach ($NewFunctionParameter in $NewFunction.ESIParameters){ 
     $NewFunctionParamterNumber = $NewFunctionParamterNumber+1
 
     # [Parameter(Mandatory)]
     if ($NewFunctionParameter.required -eq $True) {
-    Add-Content $NewESIFunctionFile '            [Parameter(Mandatory=$true)]'
+        Add-Content $NewESIFunctionFile ("            [Parameter(Mandatory=$"+"true, HelpMessage="+'"'+ $($NewFunctionParameter.description) +'")]') 
+    }
+    else {
+        Add-Content $NewESIFunctionFile ("            [Parameter(Mandatory=$"+"false, HelpMessage="+'"'+ $($NewFunctionParameter.description) +'")]') 
     }
 
     # [Validateset]
@@ -95,27 +112,125 @@ Add-Content $NewESIFunctionFile "#  Example URI"
 Add-Content $NewESIFunctionFile "#  https://esi.tech.ccp.is/latest$($NewFunction.ESIPath)"
 Add-Content $NewESIFunctionFile " "
 
-$TempURI = "https://esi.tech.ccp.is/latest$($NewFunction.ESIPath)" -replace "{","$" -replace "}",""
-$newstring = '$URI' + ' = "' + $TempURI +'"'
+$Newstring = '      $Method = "' + $NewFunction.ESIMethod + '"'
+Add-Content $NewESIFunctionFile $newstring
+
+#$TempURI = "$URI" -replace "{","$" -replace "}",""
+#$newstring = '      $URI' + ' = "' + $TempURI +'"'
+$Newstring = '      $URI = $URI -replace "{","$" -replace "}",""'
+Add-Content $NewESIFunctionFile $newstring
+Add-Content $NewESIFunctionFile " "
+Add-Content $NewESIFunctionFile " "
+
+# Add Query Parameters 
+# curl -X GET "https://esi.tech.ccp.is/latest/universe/asteroid_belts/11111/?datasource=tranquility&user_agent=111" -H  "accept: application/json"
+
+
+foreach ($RequiredParameter in $NewFunction.ESIParameters | where { $_.in -eq "query" }) {
+
+    $newstring = "        if ($"+$($RequiredParameter.name).Trim() + ' -ne "") { '
+    Add-Content $NewESIFunctionFile $newstring
+        
+        $newstring = "            if ($"+"URI.Contains('?') -eq $"+"false) {  "
+        Add-Content $NewESIFunctionFile $newstring
+
+        $newstring = '            $URI = $URI + "?" + "' + $($RequiredParameter.name).Trim() + '=" + $' + $($RequiredParameter.name).Trim() 
+        Add-Content $NewESIFunctionFile $newstring
+        Add-Content $NewESIFunctionFile '            }' 
+
+        $newstring = '            elseif ($'+"URI.Contains('?') -eq $"+"True) {"  
+        Add-Content $NewESIFunctionFile $newstring
+ 
+        $newstring = '            $URI = $URI + "&" + "' + $($RequiredParameter.name).Trim() + '=" + $' + $($RequiredParameter.name).Trim() 
+        Add-Content $NewESIFunctionFile $newstring
+        Add-Content $NewESIFunctionFile "            }"
+        Add-Content $NewESIFunctionFile "        }"
+}
+
+# Build Headers
+if (($NewFunction.ESIParameters | where { $_.in -eq "header" } | Measure-Object).Count -gt 0) { 
+
+
+    $Newstring = '        $Header = @{'
+    Add-Content $NewESIFunctionFile $newstring
+
+    foreach ($RequiredParameter in $NewFunction.ESIParameters | where { $_.in -eq "header" }) {
+
+        $Newstring = '        '+"'"+$RequiredParameter.name +"'"+ ' = "$' + ($RequiredParameter.name -replace "-","_") +'"'
+        Add-Content $NewESIFunctionFile $newstring
+    }
+    $Newstring = '        }'
+    Add-Content $NewESIFunctionFile $newstring
+}
+
+# Build Body
+if (($NewFunction.ESIParameters | where { $_.in -eq "body" } | Measure-Object).Count -gt 0) { 
+
+    $Newstring = '        $Body = @{'
+    Add-Content $NewESIFunctionFile $newstring
+
+    foreach ($RequiredParameter in $NewFunction.ESIParameters | where { $_.in -eq "body" }) {
+
+        $Newstring = '        '+"'"+$RequiredParameter.name +"'"+ ' = "$' + ($RequiredParameter.name -replace "-","_") +'"'
+        Add-Content $NewESIFunctionFile $newstring
+    }
+    $Newstring = '        }'
+    Add-Content $NewESIFunctionFile $newstring
+}
+
+# Replace Paths
+foreach ($RequiredParameter in $NewFunction.ESIParameters | where { $_.in -eq "path" }) {
+    $Newstring = ' '
+    Add-Content $NewESIFunctionFile $newstring
+    $newstring = "        if ($"+$($RequiredParameter.name).Trim() + ' -ne "") { '
+    Add-Content $NewESIFunctionFile $newstring
+        
+        $newstring = '            $URI = $URI -replace ''\$'+$($RequiredParameter.name).Trim() +"',"+'"$'+$($RequiredParameter.name).Trim()+'"'
+        Add-Content $NewESIFunctionFile $newstring
+        $Newstring = '        }'
+        Add-Content $NewESIFunctionFile $newstring
+}
+
+$newstring = ' '
 Add-Content $NewESIFunctionFile $newstring
 
 
 
 
-# Add Query Parameters 
-# curl -X GET "https://esi.tech.ccp.is/latest/universe/asteroid_belts/11111/?datasource=tranquility&user_agent=111" -H  "accept: application/json"
+($Uri, $headers, $Method, $body, $parameters, $retrycount, $outformat)
+
+
+
+$newstring = 'invoke-EVEWebRequest ($Uri, $headers, $Method, $body, $parameters, $retrycount, $outformat)'
+Add-Content $NewESIFunctionFile $newstring
+
+
+
+# End of function 
+$Newstring = '}'
+Add-Content $NewESIFunctionFile $newstring
+
+
+
+
+
+
+
 if (($NewFunction.ESIParameters | where { $_.in -eq "query" -and $_.required -eq $true } | Measure-Object).count -gt 0) { $URI = $URI+"?" }
 foreach ($RequiredParameter in $NewFunction.ESIParameters | where { $_.in -eq "query" -and $_.type -eq "string" } | select -first 1 ) {
     
     if ($RequiredParameter -ne $null) {  $URI = $URI+"($RequiredParameter.Name) = $"+$RequiredParameter.Name  }
 
-    
-    
-    }
+}
 
 
 
-($Teeest | where { $_.ESIParameters.in -eq "query"}  | select -First 3).ESIParameters | where name -NotMatch "datasource|user_agent|x-user-agent" 
+$Teeest | select -last 1
+
+.ESIParameters | where schema -ne $null | select schema).schema
+
+
+($Teeest | where { $_.ESIParameters.in -ne "query"}  | select -First 3).ESIParameters | where name -NotMatch "datasource|user_agent|x-user-agent" 
 
 
 

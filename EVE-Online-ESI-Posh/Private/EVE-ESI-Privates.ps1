@@ -70,11 +70,11 @@ function set-verbose {
 
 
 
-function invoke-EVEWebRequest ($Uri, $Header, $Method, $body, $parameters, $retrycount, $outformat) { 
+function invoke-EVEWebRequest ($Uri, $headers, $Method, $body, $parameters, $retrycount, $outformat) { 
 
-    $result = Invoke-WebRequest -Uri $uri -Method $Method -Headers $header
+    $result = Invoke-WebRequest -Uri $uri -Method $Method -Headers $headers
 
-    $testresult = test-EVE-ESI-Result -result $result
+#    $testresult = test-EVE-ESI-Result -result $result
 
     return $result
 }
