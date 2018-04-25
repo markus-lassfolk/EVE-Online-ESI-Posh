@@ -41,26 +41,29 @@ $Teeest = foreach ($PathEndpoint in $AllPathEndpoints) {
 
 $NewFunction = ($Teeest | where ESITags -like "*Unive*" | select -Skip 1 -first 1)
 $NewFunctionPSM1File = ($NewFunction.ESITags).ToString() +".psm1"
-$NewFunction.ESIParameters | where required -eq $true
-
-
-
 $NewESIFunctionFile = New-Item -ItemType File -Name ($($NewFunction.ESITags)+".psm1") -Force
+
+
+# Build Function
 Add-Content $NewESIFunctionFile "function $($NewFunction.FunctionName) { "
 Add-Content $NewESIFunctionFile " "
+
+
+# Build ParamBlock 
 Add-Content $NewESIFunctionFile "        Param( "
-
-
-
-
 [int]$NewFunctionParamterNumber = "0"
 foreach ($NewFunctionParameter in $NewFunction.ESIParameters){ 
     $NewFunctionParamterNumber = $NewFunctionParamterNumber+1
 
+    # [Parameter(Mandatory)]
+    if ($NewFunctionParameter.required -eq $True) {
+    Add-Content $NewESIFunctionFile '            [Parameter(Mandatory=$true)]'
+    }
+
     # [Validateset]
-    if ($NewFunctionParameter.enum -notlike "") { 
-        $NewParamValidateSet = "[ValidateSet("+ $NewFunctionParameter.enum.join(",") + "])"
-    Add-Content $NewESIFunctionFile "             $($NewParamValidateSet)"
+    if ($NewFunctionParameter.Enum) {
+    $NewParamValidateSet = '[ValidateSet("'+((($NewFunctionParameter).Enum).trim() -join '","')+'")]'
+    Add-Content $NewESIFunctionFile "            $($NewParamValidateSet)"
     }   
 
     # [int32]
@@ -74,36 +77,47 @@ foreach ($NewFunctionParameter in $NewFunction.ESIParameters){
     }
 
      # $parametername
+     $NewFunctionParameterName = "$" + $($NewFunctionParameter.name -replace "-","_")
+
+     if ( ($NewFunctionParameter.default | Measure-Object).count -gt 0 ) {
+        $NewFunctionParameterName = $NewFunctionParameterName + ' = "'+ $NewFunctionParameter.default +'"'
+     }
+
      if ($NewFunctionParamterNumber -ne ($NewFunction.ESIParameters | Measure-Object).Count) { 
-        $NewFunctionParameterName = "$" + $($NewFunctionParameter.name) + ","
+        $NewFunctionParameterName = $NewFunctionParameterName + ","
      }
-     else {
-        $NewFunctionParameterName = "$" + $($NewFunctionParameter.name) 
-     }
+
      Add-Content $NewESIFunctionFile "            $($NewFunctionParameterName)"  
 }
-Add-Content $NewESIFunctionFile "    ) "
+Add-Content $NewESIFunctionFile "    ) #End of Param"
+Add-Content $NewESIFunctionFile " "
+Add-Content $NewESIFunctionFile "#  Example URI"
+Add-Content $NewESIFunctionFile "#  https://esi.tech.ccp.is/latest$($NewFunction.ESIPath)"
+Add-Content $NewESIFunctionFile " "
+
+$TempURI = "https://esi.tech.ccp.is/latest$($NewFunction.ESIPath)" -replace "{","$" -replace "}",""
+$newstring = '$URI' + ' = "' + $TempURI +'"'
+Add-Content $NewESIFunctionFile $newstring
 
 
 
-function $($NewFunction.FunctionName) { 
 
-    Param(
-        [ValidateSet("Tranquility","singularity")]
-        [String]
-        $datasource,
-        [ValidateSet("PS","json")]
-        [String]
-        $outformat
-    ) 
-#   Example URI
-#   https://esi.tech.ccp.is/latest/universe/groups/?datasource=tranquility&page=1
+# Add Query Parameters 
+# curl -X GET "https://esi.tech.ccp.is/latest/universe/asteroid_belts/11111/?datasource=tranquility&user_agent=111" -H  "accept: application/json"
+if (($NewFunction.ESIParameters | where { $_.in -eq "query" -and $_.required -eq $true } | Measure-Object).count -gt 0) { $URI = $URI+"?" }
+foreach ($RequiredParameter in $NewFunction.ESIParameters | where { $_.in -eq "query" -and $_.type -eq "string" } | select -first 1 ) {
+    
+    if ($RequiredParameter -ne $null) {  $URI = $URI+"($RequiredParameter.Name) = $"+$RequiredParameter.Name  }
 
-    [int]$Page = "1" 
-    $uri = $baseUri+"latest/universe/groups/?Datasource="+$datasource+"&page="+$Page
-    $header = @{
-        'Accept' = 'application/json'
+    
+    
     }
+
+
+
+($Teeest | where { $_.ESIParameters.in -eq "query"}  | select -First 3).ESIParameters | where name -NotMatch "datasource|user_agent|x-user-agent" 
+
+
 
     $result = Invoke-WebRequest -Uri $uri -Method Get -Headers $header
     test-EVE-ESI-Result -result $result
