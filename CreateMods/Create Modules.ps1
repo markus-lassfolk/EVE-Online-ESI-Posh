@@ -201,28 +201,7 @@ foreach ($RequiredParameter in $NewFunction.ESIParameters | where { $_.in -eq "p
 $newstring = ' '
 Add-Content $NewESIFunctionFile $newstring
 
-$newstring = '$invokecommandline = "-uri $uri"'
-Add-Content $NewESIFunctionFile $newstring
-
-$newstring = 'if (($header.'+"'"+'X-User-Agent'+"'"+') -ne "") { '
-Add-Content $NewESIFunctionFile $newstring
-
-$newstring = '$invokecommandline = $invokecommandline + " -headers $header"'
-Add-Content $NewESIFunctionFile $newstring
-$newstring = '}'
-Add-Content $NewESIFunctionFile $newstring
-
-$newstring = 'if ($body -ne $null) { '
-Add-Content $NewESIFunctionFile $newstring
-$newstring = '    $invokecommandline = $invokecommandline + " -body $body"'
-Add-Content $NewESIFunctionFile $newstring
-$newstring = '}'
-Add-Content $NewESIFunctionFile $newstring
-
-$newstring = '$invokecommandline = $invokecommandline + " -method $method"'
-Add-Content $NewESIFunctionFile $newstring
-
-$newstring = 'invoke-EVEWebRequest $invokecommandline'
+$newstring = 'invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body'
 Add-Content $NewESIFunctionFile $newstring
 
 # End of function 

@@ -79,15 +79,7 @@ This route is cached for up to 600 seconds
             $URI = $URI -replace '\$character_id',"$character_id"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  
@@ -177,15 +169,7 @@ This route is cached for up to 600 seconds
             $URI = $URI -replace '\$planet_id',"$planet_id"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  
@@ -285,15 +269,7 @@ Requires one of the following EVE corporation role(s): Director
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  
@@ -367,15 +343,7 @@ This route is cached for up to 3600 seconds
             $URI = $URI -replace '\$schematic_id',"$schematic_id"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  

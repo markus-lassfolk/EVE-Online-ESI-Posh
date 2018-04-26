@@ -79,15 +79,7 @@ This route expires daily at 11:05
             $URI = $URI -replace '\$character_id',"$character_id"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  
@@ -172,15 +164,7 @@ This route expires daily at 11:05
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  
@@ -247,15 +231,7 @@ This route expires daily at 11:05
         'X-User-Agent' = "$X_User_Agent"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  
@@ -322,15 +298,7 @@ This route expires daily at 11:05
         'X-User-Agent' = "$X_User_Agent"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  
@@ -397,15 +365,7 @@ This route expires daily at 11:05
         'X-User-Agent' = "$X_User_Agent"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  
@@ -472,15 +432,7 @@ This route expires daily at 11:05
         'X-User-Agent' = "$X_User_Agent"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  
@@ -547,15 +499,7 @@ This route is cached for up to 1800 seconds
         'X-User-Agent' = "$X_User_Agent"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  
@@ -622,15 +566,7 @@ This route expires daily at 11:05
         'X-User-Agent' = "$X_User_Agent"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  

@@ -101,15 +101,7 @@ Alternate route: `/v2/ui/autopilot/waypoint/`
         'X-User-Agent' = "$X_User_Agent"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  
@@ -196,15 +188,7 @@ Alternate route: `/v1/ui/openwindow/contract/`
         'X-User-Agent' = "$X_User_Agent"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  
@@ -291,15 +275,7 @@ Alternate route: `/v1/ui/openwindow/information/`
         'X-User-Agent' = "$X_User_Agent"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  
@@ -386,15 +362,7 @@ Alternate route: `/v1/ui/openwindow/marketdetails/`
         'X-User-Agent' = "$X_User_Agent"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  
@@ -476,15 +444,7 @@ Alternate route: `/v1/ui/openwindow/newmail/`
         'new_mail' = "$new_mail"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  

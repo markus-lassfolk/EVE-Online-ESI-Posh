@@ -84,15 +84,7 @@ Alternate route: `/v1/characters/{character_id}/fittings/{fitting_id}/`
             $URI = $URI -replace '\$fitting_id',"$fitting_id"
         }
  
-$invokecommandline = "-uri $uri"
-if (($header.'X-User-Agent') -ne "") { 
-$invokecommandline = $invokecommandline + " -headers $header"
-}
-if ($body -ne $null) { 
-    $invokecommandline = $invokecommandline + " -body $body"
-}
-$invokecommandline = $invokecommandline + " -method $method"
-invoke-EVEWebRequest $invokecommandline
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
  
