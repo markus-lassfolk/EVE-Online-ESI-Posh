@@ -1,0 +1,87 @@
+function get-EVEInsurancePrices { 
+ 
+<# 
+.SYNOPSIS
+List insurance levels
+ 
+.DESCRIPTION
+Return available insurance levels for all ship types
+
+---
+Alternate route: `/dev/insurance/prices/`
+
+Alternate route: `/legacy/insurance/prices/`
+
+Alternate route: `/v1/insurance/prices/`
+
+---
+This route is cached for up to 3600 seconds
+ 
+#>
+ 
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/latest/insurance/prices/",
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [string]
+            $language = "en-us",
+            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
+            [string]
+            $user_agent,
+            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
+            [string]
+            $X_User_Agent
+    ) #End of Param
+ 
+#  Example URI
+#  https://esi.tech.ccp.is/latest/insurance/prices/
+ 
+      $Method = "get"
+      $URI = $URI -replace "{","$" -replace "}",""
+ 
+ 
+        if ($datasource -ne "") { 
+            if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+            }
+            elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+            }
+        }
+        if ($language -ne "") { 
+            if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "language=" + $language
+            }
+            elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "language=" + $language
+            }
+        }
+        if ($user_agent -ne "") { 
+            if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "user_agent=" + $user_agent
+            }
+            elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "user_agent=" + $user_agent
+            }
+        }
+        $Header = @{
+        'X-User-Agent' = "$X_User_Agent"
+        }
+ 
+$invokecommandline = "-uri $uri"
+if (($header.'X-User-Agent') -ne "") { 
+$invokecommandline = $invokecommandline + " -headers $header"
+}
+if ($body -ne $null) { 
+    $invokecommandline = $invokecommandline + " -body $body"
+}
+$invokecommandline = $invokecommandline + " -method $method"
+invoke-EVEWebRequest $invokecommandline
+}
+ 
+ 

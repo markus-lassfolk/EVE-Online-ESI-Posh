@@ -7,7 +7,7 @@ $ESIHost = $ModSwagger.host
 
 $AllPathEndpoints = $ModSwagger.paths | get-member | where MemberType -eq "NoteProperty" 
 
-$Teeest = foreach ($PathEndpoint in $AllPathEndpoints) { 
+$BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) { 
 
     $CurrentEndPoint = $ModSwagger.paths.($PathEndpoint.name)
     $Method = ($CurrentEndPoint | get-member | where MemberType -like NoteProperty).Name 
@@ -39,10 +39,12 @@ $Teeest = foreach ($PathEndpoint in $AllPathEndpoints) {
 }
 
 
-$NewFunction = ($Teeest | where ESITags -like "*Unive*" | select -Skip 1 -first 1)
-$NewFunctionPSM1File = ($NewFunction.ESITags).ToString() +".psm1"
-$NewESIFunctionFile = New-Item -ItemType File -Name ($($NewFunction.ESITags)+".psm1") -Force
 
+($BuildFunctions).ESITags | select -Unique | Sort-Object | % { 
+cd "C:\Users\markusla\Documents\GitHub\EVE-Online-ESI-Posh"
+    $NewESIFunctionFile = New-Item -Path .\EVE-Online-ESI-Posh\Public -Name $(($_)+".psm1") -ItemType File -Force
+
+    foreach ($NewFunction in $BuildFunctions | where ESITags -like "$_" ) {
 
 # Build Function
 Add-Content $NewESIFunctionFile "function $($NewFunction.FunctionName) { "
@@ -83,14 +85,21 @@ foreach ($NewFunctionParameter in $NewFunction.ESIParameters){
     Add-Content $NewESIFunctionFile "            $($NewParamValidateSet)"
     }   
 
-    # [int32]
+    # [Type]
     if (($NewFunctionParameter).type -eq "integer") { 
     $NewParamType = "["+$(($NewFunctionParameter).format)+"]"
      Add-Content $NewESIFunctionFile "            $($NewParamType)"   
     }
     else { 
         $NewParamType = "["+$(($NewFunctionParameter).type)+"]"
-        Add-Content $NewESIFunctionFile "            $($NewParamType)"   
+
+        if ($NewParamType -eq "[]") {
+            $NewParamType = "["+$(($NewFunctionParameter).schema.type)+"]"
+        } 
+
+        if ($NewParamType -ne "[]") {
+            Add-Content $NewESIFunctionFile "            $($NewParamType)"   
+        } 
     }
 
      # $parametername
@@ -213,59 +222,19 @@ Add-Content $NewESIFunctionFile $newstring
 $newstring = '$invokecommandline = $invokecommandline + " -method $method"'
 Add-Content $NewESIFunctionFile $newstring
 
-$newstring = 'write-host $invokecommandline'
+$newstring = 'invoke-EVEWebRequest $invokecommandline'
 Add-Content $NewESIFunctionFile $newstring
 
 # End of function 
 $Newstring = '}'
 Add-Content $NewESIFunctionFile $newstring
+$Newstring = ' '
+Add-Content $NewESIFunctionFile $newstring
+$Newstring = ' '
+Add-Content $NewESIFunctionFile $newstring
 
-
-
-
-
-
-
-if (($NewFunction.ESIParameters | where { $_.in -eq "query" -and $_.required -eq $true } | Measure-Object).count -gt 0) { $URI = $URI+"?" }
-foreach ($RequiredParameter in $NewFunction.ESIParameters | where { $_.in -eq "query" -and $_.type -eq "string" } | select -first 1 ) {
-    
-    if ($RequiredParameter -ne $null) {  $URI = $URI+"($RequiredParameter.Name) = $"+$RequiredParameter.Name  }
-
+  }
 }
 
-
-
-$Teeest | select -last 1
-
-.ESIParameters | where schema -ne $null | select schema).schema
-
-
-($Teeest | where { $_.ESIParameters.in -ne "query"}  | select -First 3).ESIParameters | where name -NotMatch "datasource|user_agent|x-user-agent" 
-
-
-
-    $result = Invoke-WebRequest -Uri $uri -Method Get -Headers $header
-    test-EVE-ESI-Result -result $result
-
-    if ($result.Headers.'X-Pages' -gt $Page) { 
-        $temporaryResult = @()
-        $temporaryResult += $result | convertfrom-json
-        
-        do { 
-        $Page = $Page+1
-        $uri = $baseUri+"latest/universe/groups/?Datasource="+$datasource+"&page="+$Page
-        $result = Invoke-WebRequest -Uri $uri -Method Get -Headers $header
-        test-EVE-ESI-Result -result $result
-        $temporaryResult += $result | convertfrom-json
-        } until ($result.Headers.'X-Pages' -eq $Page )
-
-     
-    }
-    $result = $temporaryResult | select -Unique | Sort-Object | ConvertTo-Json
-    return (out-EVE-ESI -outformat $outformat -result $result)
-}
-
-
-}
 
 

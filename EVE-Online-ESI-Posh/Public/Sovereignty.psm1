@@ -1,30 +1,27 @@
-function get-EVEUniverseAsteroid_BeltsAsteroid_Belt_Id { 
+function get-EVESovereigntyCampaigns { 
  
 <# 
 .SYNOPSIS
-Get asteroid belt information
+List sovereignty campaigns
  
 .DESCRIPTION
-Get information on an asteroid belt
+Shows sovereignty data for campaigns.
 
 ---
-Alternate route: `/dev/universe/asteroid_belts/{asteroid_belt_id}/`
+Alternate route: `/dev/sovereignty/campaigns/`
 
-Alternate route: `/legacy/universe/asteroid_belts/{asteroid_belt_id}/`
+Alternate route: `/legacy/sovereignty/campaigns/`
 
-Alternate route: `/v1/universe/asteroid_belts/{asteroid_belt_id}/`
+Alternate route: `/v1/sovereignty/campaigns/`
 
 ---
-This route expires daily at 11:05
+This route is cached for up to 5 seconds
  
 #>
  
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/asteroid_belts/{asteroid_belt_id}/",
-            [Parameter(Mandatory=$true, HelpMessage="asteroid_belt_id integer")]
-            [int32]
-            $asteroid_belt_id,
+            $URI = "https://esi.tech.ccp.is/latest/sovereignty/campaigns/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -38,7 +35,7 @@ This route expires daily at 11:05
     ) #End of Param
  
 #  Example URI
-#  https://esi.tech.ccp.is/latest/universe/asteroid_belts/{asteroid_belt_id}/
+#  https://esi.tech.ccp.is/latest/sovereignty/campaigns/
  
       $Method = "get"
       $URI = $URI -replace "{","$" -replace "}",""
@@ -64,10 +61,6 @@ This route expires daily at 11:05
         'X-User-Agent' = "$X_User_Agent"
         }
  
-        if ($asteroid_belt_id -ne "") { 
-            $URI = $URI -replace '\$asteroid_belt_id',"$asteroid_belt_id"
-        }
- 
 $invokecommandline = "-uri $uri"
 if (($header.'X-User-Agent') -ne "") { 
 $invokecommandline = $invokecommandline + " -headers $header"
@@ -76,24 +69,25 @@ if ($body -ne $null) {
     $invokecommandline = $invokecommandline + " -body $body"
 }
 $invokecommandline = $invokecommandline + " -method $method"
-write-host $invokecommandline
+invoke-EVEWebRequest $invokecommandline
 }
-
-function get-EVEAlliances { 
+ 
+ 
+function get-EVESovereigntyMap { 
  
 <# 
 .SYNOPSIS
-List all alliances
+List sovereignty of systems
  
 .DESCRIPTION
-List all active player alliances
+Shows sovereignty information for solar systems
 
 ---
-Alternate route: `/dev/alliances/`
+Alternate route: `/dev/sovereignty/map/`
 
-Alternate route: `/legacy/alliances/`
+Alternate route: `/legacy/sovereignty/map/`
 
-Alternate route: `/v1/alliances/`
+Alternate route: `/v1/sovereignty/map/`
 
 ---
 This route is cached for up to 3600 seconds
@@ -102,7 +96,7 @@ This route is cached for up to 3600 seconds
  
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/alliances/",
+            $URI = "https://esi.tech.ccp.is/latest/sovereignty/map/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -116,7 +110,7 @@ This route is cached for up to 3600 seconds
     ) #End of Param
  
 #  Example URI
-#  https://esi.tech.ccp.is/latest/alliances/
+#  https://esi.tech.ccp.is/latest/sovereignty/map/
  
       $Method = "get"
       $URI = $URI -replace "{","$" -replace "}",""
@@ -150,9 +144,82 @@ if ($body -ne $null) {
     $invokecommandline = $invokecommandline + " -body $body"
 }
 $invokecommandline = $invokecommandline + " -method $method"
-write-host $invokecommandline
-
+invoke-EVEWebRequest $invokecommandline
 }
+ 
+ 
+function get-EVESovereigntyStructures { 
+ 
+<# 
+.SYNOPSIS
+List sovereignty structures
+ 
+.DESCRIPTION
+Shows sovereignty data for structures.
 
+---
+Alternate route: `/dev/sovereignty/structures/`
 
+Alternate route: `/legacy/sovereignty/structures/`
 
+Alternate route: `/v1/sovereignty/structures/`
+
+---
+This route is cached for up to 120 seconds
+ 
+#>
+ 
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/latest/sovereignty/structures/",
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
+            [string]
+            $user_agent,
+            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
+            [string]
+            $X_User_Agent
+    ) #End of Param
+ 
+#  Example URI
+#  https://esi.tech.ccp.is/latest/sovereignty/structures/
+ 
+      $Method = "get"
+      $URI = $URI -replace "{","$" -replace "}",""
+ 
+ 
+        if ($datasource -ne "") { 
+            if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+            }
+            elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+            }
+        }
+        if ($user_agent -ne "") { 
+            if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "user_agent=" + $user_agent
+            }
+            elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "user_agent=" + $user_agent
+            }
+        }
+        $Header = @{
+        'X-User-Agent' = "$X_User_Agent"
+        }
+ 
+$invokecommandline = "-uri $uri"
+if (($header.'X-User-Agent') -ne "") { 
+$invokecommandline = $invokecommandline + " -headers $header"
+}
+if ($body -ne $null) { 
+    $invokecommandline = $invokecommandline + " -body $body"
+}
+$invokecommandline = $invokecommandline + " -method $method"
+invoke-EVEWebRequest $invokecommandline
+}
+ 
+ 

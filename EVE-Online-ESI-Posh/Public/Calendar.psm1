@@ -1,34 +1,40 @@
-function get-EVEUniverseAsteroid_BeltsAsteroid_Belt_Id { 
+function get-EVECharactersCharacter_IdCalendar { 
  
 <# 
 .SYNOPSIS
-Get asteroid belt information
+List calendar event summaries
  
 .DESCRIPTION
-Get information on an asteroid belt
+Get 50 event summaries from the calendar. If no from_event ID is given, the resource will return the next 50 chronological event summaries from now. If a from_event ID is specified, it will return the next 50 chronological event summaries from after that event.
 
 ---
-Alternate route: `/dev/universe/asteroid_belts/{asteroid_belt_id}/`
+Alternate route: `/dev/characters/{character_id}/calendar/`
 
-Alternate route: `/legacy/universe/asteroid_belts/{asteroid_belt_id}/`
+Alternate route: `/legacy/characters/{character_id}/calendar/`
 
-Alternate route: `/v1/universe/asteroid_belts/{asteroid_belt_id}/`
+Alternate route: `/v1/characters/{character_id}/calendar/`
 
 ---
-This route expires daily at 11:05
+This route is cached for up to 5 seconds
  
 #>
  
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/asteroid_belts/{asteroid_belt_id}/",
-            [Parameter(Mandatory=$true, HelpMessage="asteroid_belt_id integer")]
+            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/calendar/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
-            $asteroid_belt_id,
+            $character_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="The event ID to retrieve events from")]
+            [int32]
+            $from_event,
+            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+            [string]
+            $token,
             [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
             [string]
             $user_agent,
@@ -38,7 +44,7 @@ This route expires daily at 11:05
     ) #End of Param
  
 #  Example URI
-#  https://esi.tech.ccp.is/latest/universe/asteroid_belts/{asteroid_belt_id}/
+#  https://esi.tech.ccp.is/latest/characters/{character_id}/calendar/
  
       $Method = "get"
       $URI = $URI -replace "{","$" -replace "}",""
@@ -50,6 +56,22 @@ This route expires daily at 11:05
             }
             elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
+            }
+        }
+        if ($from_event -ne "") { 
+            if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "from_event=" + $from_event
+            }
+            elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "from_event=" + $from_event
+            }
+        }
+        if ($token -ne "") { 
+            if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "token=" + $token
+            }
+            elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "token=" + $token
             }
         }
         if ($user_agent -ne "") { 
@@ -64,8 +86,8 @@ This route expires daily at 11:05
         'X-User-Agent' = "$X_User_Agent"
         }
  
-        if ($asteroid_belt_id -ne "") { 
-            $URI = $URI -replace '\$asteroid_belt_id',"$asteroid_belt_id"
+        if ($character_id -ne "") { 
+            $URI = $URI -replace '\$character_id',"$character_id"
         }
  
 $invokecommandline = "-uri $uri"
@@ -76,37 +98,47 @@ if ($body -ne $null) {
     $invokecommandline = $invokecommandline + " -body $body"
 }
 $invokecommandline = $invokecommandline + " -method $method"
-write-host $invokecommandline
+invoke-EVEWebRequest $invokecommandline
 }
-
-function get-EVEAlliances { 
+ 
+ 
+function get-EVECharactersCharacter_IdCalendarEvent_IdAttendees { 
  
 <# 
 .SYNOPSIS
-List all alliances
+Get attendees
  
 .DESCRIPTION
-List all active player alliances
+Get all invited attendees for a given event
 
 ---
-Alternate route: `/dev/alliances/`
+Alternate route: `/dev/characters/{character_id}/calendar/{event_id}/attendees/`
 
-Alternate route: `/legacy/alliances/`
+Alternate route: `/legacy/characters/{character_id}/calendar/{event_id}/attendees/`
 
-Alternate route: `/v1/alliances/`
+Alternate route: `/v1/characters/{character_id}/calendar/{event_id}/attendees/`
 
 ---
-This route is cached for up to 3600 seconds
+This route is cached for up to 600 seconds
  
 #>
  
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/alliances/",
+            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/calendar/{event_id}/attendees/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
+            [int32]
+            $character_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$true, HelpMessage="The id of the event requested")]
+            [int32]
+            $event_id,
+            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+            [string]
+            $token,
             [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
             [string]
             $user_agent,
@@ -116,7 +148,7 @@ This route is cached for up to 3600 seconds
     ) #End of Param
  
 #  Example URI
-#  https://esi.tech.ccp.is/latest/alliances/
+#  https://esi.tech.ccp.is/latest/characters/{character_id}/calendar/{event_id}/attendees/
  
       $Method = "get"
       $URI = $URI -replace "{","$" -replace "}",""
@@ -128,6 +160,14 @@ This route is cached for up to 3600 seconds
             }
             elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
+            }
+        }
+        if ($token -ne "") { 
+            if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "token=" + $token
+            }
+            elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "token=" + $token
             }
         }
         if ($user_agent -ne "") { 
@@ -142,6 +182,14 @@ This route is cached for up to 3600 seconds
         'X-User-Agent' = "$X_User_Agent"
         }
  
+        if ($character_id -ne "") { 
+            $URI = $URI -replace '\$character_id',"$character_id"
+        }
+ 
+        if ($event_id -ne "") { 
+            $URI = $URI -replace '\$event_id',"$event_id"
+        }
+ 
 $invokecommandline = "-uri $uri"
 if (($header.'X-User-Agent') -ne "") { 
 $invokecommandline = $invokecommandline + " -headers $header"
@@ -150,9 +198,7 @@ if ($body -ne $null) {
     $invokecommandline = $invokecommandline + " -body $body"
 }
 $invokecommandline = $invokecommandline + " -method $method"
-write-host $invokecommandline
-
+invoke-EVEWebRequest $invokecommandline
 }
-
-
-
+ 
+ 

@@ -70,11 +70,52 @@ function set-verbose {
 
 
 
-function invoke-EVEWebRequest ($Uri, $headers, $Method, $body, $parameters, $retrycount, $outformat) { 
+function invoke-EVEWebRequest { 
 
-    $result = Invoke-WebRequest -Uri $uri -Method $Method -Headers $headers
+    Param( 
+        $uri,
+        [Parameter(Mandatory=$false)]
+        $header,
+        [Parameter(Mandatory=$false)]
+        $body,
+        [Parameter(Mandatory=$false)]
+        $Method        
+        ) #End of Param
 
-#    $testresult = test-EVE-ESI-Result -result $result
-
+Write-Host $Method
+Write-Host $args        
+    $result = Invoke-WebRequest -Uri $uri -Method $Method -Headers $header -Body $body
     return $result
 }
+
+#invoke-EVEWebRequest -uri "https://esi.tech.ccp.is/latest/universe/ancestries/?datasource=tranquility&language=en-us" -Method Get
+
+$Test = get-EVEUniverseAncestries -language en-us
+
+
+
+
+Invoke-WebRequest -Uri "https://esi.tech.ccp.is/latest/universe/ancestries/?datasource=tranquility&language=en-us" -Method Get
+
+
+$result = Invoke-WebRequest -Uri $uri -Method Get -Headers $header
+test-EVE-ESI-Result -result $result
+
+if ($result.Headers.'X-Pages' -gt $Page) { 
+    $temporaryResult = @()
+    $temporaryResult += $result | convertfrom-json
+    
+    do { 
+    $Page = $Page+1
+    $uri = $baseUri+"latest/universe/groups/?Datasource="+$datasource+"&page="+$Page
+    $result = Invoke-WebRequest -Uri $uri -Method Get -Headers $header
+    test-EVE-ESI-Result -result $result
+    $temporaryResult += $result | convertfrom-json
+    } until ($result.Headers.'X-Pages' -eq $Page )
+
+ 
+}
+$result = $temporaryResult | select -Unique | Sort-Object | ConvertTo-Json
+return (out-EVE-ESI -outformat $outformat -result $result)
+}
+
