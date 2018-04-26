@@ -1,4 +1,6 @@
-﻿cd "C:\Users\markusla\Documents\GitHub\EVE-Online-ESI-Posh"
+﻿Set-Location "$ENV:USERPROFILE\Documents\GitHub\EVE-Online-ESI-Posh"
+
+
 
 $ModSwagger = Invoke-WebRequest -ContentType "application/json" -Uri https://esi.tech.ccp.is/latest/swagger.json?datasource=tranquility -Verbose | ConvertFrom-Json 
 $ESIHost = $ModSwagger.host

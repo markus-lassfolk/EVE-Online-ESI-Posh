@@ -29,6 +29,12 @@ This is not fully featured or tested, but pull requests would be welcome!
 ```
 
 # Examples 
-To be added later 
+Get-ChildItem .\EVE-Online-ESI-Posh\Public\*.psm1 | Import-Module -Force
+Get-ChildItem .\EVE-Online-ESI-Posh\Private\*.psm1 | Import-Module -Force
+
+get-EVEUniverseAncestries
+get-EVESearch -categories character -search vipeer -strict $true | convertfrom-json
+
+
 
 #
