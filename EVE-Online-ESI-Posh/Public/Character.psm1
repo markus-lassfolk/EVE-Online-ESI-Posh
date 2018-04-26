@@ -66,7 +66,7 @@ This route is cached for up to 3600 seconds
         $Body = @{
         'characters' = "$characters"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -144,7 +144,7 @@ This route is cached for up to 3600 seconds
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -216,7 +216,7 @@ This route is cached for up to 3600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -301,7 +301,7 @@ This route is cached for up to 3600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -395,7 +395,7 @@ This route is cached for up to 3600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -480,7 +480,7 @@ This route is cached for up to 300 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -554,7 +554,7 @@ This route is cached for up to 3600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -641,7 +641,7 @@ Alternate route: `/v4/characters/{character_id}/cspa/`
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -726,7 +726,7 @@ This route is cached for up to 300 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -811,7 +811,7 @@ This route is cached for up to 3600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -894,7 +894,7 @@ This route is cached for up to 600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -979,7 +979,7 @@ This route is cached for up to 600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1051,7 +1051,7 @@ This route is cached for up to 3600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1134,7 +1134,7 @@ This route is cached for up to 3600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1219,7 +1219,7 @@ This route is cached for up to 3600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1302,7 +1302,7 @@ This route is cached for up to 86400 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1387,7 +1387,7 @@ This route is cached for up to 3600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  

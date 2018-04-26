@@ -39,7 +39,8 @@ This route is cached for up to 3600 seconds
             $search,
             [Parameter(Mandatory=$false, HelpMessage="Whether the search should be a strict match")]
             [boolean]
-            $strict = "False",
+            [ValidateSet($True,$False)]
+            $strict = $false,
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
@@ -121,7 +122,7 @@ This route is cached for up to 3600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -164,7 +165,8 @@ This route is cached for up to 3600 seconds
             $search,
             [Parameter(Mandatory=$false, HelpMessage="Whether the search should be a strict match")]
             [boolean]
-            $strict = "False",
+            [ValidateSet($True,$False)]
+            $strict = $false,
             [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
             [string]
             $user_agent,
@@ -231,7 +233,7 @@ This route is cached for up to 3600 seconds
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  

@@ -20,10 +20,12 @@ Alternate route: `/v2/ui/autopilot/waypoint/`
             $URI = "https://esi.tech.ccp.is/latest/ui/autopilot/waypoint/",
             [Parameter(Mandatory=$true, HelpMessage="Whether this solar system should be added to the beginning of all waypoints")]
             [boolean]
-            $add_to_beginning = "False",
+            [ValidateSet($True,$False)]
+            $add_to_beginning = $false,
             [Parameter(Mandatory=$true, HelpMessage="Whether clean other waypoints beforing adding this one")]
             [boolean]
-            $clear_other_waypoints = "False",
+            [ValidateSet($True,$False)]
+            $clear_other_waypoints = $false,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -100,7 +102,7 @@ Alternate route: `/v2/ui/autopilot/waypoint/`
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -187,7 +189,7 @@ Alternate route: `/v1/ui/openwindow/contract/`
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -274,7 +276,7 @@ Alternate route: `/v1/ui/openwindow/information/`
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -361,7 +363,7 @@ Alternate route: `/v1/ui/openwindow/marketdetails/`
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -443,7 +445,7 @@ Alternate route: `/v1/ui/openwindow/newmail/`
         $Body = @{
         'new_mail' = "$new_mail"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  

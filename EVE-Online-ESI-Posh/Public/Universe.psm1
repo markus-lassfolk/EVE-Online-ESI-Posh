@@ -72,7 +72,7 @@ This route expires daily at 11:05
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -146,7 +146,7 @@ This route expires daily at 11:05
         if ($asteroid_belt_id -ne "") { 
             $URI = $URI -replace '\$asteroid_belt_id',"$asteroid_belt_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -225,7 +225,7 @@ This route expires daily at 11:05
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -292,7 +292,7 @@ This route expires daily at 11:05
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -378,7 +378,7 @@ This route expires daily at 11:05
         if ($category_id -ne "") { 
             $URI = $URI -replace '\$category_id',"$category_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -445,7 +445,7 @@ This route expires daily at 11:05
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -531,7 +531,7 @@ This route expires daily at 11:05
         if ($constellation_id -ne "") { 
             $URI = $URI -replace '\$constellation_id',"$constellation_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -608,7 +608,7 @@ This route expires daily at 11:05
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -675,7 +675,7 @@ This route expires daily at 11:05
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -749,7 +749,7 @@ This route expires daily at 11:05
         if ($graphic_id -ne "") { 
             $URI = $URI -replace '\$graphic_id',"$graphic_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -827,7 +827,7 @@ This route expires daily at 11:05
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -913,7 +913,7 @@ This route expires daily at 11:05
         if ($group_id -ne "") { 
             $URI = $URI -replace '\$group_id',"$group_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -996,7 +996,7 @@ Alternate route: `/v1/universe/ids/`
         $Body = @{
         'names' = "$names"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1070,7 +1070,7 @@ This route expires daily at 11:05
         if ($moon_id -ne "") { 
             $URI = $URI -replace '\$moon_id',"$moon_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1139,7 +1139,7 @@ Alternate route: `/v2/universe/names/`
         $Body = @{
         'ids' = "$ids"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1213,7 +1213,7 @@ This route expires daily at 11:05
         if ($planet_id -ne "") { 
             $URI = $URI -replace '\$planet_id',"$planet_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1292,7 +1292,7 @@ This route expires daily at 11:05
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1359,7 +1359,7 @@ This route expires daily at 11:05
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1445,7 +1445,7 @@ This route expires daily at 11:05
         if ($region_id -ne "") { 
             $URI = $URI -replace '\$region_id',"$region_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1519,7 +1519,7 @@ This route expires daily at 11:05
         if ($stargate_id -ne "") { 
             $URI = $URI -replace '\$stargate_id',"$stargate_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1593,7 +1593,7 @@ This route expires daily at 11:05
         if ($star_id -ne "") { 
             $URI = $URI -replace '\$star_id',"$star_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1665,7 +1665,7 @@ This route is cached for up to 300 seconds
         if ($station_id -ne "") { 
             $URI = $URI -replace '\$station_id',"$station_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1732,7 +1732,7 @@ This route is cached for up to 3600 seconds
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1817,7 +1817,7 @@ This route is cached for up to 3600 seconds
         if ($structure_id -ne "") { 
             $URI = $URI -replace '\$structure_id',"$structure_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1884,7 +1884,7 @@ This route expires daily at 11:05
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -1968,7 +1968,7 @@ This route expires daily at 11:05
         if ($system_id -ne "") { 
             $URI = $URI -replace '\$system_id',"$system_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -2035,7 +2035,7 @@ This route is cached for up to 3600 seconds
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -2100,7 +2100,7 @@ This route is cached for up to 3600 seconds
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -2178,7 +2178,7 @@ This route expires daily at 11:05
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -2262,7 +2262,7 @@ This route expires daily at 11:05
         if ($type_id -ne "") { 
             $URI = $URI -replace '\$type_id',"$type_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  

@@ -78,7 +78,7 @@ This route is cached for up to 3600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -145,7 +145,7 @@ This route expires daily at 11:05
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -231,7 +231,7 @@ This route expires daily at 11:05
         if ($group_id -ne "") { 
             $URI = $URI -replace '\$group_id',"$group_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -298,7 +298,7 @@ This route expires daily at 11:05
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -372,7 +372,7 @@ This route expires daily at 11:05
         if ($task_id -ne "") { 
             $URI = $URI -replace '\$task_id',"$task_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  

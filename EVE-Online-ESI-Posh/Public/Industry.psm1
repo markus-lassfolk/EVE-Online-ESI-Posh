@@ -89,7 +89,7 @@ This route is cached for up to 300 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -186,7 +186,7 @@ This route is cached for up to 600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -287,7 +287,7 @@ Requires one of the following EVE corporation role(s): Structure_manager
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -388,7 +388,7 @@ Requires one of the following EVE corporation role(s): Accountant
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -496,7 +496,7 @@ Requires one of the following EVE corporation role(s): Accountant
         if ($observer_id -ne "") { 
             $URI = $URI -replace '\$observer_id',"$observer_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -538,7 +538,8 @@ Requires one of the following EVE corporation role(s): FactoryManager
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="Whether retrieve completed industry jobs as well")]
             [boolean]
-            $include_completed = "False",
+            [ValidateSet($True,$False)]
+            $include_completed = $false,
             [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
             [int32]
             $page = "1",
@@ -607,7 +608,7 @@ Requires one of the following EVE corporation role(s): FactoryManager
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -674,7 +675,7 @@ This route is cached for up to 3600 seconds
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -741,7 +742,7 @@ This route is cached for up to 3600 seconds
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  

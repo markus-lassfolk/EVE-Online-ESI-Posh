@@ -60,7 +60,7 @@ This route is cached for up to 3600 seconds
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -136,7 +136,7 @@ This route is cached for up to 3600 seconds
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -208,7 +208,7 @@ This route is cached for up to 3600 seconds
         if ($alliance_id -ne "") { 
             $URI = $URI -replace '\$alliance_id',"$alliance_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -282,7 +282,7 @@ This route is cached for up to 3600 seconds
         if ($alliance_id -ne "") { 
             $URI = $URI -replace '\$alliance_id',"$alliance_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -356,7 +356,7 @@ This route is cached for up to 3600 seconds
         if ($alliance_id -ne "") { 
             $URI = $URI -replace '\$alliance_id',"$alliance_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  

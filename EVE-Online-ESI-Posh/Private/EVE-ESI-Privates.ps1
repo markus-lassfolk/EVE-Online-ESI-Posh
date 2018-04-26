@@ -79,14 +79,19 @@ function invoke-EVEWebRequest {
         [Parameter(Mandatory=$false)]
         $body,
         [Parameter(Mandatory=$false)]
-        $Method        
+        $Method
         ) #End of Param
 
-    $result = Invoke-WebRequest -Uri $uri -Method $Method -Headers $header -Body $body
+
+    # Build Body Paramter
+    $newbody = $Null
+    if ($body -notlike "") { 
+    $newbody = "[" + ($body.ids) + "]"
+    }
+
+    $result = Invoke-WebRequest -Uri $uri -Method $Method -Body $newbody -ContentType "application/json"
     return $result
 }
-
-
 
 
 

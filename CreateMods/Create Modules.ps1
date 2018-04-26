@@ -106,8 +106,15 @@ foreach ($NewFunctionParameter in $NewFunction.ESIParameters){
      $NewFunctionParameterName = "$" + $($NewFunctionParameter.name -replace "-","_")
 
      if ( ($NewFunctionParameter.default | Measure-Object).count -gt 0 ) {
-        $NewFunctionParameterName = $NewFunctionParameterName + ' = "'+ $NewFunctionParameter.default +'"'
-     }
+
+        if ($NewFunctionParameter.type -eq "boolean") { 
+            Add-Content $NewESIFunctionFile '            [ValidateSet($True,$False)]'  
+            #$NewFunctionParameterName = '$'+ $NewFunctionParameter.default  
+        }
+        
+        $NewFunctionParameterName = ($NewFunctionParameterName + ' = "'+ $NewFunctionParameter.default +'"') -replace '"True"','$True' -replace '"False"','$false'
+
+    }
 
      if ($NewFunctionParamterNumber -ne ($NewFunction.ESIParameters | Measure-Object).Count) { 
         $NewFunctionParameterName = $NewFunctionParameterName + ","
@@ -198,7 +205,7 @@ foreach ($RequiredParameter in $NewFunction.ESIParameters | where { $_.in -eq "p
         Add-Content $NewESIFunctionFile $newstring
 }
 
-$newstring = ' '
+$newstring = '$URI = $URI -replace "$True","True" -replace "$False","False"'
 Add-Content $NewESIFunctionFile $newstring
 
 $newstring = 'invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body'
@@ -214,6 +221,16 @@ Add-Content $NewESIFunctionFile $newstring
 
   }
 }
+
+
+
+Get-ChildItem C:\Users\markusla\Documents\GitHub\EVE-Online-ESI-Posh\EVE-Online-ESI-Posh\Public\*.psm1 | Import-Module -Force
+get-EVEUniverseAncestries
+
+get-EVESearch -categories character -search vipeer -strict $false
+
+
+
 
 
 

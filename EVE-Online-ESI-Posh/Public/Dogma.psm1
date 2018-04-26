@@ -60,7 +60,7 @@ This route expires daily at 11:05
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -134,7 +134,7 @@ This route expires daily at 11:05
         if ($attribute_id -ne "") { 
             $URI = $URI -replace '\$attribute_id',"$attribute_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -201,7 +201,7 @@ This route expires daily at 11:05
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
@@ -273,7 +273,7 @@ This route expires daily at 11:05
         if ($effect_id -ne "") { 
             $URI = $URI -replace '\$effect_id',"$effect_id"
         }
- 
+$URI = $URI -replace "$True","True" -replace "$False","False"
 invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
 }
  
