@@ -150,12 +150,10 @@ foreach ($RequiredParameter in $NewFunction.ESIParameters | where { $_.in -eq "q
 # Build Headers
 if (($NewFunction.ESIParameters | where { $_.in -eq "header" } | Measure-Object).Count -gt 0) { 
 
-
     $Newstring = '        $Header = @{'
     Add-Content $NewESIFunctionFile $newstring
 
     foreach ($RequiredParameter in $NewFunction.ESIParameters | where { $_.in -eq "header" }) {
-
         $Newstring = '        '+"'"+$RequiredParameter.name +"'"+ ' = "$' + ($RequiredParameter.name -replace "-","_") +'"'
         Add-Content $NewESIFunctionFile $newstring
     }
@@ -194,17 +192,29 @@ foreach ($RequiredParameter in $NewFunction.ESIParameters | where { $_.in -eq "p
 $newstring = ' '
 Add-Content $NewESIFunctionFile $newstring
 
-
-
-
-($Uri, $headers, $Method, $body, $parameters, $retrycount, $outformat)
-
-
-
-$newstring = 'invoke-EVEWebRequest ($Uri, $headers, $Method, $body, $parameters, $retrycount, $outformat)'
+$newstring = '$invokecommandline = "-uri $uri"'
 Add-Content $NewESIFunctionFile $newstring
 
+$newstring = 'if (($header.'+"'"+'X-User-Agent'+"'"+') -ne "") { '
+Add-Content $NewESIFunctionFile $newstring
 
+$newstring = '$invokecommandline = $invokecommandline + " -headers $header"'
+Add-Content $NewESIFunctionFile $newstring
+$newstring = '}'
+Add-Content $NewESIFunctionFile $newstring
+
+$newstring = 'if ($body -ne $null) { '
+Add-Content $NewESIFunctionFile $newstring
+$newstring = '    $invokecommandline = $invokecommandline + " -body $body"'
+Add-Content $NewESIFunctionFile $newstring
+$newstring = '}'
+Add-Content $NewESIFunctionFile $newstring
+
+$newstring = '$invokecommandline = $invokecommandline + " -method $method"'
+Add-Content $NewESIFunctionFile $newstring
+
+$newstring = 'write-host $invokecommandline'
+Add-Content $NewESIFunctionFile $newstring
 
 # End of function 
 $Newstring = '}'

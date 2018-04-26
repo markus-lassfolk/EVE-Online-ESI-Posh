@@ -63,17 +63,19 @@ This route expires daily at 11:05
         $Header = @{
         'X-User-Agent' = "$X_User_Agent"
         }
+ 
         if ($asteroid_belt_id -ne "") { 
             $URI = $URI -replace '\$asteroid_belt_id',"$asteroid_belt_id"
         }
-
-
-        $Header
-        $body
-
-        Write-Host $URI
- }
-
-get-EVEUniverseAsteroid_BeltsAsteroid_Belt_Id -asteroid_belt_id 12345
-
+ 
+$invokecommandline = "-uri $uri"
+if (($header.'X-User-Agent') -ne "") { 
+$invokecommandline = $invokecommandline + " -headers $header"
+}
+if ($body -ne $null) { 
+    $invokecommandline = $invokecommandline + " -body $body"
+}
+$invokecommandline = $invokecommandline + " -method $method"
+write-host $invokecommandline
+}
 
