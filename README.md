@@ -28,7 +28,7 @@ This is not fully featured or tested, but pull requests would be welcome!
     Get-Help EVE-Online-ESI-Posh
 ```
 
-# Exampled 
+# Examples 
 To be added later 
 
 #

@@ -29,6 +29,9 @@ This route is cached for up to 600 seconds
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
@@ -72,6 +75,7 @@ This route is cached for up to 600 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -112,6 +116,9 @@ This route is cached for up to 600 seconds
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$true, HelpMessage="Planet id of the target planet")]
             [int32]
             $planet_id,
@@ -158,6 +165,7 @@ This route is cached for up to 600 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -208,6 +216,9 @@ Requires one of the following EVE corporation role(s): Director
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
             [int32]
             $page = "1",
@@ -262,6 +273,7 @@ Requires one of the following EVE corporation role(s): Director
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -301,6 +313,9 @@ This route is cached for up to 3600 seconds
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$true, HelpMessage="A PI schematic ID")]
             [int32]
             $schematic_id,
@@ -336,6 +351,7 @@ This route is cached for up to 3600 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  

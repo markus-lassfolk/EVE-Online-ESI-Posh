@@ -26,6 +26,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -70,6 +73,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
@@ -108,6 +112,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
             [string]
             $user_agent,
@@ -140,6 +147,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -179,6 +187,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -223,6 +234,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
@@ -258,6 +270,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
             [string]
             $user_agent,
@@ -290,6 +305,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
@@ -328,6 +344,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -372,6 +391,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -411,6 +431,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
             [string]
             $user_agent,
@@ -443,6 +466,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
@@ -481,6 +505,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -525,6 +552,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -562,6 +590,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -606,6 +637,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
@@ -641,6 +673,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
             [string]
             $user_agent,
@@ -673,6 +708,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
@@ -711,6 +747,9 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$true, HelpMessage="graphic_id integer")]
             [int32]
             $graphic_id,
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
             [string]
             $user_agent,
@@ -743,6 +782,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -782,6 +822,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
             [int32]
             $page = "1",
@@ -825,6 +868,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
@@ -863,6 +907,9 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$true, HelpMessage="An Eve item group ID")]
             [int32]
             $group_id,
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -907,6 +954,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -1029,6 +1077,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$true, HelpMessage="moon_id integer")]
             [int32]
             $moon_id,
@@ -1064,6 +1115,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -1172,6 +1224,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$true, HelpMessage="planet_id integer")]
             [int32]
             $planet_id,
@@ -1207,6 +1262,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -1246,6 +1302,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -1290,6 +1349,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
@@ -1325,6 +1385,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
             [string]
             $user_agent,
@@ -1357,6 +1420,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
@@ -1392,6 +1456,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -1439,6 +1506,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -1478,6 +1546,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$true, HelpMessage="stargate_id integer")]
             [int32]
             $stargate_id,
@@ -1513,6 +1584,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -1552,6 +1624,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$true, HelpMessage="star_id integer")]
             [int32]
             $star_id,
@@ -1587,6 +1662,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -1624,6 +1700,9 @@ This route is cached for up to 300 seconds
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$true, HelpMessage="station_id integer")]
             [int32]
             $station_id,
@@ -1659,6 +1738,7 @@ This route is cached for up to 300 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -1698,6 +1778,9 @@ This route is cached for up to 3600 seconds
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
             [string]
             $user_agent,
@@ -1730,6 +1813,7 @@ This route is cached for up to 3600 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
@@ -1765,6 +1849,9 @@ This route is cached for up to 3600 seconds
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$true, HelpMessage="An Eve structure ID")]
             [int64]
             $structure_id,
@@ -1811,6 +1898,7 @@ This route is cached for up to 3600 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -1850,6 +1938,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
             [string]
             $user_agent,
@@ -1882,6 +1973,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
@@ -1915,6 +2007,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -1962,6 +2057,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -2001,6 +2097,9 @@ This route is cached for up to 3600 seconds
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
             [string]
             $user_agent,
@@ -2033,6 +2132,7 @@ This route is cached for up to 3600 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
@@ -2066,6 +2166,9 @@ This route is cached for up to 3600 seconds
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
             [string]
             $user_agent,
@@ -2098,6 +2201,7 @@ This route is cached for up to 3600 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
@@ -2133,6 +2237,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
             [int32]
             $page = "1",
@@ -2176,6 +2283,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
@@ -2209,6 +2317,9 @@ This route expires daily at 11:05
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -2256,6 +2367,7 @@ This route expires daily at 11:05
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  

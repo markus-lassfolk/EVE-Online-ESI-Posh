@@ -29,6 +29,9 @@ This route is cached for up to 120 seconds
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
@@ -72,6 +75,7 @@ This route is cached for up to 120 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -90,16 +94,15 @@ function get-EVECharactersCharacter_IdWalletJournal {
 Get character wallet journal
  
 .DESCRIPTION
-Retrieve character wallet journal
+Retrieve the given character's wallet journal going 30 days back
 
 ---
-Alternate route: `/v3/characters/{character_id}/wallet/journal/`
+Alternate route: `/dev/characters/{character_id}/wallet/journal/`
+
+Alternate route: `/v4/characters/{character_id}/wallet/journal/`
 
 ---
 This route is cached for up to 3600 seconds
-
----
-[This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id}/wallet/journal/)
  
 #>
  
@@ -113,9 +116,12 @@ This route is cached for up to 3600 seconds
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="Only show journal entries happened before the transaction referenced by this id")]
-            [int64]
-            $from_id,
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
+            [int32]
+            $page = "1",
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
@@ -142,12 +148,12 @@ This route is cached for up to 3600 seconds
             $URI = $URI + "&" + "datasource=" + $datasource
             }
         }
-        if ($from_id -ne "") { 
+        if ($page -ne "") { 
             if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "from_id=" + $from_id
+            $URI = $URI + "?" + "page=" + $page
             }
             elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "from_id=" + $from_id
+            $URI = $URI + "&" + "page=" + $page
             }
         }
         if ($token -ne "") { 
@@ -167,6 +173,7 @@ This route is cached for up to 3600 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -212,6 +219,9 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Only show transactions happened before the one referenced by this id")]
             [int64]
             $from_id,
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
@@ -263,6 +273,7 @@ This route is cached for up to 3600 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -309,6 +320,9 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
@@ -352,6 +366,7 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -370,10 +385,12 @@ function get-EVECorporationsCorporation_IdWalletsDivisionJournal {
 Get corporation wallet journal
  
 .DESCRIPTION
-Retrieve corporation wallet journal
+Retrieve the given corporation's wallet journal for the given division going 30 days back
 
 ---
-Alternate route: `/v2/corporations/{corporation_id}/wallets/{division}/journal/`
+Alternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`
+
+Alternate route: `/v3/corporations/{corporation_id}/wallets/{division}/journal/`
 
 ---
 This route is cached for up to 3600 seconds
@@ -381,9 +398,6 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Accountant, Junior_Accountant
 
-
----
-[This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations/{corporation_id}/wallets/{division}/journal/)
  
 #>
  
@@ -400,9 +414,12 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
             [Parameter(Mandatory=$true, HelpMessage="Wallet key of the division to fetch journals from")]
             [int32]
             $division,
-            [Parameter(Mandatory=$false, HelpMessage="Only show journal entries happened before the transaction referenced by this id")]
-            [int64]
-            $from_id,
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
+            [int32]
+            $page = "1",
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
@@ -429,12 +446,12 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
             $URI = $URI + "&" + "datasource=" + $datasource
             }
         }
-        if ($from_id -ne "") { 
+        if ($page -ne "") { 
             if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "from_id=" + $from_id
+            $URI = $URI + "?" + "page=" + $page
             }
             elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "from_id=" + $from_id
+            $URI = $URI + "&" + "page=" + $page
             }
         }
         if ($token -ne "") { 
@@ -454,6 +471,7 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -510,6 +528,9 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
             [Parameter(Mandatory=$false, HelpMessage="Only show journal entries happened before the transaction referenced by this id")]
             [int64]
             $from_id,
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
@@ -561,6 +582,7 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  

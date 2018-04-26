@@ -26,6 +26,9 @@ This route is cached for up to 3600 seconds
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -70,6 +73,7 @@ This route is cached for up to 3600 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"

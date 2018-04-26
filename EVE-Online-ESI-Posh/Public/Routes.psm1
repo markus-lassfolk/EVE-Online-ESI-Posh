@@ -39,6 +39,9 @@ This route is cached for up to 86400 seconds
             [ValidateSet("shortest","secure","insecure")]
             [string]
             $flag = "shortest",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$true, HelpMessage="origin solar system ID")]
             [int32]
             $origin,
@@ -98,6 +101,7 @@ This route is cached for up to 86400 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  

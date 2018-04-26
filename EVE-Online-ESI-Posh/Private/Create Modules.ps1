@@ -1,7 +1,6 @@
-﻿
+﻿cd "C:\Users\markusla\Documents\GitHub\EVE-Online-ESI-Posh"
 
-
-$ModSwagger = get-content 'C:\SwaggerSpecs\LatestTranq2.json' | ConvertFrom-Json
+$ModSwagger = Invoke-WebRequest -ContentType "application/json" -Uri https://esi.tech.ccp.is/latest/swagger.json?datasource=tranquility -Verbose | ConvertFrom-Json 
 $ESIHost = $ModSwagger.host
 
 
@@ -41,8 +40,9 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
 
 
 ($BuildFunctions).ESITags | select -Unique | Sort-Object | % { 
-cd "C:\Users\markusla\Documents\GitHub\EVE-Online-ESI-Posh"
-    $NewESIFunctionFile = New-Item -Path .\EVE-Online-ESI-Posh\Public -Name $(($_)+".psm1") -ItemType File -Force
+
+    $_
+    $NewESIFunctionFile = New-Item -Path .\EVE-Online-ESI-Posh\Public -Name $(($_)+".psm1") -ItemType File -Force -verbose
 
     foreach ($NewFunction in $BuildFunctions | where ESITags -like "$_" ) {
 
@@ -223,10 +223,9 @@ Add-Content $NewESIFunctionFile $newstring
 }
 
 
+Get-ChildItem .\EVE-Online-ESI-Posh\Public\*.psm1 | Import-Module -Force
 
-Get-ChildItem C:\Users\markusla\Documents\GitHub\EVE-Online-ESI-Posh\EVE-Online-ESI-Posh\Public\*.psm1 | Import-Module -Force
 get-EVEUniverseAncestries
-
 get-EVESearch -categories character -search vipeer -strict $false
 
 

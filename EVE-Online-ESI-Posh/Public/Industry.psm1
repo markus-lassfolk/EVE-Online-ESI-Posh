@@ -29,6 +29,9 @@ This route is cached for up to 300 seconds
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Whether retrieve completed character industry jobs as well")]
             [boolean]
             $include_completed,
@@ -83,6 +86,7 @@ This route is cached for up to 300 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -126,6 +130,9 @@ This route is cached for up to 600 seconds
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
             [int32]
             $page = "1",
@@ -180,6 +187,7 @@ This route is cached for up to 600 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -227,6 +235,9 @@ Requires one of the following EVE corporation role(s): Structure_manager
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
             [int32]
             $page = "1",
@@ -281,6 +292,7 @@ Requires one of the following EVE corporation role(s): Structure_manager
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -328,6 +340,9 @@ Requires one of the following EVE corporation role(s): Accountant
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
             [int32]
             $page = "1",
@@ -382,6 +397,7 @@ Requires one of the following EVE corporation role(s): Accountant
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -429,6 +445,9 @@ Requires one of the following EVE corporation role(s): Accountant
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$true, HelpMessage="A mining observer id")]
             [int64]
             $observer_id,
@@ -486,6 +505,7 @@ Requires one of the following EVE corporation role(s): Accountant
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -536,6 +556,9 @@ Requires one of the following EVE corporation role(s): FactoryManager
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Whether retrieve completed industry jobs as well")]
             [boolean]
             [ValidateSet($True,$False)]
@@ -602,6 +625,7 @@ Requires one of the following EVE corporation role(s): FactoryManager
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
  
@@ -641,6 +665,9 @@ This route is cached for up to 3600 seconds
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
             [string]
             $user_agent,
@@ -673,6 +700,7 @@ This route is cached for up to 3600 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
@@ -708,6 +736,9 @@ This route is cached for up to 3600 seconds
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
             [string]
             $user_agent,
@@ -740,6 +771,7 @@ This route is cached for up to 3600 seconds
             }
         }
         $Header = @{
+        'If-None-Match' = "$If_None_Match"
         'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
