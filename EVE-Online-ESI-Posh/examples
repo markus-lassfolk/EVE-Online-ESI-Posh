@@ -5,3 +5,23 @@ get-EVEUniverseAncestries
 get-EVESearch -categories character -search vipeer -strict $false | convertfrom-json
 
 
+
+# Launches IE to logon to EVE SSO and get an access token; 
+# Specify your applications ClientID, SecretKey, CallBackURL and Scopes as specified in https://developers.eveonline.com/applications 
+$access_token = login-EVESSOAuth -clientid $ClientID -secretkey $secretkey -callbackURL $callbackURL -Scopes $Scopes
+
+# Refresh Access token with Refresh Token 
+# Specify your applications ClientID, SecretKey, CallBackURL as specified in https://developers.eveonline.com/applications 
+$access_token = refresh-EVESSOToken -refreshtoken $access_token.refresh_token -clientid $ClientID -secretkey $secretkey
+
+# Verify Access token with EVESSO and grab Character Information  
+$CharacterToken = get-EVESSOCharacterID -Token $access_token
+  
+# Verify if Access Token should be renewed 
+$CharacterToken = verify-EVESSOAccessToken -CharacterToken $CharacterToken -ClientID $ClientID -secretkey $secretkey
+ 
+# Get all Blueprint ID's and locations for Character - returned in raw JSON Format  
+$BluePrints = get-EVECharactersCharacter_IdBlueprints -character_id $CharacterToken.CharacterID -token $CharacterToken.Token.access_token
+$BluePrints.Content | convertfrom.JSON
+
+

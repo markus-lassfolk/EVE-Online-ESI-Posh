@@ -30,14 +30,35 @@ This is not fully featured or tested, but pull requests would be welcome!
 
 # Examples 
 Get-ChildItem .\EVE-Online-ESI-Posh\Public\*.psm1 | Import-Module -Force 
-
 Get-ChildItem .\EVE-Online-ESI-Posh\Private\*.psm1 | Import-Module -Force 
 
+# Get help about a function 
+get-help get-EVEUniverseAncestries
 
+# Get all character ancestries
 get-EVEUniverseAncestries
 
+# Locate CharacterID for a specific character using strict matching 
 get-EVESearch -categories character -search vipeer -strict $true | convertfrom-json
 
+## Get all Blueprint ID's and locations for Character - returned in raw JSON Format  
+$BluePrints = get-EVECharactersCharacter_IdBlueprints -character_id $CharacterToken.CharacterID -token $access_token.access_token
+$BluePrints.Content | convertfrom.JSON
 
 
-#
+# Launches IE to logon to EVE SSO and get an access token; 
+# Specify your applications ClientID, SecretKey, CallBackURL and Scopes as specified in https://developers.eveonline.com/applications 
+$access_token = login-EVESSOAuth -clientid $ClientID -secretkey $secretkey -callbackURL $callbackURL -Scopes $Scopes
+
+# Refresh Access token with Refresh Token 
+# Specify your applications ClientID, SecretKey, CallBackURL as specified in https://developers.eveonline.com/applications 
+$access_token = refresh-EVESSOToken -refreshtoken $access_token.refresh_token -clientid $ClientID -secretkey $secretkey
+
+# Verify Access token with EVESSO and grab Character Information  
+$CharacterToken = get-EVESSOCharacterID -AccessToken $access_token.access_token
+  
+# Verify if Access Token should be renewed 
+$access_token = verify-EVESSOAccessToken -access_token $access_token -CharacterToken $CharacterToken -ClientID $ClientID -secretkey $secretkey
+
+ 
+
