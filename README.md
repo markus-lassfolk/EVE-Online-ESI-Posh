@@ -26,7 +26,6 @@ This is not fully featured or tested, but pull requests would be welcome!
 # Get help
     Get-Help Get-SEObject -Full
     Get-Help EVE-Online-ESI-Posh
-```
 
 # Examples 
 Get-ChildItem .\EVE-Online-ESI-Posh\Public\*.psm1 | Import-Module -Force 
@@ -61,4 +60,3 @@ $CharacterToken = get-EVESSOCharacterID -AccessToken $access_token.access_token
 $access_token = verify-EVESSOAccessToken -access_token $access_token -CharacterToken $CharacterToken -ClientID $ClientID -secretkey $secretkey
 
  
-
