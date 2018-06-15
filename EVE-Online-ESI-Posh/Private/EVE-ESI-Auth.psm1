@@ -22,8 +22,8 @@ function login-EVESSOAuth ($clientid, $secretkey, $callbackURL, $Scopes) {
     Write-Verbose "Returned Access Code: $($Code)"
 
 
-    $access_token = get-EVESSOToken -EncodedText  -clientid $clientid -secretkey $secretkey -code $Code 
-    {Start-Sleep 2}
+    $access_token = get-EVESSOToken -EncodedText -clientid $clientid -secretkey $secretkey -code $Code 
+    Start-Sleep 2
     $ie.Quit()
     return $access_token ; 
 }

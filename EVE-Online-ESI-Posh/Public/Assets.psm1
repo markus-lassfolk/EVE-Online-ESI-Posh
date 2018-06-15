@@ -98,90 +98,97 @@ invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
  
 function post-EVECharactersCharacter_IdAssetsLocations { 
  
-<# 
-.SYNOPSIS
-Get character asset locations
- 
-.DESCRIPTION
-Return locations for a set of item ids, which you can get from character assets endpoint. Coordinates for items in hangars or stations are set to (0,0,0)
-
----
-Alternate route: `/dev/characters/{character_id}/assets/locations/`
-
-Alternate route: `/v2/characters/{character_id}/assets/locations/`
-
- 
-#>
- 
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/assets/locations/",
-            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
-            [int32]
-            $character_id,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$true, HelpMessage="A list of item ids")]
-            [array]
-            $item_ids,
-            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
-            [string]
-            $token,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
-    ) #End of Param
- 
-#  Example URI
-#  https://esi.tech.ccp.is/latest/characters/{character_id}/assets/locations/
- 
-      $Method = "post"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
+    <# 
+    .SYNOPSIS
+    Get character asset locations
+     
+    .DESCRIPTION
+    Return locations for a set of item ids, which you can get from character assets endpoint. Coordinates for items in hangars or stations are set to (0,0,0)
+    
+    ---
+    Alternate route: `/dev/characters/{character_id}/assets/locations/`
+    
+    Alternate route: `/v2/characters/{character_id}/assets/locations/`
+    
+     
+    #>
+     
+        Param( 
+                [string]
+                $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/assets/locations/",
+                [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
+                [int32]
+                $character_id,
+                [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+                [ValidateSet("tranquility","singularity")]
+                [string]
+                $datasource = "tranquility",
+                [Parameter(Mandatory=$true, HelpMessage="A list of item ids")]
+                [array]
+                $item_ids,
+                [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+                [string]
+                $token,
+                [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
+                [string]
+                $user_agent,
+                [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
+                [string]
+                $X_User_Agent
+        ) #End of Param
+     
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/characters/{character_id}/assets/locations/
+     
+          $Method = "post"
+          $URI = $URI -replace "{","$" -replace "}",""
+     
+     
+            if ($datasource -ne "") { 
+                if ($URI.Contains('?') -eq $false) {  
+                $URI = $URI + "?" + "datasource=" + $datasource
+                }
+                elseif ($URI.Contains('?') -eq $True) {
+                $URI = $URI + "&" + "datasource=" + $datasource
+                }
             }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
+            if ($token -ne "") { 
+                if ($URI.Contains('?') -eq $false) {  
+                $URI = $URI + "?" + "token=" + $token
+                }
+                elseif ($URI.Contains('?') -eq $True) {
+                $URI = $URI + "&" + "token=" + $token
+                }
             }
-        }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "token=" + $token
+            if ($user_agent -ne "") { 
+                if ($URI.Contains('?') -eq $false) {  
+                $URI = $URI + "?" + "user_agent=" + $user_agent
+                }
+                elseif ($URI.Contains('?') -eq $True) {
+                $URI = $URI + "&" + "user_agent=" + $user_agent
+                }
             }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "token=" + $token
+            $Header = @{
+            'X-User-Agent' = "$X_User_Agent"
             }
-        }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
+            $Body = @{
+            'item_ids' = "$item_ids"
             }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
+     
+            if ($character_id -ne "") { 
+                $URI = $URI -replace '\$character_id',"$character_id"
             }
-        }
-        $Header = @{
-        'X-User-Agent' = "$X_User_Agent"
-        }
-        $Body = @{
-        'item_ids' = "$item_ids"
-        }
- 
-        if ($character_id -ne "") { 
-            $URI = $URI -replace '\$character_id',"$character_id"
-        }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
-}
- 
+        $URI = $URI -replace "$True","True" -replace "$False","False"
+    
+        try { 
+            invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -Verbose 
+            }
+        catch { 
+            $_ 
+            }
+    
+    }
+     
  
 function post-EVECharactersCharacter_IdAssetsNames { 
  

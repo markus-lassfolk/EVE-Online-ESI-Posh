@@ -229,7 +229,15 @@ This route is cached for up to 3600 seconds
             $URI = $URI -replace '\$character_id',"$character_id"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+
+try { 
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body } 
+catch {
+    $error = $_ 
+    $error 
+}
+
+
 }
  
  

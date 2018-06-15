@@ -85,12 +85,18 @@ function invoke-EVEWebRequest {
 
     # Build Body Paramter
     $newbody = $Null
-    if ($body -notlike "") { 
-    $newbody = "[" + ($body.ids) + "]"
+    if ($body.item_ids -notlike "") { 
+        $newbody = "[" + $($body.item_ids -join ",") + "]"
+        $newbody
+    
     }
+    else { $body }
+
+  #  if ($body -notlike "") { 
+  #      $newbody = "[" + ($body.ids) + "]"
+  #  }
 
     $result = Invoke-WebRequest -Uri $uri -Method $Method -Body $newbody -ContentType "application/json"
     return $result
 }
-
 
