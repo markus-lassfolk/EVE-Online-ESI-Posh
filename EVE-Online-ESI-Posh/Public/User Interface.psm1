@@ -36,12 +36,10 @@ Alternate route: `/v2/ui/autopilot/waypoint/`
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -91,19 +89,8 @@ Alternate route: `/v2/ui/autopilot/waypoint/`
             $URI = $URI + "&" + "token=" + $token
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
-        $Header = @{
-        'X-User-Agent' = "$X_User_Agent"
-        }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -139,12 +126,10 @@ Alternate route: `/v1/ui/openwindow/contract/`
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -178,19 +163,8 @@ Alternate route: `/v1/ui/openwindow/contract/`
             $URI = $URI + "&" + "token=" + $token
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
-        $Header = @{
-        'X-User-Agent' = "$X_User_Agent"
-        }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -226,12 +200,10 @@ Alternate route: `/v1/ui/openwindow/information/`
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -265,19 +237,8 @@ Alternate route: `/v1/ui/openwindow/information/`
             $URI = $URI + "&" + "token=" + $token
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
-        $Header = @{
-        'X-User-Agent' = "$X_User_Agent"
-        }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -313,12 +274,10 @@ Alternate route: `/v1/ui/openwindow/marketdetails/`
             [Parameter(Mandatory=$true, HelpMessage="The item type to open in market window")]
             [int32]
             $type_id,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -352,19 +311,8 @@ Alternate route: `/v1/ui/openwindow/marketdetails/`
             $URI = $URI + "&" + "type_id=" + $type_id
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
-        $Header = @{
-        'X-User-Agent' = "$X_User_Agent"
-        }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -400,12 +348,10 @@ Alternate route: `/v1/ui/openwindow/newmail/`
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -431,22 +377,11 @@ Alternate route: `/v1/ui/openwindow/newmail/`
             $URI = $URI + "&" + "token=" + $token
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
-        $Header = @{
-        'X-User-Agent' = "$X_User_Agent"
-        }
         $Body = @{
         'new_mail' = "$new_mail"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  

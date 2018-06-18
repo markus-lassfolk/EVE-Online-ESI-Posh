@@ -2,10 +2,10 @@ function get-EVECharactersCharacter_IdKillmailsRecent {
  
 <# 
 .SYNOPSIS
-Get character kills and losses
+Get a character's recent kills and losses
  
 .DESCRIPTION
-Return a list of character's recent kills and losses
+Return a list of a character's kills and losses going back 90 days
 
 ---
 Alternate route: `/dev/characters/{character_id}/killmails/recent/`
@@ -15,7 +15,7 @@ Alternate route: `/legacy/characters/{character_id}/killmails/recent/`
 Alternate route: `/v1/characters/{character_id}/killmails/recent/`
 
 ---
-This route is cached for up to 120 seconds
+This route is cached for up to 300 seconds
  
 #>
  
@@ -32,22 +32,16 @@ This route is cached for up to 120 seconds
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="How many killmails to return at maximum")]
+            [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
             [int32]
-            $max_count = "50",
-            [Parameter(Mandatory=$false, HelpMessage="Only return killmails with ID smaller than this.
-")]
-            [int32]
-            $max_kill_id,
+            $page = "1",
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -65,20 +59,12 @@ This route is cached for up to 120 seconds
             $URI = $URI + "&" + "datasource=" + $datasource
             }
         }
-        if ($max_count -ne "") { 
+        if ($page -ne "") { 
             if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "max_count=" + $max_count
+            $URI = $URI + "?" + "page=" + $page
             }
             elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "max_count=" + $max_count
-            }
-        }
-        if ($max_kill_id -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "max_kill_id=" + $max_kill_id
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "max_kill_id=" + $max_kill_id
+            $URI = $URI + "&" + "page=" + $page
             }
         }
         if ($token -ne "") { 
@@ -89,24 +75,15 @@ This route is cached for up to 120 seconds
             $URI = $URI + "&" + "token=" + $token
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
  
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -114,10 +91,10 @@ function get-EVECorporationsCorporation_IdKillmailsRecent {
  
 <# 
 .SYNOPSIS
-Get corporation kills and losses
+Get a corporation's recent kills and losses
  
 .DESCRIPTION
-Get a list of corporation's recent kills and losses
+Get a list of a corporation's kills and losses going back 90 days
 
 ---
 Alternate route: `/dev/corporations/{corporation_id}/killmails/recent/`
@@ -148,18 +125,16 @@ Requires one of the following EVE corporation role(s): Director
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Only return killmails with ID smaller than this")]
+            [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
             [int32]
-            $max_kill_id,
+            $page = "1",
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -177,12 +152,12 @@ Requires one of the following EVE corporation role(s): Director
             $URI = $URI + "&" + "datasource=" + $datasource
             }
         }
-        if ($max_kill_id -ne "") { 
+        if ($page -ne "") { 
             if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "max_kill_id=" + $max_kill_id
+            $URI = $URI + "?" + "page=" + $page
             }
             elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "max_kill_id=" + $max_kill_id
+            $URI = $URI + "&" + "page=" + $page
             }
         }
         if ($token -ne "") { 
@@ -193,24 +168,15 @@ Requires one of the following EVE corporation role(s): Director
             $URI = $URI + "&" + "token=" + $token
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
  
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -251,12 +217,10 @@ This route is cached for up to 1209600 seconds
             [Parameter(Mandatory=$true, HelpMessage="The killmail ID to be queried")]
             [int32]
             $killmail_id,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -274,17 +238,8 @@ This route is cached for up to 1209600 seconds
             $URI = $URI + "&" + "datasource=" + $datasource
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
  
         if ($killmail_hash -ne "") { 
@@ -295,7 +250,7 @@ This route is cached for up to 1209600 seconds
             $URI = $URI -replace '\$killmail_id',"$killmail_id"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
