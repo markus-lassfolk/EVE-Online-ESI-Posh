@@ -33,12 +33,10 @@ This route is cached for up to 1200 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -64,24 +62,15 @@ This route is cached for up to 1200 seconds
             $URI = $URI + "&" + "token=" + $token
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
  
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -125,12 +114,10 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -164,24 +151,15 @@ This route is cached for up to 3600 seconds
             $URI = $URI + "&" + "token=" + $token
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
  
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -195,8 +173,6 @@ List open orders from a corporation
 List open market orders placed on behalf of a corporation
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/orders/`
-
 Alternate route: `/v2/corporations/{corporation_id}/orders/`
 
 ---
@@ -205,6 +181,12 @@ This route is cached for up to 1200 seconds
 ---
 Requires one of the following EVE corporation role(s): Accountant, Trader
 
+
+---
+Warning: This route has an upgrade available.
+
+---
+[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/orders/)
  
 #>
  
@@ -227,12 +209,10 @@ Requires one of the following EVE corporation role(s): Accountant, Trader
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -266,24 +246,15 @@ Requires one of the following EVE corporation role(s): Accountant, Trader
             $URI = $URI + "&" + "token=" + $token
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
  
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -297,8 +268,6 @@ List historical orders from a corporation
 List cancelled and expired market orders placed on behalf of a corporation up to 90 days in the past.
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/orders/history/`
-
 Alternate route: `/legacy/corporations/{corporation_id}/orders/history/`
 
 Alternate route: `/v1/corporations/{corporation_id}/orders/history/`
@@ -309,6 +278,12 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Accountant, Trader
 
+
+---
+Warning: This route has an upgrade available.
+
+---
+[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/orders/history/)
  
 #>
  
@@ -331,12 +306,10 @@ Requires one of the following EVE corporation role(s): Accountant, Trader
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -370,24 +343,15 @@ Requires one of the following EVE corporation role(s): Accountant, Trader
             $URI = $URI + "&" + "token=" + $token
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
  
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -422,12 +386,10 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -445,20 +407,11 @@ This route expires daily at 11:05
             $URI = $URI + "&" + "datasource=" + $datasource
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -486,6 +439,10 @@ This route expires daily at 11:05
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/markets/groups/{market_group_id}/",
+            [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [string]
+            $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -493,19 +450,17 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
+            [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="An Eve item group ID")]
             [int32]
             $market_group_id,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -531,24 +486,16 @@ This route expires daily at 11:05
             $URI = $URI + "&" + "language=" + $language
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
+        'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
  
         if ($market_group_id -ne "") { 
             $URI = $URI -replace '\$market_group_id',"$market_group_id"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -583,12 +530,10 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -606,20 +551,11 @@ This route is cached for up to 3600 seconds
             $URI = $URI + "&" + "datasource=" + $datasource
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -663,12 +599,10 @@ This route is cached for up to 300 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -702,24 +636,15 @@ This route is cached for up to 300 seconds
             $URI = $URI + "&" + "token=" + $token
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
  
         if ($structure_id -ne "") { 
             $URI = $URI -replace '\$structure_id',"$structure_id"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -760,12 +685,10 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$true, HelpMessage="Return statistics for this type")]
             [int32]
             $type_id,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -791,24 +714,15 @@ This route expires daily at 11:05
             $URI = $URI + "&" + "type_id=" + $type_id
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
  
         if ($region_id -ne "") { 
             $URI = $URI -replace '\$region_id',"$region_id"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -856,12 +770,10 @@ This route is cached for up to 300 seconds
             [Parameter(Mandatory=$false, HelpMessage="Return orders only for this type")]
             [int32]
             $type_id,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -903,24 +815,15 @@ This route is cached for up to 300 seconds
             $URI = $URI + "&" + "type_id=" + $type_id
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
  
         if ($region_id -ne "") { 
             $URI = $URI -replace '\$region_id',"$region_id"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -961,12 +864,10 @@ This route is cached for up to 600 seconds
             [Parameter(Mandatory=$true, HelpMessage="Return statistics in this region")]
             [int32]
             $region_id,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -992,24 +893,15 @@ This route is cached for up to 600 seconds
             $URI = $URI + "&" + "page=" + $page
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
  
         if ($region_id -ne "") { 
             $URI = $URI -replace '\$region_id',"$region_id"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  

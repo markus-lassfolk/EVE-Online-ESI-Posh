@@ -20,6 +20,10 @@ This route is cached for up to 3600 seconds
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/search/",
+            [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [string]
+            $Accept_Language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="Type of entities to search for")]
             [array]
             $categories,
@@ -33,7 +37,7 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
+            [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
             $language = "en-us",
@@ -47,12 +51,10 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -110,24 +112,16 @@ This route is cached for up to 3600 seconds
             $URI = $URI + "&" + "token=" + $token
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
+        'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
  
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -153,6 +147,10 @@ This route is cached for up to 3600 seconds
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/search/",
+            [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [string]
+            $Accept_Language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="Type of entities to search for")]
             [array]
             $categories,
@@ -163,7 +161,7 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
+            [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
             $language = "en-us",
@@ -174,12 +172,10 @@ This route is cached for up to 3600 seconds
             [boolean]
             [ValidateSet($True,$False)]
             $strict = $false,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -229,20 +225,12 @@ This route is cached for up to 3600 seconds
             $URI = $URI + "&" + "strict=" + $strict
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
+        'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  

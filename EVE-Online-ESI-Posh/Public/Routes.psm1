@@ -45,12 +45,10 @@ This route is cached for up to 86400 seconds
             [Parameter(Mandatory=$true, HelpMessage="origin solar system ID")]
             [int32]
             $origin,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -92,17 +90,8 @@ This route is cached for up to 86400 seconds
             $URI = $URI + "&" + "flag=" + $flag
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
  
         if ($destination -ne "") { 
@@ -113,7 +102,7 @@ This route is cached for up to 86400 seconds
             $URI = $URI -replace '\$origin',"$origin"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  

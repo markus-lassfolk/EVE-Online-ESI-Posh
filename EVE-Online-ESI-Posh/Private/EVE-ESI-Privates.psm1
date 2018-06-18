@@ -12,7 +12,7 @@ $VerbosePreference = $global:VerbosePreference
     # Is Result Valid
     if ($result.StatusCode -ne 200) {
         Write-Verbose "ErrorCode: $($result.Statuscode)  ErrorMsg: $($result.StatusDescription)" ; 
-        Write-Output  "ErrorCode: $($result.Statuscode)  ErrorMsg: $($result.StatusDescription)" ; 
+        Write-Verbose "ErrorCode: $($result.Statuscode)  ErrorMsg: $($result.StatusDescription)" ; 
         return $false
         break
     }
@@ -47,12 +47,15 @@ $VerbosePreference = $global:VerbosePreference
 }
 
 
-function out-EVE-ESI ($result,$outformat) {
+function out-EVE-ESI ($result,$OutputType) {
     $VerbosePreference = $global:VerbosePreference
 
-    Write-Verbose  "OutPut Format: $outformat"
-    if ($outformat -eq "json") { return $result } 
-    if ($outformat -eq "PS") { return $($result | ConvertFrom-Json) } 
+    Write-Verbose  "OutPut Format: $OutputType"
+    Write-Verbose  "$result"
+    if ($OutputType -eq "json") { $newformat = $result } 
+    if ($OutputType -eq "PS") { $newformat = $result.content | ConvertFrom-Json  } 
+
+    return $newformat
 }
 
 
@@ -71,7 +74,6 @@ function set-verbose {
 
 
 function invoke-EVEWebRequest { 
-
     Param( 
         $uri,
         [Parameter(Mandatory=$false)]
@@ -79,34 +81,29 @@ function invoke-EVEWebRequest {
         [Parameter(Mandatory=$false)]
         $body,
         [Parameter(Mandatory=$false)]
-        $Method
-        ) #End of Param
-
+        $Method,
+        [Parameter(Mandatory=$false)]
+        $OutputType = "PS"
+    ) #End of Param
 
     # Build Body Paramter
     $newbody = $Null
     if ($body.item_ids -notlike "") { 
         $newbody = "[" + $($body.item_ids -join ",") + "]"
-        $newbody
-    
     }
-    else { $body }
-
-  #  if ($body -notlike "") { 
-  #      $newbody = "[" + ($body.ids) + "]"
-  #  }
-  #  $status = Invoke-WebRequest -Uri https://esi.evetech.net/status.json?version=latest -Method Get -ContentType "application/json" 
-
-    try {
-        $result = Invoke-WebRequest -Uri $uri -Method $Method -Body $newbody -ContentType "application/json" }
-    catch {
-        write-host $_ | fl
+    else { 
+        #$body 
     }
-    $VerifyResult = test-EVE-ESI-Result -result $result
 
-    if ($VerifyResult -eq $true) { 
-        return $result 
-    } 
+    $ESIReply = Invoke-WebRequest -Uri $uri -Method $Method -Body $body -ContentType "application/json"
+
+    if ($OutputType -eq "PS") {
+        return $($ESIReply.content | ConvertFrom-Json)
+    }
+    else {
+        return $ESIReply
+    }
+
 }
 
 

@@ -35,12 +35,10 @@ This route is cached for up to 60 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -66,24 +64,15 @@ This route is cached for up to 60 seconds
             $URI = $URI + "&" + "token=" + $token
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
         $Header = @{
         'If-None-Match' = "$If_None_Match"
-        'X-User-Agent' = "$X_User_Agent"
         }
  
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -119,15 +108,13 @@ Alternate route: `/v1/fleets/{fleet_id}/wings/{wing_id}/squads/`
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over headers")]
-            [string]
-            $user_agent,
             [Parameter(Mandatory=$true, HelpMessage="The wing_id to create squad in")]
             [int64]
             $wing_id,
-            [Parameter(Mandatory=$false, HelpMessage="Client identifier, takes precedence over User-Agent")]
-            [string]
-            $X_User_Agent
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
     ) #End of Param
  
 #  Example URI
@@ -153,17 +140,6 @@ Alternate route: `/v1/fleets/{fleet_id}/wings/{wing_id}/squads/`
             $URI = $URI + "&" + "token=" + $token
             }
         }
-        if ($user_agent -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "user_agent=" + $user_agent
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "user_agent=" + $user_agent
-            }
-        }
-        $Header = @{
-        'X-User-Agent' = "$X_User_Agent"
-        }
  
         if ($fleet_id -ne "") { 
             $URI = $URI -replace '\$fleet_id',"$fleet_id"
@@ -173,7 +149,7 @@ Alternate route: `/v1/fleets/{fleet_id}/wings/{wing_id}/squads/`
             $URI = $URI -replace '\$wing_id',"$wing_id"
         }
 $URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body
+invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
