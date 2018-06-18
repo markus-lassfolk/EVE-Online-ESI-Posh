@@ -52,7 +52,7 @@ function out-EVE-ESI ($result,$outformat) {
 
     Write-Verbose  "OutPut Format: $outformat"
     if ($outformat -eq "json") { return $result } 
-    if ($outformat -eq "PS") { return ($result | ConvertFrom-Json) } 
+    if ($outformat -eq "PS") { return $($result | ConvertFrom-Json) } 
 }
 
 
@@ -95,8 +95,18 @@ function invoke-EVEWebRequest {
   #  if ($body -notlike "") { 
   #      $newbody = "[" + ($body.ids) + "]"
   #  }
+  #  $status = Invoke-WebRequest -Uri https://esi.evetech.net/status.json?version=latest -Method Get -ContentType "application/json" 
 
-    $result = Invoke-WebRequest -Uri $uri -Method $Method -Body $newbody -ContentType "application/json"
-    return $result
+    try {
+        $result = Invoke-WebRequest -Uri $uri -Method $Method -Body $newbody -ContentType "application/json" }
+    catch {
+        write-host $_ | fl
+    }
+    $VerifyResult = test-EVE-ESI-Result -result $result
+
+    if ($VerifyResult -eq $true) { 
+        return $result 
+    } 
 }
+
 
