@@ -72,6 +72,24 @@ function set-verbose {
 }
 
 
+function get-EveEsiStatus {
+    Param( 
+            [string]
+            $URI = "https://esi.evetech.net/status.json?",
+            [Parameter(Mandatory=$false, HelpMessage="The version of metrics to request. Note that alternate versions are grouped together.")]
+            [ValidateSet("latest","dev","legacy","meta")]
+            [string]
+            $version = "latest",
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+ 
+    ) #End of Param
+    $uri = $uri + "version=$($version)"
+    
+    invoke-EVEWebRequest -Uri $URI -Method Get -OutputType $OutputType
+}
+
 
 function invoke-EVEWebRequest { 
     Param( 
@@ -95,7 +113,19 @@ function invoke-EVEWebRequest {
         #$body 
     }
 
-    $ESIReply = Invoke-WebRequest -Uri $uri -Method $Method -Body $body -ContentType "application/json"
+    try { $ESIReply = Invoke-WebRequest -Uri $uri -Method $Method -Body $body -ContentType "application/json" 
+    }
+    catch {
+
+        Write-Host $($_ | fl)
+        $ESIStatus = get-EveEsiStatus -OutputType PS
+        $ESIStatus | where status -ne "green"
+        start-sleep -Seconds 30                
+
+    }
+    finally { 
+
+    }
 
     if ($OutputType -eq "PS") {
         return $($ESIReply.content | ConvertFrom-Json)
