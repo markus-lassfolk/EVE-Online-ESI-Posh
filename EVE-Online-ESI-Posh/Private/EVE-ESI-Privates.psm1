@@ -1,11 +1,11 @@
 
 
 function test-EVE-ESI-Result ($result) {
-$VerbosePreference = $global:VerbosePreference
+    $VerbosePreference = $global:VerbosePreference
 
     if ($result.Headers.'X-Esi-Error-Limit-Remain' -lt 10) { 
         Write-Verbose "Error Limit reached, throttling" 
-        start-sleep -Seconds $([int]$($result.Headers.'X-Esi-Error-Limit-Reset')+2) -Verbose
+        start-sleep -Seconds $([int]$($result.Headers.'X-Esi-Error-Limit-Reset') + 2) -Verbose
     }
 
 
@@ -17,7 +17,7 @@ $VerbosePreference = $global:VerbosePreference
         break
     }
     if ($result.StatusCode -eq 200) {
-       $VerifyResult = $true
+        $VerifyResult = $true
         Write-Verbose "ErrorCode: $($result.Statuscode)  ErrorMsg: $($result.StatusDescription)" ;
         Write-Verbose "VerifyResult: $VerifyResult" 
     }
@@ -29,7 +29,7 @@ $VerbosePreference = $global:VerbosePreference
             Write-Verbose "Expire Value: $($result.Headers.Expires)" ; 
             Write-Verbose "Data Cached - No need to get new data"
             Write-Verbose "VerifyResult: $VerifyResult" 
-            }
+        }
         else { 
             $VerifyResult = $false
             Write-Verbose "Expire Value: $($result.Headers.Expires)" ; 
@@ -41,13 +41,13 @@ $VerbosePreference = $global:VerbosePreference
         $VerifyResult = $true
         Write-Verbose "Expire Value: No Expire value" ; 
         Write-Verbose "VerifyResult: $VerifyResult"
-        }
+    }
 
     return $VerifyResult
 }
 
 
-function out-EVE-ESI ($result,$OutputType) {
+function out-EVE-ESI ($result, $OutputType) {
     $VerbosePreference = $global:VerbosePreference
 
     Write-Verbose  "OutPut Format: $OutputType"
@@ -61,7 +61,7 @@ function out-EVE-ESI ($result,$OutputType) {
 
 function set-verbose {
     Param(
-        [ValidateSet("continue","SilentlyContinue")]
+        [ValidateSet("continue", "SilentlyContinue")]
         [String]
         $verbose
     ) 
@@ -74,33 +74,34 @@ function set-verbose {
 
 function get-EveEsiStatus {
     Param( 
-            [string]
-            $URI = "https://esi.evetech.net/status.json?",
-            [Parameter(Mandatory=$false, HelpMessage="The version of metrics to request. Note that alternate versions are grouped together.")]
-            [ValidateSet("latest","dev","legacy","meta")]
-            [string]
-            $version = "latest",
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
- 
+        [string]
+        $URI = 'https://esi.evetech.net/status.json?',
+        [Parameter(Mandatory = $false, HelpMessage = "The version of metrics to request. Note that alternate versions are grouped together.")]
+        [ValidateSet("latest", "dev", "legacy", "meta")]
+        [string]
+        $version = "latest",
+        [Parameter(Mandatory = $false, HelpMessage = "Output Format of Result")]
+        [ValidateSet("PS", "json")]
+        $OutputType = "PS"
     ) #End of Param
-    $uri = $uri + "version=$($version)"
     
-    invoke-EVEWebRequest -Uri $URI -Method Get -OutputType $OutputType
+    $URI = $URI + "version=$($version)"
+    
+    #Write-Host $URI
+    invoke-EVEWebRequest -Uri $URI -Method Get 
 }
 
 
 function invoke-EVEWebRequest { 
     Param( 
         $uri,
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         $header,
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         $body,
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         $Method,
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         $OutputType = "PS"
     ) #End of Param
 
@@ -113,22 +114,22 @@ function invoke-EVEWebRequest {
         #$body 
     }
 
-    try { $ESIReply = Invoke-WebRequest -Uri $uri -Method $Method -Body $body -ContentType "application/json" 
+    try {
+        $ESIReply = Invoke-WebRequest -Uri $uri -Method $Method -Body $body -ContentType "application/json" 
     }
     catch {
-
-        Write-Host $($_ | fl)
-        $ESIStatus = get-EveEsiStatus -OutputType PS
-        $ESIStatus | where status -ne "green"
-        start-sleep -Seconds 30                
-
+#        $ESIMetaStatuses = get-EveEsiStatus -version latest -OutputType PS 
+        $ESIReply = Invoke-WebRequest -Uri $uri -Method $Method -Body $body -ContentType "application/json" 
+        #$($_ | Format-List )
+        #$(get-EveEsiStatus -OutputType PS | Where-Object status -NotLike "green")
+        #start-sleep -Seconds 30
     }
-    finally { 
 
+    finally { 
     }
 
     if ($OutputType -eq "PS") {
-        return $($ESIReply.content | ConvertFrom-Json)
+        return $($ESIReply.content | ConvertFrom-Json) 
     }
     else {
         return $ESIReply
