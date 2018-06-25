@@ -71,8 +71,8 @@ This route is cached for up to 120 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -87,6 +87,8 @@ Retrieve the given character's wallet journal going 30 days back
 
 ---
 Alternate route: `/dev/characters/{character_id}/wallet/journal/`
+
+Alternate route: `/legacy/characters/{character_id}/wallet/journal/`
 
 Alternate route: `/v4/characters/{character_id}/wallet/journal/`
 
@@ -158,8 +160,8 @@ This route is cached for up to 3600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -247,8 +249,8 @@ This route is cached for up to 3600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -329,8 +331,8 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -345,6 +347,8 @@ Retrieve the given corporation's wallet journal for the given division going 30 
 
 ---
 Alternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`
+
+Alternate route: `/legacy/corporations/{corporation_id}/wallets/{division}/journal/`
 
 Alternate route: `/v3/corporations/{corporation_id}/wallets/{division}/journal/`
 
@@ -427,8 +431,8 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
         if ($division -ne "") { 
             $URI = $URI -replace '\$division',"$division"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -527,8 +531,8 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
         if ($division -ne "") { 
             $URI = $URI -replace '\$division',"$division"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  

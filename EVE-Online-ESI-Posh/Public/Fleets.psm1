@@ -71,8 +71,8 @@ This route is cached for up to 60 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -148,8 +148,8 @@ Alternate route: `/v1/fleets/{fleet_id}/wings/{wing_id}/squads/`
         if ($wing_id -ne "") { 
             $URI = $URI -replace '\$wing_id',"$wing_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  

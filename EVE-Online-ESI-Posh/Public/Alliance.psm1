@@ -53,77 +53,8 @@ This route is cached for up to 3600 seconds
         $Header = @{
         'If-None-Match' = "$If_None_Match"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVEAlliancesNames { 
- 
-<# 
-.SYNOPSIS
-Get alliance names
- 
-.DESCRIPTION
-Resolve a set of alliance IDs to alliance names
-
----
-Alternate route: `/dev/alliances/names/`
-
-Alternate route: `/v2/alliances/names/`
-
----
-This route is cached for up to 3600 seconds
- 
-#>
- 
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/latest/alliances/names/",
-            [Parameter(Mandatory=$true, HelpMessage="A comma separated list of alliance IDs")]
-            [array]
-            $alliance_ids,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
- 
-    ) #End of Param
- 
-#  Example URI
-#  https://esi.tech.ccp.is/latest/alliances/names/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($alliance_ids -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "alliance_ids=" + $alliance_ids
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "alliance_ids=" + $alliance_ids
-            }
-        }
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-            }
-        }
-        $Header = @{
-        'If-None-Match' = "$If_None_Match"
-        }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -187,8 +118,8 @@ This route is cached for up to 3600 seconds
         if ($alliance_id -ne "") { 
             $URI = $URI -replace '\$alliance_id',"$alliance_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -254,8 +185,8 @@ This route is cached for up to 3600 seconds
         if ($alliance_id -ne "") { 
             $URI = $URI -replace '\$alliance_id',"$alliance_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -321,8 +252,8 @@ This route is cached for up to 3600 seconds
         if ($alliance_id -ne "") { 
             $URI = $URI -replace '\$alliance_id',"$alliance_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  

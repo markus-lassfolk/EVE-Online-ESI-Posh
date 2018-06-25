@@ -82,8 +82,8 @@ This route is cached for up to 300 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -172,8 +172,8 @@ This route is cached for up to 600 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -266,8 +266,8 @@ Requires one of the following EVE corporation role(s): Structure_manager
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -360,8 +360,8 @@ Requires one of the following EVE corporation role(s): Accountant
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -461,8 +461,8 @@ Requires one of the following EVE corporation role(s): Accountant
         if ($observer_id -ne "") { 
             $URI = $URI -replace '\$observer_id',"$observer_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -566,8 +566,8 @@ Requires one of the following EVE corporation role(s): FactoryManager
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -626,8 +626,8 @@ This route is cached for up to 3600 seconds
         $Header = @{
         'If-None-Match' = "$If_None_Match"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -686,8 +686,8 @@ This route is cached for up to 3600 seconds
         $Header = @{
         'If-None-Match' = "$If_None_Match"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  

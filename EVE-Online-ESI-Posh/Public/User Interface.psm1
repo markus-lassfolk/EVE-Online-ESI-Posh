@@ -89,8 +89,8 @@ Alternate route: `/v2/ui/autopilot/waypoint/`
             $URI = $URI + "&" + "token=" + $token
             }
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -163,8 +163,8 @@ Alternate route: `/v1/ui/openwindow/contract/`
             $URI = $URI + "&" + "token=" + $token
             }
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -237,8 +237,8 @@ Alternate route: `/v1/ui/openwindow/information/`
             $URI = $URI + "&" + "token=" + $token
             }
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -311,8 +311,8 @@ Alternate route: `/v1/ui/openwindow/marketdetails/`
             $URI = $URI + "&" + "type_id=" + $type_id
             }
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -380,8 +380,8 @@ Alternate route: `/v1/ui/openwindow/newmail/`
         $Body = @{
         'new_mail' = "$new_mail"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  

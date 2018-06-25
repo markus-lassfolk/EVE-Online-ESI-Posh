@@ -1,72 +1,3 @@
-function get-EVECorporationsNames { 
- 
-<# 
-.SYNOPSIS
-Get corporation names
- 
-.DESCRIPTION
-Resolve a set of corporation IDs to corporation names
-
----
-Alternate route: `/dev/corporations/names/`
-
-Alternate route: `/v2/corporations/names/`
-
----
-This route is cached for up to 3600 seconds
- 
-#>
- 
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/names/",
-            [Parameter(Mandatory=$true, HelpMessage="A comma separated list of corporation IDs")]
-            [array]
-            $corporation_ids,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
- 
-    ) #End of Param
- 
-#  Example URI
-#  https://esi.tech.ccp.is/latest/corporations/names/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($corporation_ids -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "corporation_ids=" + $corporation_ids
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "corporation_ids=" + $corporation_ids
-            }
-        }
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-            }
-        }
-        $Header = @{
-        'If-None-Match' = "$If_None_Match"
-        }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
 function get-EVECorporationsNpccorps { 
  
 <# 
@@ -122,8 +53,8 @@ This route expires daily at 11:05
         $Header = @{
         'If-None-Match' = "$If_None_Match"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -188,9 +119,7 @@ This route is cached for up to 3600 seconds
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
     $URI = $URI -replace "$True","True" -replace "$False","False"
-    
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-    
 }
  
  
@@ -254,8 +183,8 @@ This route is cached for up to 3600 seconds
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -345,8 +274,8 @@ Requires one of the following EVE corporation role(s): Director
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -436,8 +365,8 @@ Requires one of the following EVE corporation role(s): Director
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -518,8 +447,8 @@ Requires one of the following EVE corporation role(s): Director
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -600,8 +529,8 @@ Requires one of the following EVE corporation role(s): Factory_Manager
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -667,8 +596,8 @@ This route is cached for up to 3600 seconds
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -756,8 +685,8 @@ This route is cached for up to 3600 seconds
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -849,8 +778,8 @@ Requires one of the following EVE corporation role(s): Director
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -925,8 +854,8 @@ This route is cached for up to 3600 seconds
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -1007,8 +936,8 @@ Requires one of the following EVE corporation role(s): Director
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -1089,8 +1018,8 @@ Requires one of the following EVE corporation role(s): Director
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -1171,8 +1100,8 @@ Requires one of the following EVE corporation role(s): Director
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -1198,6 +1127,9 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 
+
+---
+Warning: Outposts have been removed, this route will be deleted on 2018-07-08
  
 #>
  
@@ -1264,8 +1196,8 @@ Requires one of the following EVE corporation role(s): Director
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -1291,6 +1223,9 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 
+
+---
+Warning: Outposts have been removed, this route will be deleted on 2018-07-08
  
 #>
  
@@ -1353,8 +1288,8 @@ Requires one of the following EVE corporation role(s): Director
         if ($outpost_id -ne "") { 
             $URI = $URI -replace '\$outpost_id',"$outpost_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -1431,8 +1366,8 @@ This route is cached for up to 3600 seconds
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -1524,8 +1459,8 @@ Requires one of the following EVE corporation role(s): Director
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -1617,8 +1552,8 @@ Requires one of the following EVE corporation role(s): Director
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -1706,8 +1641,8 @@ This route is cached for up to 3600 seconds
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -1799,8 +1734,8 @@ Requires one of the following EVE corporation role(s): Director
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -1899,8 +1834,8 @@ Requires one of the following EVE corporation role(s): Director
         if ($starbase_id -ne "") { 
             $URI = $URI -replace '\$starbase_id',"$starbase_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -2007,8 +1942,8 @@ Requires one of the following EVE corporation role(s): StationManager
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -2089,8 +2024,8 @@ Requires one of the following EVE corporation role(s): Director
         if ($corporation_id -ne "") { 
             $URI = $URI -replace '\$corporation_id',"$corporation_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  

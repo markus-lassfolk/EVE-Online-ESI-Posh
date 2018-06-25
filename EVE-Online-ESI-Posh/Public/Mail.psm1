@@ -70,8 +70,8 @@ Alternate route: `/v1/characters/{character_id}/mail/labels/{label_id}/`
         if ($label_id -ne "") { 
             $URI = $URI -replace '\$label_id',"$label_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
@@ -148,8 +148,8 @@ This route is cached for up to 120 seconds
         if ($character_id -ne "") { 
             $URI = $URI -replace '\$character_id',"$character_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  

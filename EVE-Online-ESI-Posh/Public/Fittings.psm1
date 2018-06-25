@@ -70,8 +70,8 @@ Alternate route: `/v1/characters/{character_id}/fittings/{fitting_id}/`
         if ($fitting_id -ne "") { 
             $URI = $URI -replace '\$fitting_id',"$fitting_id"
         }
-$URI = $URI -replace "$True","True" -replace "$False","False"
-invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
