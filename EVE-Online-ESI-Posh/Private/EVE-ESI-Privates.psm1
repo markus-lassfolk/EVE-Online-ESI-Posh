@@ -119,6 +119,7 @@ function invoke-EVEWebRequest {
     }
     catch {
 #        $ESIMetaStatuses = get-EveEsiStatus -version latest -OutputType PS 
+        write-host "$($_ | format-list)"
         $ESIReply = Invoke-WebRequest -Uri $uri -Method $Method -Body $body -ContentType "application/json" 
         #$($_ | Format-List )
         #$(get-EveEsiStatus -OutputType PS | Where-Object status -NotLike "green")
