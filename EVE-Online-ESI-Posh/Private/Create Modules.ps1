@@ -44,7 +44,6 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
 
 }
 
-
 ($BuildFunctions).ESITags | select -Unique | Sort-Object | % { 
 
     $_
@@ -221,73 +220,7 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
         $Newstring = ' '
         Add-Content $NewESIFunctionFile $newstring
 
-      }
-    }   
-
-
-Get-ChildItem .\EVE-Online-ESI-Posh\Public\*.psm1 | Import-Module -Force
-
-get-EVEUniverseAncestries
-get-EVESearch -categories character -search vipeer -strict $false
-
-
-
-
-
-$AllPathEndpoints
-
-
-$BuildFunctions | where FunctionName -like "*1*" | select -first 1
-
-
-$ModSwagger = Invoke-WebRequest -ContentType "application/json" -Uri https://esi.tech.ccp.is/_latest/swagger.json?datasource=tranquility -Verbose | ConvertFrom-Json 
-$ESIHost = $ModSwagger.host
-
-$AllPathEndpoints = $ModSwagger.paths | get-member | where MemberType -eq "NoteProperty" 
-
-
-$BuildFunctions3 = foreach ($PathEndpoint in $AllPathEndpoints | where name -Match "/v1/alliances/{alliance_id}/corporations/|/v1/characters/{character_id}/mail/" ) { 
-
-    $CurrentEndPoint = $ModSwagger.paths.($PathEndpoint.name)
-    $Methods = ($CurrentEndPoint | get-member | where MemberType -like NoteProperty).Name 
-
-    foreach ($Method in $Methods) {
-        $CurrentEndPointDetails = $ModSwagger.paths.($PathEndpoint.name).$Method
-
-        $ESIName = ($PathEndpoint.Name).TrimStart("/").TrimEnd("/").replace("/"," ")
-        $ESIName = (Get-Culture).TextInfo.ToTitleCase( $ESIName )
-
-        $ESIFunctionName = $CurrentEndPointDetails.operationId -replace "$($Method)_","$($Method)-EVE"
-    #    $ESIFunctionName = $Method+"-EVE"+$ESIName.trim().replace(" ","").replace("{","").Replace("}","")
-
-        $ESIParameters = foreach ($ESIParameter in $CurrentEndPointDetails.parameters) { 
-            if ($ESIParameter.'$ref' -like "*#/parameters/*") { 
-            $ModSwagger.parameters.$($ESIParameter.'$ref'.ToString().split("/")[-1])
-            }
-            else {$ESIParameter}
-        } 
-
-        $NewFunction = @{
-        'FunctionName' = $ESIFunctionName 
-        'ESIMethod' = $Method
-        'ESIPath' = $PathEndpoint.Name
-        'ESIParameters' = $ESIParameters
-        'ESITags' = $CurrentEndPointDetails.tags
-        'ESISummary' = $CurrentEndPointDetails.summary
-        'ESIDescription' = $CurrentEndPointDetails.description
-        'ESIOperationsID' = $CurrentEndPointDetails.operationId
-        }
-        New-Object -TypeName PSObject -ArgumentList $NewFunction
     }
-}
+}   
 
 
-$BuildFunctions2 | where FunctionName -like ""
-
-$AllPathEndpoints | where name -Match "/v1/alliances/{alliance_id}/corporations/|/v1/characters/{character_id}/mail/" 
-
-$AllPathEndpoints | where name -eq "/v1/characters/{character_id}/mail/" 
-
-$ModSwagger.paths.'/v1/characters/{character_id}/mail/'.get
-
-where name -eq "/v1/characters/{character_id}/mail/" 

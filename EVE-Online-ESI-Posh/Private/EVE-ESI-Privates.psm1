@@ -107,9 +107,9 @@ function invoke-EVEWebRequest {
     $newbody = $Null
     if ($body.item_ids -notlike "") { 
         $newbody = "[" + $($body.item_ids -join ",") + "]"
+        $body = $newbody
     }
     if (($body.ids | Measure-Object).count -gt 0 ) { 
-        $newbody = $Null
         $body = "[" + $($body.ids -join ",") + "]"
     }
     else { 
@@ -130,17 +130,18 @@ function invoke-EVEWebRequest {
     finally { 
     }
 
+    # Altert if EndPoints got a Warning Message
     if ($ESIReply.Headers.Warning -ne $null) { 
         write-host "$($ESIReply.Headers.Warning) $($ESIReply.BaseResponse.ResponseUri.AbsolutePath) " -ForegroundColor Red
     }
 
+    # Sleep if Error Limit is below 20. 
     if ([int]$ESIReply.Headers.'X-Esi-Error-Limit-Remain' -lt 20) {
         Write-Host "X-Esi-Error-Limit-Remain at $($ESIReply.Headers.'X-Esi-Error-Limit-Remain') sleeping ($([int]$ESIReply.Headers.'X-Esi-Error-Limit-Reset'+2)) seconds" -ForegroundColor "Yellow"
         Write-host "Affected Call: $($ESIReply.BaseResponse.ResponseUri.AbsolutePath)" -ForegroundColor "Yellow"
         Start-Sleep -Seconds $([int]$ESIReply.Headers.'X-Esi-Error-Limit-Reset'+2)
     }
         
-
     if ($OutputType -eq "PS") {
         return $($ESIReply.content | ConvertFrom-Json) 
     }
