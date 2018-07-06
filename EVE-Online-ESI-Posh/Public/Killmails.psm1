@@ -1,4 +1,4 @@
-function get-EVECharactersCharacter_IdKillmailsRecent { 
+function get-EVEcharacters_character_id_killmails_recent { 
 <# 
 .SYNOPSIS
 Get a character's recent kills and losses
@@ -6,18 +6,12 @@ Get a character's recent kills and losses
 Return a list of a character's kills and losses going back 90 days
 
 ---
-Alternate route: `/dev/characters/{character_id}/killmails/recent/`
 
-Alternate route: `/legacy/characters/{character_id}/killmails/recent/`
-
-Alternate route: `/v1/characters/{character_id}/killmails/recent/`
-
----
 This route is cached for up to 300 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/killmails/recent/",
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/killmails/recent/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -39,7 +33,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/characters/{character_id}/killmails/recent/
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/killmails/recent/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -79,7 +73,7 @@ This route is cached for up to 300 seconds
 }
  
  
-function get-EVECorporationsCorporation_IdKillmailsRecent { 
+function get-EVEcorporations_corporation_id_killmails_recent { 
 <# 
 .SYNOPSIS
 Get a corporation's recent kills and losses
@@ -87,22 +81,15 @@ Get a corporation's recent kills and losses
 Get a list of a corporation's kills and losses going back 90 days
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/killmails/recent/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/killmails/recent/`
-
-Alternate route: `/v1/corporations/{corporation_id}/killmails/recent/`
-
----
 This route is cached for up to 300 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Director
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/killmails/recent/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/killmails/recent/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -124,7 +111,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/killmails/recent/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/killmails/recent/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -164,7 +151,7 @@ Requires one of the following EVE corporation role(s): Director
 }
  
  
-function get-EVEKillmailsKillmail_IdKillmail_Hash { 
+function get-EVEkillmails_killmail_id_killmail_hash { 
 <# 
 .SYNOPSIS
 Get a single killmail
@@ -172,18 +159,12 @@ Get a single killmail
 Return a single killmail from its ID and hash
 
 ---
-Alternate route: `/dev/killmails/{killmail_id}/{killmail_hash}/`
 
-Alternate route: `/legacy/killmails/{killmail_id}/{killmail_hash}/`
-
-Alternate route: `/v1/killmails/{killmail_id}/{killmail_hash}/`
-
----
 This route is cached for up to 1209600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/killmails/{killmail_id}/{killmail_hash}/",
+            $URI = "https://esi.tech.ccp.is/v1/killmails/{killmail_id}/{killmail_hash}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -202,7 +183,7 @@ This route is cached for up to 1209600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/killmails/{killmail_id}/{killmail_hash}/
+    #  https://esi.tech.ccp.is/v1/killmails/{killmail_id}/{killmail_hash}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  

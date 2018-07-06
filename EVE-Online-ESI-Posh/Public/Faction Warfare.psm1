@@ -1,4 +1,4 @@
-function get-EVECharactersCharacter_IdFwStats { 
+function get-EVEcharacters_character_id_fw_stats { 
 <# 
 .SYNOPSIS
 Overview of a character involved in faction warfare
@@ -6,18 +6,12 @@ Overview of a character involved in faction warfare
 Statistical overview of a character involved in faction warfare
 
 ---
-Alternate route: `/dev/characters/{character_id}/fw/stats/`
 
-Alternate route: `/legacy/characters/{character_id}/fw/stats/`
-
-Alternate route: `/v1/characters/{character_id}/fw/stats/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/fw/stats/",
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/fw/stats/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -36,7 +30,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/characters/{character_id}/fw/stats/
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/fw/stats/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -68,7 +62,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVECorporationsCorporation_IdFwStats { 
+function get-EVEcorporations_corporation_id_fw_stats { 
 <# 
 .SYNOPSIS
 Overview of a corporation involved in faction warfare
@@ -76,18 +70,12 @@ Overview of a corporation involved in faction warfare
 Statistics about a corporation involved in faction warfare
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/fw/stats/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/fw/stats/`
-
-Alternate route: `/v1/corporations/{corporation_id}/fw/stats/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/fw/stats/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/fw/stats/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -106,7 +94,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/fw/stats/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/fw/stats/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -138,7 +126,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEFwLeaderboards { 
+function get-EVEfw_leaderboards { 
 <# 
 .SYNOPSIS
 List of the top factions in faction warfare
@@ -146,18 +134,12 @@ List of the top factions in faction warfare
 Top 4 leaderboard of factions for kills and victory points separated by total, last week and yesterday.
 
 ---
-Alternate route: `/dev/fw/leaderboards/`
 
-Alternate route: `/legacy/fw/leaderboards/`
-
-Alternate route: `/v1/fw/leaderboards/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/fw/leaderboards/",
+            $URI = "https://esi.tech.ccp.is/v1/fw/leaderboards/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -170,7 +152,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/fw/leaderboards/
+    #  https://esi.tech.ccp.is/v1/fw/leaderboards/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -190,7 +172,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEFwLeaderboardsCharacters { 
+function get-EVEfw_leaderboards_characters { 
 <# 
 .SYNOPSIS
 List of the top pilots in faction warfare
@@ -198,18 +180,12 @@ List of the top pilots in faction warfare
 Top 100 leaderboard of pilots for kills and victory points separated by total, last week and yesterday.
 
 ---
-Alternate route: `/dev/fw/leaderboards/characters/`
 
-Alternate route: `/legacy/fw/leaderboards/characters/`
-
-Alternate route: `/v1/fw/leaderboards/characters/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/fw/leaderboards/characters/",
+            $URI = "https://esi.tech.ccp.is/v1/fw/leaderboards/characters/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -222,7 +198,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/fw/leaderboards/characters/
+    #  https://esi.tech.ccp.is/v1/fw/leaderboards/characters/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -242,7 +218,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEFwLeaderboardsCorporations { 
+function get-EVEfw_leaderboards_corporations { 
 <# 
 .SYNOPSIS
 List of the top corporations in faction warfare
@@ -250,18 +226,12 @@ List of the top corporations in faction warfare
 Top 10 leaderboard of corporations for kills and victory points separated by total, last week and yesterday.
 
 ---
-Alternate route: `/dev/fw/leaderboards/corporations/`
 
-Alternate route: `/legacy/fw/leaderboards/corporations/`
-
-Alternate route: `/v1/fw/leaderboards/corporations/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/fw/leaderboards/corporations/",
+            $URI = "https://esi.tech.ccp.is/v1/fw/leaderboards/corporations/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -274,7 +244,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/fw/leaderboards/corporations/
+    #  https://esi.tech.ccp.is/v1/fw/leaderboards/corporations/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -294,7 +264,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEFwStats { 
+function get-EVEfw_stats { 
 <# 
 .SYNOPSIS
 An overview of statistics about factions involved in faction warfare
@@ -302,18 +272,12 @@ An overview of statistics about factions involved in faction warfare
 Statistical overviews of factions involved in faction warfare
 
 ---
-Alternate route: `/dev/fw/stats/`
 
-Alternate route: `/legacy/fw/stats/`
-
-Alternate route: `/v1/fw/stats/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/fw/stats/",
+            $URI = "https://esi.tech.ccp.is/v1/fw/stats/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -326,7 +290,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/fw/stats/
+    #  https://esi.tech.ccp.is/v1/fw/stats/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -346,7 +310,53 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEFwSystems { 
+function get-EVEfw_wars { 
+<# 
+.SYNOPSIS
+Data about which NPC factions are at war
+.DESCRIPTION
+Data about which NPC factions are at war
+
+---
+
+This route expires daily at 11:05
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v1/fw/wars/",
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v1/fw/wars/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    $Header = @{
+        'If-None-Match' = "$If_None_Match"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function get-EVEfw_systems { 
 <# 
 .SYNOPSIS
 Ownership of faction warfare systems
@@ -354,16 +364,12 @@ Ownership of faction warfare systems
 An overview of the current ownership of faction warfare solar systems
 
 ---
-Alternate route: `/dev/fw/systems/`
 
-Alternate route: `/v2/fw/systems/`
-
----
 This route is cached for up to 1800 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/fw/systems/",
+            $URI = "https://esi.tech.ccp.is/v2/fw/systems/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -376,59 +382,7 @@ This route is cached for up to 1800 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/fw/systems/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVEFwWars { 
-<# 
-.SYNOPSIS
-Data about which NPC factions are at war
-.DESCRIPTION
-Data about which NPC factions are at war
-
----
-Alternate route: `/dev/fw/wars/`
-
-Alternate route: `/legacy/fw/wars/`
-
-Alternate route: `/v1/fw/wars/`
-
----
-This route expires daily at 11:05
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/latest/fw/wars/",
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/latest/fw/wars/
+    #  https://esi.tech.ccp.is/v2/fw/systems/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  

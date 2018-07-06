@@ -1,4 +1,4 @@
-function get-EVECharactersCharacter_IdIndustryJobs { 
+function get-EVEcharacters_character_id_industry_jobs { 
 <# 
 .SYNOPSIS
 List character industry jobs
@@ -6,18 +6,12 @@ List character industry jobs
 List industry jobs placed by a character
 
 ---
-Alternate route: `/dev/characters/{character_id}/industry/jobs/`
 
-Alternate route: `/legacy/characters/{character_id}/industry/jobs/`
-
-Alternate route: `/v1/characters/{character_id}/industry/jobs/`
-
----
 This route is cached for up to 300 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/industry/jobs/",
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/industry/jobs/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -39,7 +33,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/characters/{character_id}/industry/jobs/
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/industry/jobs/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -79,27 +73,20 @@ This route is cached for up to 300 seconds
 }
  
  
-function get-EVECharactersCharacter_IdMining { 
+function get-EVEcharacters_character_id_mining { 
 <# 
 .SYNOPSIS
 Character mining ledger
 .DESCRIPTION
 Paginated record of all mining done by a character for the past 30 days
 
-
 ---
-Alternate route: `/dev/characters/{character_id}/mining/`
 
-Alternate route: `/legacy/characters/{character_id}/mining/`
-
-Alternate route: `/v1/characters/{character_id}/mining/`
-
----
 This route is cached for up to 600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/mining/",
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/mining/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -121,7 +108,7 @@ This route is cached for up to 600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/characters/{character_id}/mining/
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/mining/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -161,31 +148,23 @@ This route is cached for up to 600 seconds
 }
  
  
-function get-EVECorporationCorporation_IdMiningExtractions { 
+function get-EVEcorporation_corporation_id_mining_extractions { 
 <# 
 .SYNOPSIS
 Moon extraction timers
 .DESCRIPTION
 Extraction timers for all moon chunks being extracted by refineries belonging to a corporation.
 
-
 ---
-Alternate route: `/dev/corporation/{corporation_id}/mining/extractions/`
 
-Alternate route: `/legacy/corporation/{corporation_id}/mining/extractions/`
-
-Alternate route: `/v1/corporation/{corporation_id}/mining/extractions/`
-
----
 This route is cached for up to 1800 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Structure_manager
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporation/{corporation_id}/mining/extractions/",
+            $URI = "https://esi.tech.ccp.is/v1/corporation/{corporation_id}/mining/extractions/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -207,7 +186,7 @@ Requires one of the following EVE corporation role(s): Structure_manager
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporation/{corporation_id}/mining/extractions/
+    #  https://esi.tech.ccp.is/v1/corporation/{corporation_id}/mining/extractions/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -247,31 +226,23 @@ Requires one of the following EVE corporation role(s): Structure_manager
 }
  
  
-function get-EVECorporationCorporation_IdMiningObservers { 
+function get-EVEcorporation_corporation_id_mining_observers { 
 <# 
 .SYNOPSIS
 Corporation mining observers
 .DESCRIPTION
 Paginated list of all entities capable of observing and recording mining for a corporation
 
-
 ---
-Alternate route: `/dev/corporation/{corporation_id}/mining/observers/`
 
-Alternate route: `/legacy/corporation/{corporation_id}/mining/observers/`
-
-Alternate route: `/v1/corporation/{corporation_id}/mining/observers/`
-
----
 This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Accountant
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporation/{corporation_id}/mining/observers/",
+            $URI = "https://esi.tech.ccp.is/v1/corporation/{corporation_id}/mining/observers/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -293,7 +264,7 @@ Requires one of the following EVE corporation role(s): Accountant
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporation/{corporation_id}/mining/observers/
+    #  https://esi.tech.ccp.is/v1/corporation/{corporation_id}/mining/observers/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -333,31 +304,23 @@ Requires one of the following EVE corporation role(s): Accountant
 }
  
  
-function get-EVECorporationCorporation_IdMiningObserversObserver_Id { 
+function get-EVEcorporation_corporation_id_mining_observers_observer_id { 
 <# 
 .SYNOPSIS
 Observed corporation mining
 .DESCRIPTION
 Paginated record of all mining seen by an observer
 
-
 ---
-Alternate route: `/dev/corporation/{corporation_id}/mining/observers/{observer_id}/`
 
-Alternate route: `/legacy/corporation/{corporation_id}/mining/observers/{observer_id}/`
-
-Alternate route: `/v1/corporation/{corporation_id}/mining/observers/{observer_id}/`
-
----
 This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Accountant
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporation/{corporation_id}/mining/observers/{observer_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/corporation/{corporation_id}/mining/observers/{observer_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -382,7 +345,7 @@ Requires one of the following EVE corporation role(s): Accountant
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporation/{corporation_id}/mining/observers/{observer_id}/
+    #  https://esi.tech.ccp.is/v1/corporation/{corporation_id}/mining/observers/{observer_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -426,7 +389,7 @@ Requires one of the following EVE corporation role(s): Accountant
 }
  
  
-function get-EVECorporationsCorporation_IdIndustryJobs { 
+function get-EVEcorporations_corporation_id_industry_jobs { 
 <# 
 .SYNOPSIS
 List corporation industry jobs
@@ -434,22 +397,15 @@ List corporation industry jobs
 List industry jobs run by a corporation
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/industry/jobs/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/industry/jobs/`
-
-Alternate route: `/v1/corporations/{corporation_id}/industry/jobs/`
-
----
 This route is cached for up to 300 seconds
 
 ---
 Requires one of the following EVE corporation role(s): FactoryManager
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/industry/jobs/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/industry/jobs/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -475,7 +431,7 @@ Requires one of the following EVE corporation role(s): FactoryManager
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/industry/jobs/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/industry/jobs/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -523,7 +479,7 @@ Requires one of the following EVE corporation role(s): FactoryManager
 }
  
  
-function get-EVEIndustryFacilities { 
+function get-EVEindustry_facilities { 
 <# 
 .SYNOPSIS
 List industry facilities
@@ -531,18 +487,12 @@ List industry facilities
 Return a list of industry facilities
 
 ---
-Alternate route: `/dev/industry/facilities/`
 
-Alternate route: `/legacy/industry/facilities/`
-
-Alternate route: `/v1/industry/facilities/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/industry/facilities/",
+            $URI = "https://esi.tech.ccp.is/v1/industry/facilities/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -555,7 +505,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/industry/facilities/
+    #  https://esi.tech.ccp.is/v1/industry/facilities/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -575,7 +525,7 @@ This route is cached for up to 3600 seconds
 }
  
  
-function get-EVEIndustrySystems { 
+function get-EVEindustry_systems { 
 <# 
 .SYNOPSIS
 List solar system cost indices
@@ -583,18 +533,12 @@ List solar system cost indices
 Return cost indices for solar systems
 
 ---
-Alternate route: `/dev/industry/systems/`
 
-Alternate route: `/legacy/industry/systems/`
-
-Alternate route: `/v1/industry/systems/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/industry/systems/",
+            $URI = "https://esi.tech.ccp.is/v1/industry/systems/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -607,7 +551,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/industry/systems/
+    #  https://esi.tech.ccp.is/v1/industry/systems/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  

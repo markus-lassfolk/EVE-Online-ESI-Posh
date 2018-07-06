@@ -2,7 +2,7 @@
 
 
 
-$ModSwagger = Invoke-WebRequest -ContentType "application/json" -Uri https://esi.tech.ccp.is/latest/swagger.json?datasource=tranquility -Verbose | ConvertFrom-Json 
+$ModSwagger = Invoke-WebRequest -ContentType "application/json" -Uri https://esi.tech.ccp.is/_latest/swagger.json?datasource=tranquility -Verbose | ConvertFrom-Json 
 $ESIHost = $ModSwagger.host
 
 
@@ -11,35 +11,38 @@ $AllPathEndpoints = $ModSwagger.paths | get-member | where MemberType -eq "NoteP
 $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) { 
 
     $CurrentEndPoint = $ModSwagger.paths.($PathEndpoint.name)
-    $Method = ($CurrentEndPoint | get-member | where MemberType -like NoteProperty).Name 
-    $CurrentEndPointDetails = $ModSwagger.paths.($PathEndpoint.name).$Method
+    $Methods = ($CurrentEndPoint | get-member | where MemberType -like NoteProperty).Name 
 
-    $ESIName = ($PathEndpoint.Name).TrimStart("/").TrimEnd("/").replace("/"," ")
-    $ESIName = (Get-Culture).TextInfo.ToTitleCase( $ESIName )
-    $ESIFunctionName = $Method+"-EVE"+$ESIName.trim().replace(" ","").replace("{","").Replace("}","")
+    foreach ($Method in $Methods) {
+        $CurrentEndPointDetails = $ModSwagger.paths.($PathEndpoint.name).$Method
 
-    $ESIParameters = foreach ($ESIParameter in $CurrentEndPointDetails.parameters) { 
-        if ($ESIParameter.'$ref' -like "*#/parameters/*") { 
-        $ModSwagger.parameters.$($ESIParameter.'$ref'.ToString().split("/")[-1])
+        $ESIName = ($PathEndpoint.Name).TrimStart("/").TrimEnd("/").replace("/"," ")
+        $ESIName = (Get-Culture).TextInfo.ToTitleCase( $ESIName )
+
+        $ESIFunctionName = $CurrentEndPointDetails.operationId -replace "$($Method)_","$($Method)-EVE"
+    #    $ESIFunctionName = $Method+"-EVE"+$ESIName.trim().replace(" ","").replace("{","").Replace("}","")
+
+        $ESIParameters = foreach ($ESIParameter in $CurrentEndPointDetails.parameters) { 
+            if ($ESIParameter.'$ref' -like "*#/parameters/*") { 
+            $ModSwagger.parameters.$($ESIParameter.'$ref'.ToString().split("/")[-1])
+            }
+            else {$ESIParameter}
+        } 
+
+        $NewFunction = @{
+        'FunctionName' = $ESIFunctionName 
+        'ESIMethod' = $Method
+        'ESIPath' = $PathEndpoint.Name
+        'ESIParameters' = $ESIParameters
+        'ESITags' = $CurrentEndPointDetails.tags
+        'ESISummary' = $CurrentEndPointDetails.summary
+        'ESIDescription' = $CurrentEndPointDetails.description
+        'ESIOperationsID' = $CurrentEndPointDetails.operationId
         }
-        else {$ESIParameter}
-    } 
-
-    $NewFunction = @{
-    'FunctionName' = $ESIFunctionName 
-    'ESIMethod' = $Method
-    'ESIPath' = $PathEndpoint.Name
-    'ESIParameters' = $ESIParameters
-    'ESITags' = $CurrentEndPointDetails.tags
-    'ESISummary' = $CurrentEndPointDetails.summary
-    'ESIDescription' = $CurrentEndPointDetails.description
-    'ESIOperationsID' = $CurrentEndPointDetails.operationId
+        New-Object -TypeName PSObject -ArgumentList $NewFunction
     }
-   New-Object -TypeName PSObject -ArgumentList $NewFunction
 
 }
-
-
 
 ($BuildFunctions).ESITags | select -Unique | Sort-Object | % { 
 
@@ -62,7 +65,7 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
 
         $Newstring = '            [string]'
         Add-Content $NewESIFunctionFile $Newstring
-        $Newstring = '            $URI = "https://esi.tech.ccp.is/latest'+$($NewFunction.ESIPath)+'",'
+        $Newstring = '            $URI = "https://esi.tech.ccp.is'+$($NewFunction.ESIPath)+'",'
         Add-Content $NewESIFunctionFile $Newstring
 
         [int]$NewFunctionParamterNumber = "0"
@@ -120,12 +123,12 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
 
             Add-Content $NewESIFunctionFile "            $($NewFunctionParameterName)"  
         }
-        Add-Content $NewESIFunctionFile '            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]'
-        Add-Content $NewESIFunctionFile '            [ValidateSet("PS","json")]'
+        Add-Content $NewESIFunctionFile '            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]'
+        Add-Content $NewESIFunctionFile '            [ValidateSet("PS","json","PSfull")]'
         Add-Content $NewESIFunctionFile '            $OutputType = "PS"'
         Add-Content $NewESIFunctionFile "    ) #End of Param"
         Add-Content $NewESIFunctionFile "    #  Example URI"
-        Add-Content $NewESIFunctionFile "    #  https://esi.tech.ccp.is/latest$($NewFunction.ESIPath)"
+        Add-Content $NewESIFunctionFile "    #  https://esi.tech.ccp.is$($NewFunction.ESIPath)"
 
         $Newstring = '    $Method = "' + $NewFunction.ESIMethod + '"'
         Add-Content $NewESIFunctionFile $newstring
@@ -230,4 +233,60 @@ get-EVESearch -categories character -search vipeer -strict $false
 
 
 
+$AllPathEndpoints
 
+
+$BuildFunctions | where FunctionName -like "*1*" | select -first 1
+
+
+$ModSwagger = Invoke-WebRequest -ContentType "application/json" -Uri https://esi.tech.ccp.is/_latest/swagger.json?datasource=tranquility -Verbose | ConvertFrom-Json 
+$ESIHost = $ModSwagger.host
+
+$AllPathEndpoints = $ModSwagger.paths | get-member | where MemberType -eq "NoteProperty" 
+
+
+$BuildFunctions3 = foreach ($PathEndpoint in $AllPathEndpoints | where name -Match "/v1/alliances/{alliance_id}/corporations/|/v1/characters/{character_id}/mail/" ) { 
+
+    $CurrentEndPoint = $ModSwagger.paths.($PathEndpoint.name)
+    $Methods = ($CurrentEndPoint | get-member | where MemberType -like NoteProperty).Name 
+
+    foreach ($Method in $Methods) {
+        $CurrentEndPointDetails = $ModSwagger.paths.($PathEndpoint.name).$Method
+
+        $ESIName = ($PathEndpoint.Name).TrimStart("/").TrimEnd("/").replace("/"," ")
+        $ESIName = (Get-Culture).TextInfo.ToTitleCase( $ESIName )
+
+        $ESIFunctionName = $CurrentEndPointDetails.operationId -replace "$($Method)_","$($Method)-EVE"
+    #    $ESIFunctionName = $Method+"-EVE"+$ESIName.trim().replace(" ","").replace("{","").Replace("}","")
+
+        $ESIParameters = foreach ($ESIParameter in $CurrentEndPointDetails.parameters) { 
+            if ($ESIParameter.'$ref' -like "*#/parameters/*") { 
+            $ModSwagger.parameters.$($ESIParameter.'$ref'.ToString().split("/")[-1])
+            }
+            else {$ESIParameter}
+        } 
+
+        $NewFunction = @{
+        'FunctionName' = $ESIFunctionName 
+        'ESIMethod' = $Method
+        'ESIPath' = $PathEndpoint.Name
+        'ESIParameters' = $ESIParameters
+        'ESITags' = $CurrentEndPointDetails.tags
+        'ESISummary' = $CurrentEndPointDetails.summary
+        'ESIDescription' = $CurrentEndPointDetails.description
+        'ESIOperationsID' = $CurrentEndPointDetails.operationId
+        }
+        New-Object -TypeName PSObject -ArgumentList $NewFunction
+    }
+}
+
+
+$BuildFunctions2 | where FunctionName -like ""
+
+$AllPathEndpoints | where name -Match "/v1/alliances/{alliance_id}/corporations/|/v1/characters/{character_id}/mail/" 
+
+$AllPathEndpoints | where name -eq "/v1/characters/{character_id}/mail/" 
+
+$ModSwagger.paths.'/v1/characters/{character_id}/mail/'.get
+
+where name -eq "/v1/characters/{character_id}/mail/" 

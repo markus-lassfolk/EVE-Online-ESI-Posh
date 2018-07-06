@@ -1,4 +1,4 @@
-function get-EVEDogmaAttributes { 
+function get-EVEdogma_attributes { 
 <# 
 .SYNOPSIS
 Get attributes
@@ -6,18 +6,12 @@ Get attributes
 Get a list of dogma attribute ids
 
 ---
-Alternate route: `/dev/dogma/attributes/`
 
-Alternate route: `/legacy/dogma/attributes/`
-
-Alternate route: `/v1/dogma/attributes/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/dogma/attributes/",
+            $URI = "https://esi.tech.ccp.is/v1/dogma/attributes/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -30,7 +24,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/dogma/attributes/
+    #  https://esi.tech.ccp.is/v1/dogma/attributes/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -50,7 +44,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEDogmaAttributesAttribute_Id { 
+function get-EVEdogma_attributes_attribute_id { 
 <# 
 .SYNOPSIS
 Get attribute information
@@ -58,18 +52,12 @@ Get attribute information
 Get information on a dogma attribute
 
 ---
-Alternate route: `/dev/dogma/attributes/{attribute_id}/`
 
-Alternate route: `/legacy/dogma/attributes/{attribute_id}/`
-
-Alternate route: `/v1/dogma/attributes/{attribute_id}/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/dogma/attributes/{attribute_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/dogma/attributes/{attribute_id}/",
             [Parameter(Mandatory=$true, HelpMessage="A dogma attribute ID")]
             [int32]
             $attribute_id,
@@ -85,7 +73,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/dogma/attributes/{attribute_id}/
+    #  https://esi.tech.ccp.is/v1/dogma/attributes/{attribute_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -109,7 +97,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEDogmaDynamicItemsType_IdItem_Id { 
+function get-EVEdogma_dynamic_items_type_id_item_id { 
 <# 
 .SYNOPSIS
 Get dynamic item information
@@ -117,18 +105,12 @@ Get dynamic item information
 Returns info about a dynamic item resulting from mutation with a mutaplasmid.
 
 ---
-Alternate route: `/dev/dogma/dynamic/items/{type_id}/{item_id}/`
 
-Alternate route: `/legacy/dogma/dynamic/items/{type_id}/{item_id}/`
-
-Alternate route: `/v1/dogma/dynamic/items/{type_id}/{item_id}/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/dogma/dynamic/items/{type_id}/{item_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/dogma/dynamic/items/{type_id}/{item_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -147,7 +129,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/dogma/dynamic/items/{type_id}/{item_id}/
+    #  https://esi.tech.ccp.is/v1/dogma/dynamic/items/{type_id}/{item_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -175,7 +157,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEDogmaEffects { 
+function get-EVEdogma_effects { 
 <# 
 .SYNOPSIS
 Get effects
@@ -183,18 +165,12 @@ Get effects
 Get a list of dogma effect ids
 
 ---
-Alternate route: `/dev/dogma/effects/`
 
-Alternate route: `/legacy/dogma/effects/`
-
-Alternate route: `/v1/dogma/effects/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/dogma/effects/",
+            $URI = "https://esi.tech.ccp.is/v1/dogma/effects/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -207,7 +183,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/dogma/effects/
+    #  https://esi.tech.ccp.is/v1/dogma/effects/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -227,7 +203,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEDogmaEffectsEffect_Id { 
+function get-EVEdogma_effects_effect_id { 
 <# 
 .SYNOPSIS
 Get effect information
@@ -235,16 +211,12 @@ Get effect information
 Get information on a dogma effect
 
 ---
-Alternate route: `/dev/dogma/effects/{effect_id}/`
 
-Alternate route: `/v2/dogma/effects/{effect_id}/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/dogma/effects/{effect_id}/",
+            $URI = "https://esi.tech.ccp.is/v2/dogma/effects/{effect_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -260,7 +232,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/dogma/effects/{effect_id}/
+    #  https://esi.tech.ccp.is/v2/dogma/effects/{effect_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  

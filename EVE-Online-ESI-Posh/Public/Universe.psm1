@@ -1,4 +1,4 @@
-function get-EVEUniverseAncestries { 
+function get-EVEuniverse_ancestries { 
 <# 
 .SYNOPSIS
 Get ancestries
@@ -6,18 +6,12 @@ Get ancestries
 Get all character ancestries
 
 ---
-Alternate route: `/dev/universe/ancestries/`
 
-Alternate route: `/legacy/universe/ancestries/`
-
-Alternate route: `/v1/universe/ancestries/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/ancestries/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/ancestries/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -38,7 +32,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/ancestries/
+    #  https://esi.tech.ccp.is/v1/universe/ancestries/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -67,7 +61,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseAsteroid_BeltsAsteroid_Belt_Id { 
+function get-EVEuniverse_asteroid_belts_asteroid_belt_id { 
 <# 
 .SYNOPSIS
 Get asteroid belt information
@@ -75,18 +69,12 @@ Get asteroid belt information
 Get information on an asteroid belt
 
 ---
-Alternate route: `/dev/universe/asteroid_belts/{asteroid_belt_id}/`
 
-Alternate route: `/legacy/universe/asteroid_belts/{asteroid_belt_id}/`
-
-Alternate route: `/v1/universe/asteroid_belts/{asteroid_belt_id}/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/asteroid_belts/{asteroid_belt_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/asteroid_belts/{asteroid_belt_id}/",
             [Parameter(Mandatory=$true, HelpMessage="asteroid_belt_id integer")]
             [int32]
             $asteroid_belt_id,
@@ -102,7 +90,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/asteroid_belts/{asteroid_belt_id}/
+    #  https://esi.tech.ccp.is/v1/universe/asteroid_belts/{asteroid_belt_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -126,7 +114,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseBloodlines { 
+function get-EVEuniverse_bloodlines { 
 <# 
 .SYNOPSIS
 Get bloodlines
@@ -134,18 +122,12 @@ Get bloodlines
 Get a list of bloodlines
 
 ---
-Alternate route: `/dev/universe/bloodlines/`
 
-Alternate route: `/legacy/universe/bloodlines/`
-
-Alternate route: `/v1/universe/bloodlines/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/bloodlines/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/bloodlines/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -166,7 +148,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/bloodlines/
+    #  https://esi.tech.ccp.is/v1/universe/bloodlines/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -195,7 +177,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseCategories { 
+function get-EVEuniverse_categories { 
 <# 
 .SYNOPSIS
 Get item categories
@@ -203,18 +185,12 @@ Get item categories
 Get a list of item categories
 
 ---
-Alternate route: `/dev/universe/categories/`
 
-Alternate route: `/legacy/universe/categories/`
-
-Alternate route: `/v1/universe/categories/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/categories/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/categories/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -227,7 +203,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/categories/
+    #  https://esi.tech.ccp.is/v1/universe/categories/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -247,7 +223,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseCategoriesCategory_Id { 
+function get-EVEuniverse_categories_category_id { 
 <# 
 .SYNOPSIS
 Get item category information
@@ -255,18 +231,12 @@ Get item category information
 Get information of an item category
 
 ---
-Alternate route: `/dev/universe/categories/{category_id}/`
 
-Alternate route: `/legacy/universe/categories/{category_id}/`
-
-Alternate route: `/v1/universe/categories/{category_id}/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/categories/{category_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/categories/{category_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -290,7 +260,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/categories/{category_id}/
+    #  https://esi.tech.ccp.is/v1/universe/categories/{category_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -323,7 +293,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseConstellations { 
+function get-EVEuniverse_constellations { 
 <# 
 .SYNOPSIS
 Get constellations
@@ -331,18 +301,12 @@ Get constellations
 Get a list of constellations
 
 ---
-Alternate route: `/dev/universe/constellations/`
 
-Alternate route: `/legacy/universe/constellations/`
-
-Alternate route: `/v1/universe/constellations/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/constellations/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/constellations/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -355,7 +319,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/constellations/
+    #  https://esi.tech.ccp.is/v1/universe/constellations/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -375,7 +339,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseConstellationsConstellation_Id { 
+function get-EVEuniverse_constellations_constellation_id { 
 <# 
 .SYNOPSIS
 Get constellation information
@@ -383,18 +347,12 @@ Get constellation information
 Get information on a constellation
 
 ---
-Alternate route: `/dev/universe/constellations/{constellation_id}/`
 
-Alternate route: `/legacy/universe/constellations/{constellation_id}/`
-
-Alternate route: `/v1/universe/constellations/{constellation_id}/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/constellations/{constellation_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/constellations/{constellation_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -418,7 +376,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/constellations/{constellation_id}/
+    #  https://esi.tech.ccp.is/v1/universe/constellations/{constellation_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -451,74 +409,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseFactions { 
-<# 
-.SYNOPSIS
-Get factions
-.DESCRIPTION
-Get a list of factions
-
----
-Alternate route: `/dev/universe/factions/`
-
-Alternate route: `/v2/universe/factions/`
-
----
-This route expires daily at 11:05
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/factions/",
-            [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
-            [string]
-            $Accept_Language = "en-us",
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
-            [string]
-            $language = "en-us",
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/factions/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    if ($language -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "language=" + $language
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "language=" + $language
-        }
-    }
-    $Header = @{
-        'Accept-Language' = "$Accept_Language"
-        'If-None-Match' = "$If_None_Match"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVEUniverseGraphics { 
+function get-EVEuniverse_graphics { 
 <# 
 .SYNOPSIS
 Get graphics
@@ -526,18 +417,12 @@ Get graphics
 Get a list of graphics
 
 ---
-Alternate route: `/dev/universe/graphics/`
 
-Alternate route: `/legacy/universe/graphics/`
-
-Alternate route: `/v1/universe/graphics/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/graphics/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/graphics/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -550,7 +435,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/graphics/
+    #  https://esi.tech.ccp.is/v1/universe/graphics/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -570,7 +455,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseGraphicsGraphic_Id { 
+function get-EVEuniverse_graphics_graphic_id { 
 <# 
 .SYNOPSIS
 Get graphic information
@@ -578,18 +463,12 @@ Get graphic information
 Get information on a graphic
 
 ---
-Alternate route: `/dev/universe/graphics/{graphic_id}/`
 
-Alternate route: `/legacy/universe/graphics/{graphic_id}/`
-
-Alternate route: `/v1/universe/graphics/{graphic_id}/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/graphics/{graphic_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/graphics/{graphic_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -605,7 +484,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/graphics/{graphic_id}/
+    #  https://esi.tech.ccp.is/v1/universe/graphics/{graphic_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -629,7 +508,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseGroups { 
+function get-EVEuniverse_groups { 
 <# 
 .SYNOPSIS
 Get item groups
@@ -637,18 +516,12 @@ Get item groups
 Get a list of item groups
 
 ---
-Alternate route: `/dev/universe/groups/`
 
-Alternate route: `/legacy/universe/groups/`
-
-Alternate route: `/v1/universe/groups/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/groups/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/groups/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -664,7 +537,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/groups/
+    #  https://esi.tech.ccp.is/v1/universe/groups/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -692,7 +565,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseGroupsGroup_Id { 
+function get-EVEuniverse_groups_group_id { 
 <# 
 .SYNOPSIS
 Get item group information
@@ -700,18 +573,12 @@ Get item group information
 Get information on an item group
 
 ---
-Alternate route: `/dev/universe/groups/{group_id}/`
 
-Alternate route: `/legacy/universe/groups/{group_id}/`
-
-Alternate route: `/v1/universe/groups/{group_id}/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/groups/{group_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/groups/{group_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -735,7 +602,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/groups/{group_id}/
+    #  https://esi.tech.ccp.is/v1/universe/groups/{group_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -768,7 +635,7 @@ This route expires daily at 11:05
 }
  
  
-function post-EVEUniverseIds { 
+function post-EVEuniverse_ids { 
 <# 
 .SYNOPSIS
 Bulk names to IDs
@@ -776,16 +643,11 @@ Bulk names to IDs
 Resolve a set of names to IDs in the following categories: agents, alliances, characters, constellations, corporations factions, inventory_types, regions, stations, and systems. Only exact matches will be returned. All names searched for are cached for 12 hours.
 
 ---
-Alternate route: `/dev/universe/ids/`
-
-Alternate route: `/legacy/universe/ids/`
-
-Alternate route: `/v1/universe/ids/`
 
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/ids/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/ids/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -806,7 +668,7 @@ Alternate route: `/v1/universe/ids/`
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/ids/
+    #  https://esi.tech.ccp.is/v1/universe/ids/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -837,7 +699,7 @@ Alternate route: `/v1/universe/ids/`
 }
  
  
-function get-EVEUniverseMoonsMoon_Id { 
+function get-EVEuniverse_moons_moon_id { 
 <# 
 .SYNOPSIS
 Get moon information
@@ -845,18 +707,12 @@ Get moon information
 Get information on a moon
 
 ---
-Alternate route: `/dev/universe/moons/{moon_id}/`
 
-Alternate route: `/legacy/universe/moons/{moon_id}/`
-
-Alternate route: `/v1/universe/moons/{moon_id}/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/moons/{moon_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/moons/{moon_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -872,7 +728,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/moons/{moon_id}/
+    #  https://esi.tech.ccp.is/v1/universe/moons/{moon_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -896,55 +752,7 @@ This route expires daily at 11:05
 }
  
  
-function post-EVEUniverseNames { 
-<# 
-.SYNOPSIS
-Get names and categories for a set of ID's
-.DESCRIPTION
-Resolve a set of IDs to names and categories. Supported ID's for resolving are: Characters, Corporations, Alliances, Stations, Solar Systems, Constellations, Regions, Types.
-
----
-Alternate route: `/dev/universe/names/`
-
-Alternate route: `/v2/universe/names/`
-
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/names/",
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$true, HelpMessage="The ids to resolve")]
-            [array]
-            $ids,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/names/
-    $Method = "post"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    $Body = @{
-        'ids' = "$ids"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVEUniversePlanetsPlanet_Id { 
+function get-EVEuniverse_planets_planet_id { 
 <# 
 .SYNOPSIS
 Get planet information
@@ -952,18 +760,12 @@ Get planet information
 Get information on a planet
 
 ---
-Alternate route: `/dev/universe/planets/{planet_id}/`
 
-Alternate route: `/legacy/universe/planets/{planet_id}/`
-
-Alternate route: `/v1/universe/planets/{planet_id}/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/planets/{planet_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/planets/{planet_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -979,7 +781,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/planets/{planet_id}/
+    #  https://esi.tech.ccp.is/v1/universe/planets/{planet_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1003,7 +805,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseRaces { 
+function get-EVEuniverse_races { 
 <# 
 .SYNOPSIS
 Get character races
@@ -1011,18 +813,12 @@ Get character races
 Get a list of character races
 
 ---
-Alternate route: `/dev/universe/races/`
 
-Alternate route: `/legacy/universe/races/`
-
-Alternate route: `/v1/universe/races/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/races/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/races/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -1043,7 +839,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/races/
+    #  https://esi.tech.ccp.is/v1/universe/races/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1072,7 +868,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseRegions { 
+function get-EVEuniverse_regions { 
 <# 
 .SYNOPSIS
 Get regions
@@ -1080,18 +876,12 @@ Get regions
 Get a list of regions
 
 ---
-Alternate route: `/dev/universe/regions/`
 
-Alternate route: `/legacy/universe/regions/`
-
-Alternate route: `/v1/universe/regions/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/regions/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/regions/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -1104,7 +894,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/regions/
+    #  https://esi.tech.ccp.is/v1/universe/regions/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1124,7 +914,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseRegionsRegion_Id { 
+function get-EVEuniverse_regions_region_id { 
 <# 
 .SYNOPSIS
 Get region information
@@ -1132,18 +922,12 @@ Get region information
 Get information on a region
 
 ---
-Alternate route: `/dev/universe/regions/{region_id}/`
 
-Alternate route: `/legacy/universe/regions/{region_id}/`
-
-Alternate route: `/v1/universe/regions/{region_id}/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/regions/{region_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/regions/{region_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -1167,7 +951,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/regions/{region_id}/
+    #  https://esi.tech.ccp.is/v1/universe/regions/{region_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1200,7 +984,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseStargatesStargate_Id { 
+function get-EVEuniverse_stargates_stargate_id { 
 <# 
 .SYNOPSIS
 Get stargate information
@@ -1208,18 +992,12 @@ Get stargate information
 Get information on a stargate
 
 ---
-Alternate route: `/dev/universe/stargates/{stargate_id}/`
 
-Alternate route: `/legacy/universe/stargates/{stargate_id}/`
-
-Alternate route: `/v1/universe/stargates/{stargate_id}/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/stargates/{stargate_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/stargates/{stargate_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -1235,7 +1013,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/stargates/{stargate_id}/
+    #  https://esi.tech.ccp.is/v1/universe/stargates/{stargate_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1259,7 +1037,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseStarsStar_Id { 
+function get-EVEuniverse_stars_star_id { 
 <# 
 .SYNOPSIS
 Get star information
@@ -1267,18 +1045,12 @@ Get star information
 Get information on a star
 
 ---
-Alternate route: `/dev/universe/stars/{star_id}/`
 
-Alternate route: `/legacy/universe/stars/{star_id}/`
-
-Alternate route: `/v1/universe/stars/{star_id}/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/stars/{star_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/stars/{star_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -1294,7 +1066,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/stars/{star_id}/
+    #  https://esi.tech.ccp.is/v1/universe/stars/{star_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1318,64 +1090,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseStationsStation_Id { 
-<# 
-.SYNOPSIS
-Get station information
-.DESCRIPTION
-Get information on a station
-
----
-Alternate route: `/dev/universe/stations/{station_id}/`
-
-Alternate route: `/v2/universe/stations/{station_id}/`
-
----
-This route expires daily at 11:05
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/stations/{station_id}/",
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$true, HelpMessage="station_id integer")]
-            [int32]
-            $station_id,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/stations/{station_id}/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
-    }
- 
-    if ($station_id -ne "") { 
-        $URI = $URI -replace '\$station_id',"$station_id"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVEUniverseStructures { 
+function get-EVEuniverse_structures { 
 <# 
 .SYNOPSIS
 List all public structures
@@ -1383,18 +1098,12 @@ List all public structures
 List all public structures
 
 ---
-Alternate route: `/dev/universe/structures/`
 
-Alternate route: `/legacy/universe/structures/`
-
-Alternate route: `/v1/universe/structures/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/structures/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/structures/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -1407,7 +1116,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/structures/
+    #  https://esi.tech.ccp.is/v1/universe/structures/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1427,7 +1136,7 @@ This route is cached for up to 3600 seconds
 }
  
  
-function get-EVEUniverseStructuresStructure_Id { 
+function get-EVEuniverse_structures_structure_id { 
 <# 
 .SYNOPSIS
 Get structure information
@@ -1435,11 +1144,7 @@ Get structure information
 Returns information on requested structure, if you are on the ACL. Otherwise, returns "Forbidden" for all inputs.
 
 ---
-Alternate route: `/legacy/universe/structures/{structure_id}/`
 
-Alternate route: `/v1/universe/structures/{structure_id}/`
-
----
 This route is cached for up to 3600 seconds
 
 ---
@@ -1450,7 +1155,7 @@ Warning: This route has an upgrade available.
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/structures/{structure_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/structures/{structure_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -1469,7 +1174,7 @@ Warning: This route has an upgrade available.
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/structures/{structure_id}/
+    #  https://esi.tech.ccp.is/v1/universe/structures/{structure_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1501,7 +1206,7 @@ Warning: This route has an upgrade available.
 }
  
  
-function get-EVEUniverseSystems { 
+function get-EVEuniverse_systems { 
 <# 
 .SYNOPSIS
 Get solar systems
@@ -1509,18 +1214,12 @@ Get solar systems
 Get a list of solar systems
 
 ---
-Alternate route: `/dev/universe/systems/`
 
-Alternate route: `/legacy/universe/systems/`
-
-Alternate route: `/v1/universe/systems/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/systems/",
+            $URI = "https://esi.tech.ccp.is/v1/universe/systems/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -1533,7 +1232,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/systems/
+    #  https://esi.tech.ccp.is/v1/universe/systems/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1553,7 +1252,317 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEUniverseSystemsSystem_Id { 
+function get-EVEuniverse_system_jumps { 
+<# 
+.SYNOPSIS
+Get system jumps
+.DESCRIPTION
+Get the number of jumps in solar systems within the last hour ending at the timestamp of the Last-Modified header, excluding wormhole space. Only systems with jumps will be listed
+
+---
+
+This route is cached for up to 3600 seconds
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v1/universe/system_jumps/",
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v1/universe/system_jumps/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    $Header = @{
+        'If-None-Match' = "$If_None_Match"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function get-EVEuniverse_types { 
+<# 
+.SYNOPSIS
+Get types
+.DESCRIPTION
+Get a list of type ids
+
+---
+
+This route expires daily at 11:05
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v1/universe/types/",
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
+            [int32]
+            $page = "1",
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v1/universe/types/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "page=" + $page
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "page=" + $page
+        }
+    }
+    $Header = @{
+        'If-None-Match' = "$If_None_Match"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function get-EVEuniverse_factions { 
+<# 
+.SYNOPSIS
+Get factions
+.DESCRIPTION
+Get a list of factions
+
+---
+
+This route expires daily at 11:05
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v2/universe/factions/",
+            [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [string]
+            $Accept_Language = "en-us",
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [string]
+            $language = "en-us",
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v2/universe/factions/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    if ($language -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "language=" + $language
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "language=" + $language
+        }
+    }
+    $Header = @{
+        'Accept-Language' = "$Accept_Language"
+        'If-None-Match' = "$If_None_Match"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function post-EVEuniverse_names { 
+<# 
+.SYNOPSIS
+Get names and categories for a set of ID's
+.DESCRIPTION
+Resolve a set of IDs to names and categories. Supported ID's for resolving are: Characters, Corporations, Alliances, Stations, Solar Systems, Constellations, Regions, Types.
+
+---
+
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v2/universe/names/",
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$true, HelpMessage="The ids to resolve")]
+            [array]
+            $ids,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v2/universe/names/
+    $Method = "post"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    $Body = @{
+        'ids' = "$ids"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function get-EVEuniverse_stations_station_id { 
+<# 
+.SYNOPSIS
+Get station information
+.DESCRIPTION
+Get information on a station
+
+---
+
+This route expires daily at 11:05
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v2/universe/stations/{station_id}/",
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$true, HelpMessage="station_id integer")]
+            [int32]
+            $station_id,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v2/universe/stations/{station_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    $Header = @{
+        'If-None-Match' = "$If_None_Match"
+    }
+ 
+    if ($station_id -ne "") { 
+        $URI = $URI -replace '\$station_id',"$station_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function get-EVEuniverse_system_kills { 
+<# 
+.SYNOPSIS
+Get system kills
+.DESCRIPTION
+Get the number of ship, pod and NPC kills per solar system within the last hour ending at the timestamp of the Last-Modified header, excluding wormhole space. Only systems with kills will be listed
+
+---
+
+This route is cached for up to 3600 seconds
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v2/universe/system_kills/",
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v2/universe/system_kills/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    $Header = @{
+        'If-None-Match' = "$If_None_Match"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function get-EVEuniverse_systems_system_id { 
 <# 
 .SYNOPSIS
 Get solar system information
@@ -1561,9 +1570,7 @@ Get solar system information
 Get information on a solar system. NOTE: This route does not work with abyssal systems.
 
 ---
-Alternate route: `/v3/universe/systems/{system_id}/`
 
----
 This route expires daily at 11:05
 
 ---
@@ -1574,7 +1581,7 @@ Warning: This route has an upgrade available.
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/systems/{system_id}/",
+            $URI = "https://esi.tech.ccp.is/v3/universe/systems/{system_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -1598,7 +1605,7 @@ Warning: This route has an upgrade available.
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/systems/{system_id}/
+    #  https://esi.tech.ccp.is/v3/universe/systems/{system_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1631,172 +1638,7 @@ Warning: This route has an upgrade available.
 }
  
  
-function get-EVEUniverseSystem_Jumps { 
-<# 
-.SYNOPSIS
-Get system jumps
-.DESCRIPTION
-Get the number of jumps in solar systems within the last hour ending at the timestamp of the Last-Modified header, excluding wormhole space. Only systems with jumps will be listed
-
----
-Alternate route: `/dev/universe/system_jumps/`
-
-Alternate route: `/legacy/universe/system_jumps/`
-
-Alternate route: `/v1/universe/system_jumps/`
-
----
-This route is cached for up to 3600 seconds
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/system_jumps/",
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/system_jumps/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVEUniverseSystem_Kills { 
-<# 
-.SYNOPSIS
-Get system kills
-.DESCRIPTION
-Get the number of ship, pod and NPC kills per solar system within the last hour ending at the timestamp of the Last-Modified header, excluding wormhole space. Only systems with kills will be listed
-
----
-Alternate route: `/dev/universe/system_kills/`
-
-Alternate route: `/v2/universe/system_kills/`
-
----
-This route is cached for up to 3600 seconds
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/system_kills/",
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/system_kills/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVEUniverseTypes { 
-<# 
-.SYNOPSIS
-Get types
-.DESCRIPTION
-Get a list of type ids
-
----
-Alternate route: `/dev/universe/types/`
-
-Alternate route: `/legacy/universe/types/`
-
-Alternate route: `/v1/universe/types/`
-
----
-This route expires daily at 11:05
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/types/",
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
-            [int32]
-            $page = "1",
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/types/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "page=" + $page
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "page=" + $page
-        }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVEUniverseTypesType_Id { 
+function get-EVEuniverse_types_type_id { 
 <# 
 .SYNOPSIS
 Get type information
@@ -1804,16 +1646,12 @@ Get type information
 Get information on a type
 
 ---
-Alternate route: `/dev/universe/types/{type_id}/`
 
-Alternate route: `/v3/universe/types/{type_id}/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/universe/types/{type_id}/",
+            $URI = "https://esi.tech.ccp.is/v3/universe/types/{type_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -1837,7 +1675,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/universe/types/{type_id}/
+    #  https://esi.tech.ccp.is/v3/universe/types/{type_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  

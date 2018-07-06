@@ -1,21 +1,17 @@
-function get-EVECharactersCharacter_IdClones { 
+function get-EVEcharacters_character_id_implants { 
 <# 
 .SYNOPSIS
-Get clones
+Get active implants
 .DESCRIPTION
-A list of the character's clones
+Return implants on the active clone of a character
 
 ---
-Alternate route: `/dev/characters/{character_id}/clones/`
 
-Alternate route: `/v3/characters/{character_id}/clones/`
-
----
-This route is cached for up to 120 seconds
+This route is cached for up to 300 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/clones/",
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/implants/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -34,7 +30,7 @@ This route is cached for up to 120 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/characters/{character_id}/clones/
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/implants/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -66,26 +62,20 @@ This route is cached for up to 120 seconds
 }
  
  
-function get-EVECharactersCharacter_IdImplants { 
+function get-EVEcharacters_character_id_clones { 
 <# 
 .SYNOPSIS
-Get active implants
+Get clones
 .DESCRIPTION
-Return implants on the active clone of a character
+A list of the character's clones
 
 ---
-Alternate route: `/dev/characters/{character_id}/implants/`
 
-Alternate route: `/legacy/characters/{character_id}/implants/`
-
-Alternate route: `/v1/characters/{character_id}/implants/`
-
----
-This route is cached for up to 300 seconds
+This route is cached for up to 120 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/implants/",
+            $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/clones/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -104,7 +94,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/characters/{character_id}/implants/
+    #  https://esi.tech.ccp.is/v3/characters/{character_id}/clones/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  

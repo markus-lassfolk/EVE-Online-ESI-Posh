@@ -81,14 +81,12 @@ function get-EveEsiStatus {
         [string]
         $version = "latest",
         [Parameter(Mandatory = $false, HelpMessage = "Output Format of Result")]
-        [ValidateSet("PS", "json")]
+        [ValidateSet("PS", "json","PSfull")]
         $OutputType = "PS"
     ) #End of Param
     
     $URI = $URI + "version=$($version)"
-    
-    #Write-Host $URI
-    invoke-EVEWebRequest -Uri $URI -Method Get 
+    invoke-EVEWebRequest -Uri $URI -Method Get -OutputType $OutputType   
 }
 
 
@@ -129,17 +127,38 @@ function invoke-EVEWebRequest {
         #$(get-EveEsiStatus -OutputType PS | Where-Object status -NotLike "green")
         #start-sleep -Seconds 30
     }
-
     finally { 
     }
+
+    if ($ESIReply.Headers.Warning -ne $null) { 
+        write-host "$($ESIReply.Headers.Warning) $($ESIReply.BaseResponse.ResponseUri.AbsolutePath) " -ForegroundColor Red
+    }
+
+    if ([int]$ESIReply.Headers.'X-Esi-Error-Limit-Remain' -lt 20) {
+        Write-Host "X-Esi-Error-Limit-Remain at $($ESIReply.Headers.'X-Esi-Error-Limit-Remain') sleeping ($([int]$ESIReply.Headers.'X-Esi-Error-Limit-Reset'+2)) seconds" -ForegroundColor "Yellow"
+        Write-host "Affected Call: $($ESIReply.BaseResponse.ResponseUri.AbsolutePath)" -ForegroundColor "Yellow"
+        Start-Sleep -Seconds $([int]$ESIReply.Headers.'X-Esi-Error-Limit-Reset'+2)
+    }
+        
 
     if ($OutputType -eq "PS") {
         return $($ESIReply.content | ConvertFrom-Json) 
     }
+    if ($OutputType -eq "PSfull") {
+        $preOutput = @{
+        Content = $ESIReply.content | ConvertFrom-Json
+        Headers = $ESIReply.Headers
+        }
+        $NewOutPut = New-Object -TypeName psobject -Property $preOutput
+
+        $NewOutPut.Headers.Date = $NewOutPut.Headers.Date | get-date -Format "yyyy-MM-dd HH:mm:ss"
+        $NewOutPut.Headers.Expires = $NewOutPut.Headers.Expires | get-date -Format "yyyy-MM-dd HH:mm:ss"
+        $NewOutPut.Headers.'Last-Modified' = $NewOutPut.Headers.'Last-Modified' | get-date -Format "yyyy-MM-dd HH:mm:ss"
+
+        return $NewOutPut
+    }
     else {
         return $ESIReply
     }
-
 }
-
 

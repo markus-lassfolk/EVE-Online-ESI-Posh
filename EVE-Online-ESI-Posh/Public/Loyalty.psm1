@@ -1,4 +1,4 @@
-function get-EVECharactersCharacter_IdLoyaltyPoints { 
+function get-EVEcharacters_character_id_loyalty_points { 
 <# 
 .SYNOPSIS
 Get loyalty points
@@ -6,18 +6,12 @@ Get loyalty points
 Return a list of loyalty points for all corporations the character has worked for
 
 ---
-Alternate route: `/dev/characters/{character_id}/loyalty/points/`
 
-Alternate route: `/legacy/characters/{character_id}/loyalty/points/`
-
-Alternate route: `/v1/characters/{character_id}/loyalty/points/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/loyalty/points/",
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/loyalty/points/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -36,7 +30,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/characters/{character_id}/loyalty/points/
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/loyalty/points/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -68,7 +62,7 @@ This route is cached for up to 3600 seconds
 }
  
  
-function get-EVELoyaltyStoresCorporation_IdOffers { 
+function get-EVEloyalty_stores_corporation_id_offers { 
 <# 
 .SYNOPSIS
 List loyalty store offers
@@ -76,18 +70,12 @@ List loyalty store offers
 Return a list of offers from a specific corporation's loyalty store
 
 ---
-Alternate route: `/dev/loyalty/stores/{corporation_id}/offers/`
 
-Alternate route: `/legacy/loyalty/stores/{corporation_id}/offers/`
-
-Alternate route: `/v1/loyalty/stores/{corporation_id}/offers/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/loyalty/stores/{corporation_id}/offers/",
+            $URI = "https://esi.tech.ccp.is/v1/loyalty/stores/{corporation_id}/offers/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -103,7 +91,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/loyalty/stores/{corporation_id}/offers/
+    #  https://esi.tech.ccp.is/v1/loyalty/stores/{corporation_id}/offers/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  

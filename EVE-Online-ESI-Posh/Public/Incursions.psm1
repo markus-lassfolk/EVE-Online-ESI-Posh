@@ -1,4 +1,4 @@
-function get-EVEIncursions { 
+function get-EVEincursions { 
 <# 
 .SYNOPSIS
 List incursions
@@ -6,18 +6,12 @@ List incursions
 Return a list of current incursions
 
 ---
-Alternate route: `/dev/incursions/`
 
-Alternate route: `/legacy/incursions/`
-
-Alternate route: `/v1/incursions/`
-
----
 This route is cached for up to 300 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/incursions/",
+            $URI = "https://esi.tech.ccp.is/v1/incursions/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -30,7 +24,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/incursions/
+    #  https://esi.tech.ccp.is/v1/incursions/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  

@@ -1,4 +1,4 @@
-function get-EVERouteOriginDestination { 
+function get-EVEroute_origin_destination { 
 <# 
 .SYNOPSIS
 Get route
@@ -6,18 +6,12 @@ Get route
 Get the systems between origin and destination
 
 ---
-Alternate route: `/dev/route/{origin}/{destination}/`
 
-Alternate route: `/legacy/route/{origin}/{destination}/`
-
-Alternate route: `/v1/route/{origin}/{destination}/`
-
----
 This route is cached for up to 86400 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/route/{origin}/{destination}/",
+            $URI = "https://esi.tech.ccp.is/v1/route/{origin}/{destination}/",
             [Parameter(Mandatory=$false, HelpMessage="avoid solar system ID(s)")]
             [array]
             $avoid,
@@ -46,7 +40,7 @@ This route is cached for up to 86400 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/route/{origin}/{destination}/
+    #  https://esi.tech.ccp.is/v1/route/{origin}/{destination}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  

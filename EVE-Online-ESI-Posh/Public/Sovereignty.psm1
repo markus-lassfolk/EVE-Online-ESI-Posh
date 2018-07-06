@@ -1,4 +1,4 @@
-function get-EVESovereigntyCampaigns { 
+function get-EVEsovereignty_campaigns { 
 <# 
 .SYNOPSIS
 List sovereignty campaigns
@@ -6,18 +6,12 @@ List sovereignty campaigns
 Shows sovereignty data for campaigns.
 
 ---
-Alternate route: `/dev/sovereignty/campaigns/`
 
-Alternate route: `/legacy/sovereignty/campaigns/`
-
-Alternate route: `/v1/sovereignty/campaigns/`
-
----
 This route is cached for up to 5 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/sovereignty/campaigns/",
+            $URI = "https://esi.tech.ccp.is/v1/sovereignty/campaigns/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -30,7 +24,7 @@ This route is cached for up to 5 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/sovereignty/campaigns/
+    #  https://esi.tech.ccp.is/v1/sovereignty/campaigns/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -50,7 +44,7 @@ This route is cached for up to 5 seconds
 }
  
  
-function get-EVESovereigntyMap { 
+function get-EVEsovereignty_map { 
 <# 
 .SYNOPSIS
 List sovereignty of systems
@@ -58,18 +52,12 @@ List sovereignty of systems
 Shows sovereignty information for solar systems
 
 ---
-Alternate route: `/dev/sovereignty/map/`
 
-Alternate route: `/legacy/sovereignty/map/`
-
-Alternate route: `/v1/sovereignty/map/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/sovereignty/map/",
+            $URI = "https://esi.tech.ccp.is/v1/sovereignty/map/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -82,7 +70,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/sovereignty/map/
+    #  https://esi.tech.ccp.is/v1/sovereignty/map/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -102,7 +90,7 @@ This route is cached for up to 3600 seconds
 }
  
  
-function get-EVESovereigntyStructures { 
+function get-EVEsovereignty_structures { 
 <# 
 .SYNOPSIS
 List sovereignty structures
@@ -110,18 +98,12 @@ List sovereignty structures
 Shows sovereignty data for structures.
 
 ---
-Alternate route: `/dev/sovereignty/structures/`
 
-Alternate route: `/legacy/sovereignty/structures/`
-
-Alternate route: `/v1/sovereignty/structures/`
-
----
 This route is cached for up to 120 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/sovereignty/structures/",
+            $URI = "https://esi.tech.ccp.is/v1/sovereignty/structures/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -134,7 +116,7 @@ This route is cached for up to 120 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/sovereignty/structures/
+    #  https://esi.tech.ccp.is/v1/sovereignty/structures/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  

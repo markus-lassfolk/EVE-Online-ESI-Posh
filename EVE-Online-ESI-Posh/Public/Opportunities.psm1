@@ -1,4 +1,4 @@
-function get-EVECharactersCharacter_IdOpportunities { 
+function get-EVEcharacters_character_id_opportunities { 
 <# 
 .SYNOPSIS
 Get a character's completed tasks
@@ -6,18 +6,12 @@ Get a character's completed tasks
 Return a list of tasks finished by a character
 
 ---
-Alternate route: `/dev/characters/{character_id}/opportunities/`
 
-Alternate route: `/legacy/characters/{character_id}/opportunities/`
-
-Alternate route: `/v1/characters/{character_id}/opportunities/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/opportunities/",
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/opportunities/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -36,7 +30,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/characters/{character_id}/opportunities/
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/opportunities/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -68,7 +62,7 @@ This route is cached for up to 3600 seconds
 }
  
  
-function get-EVEOpportunitiesGroups { 
+function get-EVEopportunities_groups { 
 <# 
 .SYNOPSIS
 Get opportunities groups
@@ -76,18 +70,12 @@ Get opportunities groups
 Return a list of opportunities groups
 
 ---
-Alternate route: `/dev/opportunities/groups/`
 
-Alternate route: `/legacy/opportunities/groups/`
-
-Alternate route: `/v1/opportunities/groups/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/opportunities/groups/",
+            $URI = "https://esi.tech.ccp.is/v1/opportunities/groups/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -100,7 +88,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/opportunities/groups/
+    #  https://esi.tech.ccp.is/v1/opportunities/groups/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -120,7 +108,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEOpportunitiesGroupsGroup_Id { 
+function get-EVEopportunities_groups_group_id { 
 <# 
 .SYNOPSIS
 Get opportunities group
@@ -128,18 +116,12 @@ Get opportunities group
 Return information of an opportunities group
 
 ---
-Alternate route: `/dev/opportunities/groups/{group_id}/`
 
-Alternate route: `/legacy/opportunities/groups/{group_id}/`
-
-Alternate route: `/v1/opportunities/groups/{group_id}/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/opportunities/groups/{group_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/opportunities/groups/{group_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -163,7 +145,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/opportunities/groups/{group_id}/
+    #  https://esi.tech.ccp.is/v1/opportunities/groups/{group_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -196,7 +178,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEOpportunitiesTasks { 
+function get-EVEopportunities_tasks { 
 <# 
 .SYNOPSIS
 Get opportunities tasks
@@ -204,18 +186,12 @@ Get opportunities tasks
 Return a list of opportunities tasks
 
 ---
-Alternate route: `/dev/opportunities/tasks/`
 
-Alternate route: `/legacy/opportunities/tasks/`
-
-Alternate route: `/v1/opportunities/tasks/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/opportunities/tasks/",
+            $URI = "https://esi.tech.ccp.is/v1/opportunities/tasks/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -228,7 +204,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/opportunities/tasks/
+    #  https://esi.tech.ccp.is/v1/opportunities/tasks/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -248,7 +224,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVEOpportunitiesTasksTask_Id { 
+function get-EVEopportunities_tasks_task_id { 
 <# 
 .SYNOPSIS
 Get opportunities task
@@ -256,18 +232,12 @@ Get opportunities task
 Return information of an opportunities task
 
 ---
-Alternate route: `/dev/opportunities/tasks/{task_id}/`
 
-Alternate route: `/legacy/opportunities/tasks/{task_id}/`
-
-Alternate route: `/v1/opportunities/tasks/{task_id}/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/opportunities/tasks/{task_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/opportunities/tasks/{task_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -283,7 +253,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/opportunities/tasks/{task_id}/
+    #  https://esi.tech.ccp.is/v1/opportunities/tasks/{task_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  

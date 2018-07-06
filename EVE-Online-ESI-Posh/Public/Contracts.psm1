@@ -1,4 +1,4 @@
-function get-EVECharactersCharacter_IdContracts { 
+function get-EVEcharacters_character_id_contracts { 
 <# 
 .SYNOPSIS
 Get contracts
@@ -6,18 +6,12 @@ Get contracts
 Returns contracts available to a character, only if the character is issuer, acceptor or assignee. Only returns contracts no older than 30 days, or if the status is "in_progress".
 
 ---
-Alternate route: `/dev/characters/{character_id}/contracts/`
 
-Alternate route: `/legacy/characters/{character_id}/contracts/`
-
-Alternate route: `/v1/characters/{character_id}/contracts/`
-
----
 This route is cached for up to 300 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/contracts/",
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/contracts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -39,7 +33,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/characters/{character_id}/contracts/
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/contracts/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -79,7 +73,7 @@ This route is cached for up to 300 seconds
 }
  
  
-function get-EVECharactersCharacter_IdContractsContract_IdBids { 
+function get-EVEcharacters_character_id_contracts_contract_id_bids { 
 <# 
 .SYNOPSIS
 Get contract bids
@@ -87,18 +81,12 @@ Get contract bids
 Lists bids on a particular auction contract
 
 ---
-Alternate route: `/dev/characters/{character_id}/contracts/{contract_id}/bids/`
 
-Alternate route: `/legacy/characters/{character_id}/contracts/{contract_id}/bids/`
-
-Alternate route: `/v1/characters/{character_id}/contracts/{contract_id}/bids/`
-
----
 This route is cached for up to 300 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/contracts/{contract_id}/bids/",
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/contracts/{contract_id}/bids/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -120,7 +108,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/characters/{character_id}/contracts/{contract_id}/bids/
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/contracts/{contract_id}/bids/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -156,7 +144,7 @@ This route is cached for up to 300 seconds
 }
  
  
-function get-EVECharactersCharacter_IdContractsContract_IdItems { 
+function get-EVEcharacters_character_id_contracts_contract_id_items { 
 <# 
 .SYNOPSIS
 Get contract items
@@ -164,18 +152,12 @@ Get contract items
 Lists items of a particular contract
 
 ---
-Alternate route: `/dev/characters/{character_id}/contracts/{contract_id}/items/`
 
-Alternate route: `/legacy/characters/{character_id}/contracts/{contract_id}/items/`
-
-Alternate route: `/v1/characters/{character_id}/contracts/{contract_id}/items/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/contracts/{contract_id}/items/",
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/contracts/{contract_id}/items/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -197,7 +179,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/characters/{character_id}/contracts/{contract_id}/items/
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/contracts/{contract_id}/items/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -233,7 +215,7 @@ This route is cached for up to 3600 seconds
 }
  
  
-function get-EVECorporationsCorporation_IdContracts { 
+function get-EVEcorporations_corporation_id_contracts { 
 <# 
 .SYNOPSIS
 Get corporation contracts
@@ -241,18 +223,12 @@ Get corporation contracts
 Returns contracts available to a corporation, only if the corporation is issuer, acceptor or assignee. Only returns contracts no older than 30 days, or if the status is "in_progress".
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/contracts/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/contracts/`
-
-Alternate route: `/v1/corporations/{corporation_id}/contracts/`
-
----
 This route is cached for up to 300 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/contracts/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/contracts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -274,7 +250,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/contracts/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/contracts/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -314,7 +290,7 @@ This route is cached for up to 300 seconds
 }
  
  
-function get-EVECorporationsCorporation_IdContractsContract_IdBids { 
+function get-EVEcorporations_corporation_id_contracts_contract_id_bids { 
 <# 
 .SYNOPSIS
 Get corporation contract bids
@@ -322,18 +298,12 @@ Get corporation contract bids
 Lists bids on a particular auction contract
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/contracts/{contract_id}/bids/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/contracts/{contract_id}/bids/`
-
-Alternate route: `/v1/corporations/{corporation_id}/contracts/{contract_id}/bids/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/contracts/{contract_id}/bids/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/contracts/{contract_id}/bids/",
             [Parameter(Mandatory=$true, HelpMessage="ID of a contract")]
             [int32]
             $contract_id,
@@ -358,7 +328,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/contracts/{contract_id}/bids/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/contracts/{contract_id}/bids/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -402,7 +372,7 @@ This route is cached for up to 3600 seconds
 }
  
  
-function get-EVECorporationsCorporation_IdContractsContract_IdItems { 
+function get-EVEcorporations_corporation_id_contracts_contract_id_items { 
 <# 
 .SYNOPSIS
 Get corporation contract items
@@ -410,18 +380,12 @@ Get corporation contract items
 Lists items of a particular contract
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/contracts/{contract_id}/items/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/contracts/{contract_id}/items/`
-
-Alternate route: `/v1/corporations/{corporation_id}/contracts/{contract_id}/items/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/contracts/{contract_id}/items/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/contracts/{contract_id}/items/",
             [Parameter(Mandatory=$true, HelpMessage="ID of a contract")]
             [int32]
             $contract_id,
@@ -443,7 +407,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/contracts/{contract_id}/items/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/contracts/{contract_id}/items/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  

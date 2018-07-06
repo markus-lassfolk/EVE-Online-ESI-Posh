@@ -1,4 +1,131 @@
-function delete-EVECharactersCharacter_IdFittingsFitting_Id { 
+function get-EVEcharacters_character_id_fittings { 
+<# 
+.SYNOPSIS
+Get fittings
+.DESCRIPTION
+Return fittings of a character
+
+---
+
+This route is cached for up to 300 seconds
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/fittings/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
+            [int32]
+            $character_id,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+            [string]
+            $token,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/fittings/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "token=" + $token
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "token=" + $token
+        }
+    }
+    $Header = @{
+        'If-None-Match' = "$If_None_Match"
+    }
+ 
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function post-EVEcharacters_character_id_fittings { 
+<# 
+.SYNOPSIS
+Create fitting
+.DESCRIPTION
+Save a new fitting for a character
+
+---
+
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/fittings/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
+            [int32]
+            $character_id,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$true, HelpMessage="Details about the new fitting")]
+            [object]
+            $fitting,
+            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+            [string]
+            $token,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/fittings/
+    $Method = "post"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "token=" + $token
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "token=" + $token
+        }
+    }
+    $Body = @{
+        'fitting' = "$fitting"
+    }
+ 
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function delete-EVEcharacters_character_id_fittings_fitting_id { 
 <# 
 .SYNOPSIS
 Delete fitting
@@ -6,16 +133,11 @@ Delete fitting
 Delete a fitting from a character
 
 ---
-Alternate route: `/dev/characters/{character_id}/fittings/{fitting_id}/`
-
-Alternate route: `/legacy/characters/{character_id}/fittings/{fitting_id}/`
-
-Alternate route: `/v1/characters/{character_id}/fittings/{fitting_id}/`
 
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/fittings/{fitting_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/fittings/{fitting_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -34,7 +156,7 @@ Alternate route: `/v1/characters/{character_id}/fittings/{fitting_id}/`
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/characters/{character_id}/fittings/{fitting_id}/
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/fittings/{fitting_id}/
     $Method = "delete"
     $URI = $URI -replace "{","$" -replace "}",""
  

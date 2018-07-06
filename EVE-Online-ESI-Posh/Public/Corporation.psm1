@@ -1,4 +1,4 @@
-function get-EVECorporationsNpccorps { 
+function get-EVEcorporations_npccorps { 
 <# 
 .SYNOPSIS
 Get npc corporations
@@ -6,18 +6,12 @@ Get npc corporations
 Get a list of npc corporations
 
 ---
-Alternate route: `/dev/corporations/npccorps/`
 
-Alternate route: `/legacy/corporations/npccorps/`
-
-Alternate route: `/v1/corporations/npccorps/`
-
----
 This route expires daily at 11:05
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/npccorps/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/npccorps/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -30,7 +24,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/npccorps/
+    #  https://esi.tech.ccp.is/v1/corporations/npccorps/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -50,287 +44,7 @@ This route expires daily at 11:05
 }
  
  
-function get-EVECorporationsCorporation_Id { 
-<# 
-.SYNOPSIS
-Get corporation information
-.DESCRIPTION
-Public information about a corporation
-
----
-Alternate route: `/dev/corporations/{corporation_id}/`
-
-Alternate route: `/v4/corporations/{corporation_id}/`
-
----
-This route is cached for up to 3600 seconds
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/",
-            [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
-            [int32]
-            $corporation_id,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
-    }
- 
-    if ($corporation_id -ne "") { 
-        $URI = $URI -replace '\$corporation_id',"$corporation_id"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVECorporationsCorporation_IdAlliancehistory { 
-<# 
-.SYNOPSIS
-Get alliance history
-.DESCRIPTION
-Get a list of all the alliances a corporation has been a member of
-
----
-Alternate route: `/dev/corporations/{corporation_id}/alliancehistory/`
-
-Alternate route: `/v2/corporations/{corporation_id}/alliancehistory/`
-
----
-This route is cached for up to 3600 seconds
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/alliancehistory/",
-            [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
-            [int32]
-            $corporation_id,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/alliancehistory/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
-    }
- 
-    if ($corporation_id -ne "") { 
-        $URI = $URI -replace '\$corporation_id',"$corporation_id"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVECorporationsCorporation_IdBlueprints { 
-<# 
-.SYNOPSIS
-Get corporation blueprints
-.DESCRIPTION
-Returns a list of blueprints the corporation owns
-
----
-Alternate route: `/dev/corporations/{corporation_id}/blueprints/`
-
-Alternate route: `/v2/corporations/{corporation_id}/blueprints/`
-
----
-This route is cached for up to 3600 seconds
-
----
-Requires one of the following EVE corporation role(s): Director
-
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/blueprints/",
-            [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
-            [int32]
-            $corporation_id,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
-            [int32]
-            $page = "1",
-            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
-            [string]
-            $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/blueprints/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "page=" + $page
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "page=" + $page
-        }
-    }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "token=" + $token
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "token=" + $token
-        }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
-    }
- 
-    if ($corporation_id -ne "") { 
-        $URI = $URI -replace '\$corporation_id',"$corporation_id"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVECorporationsCorporation_IdContainersLogs { 
-<# 
-.SYNOPSIS
-Get all corporation ALSC logs
-.DESCRIPTION
-Returns logs recorded in the past seven days from all audit log secure containers (ALSC) owned by a given corporation
-
----
-Alternate route: `/dev/corporations/{corporation_id}/containers/logs/`
-
-Alternate route: `/v2/corporations/{corporation_id}/containers/logs/`
-
----
-This route is cached for up to 600 seconds
-
----
-Requires one of the following EVE corporation role(s): Director
-
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/containers/logs/",
-            [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
-            [int32]
-            $corporation_id,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
-            [int32]
-            $page = "1",
-            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
-            [string]
-            $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/containers/logs/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "page=" + $page
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "page=" + $page
-        }
-    }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "token=" + $token
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "token=" + $token
-        }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
-    }
- 
-    if ($corporation_id -ne "") { 
-        $URI = $URI -replace '\$corporation_id',"$corporation_id"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVECorporationsCorporation_IdDivisions { 
+function get-EVEcorporations_corporation_id_divisions { 
 <# 
 .SYNOPSIS
 Get corporation divisions
@@ -338,22 +52,15 @@ Get corporation divisions
 Return corporation hangar and wallet division names, only show if a division is not using the default name
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/divisions/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/divisions/`
-
-Alternate route: `/v1/corporations/{corporation_id}/divisions/`
-
----
 This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Director
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/divisions/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/divisions/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -372,7 +79,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/divisions/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/divisions/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -404,7 +111,7 @@ Requires one of the following EVE corporation role(s): Director
 }
  
  
-function get-EVECorporationsCorporation_IdFacilities { 
+function get-EVEcorporations_corporation_id_facilities { 
 <# 
 .SYNOPSIS
 Get corporation facilities
@@ -412,22 +119,15 @@ Get corporation facilities
 Return a corporation's facilities
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/facilities/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/facilities/`
-
-Alternate route: `/v1/corporations/{corporation_id}/facilities/`
-
----
 This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Factory_Manager
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/facilities/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/facilities/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -446,7 +146,7 @@ Requires one of the following EVE corporation role(s): Factory_Manager
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/facilities/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/facilities/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -478,7 +178,7 @@ Requires one of the following EVE corporation role(s): Factory_Manager
 }
  
  
-function get-EVECorporationsCorporation_IdIcons { 
+function get-EVEcorporations_corporation_id_icons { 
 <# 
 .SYNOPSIS
 Get corporation icon
@@ -486,18 +186,12 @@ Get corporation icon
 Get the icon urls for a corporation
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/icons/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/icons/`
-
-Alternate route: `/v1/corporations/{corporation_id}/icons/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/icons/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/icons/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -513,7 +207,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/icons/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/icons/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -537,7 +231,7 @@ This route is cached for up to 3600 seconds
 }
  
  
-function get-EVECorporationsCorporation_IdMedals { 
+function get-EVEcorporations_corporation_id_medals { 
 <# 
 .SYNOPSIS
 Get corporation medals
@@ -545,18 +239,12 @@ Get corporation medals
 Returns a corporation's medals
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/medals/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/medals/`
-
-Alternate route: `/v1/corporations/{corporation_id}/medals/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/medals/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/medals/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -578,7 +266,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/medals/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/medals/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -618,7 +306,7 @@ This route is cached for up to 3600 seconds
 }
  
  
-function get-EVECorporationsCorporation_IdMedalsIssued { 
+function get-EVEcorporations_corporation_id_medals_issued { 
 <# 
 .SYNOPSIS
 Get corporation issued medals
@@ -626,22 +314,15 @@ Get corporation issued medals
 Returns medals issued by a corporation
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/medals/issued/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/medals/issued/`
-
-Alternate route: `/v1/corporations/{corporation_id}/medals/issued/`
-
----
 This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Director
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/medals/issued/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/medals/issued/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -663,7 +344,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/medals/issued/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/medals/issued/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -703,75 +384,7 @@ Requires one of the following EVE corporation role(s): Director
 }
  
  
-function get-EVECorporationsCorporation_IdMembers { 
-<# 
-.SYNOPSIS
-Get corporation members
-.DESCRIPTION
-Return the current member list of a corporation, the token's character need to be a member of the corporation.
-
----
-Alternate route: `/dev/corporations/{corporation_id}/members/`
-
-Alternate route: `/v3/corporations/{corporation_id}/members/`
-
----
-This route is cached for up to 3600 seconds
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/members/",
-            [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
-            [int32]
-            $corporation_id,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
-            [string]
-            $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/members/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "token=" + $token
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "token=" + $token
-        }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
-    }
- 
-    if ($corporation_id -ne "") { 
-        $URI = $URI -replace '\$corporation_id',"$corporation_id"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVECorporationsCorporation_IdMembersLimit { 
+function get-EVEcorporations_corporation_id_members_limit { 
 <# 
 .SYNOPSIS
 Get corporation member limit
@@ -779,22 +392,15 @@ Get corporation member limit
 Return a corporation's member limit, not including CEO himself
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/members/limit/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/members/limit/`
-
-Alternate route: `/v1/corporations/{corporation_id}/members/limit/`
-
----
 This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Director
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/members/limit/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/members/limit/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -813,7 +419,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/members/limit/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/members/limit/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -845,7 +451,7 @@ Requires one of the following EVE corporation role(s): Director
 }
  
  
-function get-EVECorporationsCorporation_IdMembersTitles { 
+function get-EVEcorporations_corporation_id_members_titles { 
 <# 
 .SYNOPSIS
 Get corporation's members' titles
@@ -853,22 +459,15 @@ Get corporation's members' titles
 Returns a corporation's members' titles
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/members/titles/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/members/titles/`
-
-Alternate route: `/v1/corporations/{corporation_id}/members/titles/`
-
----
 This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Director
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/members/titles/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/members/titles/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -887,7 +486,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/members/titles/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/members/titles/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -919,7 +518,7 @@ Requires one of the following EVE corporation role(s): Director
 }
  
  
-function get-EVECorporationsCorporation_IdMembertracking { 
+function get-EVEcorporations_corporation_id_membertracking { 
 <# 
 .SYNOPSIS
 Track corporation members
@@ -927,22 +526,15 @@ Track corporation members
 Returns additional information about a corporation's members which helps tracking their activities
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/membertracking/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/membertracking/`
-
-Alternate route: `/v1/corporations/{corporation_id}/membertracking/`
-
----
 This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Director
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/membertracking/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/membertracking/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -961,7 +553,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/membertracking/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/membertracking/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -993,7 +585,7 @@ Requires one of the following EVE corporation role(s): Director
 }
  
  
-function get-EVECorporationsCorporation_IdOutposts { 
+function get-EVEcorporations_corporation_id_outposts { 
 <# 
 .SYNOPSIS
 Get corporation outposts
@@ -1001,25 +593,18 @@ Get corporation outposts
 Get a list of corporation outpost IDs Note: This endpoint will be removed once outposts are migrated to Citadels as talked about in this blog: https://community.eveonline.com/news/dev-blogs/the-next-steps-in-structure-transition/
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/outposts/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/outposts/`
-
-Alternate route: `/v1/corporations/{corporation_id}/outposts/`
-
----
 This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Director
-
 
 ---
 Warning: Outposts have been removed, this route will be deleted on 2018-07-08
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/outposts/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/outposts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -1041,7 +626,7 @@ Warning: Outposts have been removed, this route will be deleted on 2018-07-08
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/outposts/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/outposts/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1081,7 +666,7 @@ Warning: Outposts have been removed, this route will be deleted on 2018-07-08
 }
  
  
-function get-EVECorporationsCorporation_IdOutpostsOutpost_Id { 
+function get-EVEcorporations_corporation_id_outposts_outpost_id { 
 <# 
 .SYNOPSIS
 Get corporation outpost details
@@ -1089,25 +674,18 @@ Get corporation outpost details
 Get details about a given outpost. Note: This endpoint will be removed once outposts are migrated to Citadels as talked about in this blog: https://community.eveonline.com/news/dev-blogs/the-next-steps-in-structure-transition/
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/outposts/{outpost_id}/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/outposts/{outpost_id}/`
-
-Alternate route: `/v1/corporations/{corporation_id}/outposts/{outpost_id}/`
-
----
 This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Director
-
 
 ---
 Warning: Outposts have been removed, this route will be deleted on 2018-07-08
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/outposts/{outpost_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/outposts/{outpost_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -1129,7 +707,7 @@ Warning: Outposts have been removed, this route will be deleted on 2018-07-08
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/outposts/{outpost_id}/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/outposts/{outpost_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1165,7 +743,7 @@ Warning: Outposts have been removed, this route will be deleted on 2018-07-08
 }
  
  
-function get-EVECorporationsCorporation_IdRoles { 
+function get-EVEcorporations_corporation_id_roles { 
 <# 
 .SYNOPSIS
 Get corporation member roles
@@ -1173,18 +751,12 @@ Get corporation member roles
 Return the roles of all members if the character has the personnel manager role or any grantable role.
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/roles/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/roles/`
-
-Alternate route: `/v1/corporations/{corporation_id}/roles/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/roles/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/roles/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -1203,7 +775,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/roles/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/roles/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1235,7 +807,7 @@ This route is cached for up to 3600 seconds
 }
  
  
-function get-EVECorporationsCorporation_IdRolesHistory { 
+function get-EVEcorporations_corporation_id_roles_history { 
 <# 
 .SYNOPSIS
 Get corporation member roles history
@@ -1243,22 +815,15 @@ Get corporation member roles history
 Return how roles have changed for a coporation's members, up to a month
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/roles/history/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/roles/history/`
-
-Alternate route: `/v1/corporations/{corporation_id}/roles/history/`
-
----
 This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Director
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/roles/history/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/roles/history/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -1280,7 +845,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/roles/history/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/roles/history/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1320,7 +885,7 @@ Requires one of the following EVE corporation role(s): Director
 }
  
  
-function get-EVECorporationsCorporation_IdShareholders { 
+function get-EVEcorporations_corporation_id_shareholders { 
 <# 
 .SYNOPSIS
 Get corporation shareholders
@@ -1328,22 +893,15 @@ Get corporation shareholders
 Return the current shareholders of a corporation.
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/shareholders/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/shareholders/`
-
-Alternate route: `/v1/corporations/{corporation_id}/shareholders/`
-
----
 This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Director
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/shareholders/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/shareholders/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -1365,7 +923,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/shareholders/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/shareholders/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1405,7 +963,7 @@ Requires one of the following EVE corporation role(s): Director
 }
  
  
-function get-EVECorporationsCorporation_IdStandings { 
+function get-EVEcorporations_corporation_id_standings { 
 <# 
 .SYNOPSIS
 Get corporation standings
@@ -1413,18 +971,12 @@ Get corporation standings
 Return corporation standings from agents, NPC corporations, and factions
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/standings/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/standings/`
-
-Alternate route: `/v1/corporations/{corporation_id}/standings/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/standings/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/standings/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -1446,7 +998,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/standings/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/standings/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1486,7 +1038,7 @@ This route is cached for up to 3600 seconds
 }
  
  
-function get-EVECorporationsCorporation_IdStarbases { 
+function get-EVEcorporations_corporation_id_starbases { 
 <# 
 .SYNOPSIS
 Get corporation starbases (POSes)
@@ -1494,22 +1046,15 @@ Get corporation starbases (POSes)
 Returns list of corporation starbases (POSes)
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/starbases/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/starbases/`
-
-Alternate route: `/v1/corporations/{corporation_id}/starbases/`
-
----
 This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Director
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/starbases/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/starbases/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -1531,7 +1076,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/starbases/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/starbases/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1571,7 +1116,7 @@ Requires one of the following EVE corporation role(s): Director
 }
  
  
-function get-EVECorporationsCorporation_IdStarbasesStarbase_Id { 
+function get-EVEcorporations_corporation_id_starbases_starbase_id { 
 <# 
 .SYNOPSIS
 Get starbase (POS) detail
@@ -1579,22 +1124,15 @@ Get starbase (POS) detail
 Returns various settings and fuels of a starbase (POS)
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/starbases/{starbase_id}/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/starbases/{starbase_id}/`
-
-Alternate route: `/v1/corporations/{corporation_id}/starbases/{starbase_id}/`
-
----
 This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Director
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/starbases/{starbase_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/starbases/{starbase_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -1619,7 +1157,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/starbases/{starbase_id}/
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/starbases/{starbase_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1663,7 +1201,283 @@ Requires one of the following EVE corporation role(s): Director
 }
  
  
-function get-EVECorporationsCorporation_IdStructures { 
+function get-EVEcorporations_corporation_id_titles { 
+<# 
+.SYNOPSIS
+Get corporation titles
+.DESCRIPTION
+Returns a corporation's titles
+
+---
+
+This route is cached for up to 3600 seconds
+
+---
+Requires one of the following EVE corporation role(s): Director
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/titles/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
+            [int32]
+            $corporation_id,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+            [string]
+            $token,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/titles/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "token=" + $token
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "token=" + $token
+        }
+    }
+    $Header = @{
+        'If-None-Match' = "$If_None_Match"
+    }
+ 
+    if ($corporation_id -ne "") { 
+        $URI = $URI -replace '\$corporation_id',"$corporation_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function get-EVEcorporations_corporation_id_alliancehistory { 
+<# 
+.SYNOPSIS
+Get alliance history
+.DESCRIPTION
+Get a list of all the alliances a corporation has been a member of
+
+---
+
+This route is cached for up to 3600 seconds
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v2/corporations/{corporation_id}/alliancehistory/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
+            [int32]
+            $corporation_id,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v2/corporations/{corporation_id}/alliancehistory/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    $Header = @{
+        'If-None-Match' = "$If_None_Match"
+    }
+ 
+    if ($corporation_id -ne "") { 
+        $URI = $URI -replace '\$corporation_id',"$corporation_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function get-EVEcorporations_corporation_id_blueprints { 
+<# 
+.SYNOPSIS
+Get corporation blueprints
+.DESCRIPTION
+Returns a list of blueprints the corporation owns
+
+---
+
+This route is cached for up to 3600 seconds
+
+---
+Requires one of the following EVE corporation role(s): Director
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v2/corporations/{corporation_id}/blueprints/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
+            [int32]
+            $corporation_id,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
+            [int32]
+            $page = "1",
+            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+            [string]
+            $token,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v2/corporations/{corporation_id}/blueprints/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "page=" + $page
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "page=" + $page
+        }
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "token=" + $token
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "token=" + $token
+        }
+    }
+    $Header = @{
+        'If-None-Match' = "$If_None_Match"
+    }
+ 
+    if ($corporation_id -ne "") { 
+        $URI = $URI -replace '\$corporation_id',"$corporation_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function get-EVEcorporations_corporation_id_containers_logs { 
+<# 
+.SYNOPSIS
+Get all corporation ALSC logs
+.DESCRIPTION
+Returns logs recorded in the past seven days from all audit log secure containers (ALSC) owned by a given corporation
+
+---
+
+This route is cached for up to 600 seconds
+
+---
+Requires one of the following EVE corporation role(s): Director
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v2/corporations/{corporation_id}/containers/logs/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
+            [int32]
+            $corporation_id,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
+            [int32]
+            $page = "1",
+            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+            [string]
+            $token,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v2/corporations/{corporation_id}/containers/logs/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "page=" + $page
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "page=" + $page
+        }
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "token=" + $token
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "token=" + $token
+        }
+    }
+    $Header = @{
+        'If-None-Match' = "$If_None_Match"
+    }
+ 
+    if ($corporation_id -ne "") { 
+        $URI = $URI -replace '\$corporation_id',"$corporation_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function get-EVEcorporations_corporation_id_structures { 
 <# 
 .SYNOPSIS
 Get corporation structures
@@ -1671,20 +1485,15 @@ Get corporation structures
 Get a list of corporation structures. This route's version includes the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/structures/`
 
-Alternate route: `/v2/corporations/{corporation_id}/structures/`
-
----
 This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): StationManager
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/structures/",
+            $URI = "https://esi.tech.ccp.is/v2/corporations/{corporation_id}/structures/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -1714,7 +1523,7 @@ Requires one of the following EVE corporation role(s): StationManager
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/structures/
+    #  https://esi.tech.ccp.is/v2/corporations/{corporation_id}/structures/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1763,30 +1572,20 @@ Requires one of the following EVE corporation role(s): StationManager
 }
  
  
-function get-EVECorporationsCorporation_IdTitles { 
+function get-EVEcorporations_corporation_id_members { 
 <# 
 .SYNOPSIS
-Get corporation titles
+Get corporation members
 .DESCRIPTION
-Returns a corporation's titles
+Return the current member list of a corporation, the token's character need to be a member of the corporation.
 
 ---
-Alternate route: `/dev/corporations/{corporation_id}/titles/`
 
-Alternate route: `/legacy/corporations/{corporation_id}/titles/`
-
-Alternate route: `/v1/corporations/{corporation_id}/titles/`
-
----
 This route is cached for up to 3600 seconds
-
----
-Requires one of the following EVE corporation role(s): Director
-
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/titles/",
+            $URI = "https://esi.tech.ccp.is/v3/corporations/{corporation_id}/members/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -1805,7 +1604,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/titles/
+    #  https://esi.tech.ccp.is/v3/corporations/{corporation_id}/members/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -1823,6 +1622,59 @@ Requires one of the following EVE corporation role(s): Director
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
+        }
+    }
+    $Header = @{
+        'If-None-Match' = "$If_None_Match"
+    }
+ 
+    if ($corporation_id -ne "") { 
+        $URI = $URI -replace '\$corporation_id',"$corporation_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function get-EVEcorporations_corporation_id { 
+<# 
+.SYNOPSIS
+Get corporation information
+.DESCRIPTION
+Public information about a corporation
+
+---
+
+This route is cached for up to 3600 seconds
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v4/corporations/{corporation_id}/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
+            [int32]
+            $corporation_id,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
+            [ValidateSet("PS","json")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v4/corporations/{corporation_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
     $Header = @{

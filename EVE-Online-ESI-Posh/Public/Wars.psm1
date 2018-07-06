@@ -1,4 +1,4 @@
-function get-EVEWars { 
+function get-EVEwars { 
 <# 
 .SYNOPSIS
 List wars
@@ -6,18 +6,12 @@ List wars
 Return a list of wars
 
 ---
-Alternate route: `/dev/wars/`
 
-Alternate route: `/legacy/wars/`
-
-Alternate route: `/v1/wars/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/wars/",
+            $URI = "https://esi.tech.ccp.is/v1/wars/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -33,7 +27,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/wars/
+    #  https://esi.tech.ccp.is/v1/wars/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -61,7 +55,7 @@ This route is cached for up to 3600 seconds
 }
  
  
-function get-EVEWarsWar_Id { 
+function get-EVEwars_war_id { 
 <# 
 .SYNOPSIS
 Get war information
@@ -69,18 +63,12 @@ Get war information
 Return details about a war
 
 ---
-Alternate route: `/dev/wars/{war_id}/`
 
-Alternate route: `/legacy/wars/{war_id}/`
-
-Alternate route: `/v1/wars/{war_id}/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/wars/{war_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/wars/{war_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -96,7 +84,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/wars/{war_id}/
+    #  https://esi.tech.ccp.is/v1/wars/{war_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -120,7 +108,7 @@ This route is cached for up to 3600 seconds
 }
  
  
-function get-EVEWarsWar_IdKillmails { 
+function get-EVEwars_war_id_killmails { 
 <# 
 .SYNOPSIS
 List kills for a war
@@ -128,18 +116,12 @@ List kills for a war
 Return a list of kills related to a war
 
 ---
-Alternate route: `/dev/wars/{war_id}/killmails/`
 
-Alternate route: `/legacy/wars/{war_id}/killmails/`
-
-Alternate route: `/v1/wars/{war_id}/killmails/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/wars/{war_id}/killmails/",
+            $URI = "https://esi.tech.ccp.is/v1/wars/{war_id}/killmails/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -158,7 +140,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/wars/{war_id}/killmails/
+    #  https://esi.tech.ccp.is/v1/wars/{war_id}/killmails/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  

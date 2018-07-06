@@ -1,4 +1,4 @@
-function get-EVECharactersCharacter_IdAttributes { 
+function get-EVEcharacters_character_id_attributes { 
 <# 
 .SYNOPSIS
 Get character attributes
@@ -6,18 +6,12 @@ Get character attributes
 Return attributes of a character
 
 ---
-Alternate route: `/dev/characters/{character_id}/attributes/`
 
-Alternate route: `/legacy/characters/{character_id}/attributes/`
-
-Alternate route: `/v1/characters/{character_id}/attributes/`
-
----
 This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/attributes/",
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/attributes/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -36,7 +30,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/characters/{character_id}/attributes/
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/attributes/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -68,7 +62,7 @@ This route is cached for up to 3600 seconds
 }
  
  
-function get-EVECharactersCharacter_IdSkillqueue { 
+function get-EVEcharacters_character_id_skillqueue { 
 <# 
 .SYNOPSIS
 Get character's skill queue
@@ -76,18 +70,12 @@ Get character's skill queue
 List the configured skill queue for the given character
 
 ---
-Alternate route: `/dev/characters/{character_id}/skillqueue/`
 
-Alternate route: `/legacy/characters/{character_id}/skillqueue/`
-
-Alternate route: `/v2/characters/{character_id}/skillqueue/`
-
----
 This route is cached for up to 120 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/skillqueue/",
+            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/skillqueue/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -106,7 +94,7 @@ This route is cached for up to 120 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/characters/{character_id}/skillqueue/
+    #  https://esi.tech.ccp.is/v2/characters/{character_id}/skillqueue/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -138,7 +126,7 @@ This route is cached for up to 120 seconds
 }
  
  
-function get-EVECharactersCharacter_IdSkills { 
+function get-EVEcharacters_character_id_skills { 
 <# 
 .SYNOPSIS
 Get character skills
@@ -146,16 +134,12 @@ Get character skills
 List all trained skills for the given character
 
 ---
-Alternate route: `/dev/characters/{character_id}/skills/`
 
-Alternate route: `/v4/characters/{character_id}/skills/`
-
----
 This route is cached for up to 120 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/skills/",
+            $URI = "https://esi.tech.ccp.is/v4/characters/{character_id}/skills/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -174,7 +158,7 @@ This route is cached for up to 120 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/latest/characters/{character_id}/skills/
+    #  https://esi.tech.ccp.is/v4/characters/{character_id}/skills/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
