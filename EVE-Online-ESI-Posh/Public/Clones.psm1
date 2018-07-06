@@ -1,17 +1,17 @@
-function get-EVEcharacters_character_id_implants { 
+function get-EVEcharacters_character_id_clones { 
 <# 
 .SYNOPSIS
-Get active implants
+Get clones
 .DESCRIPTION
-Return implants on the active clone of a character
+A list of the character's clones
 
 ---
 
-This route is cached for up to 300 seconds
+This route is cached for up to 120 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/implants/",
+            $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/clones/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -25,12 +25,12 @@ This route is cached for up to 300 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/implants/
+    #  https://esi.tech.ccp.is/v3/characters/{character_id}/clones/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -62,20 +62,20 @@ This route is cached for up to 300 seconds
 }
  
  
-function get-EVEcharacters_character_id_clones { 
+function get-EVEcharacters_character_id_implants { 
 <# 
 .SYNOPSIS
-Get clones
+Get active implants
 .DESCRIPTION
-A list of the character's clones
+Return implants on the active clone of a character
 
 ---
 
-This route is cached for up to 120 seconds
+This route is cached for up to 300 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/clones/",
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/implants/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -89,12 +89,12 @@ This route is cached for up to 120 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v3/characters/{character_id}/clones/
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/implants/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  

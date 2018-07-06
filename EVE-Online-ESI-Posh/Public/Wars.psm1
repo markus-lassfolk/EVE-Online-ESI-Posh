@@ -22,8 +22,8 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Only return wars with ID smaller than this.")]
             [int32]
             $max_war_id,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
@@ -79,8 +79,8 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$true, HelpMessage="ID for a war")]
             [int32]
             $war_id,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
@@ -135,8 +135,8 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$true, HelpMessage="A valid war ID")]
             [int32]
             $war_id,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI

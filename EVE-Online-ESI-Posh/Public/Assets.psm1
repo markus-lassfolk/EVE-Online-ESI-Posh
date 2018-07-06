@@ -1,257 +1,3 @@
-function post-EVEcharacters_character_id_assets_names { 
-<# 
-.SYNOPSIS
-Get character asset names
-.DESCRIPTION
-Return names for a set of item ids, which you can get from character assets endpoint. Typically used for items that can customize names, like containers or ships.
-
----
-
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/assets/names/",
-            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
-            [int32]
-            $character_id,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$true, HelpMessage="A list of item ids")]
-            [array]
-            $item_ids,
-            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
-            [string]
-            $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/assets/names/
-    $Method = "post"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "token=" + $token
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "token=" + $token
-        }
-    }
-    $Body = @{
-        'item_ids' = "$item_ids"
-    }
- 
-    if ($character_id -ne "") { 
-        $URI = $URI -replace '\$character_id',"$character_id"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function post-EVEcorporations_corporation_id_assets_names { 
-<# 
-.SYNOPSIS
-Get coporation asset names
-.DESCRIPTION
-Return names for a set of item ids, which you can get from corporation assets endpoint. Only valid for items that can customize names, like containers or ships.
-
----
-
-Requires one of the following EVE corporation role(s): Director
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/assets/names/",
-            [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
-            [int32]
-            $corporation_id,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$true, HelpMessage="A list of item ids")]
-            [array]
-            $item_ids,
-            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
-            [string]
-            $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/assets/names/
-    $Method = "post"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "token=" + $token
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "token=" + $token
-        }
-    }
-    $Body = @{
-        'item_ids' = "$item_ids"
-    }
- 
-    if ($corporation_id -ne "") { 
-        $URI = $URI -replace '\$corporation_id',"$corporation_id"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function post-EVEcharacters_character_id_assets_locations { 
-<# 
-.SYNOPSIS
-Get character asset locations
-.DESCRIPTION
-Return locations for a set of item ids, which you can get from character assets endpoint. Coordinates for items in hangars or stations are set to (0,0,0)
-
----
-
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/assets/locations/",
-            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
-            [int32]
-            $character_id,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$true, HelpMessage="A list of item ids")]
-            [array]
-            $item_ids,
-            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
-            [string]
-            $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/v2/characters/{character_id}/assets/locations/
-    $Method = "post"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "token=" + $token
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "token=" + $token
-        }
-    }
-    $Body = @{
-        'item_ids' = "$item_ids"
-    }
- 
-    if ($character_id -ne "") { 
-        $URI = $URI -replace '\$character_id',"$character_id"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function post-EVEcorporations_corporation_id_assets_locations { 
-<# 
-.SYNOPSIS
-Get corporation asset locations
-.DESCRIPTION
-Return locations for a set of item ids, which you can get from corporation assets endpoint. Coordinates for items in hangars or stations are set to (0,0,0)
-
----
-
-Requires one of the following EVE corporation role(s): Director
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/v2/corporations/{corporation_id}/assets/locations/",
-            [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
-            [int32]
-            $corporation_id,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$true, HelpMessage="A list of item ids")]
-            [array]
-            $item_ids,
-            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
-            [string]
-            $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/v2/corporations/{corporation_id}/assets/locations/
-    $Method = "post"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "token=" + $token
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "token=" + $token
-        }
-    }
-    $Body = @{
-        'item_ids' = "$item_ids"
-    }
- 
-    if ($corporation_id -ne "") { 
-        $URI = $URI -replace '\$corporation_id',"$corporation_id"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
 function get-EVEcharacters_character_id_assets { 
 <# 
 .SYNOPSIS
@@ -282,8 +28,8 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
@@ -360,8 +106,8 @@ Requires one of the following EVE corporation role(s): Director
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
@@ -395,6 +141,260 @@ Requires one of the following EVE corporation role(s): Director
     }
     $Header = @{
         'If-None-Match' = "$If_None_Match"
+    }
+ 
+    if ($corporation_id -ne "") { 
+        $URI = $URI -replace '\$corporation_id',"$corporation_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function post-EVEcharacters_character_id_assets_locations { 
+<# 
+.SYNOPSIS
+Get character asset locations
+.DESCRIPTION
+Return locations for a set of item ids, which you can get from character assets endpoint. Coordinates for items in hangars or stations are set to (0,0,0)
+
+---
+
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/assets/locations/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
+            [int32]
+            $character_id,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$true, HelpMessage="A list of item ids")]
+            [array]
+            $item_ids,
+            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+            [string]
+            $token,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v2/characters/{character_id}/assets/locations/
+    $Method = "post"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "token=" + $token
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "token=" + $token
+        }
+    }
+    $Body = @{
+        'item_ids' = "$item_ids"
+    }
+ 
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function post-EVEcharacters_character_id_assets_names { 
+<# 
+.SYNOPSIS
+Get character asset names
+.DESCRIPTION
+Return names for a set of item ids, which you can get from character assets endpoint. Typically used for items that can customize names, like containers or ships.
+
+---
+
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/assets/names/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
+            [int32]
+            $character_id,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$true, HelpMessage="A list of item ids")]
+            [array]
+            $item_ids,
+            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+            [string]
+            $token,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/assets/names/
+    $Method = "post"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "token=" + $token
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "token=" + $token
+        }
+    }
+    $Body = @{
+        'item_ids' = "$item_ids"
+    }
+ 
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function post-EVEcorporations_corporation_id_assets_locations { 
+<# 
+.SYNOPSIS
+Get corporation asset locations
+.DESCRIPTION
+Return locations for a set of item ids, which you can get from corporation assets endpoint. Coordinates for items in hangars or stations are set to (0,0,0)
+
+---
+
+Requires one of the following EVE corporation role(s): Director
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v2/corporations/{corporation_id}/assets/locations/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
+            [int32]
+            $corporation_id,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$true, HelpMessage="A list of item ids")]
+            [array]
+            $item_ids,
+            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+            [string]
+            $token,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v2/corporations/{corporation_id}/assets/locations/
+    $Method = "post"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "token=" + $token
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "token=" + $token
+        }
+    }
+    $Body = @{
+        'item_ids' = "$item_ids"
+    }
+ 
+    if ($corporation_id -ne "") { 
+        $URI = $URI -replace '\$corporation_id',"$corporation_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function post-EVEcorporations_corporation_id_assets_names { 
+<# 
+.SYNOPSIS
+Get coporation asset names
+.DESCRIPTION
+Return names for a set of item ids, which you can get from corporation assets endpoint. Only valid for items that can customize names, like containers or ships.
+
+---
+
+Requires one of the following EVE corporation role(s): Director
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/assets/names/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
+            [int32]
+            $corporation_id,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$true, HelpMessage="A list of item ids")]
+            [array]
+            $item_ids,
+            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+            [string]
+            $token,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/assets/names/
+    $Method = "post"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "token=" + $token
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "token=" + $token
+        }
+    }
+    $Body = @{
+        'item_ids' = "$item_ids"
     }
  
     if ($corporation_id -ne "") { 

@@ -28,8 +28,8 @@ This route is cached for up to 5 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
@@ -73,20 +73,20 @@ This route is cached for up to 5 seconds
 }
  
  
-function get-EVEcharacters_character_id_calendar_event_id_attendees { 
+function get-EVEcharacters_character_id_calendar_event_id { 
 <# 
 .SYNOPSIS
-Get attendees
+Get an event
 .DESCRIPTION
-Get all invited attendees for a given event
+Get all the information for a specific event
 
 ---
 
-This route is cached for up to 600 seconds
+This route is cached for up to 5 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/calendar/{event_id}/attendees/",
+            $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/calendar/{event_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -103,12 +103,12 @@ This route is cached for up to 600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/calendar/{event_id}/attendees/
+    #  https://esi.tech.ccp.is/v3/characters/{character_id}/calendar/{event_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -144,20 +144,20 @@ This route is cached for up to 600 seconds
 }
  
  
-function get-EVEcharacters_character_id_calendar_event_id { 
+function get-EVEcharacters_character_id_calendar_event_id_attendees { 
 <# 
 .SYNOPSIS
-Get an event
+Get attendees
 .DESCRIPTION
-Get all the information for a specific event
+Get all invited attendees for a given event
 
 ---
 
-This route is cached for up to 5 seconds
+This route is cached for up to 600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/calendar/{event_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/calendar/{event_id}/attendees/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -174,12 +174,12 @@ This route is cached for up to 5 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v3/characters/{character_id}/calendar/{event_id}/
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/calendar/{event_id}/attendees/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -244,8 +244,8 @@ Set your response status to an event
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI

@@ -1,3 +1,88 @@
+function post-EVEui_autopilot_waypoint { 
+<# 
+.SYNOPSIS
+Set Autopilot Waypoint
+.DESCRIPTION
+Set a solar system as autopilot waypoint
+
+---
+
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v2/ui/autopilot/waypoint/",
+            [Parameter(Mandatory=$true, HelpMessage="Whether this solar system should be added to the beginning of all waypoints")]
+            [boolean]
+            [ValidateSet($True,$False)]
+            $add_to_beginning = $false,
+            [Parameter(Mandatory=$true, HelpMessage="Whether clean other waypoints beforing adding this one")]
+            [boolean]
+            [ValidateSet($True,$False)]
+            $clear_other_waypoints = $false,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$true, HelpMessage="The destination to travel to, can be solar system, station or structure's id")]
+            [int64]
+            $destination_id,
+            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+            [string]
+            $token,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v2/ui/autopilot/waypoint/
+    $Method = "post"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($add_to_beginning -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "add_to_beginning=" + $add_to_beginning
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "add_to_beginning=" + $add_to_beginning
+        }
+    }
+    if ($clear_other_waypoints -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "clear_other_waypoints=" + $clear_other_waypoints
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "clear_other_waypoints=" + $clear_other_waypoints
+        }
+    }
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    if ($destination_id -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "destination_id=" + $destination_id
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "destination_id=" + $destination_id
+        }
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "token=" + $token
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "token=" + $token
+        }
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
 function post-EVEui_openwindow_contract { 
 <# 
 .SYNOPSIS
@@ -21,8 +106,8 @@ Open the contract window inside the client
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
@@ -82,8 +167,8 @@ Open the information window for a character, corporation or alliance inside the 
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
@@ -143,8 +228,8 @@ Open the market details window for a specific typeID inside the client
             [Parameter(Mandatory=$true, HelpMessage="The item type to open in market window")]
             [int32]
             $type_id,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
@@ -204,8 +289,8 @@ Open the New Mail window, according to settings from the request if applicable
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
@@ -231,91 +316,6 @@ Open the New Mail window, according to settings from the request if applicable
     }
     $Body = @{
         'new_mail' = "$new_mail"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function post-EVEui_autopilot_waypoint { 
-<# 
-.SYNOPSIS
-Set Autopilot Waypoint
-.DESCRIPTION
-Set a solar system as autopilot waypoint
-
----
-
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/v2/ui/autopilot/waypoint/",
-            [Parameter(Mandatory=$true, HelpMessage="Whether this solar system should be added to the beginning of all waypoints")]
-            [boolean]
-            [ValidateSet($True,$False)]
-            $add_to_beginning = $false,
-            [Parameter(Mandatory=$true, HelpMessage="Whether clean other waypoints beforing adding this one")]
-            [boolean]
-            [ValidateSet($True,$False)]
-            $clear_other_waypoints = $false,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$true, HelpMessage="The destination to travel to, can be solar system, station or structure's id")]
-            [int64]
-            $destination_id,
-            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
-            [string]
-            $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/v2/ui/autopilot/waypoint/
-    $Method = "post"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($add_to_beginning -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "add_to_beginning=" + $add_to_beginning
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "add_to_beginning=" + $add_to_beginning
-        }
-    }
-    if ($clear_other_waypoints -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "clear_other_waypoints=" + $clear_other_waypoints
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "clear_other_waypoints=" + $clear_other_waypoints
-        }
-    }
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    if ($destination_id -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "destination_id=" + $destination_id
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "destination_id=" + $destination_id
-        }
-    }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "token=" + $token
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "token=" + $token
-        }
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType

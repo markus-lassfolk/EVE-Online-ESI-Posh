@@ -1,9 +1,9 @@
-function post-EVEcharacters_affiliation { 
+function get-EVEcharacters_character_id { 
 <# 
 .SYNOPSIS
-Character affiliation
+Get character's public information
 .DESCRIPTION
-Bulk lookup of character IDs to corporation, alliance and faction
+Public information about a character
 
 ---
 
@@ -11,21 +11,24 @@ This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/affiliation/",
-            [Parameter(Mandatory=$true, HelpMessage="The character IDs to fetch affiliations for. All characters must exist, or none will be returned.")]
-            [array]
-            $characters,
+            $URI = "https://esi.tech.ccp.is/v4/characters/{character_id}/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
+            [int32]
+            $character_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/affiliation/
-    $Method = "post"
+    #  https://esi.tech.ccp.is/v4/characters/{character_id}/
+    $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
     if ($datasource -ne "") { 
@@ -36,8 +39,12 @@ This route is cached for up to 3600 seconds
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    $Body = @{
-        'characters' = "$characters"
+    $Header = @{
+        'If-None-Match' = "$If_None_Match"
+    }
+ 
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
@@ -71,8 +78,8 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
@@ -86,6 +93,81 @@ This route is cached for up to 3600 seconds
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "token=" + $token
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "token=" + $token
+        }
+    }
+    $Header = @{
+        'If-None-Match' = "$If_None_Match"
+    }
+ 
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function get-EVEcharacters_character_id_blueprints { 
+<# 
+.SYNOPSIS
+Get blueprints
+.DESCRIPTION
+Return a list of blueprints the character owns
+
+---
+
+This route is cached for up to 3600 seconds
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/blueprints/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
+            [int32]
+            $character_id,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
+            [int32]
+            $page = "1",
+            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+            [string]
+            $token,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v2/characters/{character_id}/blueprints/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "page=" + $page
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "page=" + $page
         }
     }
     if ($token -ne "") { 
@@ -132,8 +214,8 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
@@ -188,8 +270,8 @@ This route is cached for up to 300 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
@@ -252,12 +334,76 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/medals/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "token=" + $token
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "token=" + $token
+        }
+    }
+    $Header = @{
+        'If-None-Match' = "$If_None_Match"
+    }
+ 
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function get-EVEcharacters_character_id_notifications { 
+<# 
+.SYNOPSIS
+Get character notifications
+.DESCRIPTION
+Return character notifications
+
+---
+
+This route is cached for up to 600 seconds
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/notifications/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
+            [int32]
+            $character_id,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+            [string]
+            $token,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v2/characters/{character_id}/notifications/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -316,12 +462,129 @@ This route is cached for up to 600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/notifications/contacts/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "token=" + $token
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "token=" + $token
+        }
+    }
+    $Header = @{
+        'If-None-Match' = "$If_None_Match"
+    }
+ 
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function get-EVEcharacters_character_id_portrait { 
+<# 
+.SYNOPSIS
+Get character portraits
+.DESCRIPTION
+Get portrait urls for a character
+
+---
+
+This route is cached for up to 3600 seconds
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/portrait/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
+            [int32]
+            $character_id,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v2/characters/{character_id}/portrait/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    $Header = @{
+        'If-None-Match' = "$If_None_Match"
+    }
+ 
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function get-EVEcharacters_character_id_roles { 
+<# 
+.SYNOPSIS
+Get character corporation roles
+.DESCRIPTION
+Returns a character's corporation roles
+
+---
+
+This route is cached for up to 3600 seconds
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/roles/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
+            [int32]
+            $character_id,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+            [string]
+            $token,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v2/characters/{character_id}/roles/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -380,332 +643,12 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/standings/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "token=" + $token
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "token=" + $token
-        }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
-    }
- 
-    if ($character_id -ne "") { 
-        $URI = $URI -replace '\$character_id',"$character_id"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVEcharacters_character_id_titles { 
-<# 
-.SYNOPSIS
-Get character corporation titles
-.DESCRIPTION
-Returns a character's titles
-
----
-
-This route is cached for up to 3600 seconds
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/titles/",
-            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
-            [int32]
-            $character_id,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
-            [string]
-            $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/titles/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "token=" + $token
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "token=" + $token
-        }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
-    }
- 
-    if ($character_id -ne "") { 
-        $URI = $URI -replace '\$character_id',"$character_id"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVEcharacters_character_id_blueprints { 
-<# 
-.SYNOPSIS
-Get blueprints
-.DESCRIPTION
-Return a list of blueprints the character owns
-
----
-
-This route is cached for up to 3600 seconds
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/blueprints/",
-            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
-            [int32]
-            $character_id,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
-            [int32]
-            $page = "1",
-            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
-            [string]
-            $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/v2/characters/{character_id}/blueprints/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "page=" + $page
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "page=" + $page
-        }
-    }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "token=" + $token
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "token=" + $token
-        }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
-    }
- 
-    if ($character_id -ne "") { 
-        $URI = $URI -replace '\$character_id',"$character_id"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVEcharacters_character_id_notifications { 
-<# 
-.SYNOPSIS
-Get character notifications
-.DESCRIPTION
-Return character notifications
-
----
-
-This route is cached for up to 600 seconds
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/notifications/",
-            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
-            [int32]
-            $character_id,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
-            [string]
-            $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/v2/characters/{character_id}/notifications/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "token=" + $token
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "token=" + $token
-        }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
-    }
- 
-    if ($character_id -ne "") { 
-        $URI = $URI -replace '\$character_id',"$character_id"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVEcharacters_character_id_portrait { 
-<# 
-.SYNOPSIS
-Get character portraits
-.DESCRIPTION
-Get portrait urls for a character
-
----
-
-This route is cached for up to 3600 seconds
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/portrait/",
-            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
-            [int32]
-            $character_id,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/v2/characters/{character_id}/portrait/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
-    }
- 
-    if ($character_id -ne "") { 
-        $URI = $URI -replace '\$character_id',"$character_id"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
- 
- 
-function get-EVEcharacters_character_id_roles { 
-<# 
-.SYNOPSIS
-Get character corporation roles
-.DESCRIPTION
-Returns a character's corporation roles
-
----
-
-This route is cached for up to 3600 seconds
-#>
-    Param( 
-            [string]
-            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/roles/",
-            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
-            [int32]
-            $character_id,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
-            [string]
-            $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.tech.ccp.is/v2/characters/{character_id}/roles/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -764,8 +707,8 @@ This route is cached for up to 86400 seconds
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
@@ -801,12 +744,12 @@ This route is cached for up to 86400 seconds
 }
  
  
-function get-EVEcharacters_character_id { 
+function get-EVEcharacters_character_id_titles { 
 <# 
 .SYNOPSIS
-Get character's public information
+Get character corporation titles
 .DESCRIPTION
-Public information about a character
+Returns a character's titles
 
 ---
 
@@ -814,7 +757,7 @@ This route is cached for up to 3600 seconds
 #>
     Param( 
             [string]
-            $URI = "https://esi.tech.ccp.is/v4/characters/{character_id}/",
+            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/titles/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -825,12 +768,15 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
+            [string]
+            $token,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v4/characters/{character_id}/
+    #  https://esi.tech.ccp.is/v1/characters/{character_id}/titles/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
  
@@ -842,12 +788,66 @@ This route is cached for up to 3600 seconds
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "token=" + $token
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "token=" + $token
+        }
+    }
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
  
     if ($character_id -ne "") { 
         $URI = $URI -replace '\$character_id',"$character_id"
+    }
+    $URI = $URI -replace "$True","True" -replace "$False","False"
+    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
+}
+ 
+ 
+function post-EVEcharacters_affiliation { 
+<# 
+.SYNOPSIS
+Character affiliation
+.DESCRIPTION
+Bulk lookup of character IDs to corporation, alliance and faction
+
+---
+
+This route is cached for up to 3600 seconds
+#>
+    Param( 
+            [string]
+            $URI = "https://esi.tech.ccp.is/v1/characters/affiliation/",
+            [Parameter(Mandatory=$true, HelpMessage="The character IDs to fetch affiliations for. All characters must exist, or none will be returned.")]
+            [array]
+            $characters,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
+            $OutputType = "PS"
+    ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/v1/characters/affiliation/
+    $Method = "post"
+    $URI = $URI -replace "{","$" -replace "}",""
+ 
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
+            $URI = $URI + "?" + "datasource=" + $datasource
+        }
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "datasource=" + $datasource
+        }
+    }
+    $Body = @{
+        'characters' = "$characters"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
@@ -880,8 +880,8 @@ Takes a source character ID in the url and a set of target character ID's in the
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
-            [ValidateSet("PS","json")]
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"
     ) #End of Param
     #  Example URI

@@ -44,12 +44,13 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
 
 }
 
+
 ($BuildFunctions).ESITags | select -Unique | Sort-Object | % { 
 
     $_
     $NewESIFunctionFile = New-Item -Path .\EVE-Online-ESI-Posh\Public -Name $(($_)+".psm1") -ItemType File -Force -verbose
 
-    foreach ($NewFunction in $BuildFunctions | where ESITags -like "$_" ) {
+    foreach ($NewFunction in $BuildFunctions | where ESITags -like "$_" | Sort-Object { $_.FunctionName } ) {
 
         # Build Function
         Add-Content $NewESIFunctionFile "function $($NewFunction.FunctionName) { "
