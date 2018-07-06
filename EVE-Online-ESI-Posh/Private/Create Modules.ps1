@@ -50,14 +50,12 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
 
         # Build Function
         Add-Content $NewESIFunctionFile "function $($NewFunction.FunctionName) { "
-        Add-Content $NewESIFunctionFile "    <# "
-        Add-Content $NewESIFunctionFile "    .SYNOPSIS"
-        Add-Content $NewESIFunctionFile "    " + $NewFunction.ESISummary
-        Add-Content $NewESIFunctionFile "     "
-        Add-Content $NewESIFunctionFile "    .DESCRIPTION"
-        Add-Content $NewESIFunctionFile "    " + $NewFunction.ESIDescription
-        Add-Content $NewESIFunctionFile "     "
-        Add-Content $NewESIFunctionFile "    #>"
+        Add-Content $NewESIFunctionFile "<# "
+        Add-Content $NewESIFunctionFile ".SYNOPSIS"
+        Add-Content $NewESIFunctionFile $NewFunction.ESISummary
+        Add-Content $NewESIFunctionFile ".DESCRIPTION"
+        Add-Content $NewESIFunctionFile $NewFunction.ESIDescription
+        Add-Content $NewESIFunctionFile "#>"
 
         # Build ParamBlock 
         Add-Content $NewESIFunctionFile "    Param( "
@@ -126,10 +124,8 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
         Add-Content $NewESIFunctionFile '            [ValidateSet("PS","json")]'
         Add-Content $NewESIFunctionFile '            $OutputType = "PS"'
         Add-Content $NewESIFunctionFile "    ) #End of Param"
-        Add-Content $NewESIFunctionFile "    "
         Add-Content $NewESIFunctionFile "    #  Example URI"
         Add-Content $NewESIFunctionFile "    #  https://esi.tech.ccp.is/latest$($NewFunction.ESIPath)"
-        Add-Content $NewESIFunctionFile "    "
 
         $Newstring = '    $Method = "' + $NewFunction.ESIMethod + '"'
         Add-Content $NewESIFunctionFile $newstring

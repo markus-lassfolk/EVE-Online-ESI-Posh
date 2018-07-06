@@ -1,9 +1,7 @@
 function get-EVECharactersCharacter_IdAssets { 
- 
 <# 
 .SYNOPSIS
 Get character assets
- 
 .DESCRIPTION
 Return a list of the characters assets
 
@@ -14,9 +12,7 @@ Alternate route: `/v3/characters/{character_id}/assets/`
 
 ---
 This route is cached for up to 3600 seconds
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/assets/",
@@ -39,58 +35,52 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/characters/{character_id}/assets/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/characters/{character_id}/assets/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($page -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "page=" + $page
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($character_id -ne "") { 
-            $URI = $URI -replace '\$character_id',"$character_id"
-        }
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function post-EVECharactersCharacter_IdAssetsLocations { 
- 
 <# 
 .SYNOPSIS
 Get character asset locations
- 
 .DESCRIPTION
 Return locations for a set of item ids, which you can get from character assets endpoint. Coordinates for items in hangars or stations are set to (0,0,0)
 
@@ -99,9 +89,7 @@ Alternate route: `/dev/characters/{character_id}/assets/locations/`
 
 Alternate route: `/v2/characters/{character_id}/assets/locations/`
 
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/assets/locations/",
@@ -121,50 +109,44 @@ Alternate route: `/v2/characters/{character_id}/assets/locations/`
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/characters/{character_id}/assets/locations/
+    $Method = "post"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/characters/{character_id}/assets/locations/
- 
-      $Method = "post"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Body = @{
+    }
+    $Body = @{
         'item_ids' = "$item_ids"
-        }
+    }
  
-        if ($character_id -ne "") { 
-            $URI = $URI -replace '\$character_id',"$character_id"
-        }
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function post-EVECharactersCharacter_IdAssetsNames { 
- 
 <# 
 .SYNOPSIS
 Get character asset names
- 
 .DESCRIPTION
 Return names for a set of item ids, which you can get from character assets endpoint. Typically used for items that can customize names, like containers or ships.
 
@@ -175,9 +157,7 @@ Alternate route: `/legacy/characters/{character_id}/assets/names/`
 
 Alternate route: `/v1/characters/{character_id}/assets/names/`
 
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/assets/names/",
@@ -197,50 +177,44 @@ Alternate route: `/v1/characters/{character_id}/assets/names/`
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/characters/{character_id}/assets/names/
+    $Method = "post"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/characters/{character_id}/assets/names/
- 
-      $Method = "post"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Body = @{
+    }
+    $Body = @{
         'item_ids' = "$item_ids"
-        }
+    }
  
-        if ($character_id -ne "") { 
-            $URI = $URI -replace '\$character_id',"$character_id"
-        }
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVECorporationsCorporation_IdAssets { 
- 
 <# 
 .SYNOPSIS
 Get corporation assets
- 
 .DESCRIPTION
 Return a list of the corporation assets
 
@@ -255,9 +229,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/assets/",
@@ -280,58 +252,52 @@ Requires one of the following EVE corporation role(s): Director
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/assets/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/assets/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($page -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "page=" + $page
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($corporation_id -ne "") { 
-            $URI = $URI -replace '\$corporation_id',"$corporation_id"
-        }
+    if ($corporation_id -ne "") { 
+        $URI = $URI -replace '\$corporation_id',"$corporation_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function post-EVECorporationsCorporation_IdAssetsLocations { 
- 
 <# 
 .SYNOPSIS
 Get corporation asset locations
- 
 .DESCRIPTION
 Return locations for a set of item ids, which you can get from corporation assets endpoint. Coordinates for items in hangars or stations are set to (0,0,0)
 
@@ -344,9 +310,7 @@ Alternate route: `/v2/corporations/{corporation_id}/assets/locations/`
 ---
 Requires one of the following EVE corporation role(s): Director
 
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/assets/locations/",
@@ -366,50 +330,44 @@ Requires one of the following EVE corporation role(s): Director
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/assets/locations/
+    $Method = "post"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/assets/locations/
- 
-      $Method = "post"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Body = @{
+    }
+    $Body = @{
         'item_ids' = "$item_ids"
-        }
+    }
  
-        if ($corporation_id -ne "") { 
-            $URI = $URI -replace '\$corporation_id',"$corporation_id"
-        }
+    if ($corporation_id -ne "") { 
+        $URI = $URI -replace '\$corporation_id',"$corporation_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function post-EVECorporationsCorporation_IdAssetsNames { 
- 
 <# 
 .SYNOPSIS
 Get coporation asset names
- 
 .DESCRIPTION
 Return names for a set of item ids, which you can get from corporation assets endpoint. Only valid for items that can customize names, like containers or ships.
 
@@ -424,9 +382,7 @@ Alternate route: `/v1/corporations/{corporation_id}/assets/names/`
 ---
 Requires one of the following EVE corporation role(s): Director
 
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/assets/names/",
@@ -446,39 +402,35 @@ Requires one of the following EVE corporation role(s): Director
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/assets/names/
+    $Method = "post"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/assets/names/
- 
-      $Method = "post"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Body = @{
+    }
+    $Body = @{
         'item_ids' = "$item_ids"
-        }
+    }
  
-        if ($corporation_id -ne "") { 
-            $URI = $URI -replace '\$corporation_id',"$corporation_id"
-        }
+    if ($corporation_id -ne "") { 
+        $URI = $URI -replace '\$corporation_id',"$corporation_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }

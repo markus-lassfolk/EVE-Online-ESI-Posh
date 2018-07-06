@@ -1,9 +1,7 @@
 function get-EVECharactersCharacter_IdPlanets { 
- 
 <# 
 .SYNOPSIS
 Get colonies
- 
 .DESCRIPTION
 Returns a list of all planetary colonies owned by a character.
 
@@ -16,9 +14,7 @@ Alternate route: `/v1/characters/{character_id}/planets/`
 
 ---
 This route is cached for up to 600 seconds
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/planets/",
@@ -38,50 +34,44 @@ This route is cached for up to 600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/characters/{character_id}/planets/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/characters/{character_id}/planets/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($character_id -ne "") { 
-            $URI = $URI -replace '\$character_id',"$character_id"
-        }
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVECharactersCharacter_IdPlanetsPlanet_Id { 
- 
 <# 
 .SYNOPSIS
 Get colony layout
- 
 .DESCRIPTION
 Returns full details on the layout of a single planetary colony, including links, pins and routes. Note: Planetary information is only recalculated when the colony is viewed through the client. Information will not update until this criteria is met.
 
@@ -92,9 +82,7 @@ Alternate route: `/v3/characters/{character_id}/planets/{planet_id}/`
 
 ---
 This route is cached for up to 600 seconds
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/planets/{planet_id}/",
@@ -117,54 +105,48 @@ This route is cached for up to 600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/characters/{character_id}/planets/{planet_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/characters/{character_id}/planets/{planet_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($character_id -ne "") { 
-            $URI = $URI -replace '\$character_id',"$character_id"
-        }
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
  
-        if ($planet_id -ne "") { 
-            $URI = $URI -replace '\$planet_id',"$planet_id"
-        }
+    if ($planet_id -ne "") { 
+        $URI = $URI -replace '\$planet_id',"$planet_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVECorporationsCorporation_IdCustoms_Offices { 
- 
 <# 
 .SYNOPSIS
 List corporation customs offices
- 
 .DESCRIPTION
 List customs offices owned by a corporation
 
@@ -181,9 +163,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/customs_offices/",
@@ -206,58 +186,52 @@ Requires one of the following EVE corporation role(s): Director
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/customs_offices/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/customs_offices/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($page -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "page=" + $page
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($corporation_id -ne "") { 
-            $URI = $URI -replace '\$corporation_id',"$corporation_id"
-        }
+    if ($corporation_id -ne "") { 
+        $URI = $URI -replace '\$corporation_id',"$corporation_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseSchematicsSchematic_Id { 
- 
 <# 
 .SYNOPSIS
 Get schematic information
- 
 .DESCRIPTION
 Get information on a planetary factory schematic
 
@@ -270,9 +244,7 @@ Alternate route: `/v1/universe/schematics/{schematic_id}/`
 
 ---
 This route is cached for up to 3600 seconds
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/schematics/{schematic_id}/",
@@ -289,31 +261,27 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/schematics/{schematic_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/schematics/{schematic_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($schematic_id -ne "") { 
-            $URI = $URI -replace '\$schematic_id',"$schematic_id"
-        }
+    if ($schematic_id -ne "") { 
+        $URI = $URI -replace '\$schematic_id',"$schematic_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }

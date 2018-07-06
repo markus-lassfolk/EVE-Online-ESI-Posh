@@ -1,9 +1,7 @@
 function get-EVECharactersCharacter_IdWallet { 
- 
 <# 
 .SYNOPSIS
 Get a character's wallet balance
- 
 .DESCRIPTION
 Returns a character's wallet balance
 
@@ -16,9 +14,7 @@ Alternate route: `/v1/characters/{character_id}/wallet/`
 
 ---
 This route is cached for up to 120 seconds
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/wallet/",
@@ -38,50 +34,44 @@ This route is cached for up to 120 seconds
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/characters/{character_id}/wallet/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/characters/{character_id}/wallet/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($character_id -ne "") { 
-            $URI = $URI -replace '\$character_id',"$character_id"
-        }
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVECharactersCharacter_IdWalletJournal { 
- 
 <# 
 .SYNOPSIS
 Get character wallet journal
- 
 .DESCRIPTION
 Retrieve the given character's wallet journal going 30 days back
 
@@ -94,9 +84,7 @@ Alternate route: `/v4/characters/{character_id}/wallet/journal/`
 
 ---
 This route is cached for up to 3600 seconds
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/wallet/journal/",
@@ -119,58 +107,52 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/characters/{character_id}/wallet/journal/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/characters/{character_id}/wallet/journal/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($page -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "page=" + $page
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($character_id -ne "") { 
-            $URI = $URI -replace '\$character_id',"$character_id"
-        }
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVECharactersCharacter_IdWalletTransactions { 
- 
 <# 
 .SYNOPSIS
 Get wallet transactions
- 
 .DESCRIPTION
 Get wallet transactions of a character
 
@@ -183,9 +165,7 @@ Alternate route: `/v1/characters/{character_id}/wallet/transactions/`
 
 ---
 This route is cached for up to 3600 seconds
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/wallet/transactions/",
@@ -208,58 +188,52 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/characters/{character_id}/wallet/transactions/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/characters/{character_id}/wallet/transactions/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($from_id -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($from_id -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "from_id=" + $from_id
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "from_id=" + $from_id
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($character_id -ne "") { 
-            $URI = $URI -replace '\$character_id',"$character_id"
-        }
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVECorporationsCorporation_IdWallets { 
- 
 <# 
 .SYNOPSIS
 Returns a corporation's wallet balance
- 
 .DESCRIPTION
 Get a corporation's wallets
 
@@ -276,9 +250,7 @@ This route is cached for up to 300 seconds
 ---
 Requires one of the following EVE corporation role(s): Accountant, Junior_Accountant
 
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/wallets/",
@@ -298,50 +270,44 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/wallets/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/wallets/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($corporation_id -ne "") { 
-            $URI = $URI -replace '\$corporation_id',"$corporation_id"
-        }
+    if ($corporation_id -ne "") { 
+        $URI = $URI -replace '\$corporation_id',"$corporation_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVECorporationsCorporation_IdWalletsDivisionJournal { 
- 
 <# 
 .SYNOPSIS
 Get corporation wallet journal
- 
 .DESCRIPTION
 Retrieve the given corporation's wallet journal for the given division going 30 days back
 
@@ -358,9 +324,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Accountant, Junior_Accountant
 
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/wallets/{division}/journal/",
@@ -386,62 +350,56 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/wallets/{division}/journal/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/wallets/{division}/journal/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($page -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "page=" + $page
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($corporation_id -ne "") { 
-            $URI = $URI -replace '\$corporation_id',"$corporation_id"
-        }
+    if ($corporation_id -ne "") { 
+        $URI = $URI -replace '\$corporation_id',"$corporation_id"
+    }
  
-        if ($division -ne "") { 
-            $URI = $URI -replace '\$division',"$division"
-        }
+    if ($division -ne "") { 
+        $URI = $URI -replace '\$division',"$division"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVECorporationsCorporation_IdWalletsDivisionTransactions { 
- 
 <# 
 .SYNOPSIS
 Get corporation wallet transactions
- 
 .DESCRIPTION
 Get wallet transactions of a corporation
 
@@ -458,9 +416,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Accountant, Junior_Accountant
 
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/wallets/{division}/transactions/",
@@ -486,51 +442,47 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/wallets/{division}/transactions/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/wallets/{division}/transactions/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($from_id -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($from_id -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "from_id=" + $from_id
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "from_id=" + $from_id
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($corporation_id -ne "") { 
-            $URI = $URI -replace '\$corporation_id',"$corporation_id"
-        }
+    if ($corporation_id -ne "") { 
+        $URI = $URI -replace '\$corporation_id',"$corporation_id"
+    }
  
-        if ($division -ne "") { 
-            $URI = $URI -replace '\$division',"$division"
-        }
+    if ($division -ne "") { 
+        $URI = $URI -replace '\$division',"$division"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }

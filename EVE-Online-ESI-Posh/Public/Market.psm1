@@ -1,9 +1,7 @@
 function get-EVECharactersCharacter_IdOrders { 
- 
 <# 
 .SYNOPSIS
 List open orders from a character
- 
 .DESCRIPTION
 List open market orders placed by a character
 
@@ -14,9 +12,7 @@ Alternate route: `/v2/characters/{character_id}/orders/`
 
 ---
 This route is cached for up to 1200 seconds
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/orders/",
@@ -36,50 +32,44 @@ This route is cached for up to 1200 seconds
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/characters/{character_id}/orders/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/characters/{character_id}/orders/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($character_id -ne "") { 
-            $URI = $URI -replace '\$character_id',"$character_id"
-        }
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVECharactersCharacter_IdOrdersHistory { 
- 
 <# 
 .SYNOPSIS
 List historical orders by a character
- 
 .DESCRIPTION
 List cancelled and expired market orders placed by a character up to 90 days in the past.
 
@@ -92,9 +82,7 @@ Alternate route: `/v1/characters/{character_id}/orders/history/`
 
 ---
 This route is cached for up to 3600 seconds
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/characters/{character_id}/orders/history/",
@@ -117,58 +105,52 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/characters/{character_id}/orders/history/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/characters/{character_id}/orders/history/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($page -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "page=" + $page
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($character_id -ne "") { 
-            $URI = $URI -replace '\$character_id',"$character_id"
-        }
+    if ($character_id -ne "") { 
+        $URI = $URI -replace '\$character_id',"$character_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVECorporationsCorporation_IdOrders { 
- 
 <# 
 .SYNOPSIS
 List open orders from a corporation
- 
 .DESCRIPTION
 List open market orders placed on behalf of a corporation
 
@@ -187,9 +169,7 @@ Warning: This route has an upgrade available.
 
 ---
 [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/orders/)
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/orders/",
@@ -212,58 +192,52 @@ Warning: This route has an upgrade available.
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/orders/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/orders/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($page -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "page=" + $page
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($corporation_id -ne "") { 
-            $URI = $URI -replace '\$corporation_id',"$corporation_id"
-        }
+    if ($corporation_id -ne "") { 
+        $URI = $URI -replace '\$corporation_id',"$corporation_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVECorporationsCorporation_IdOrdersHistory { 
- 
 <# 
 .SYNOPSIS
 List historical orders from a corporation
- 
 .DESCRIPTION
 List cancelled and expired market orders placed on behalf of a corporation up to 90 days in the past.
 
@@ -284,9 +258,7 @@ Warning: This route has an upgrade available.
 
 ---
 [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/orders/history/)
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/corporations/{corporation_id}/orders/history/",
@@ -309,58 +281,52 @@ Warning: This route has an upgrade available.
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/orders/history/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/corporations/{corporation_id}/orders/history/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($page -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "page=" + $page
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($corporation_id -ne "") { 
-            $URI = $URI -replace '\$corporation_id',"$corporation_id"
-        }
+    if ($corporation_id -ne "") { 
+        $URI = $URI -replace '\$corporation_id',"$corporation_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEMarketsGroups { 
- 
 <# 
 .SYNOPSIS
 Get item groups
- 
 .DESCRIPTION
 Get a list of item groups
 
@@ -373,9 +339,7 @@ Alternate route: `/v1/markets/groups/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/markets/groups/",
@@ -389,38 +353,32 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/markets/groups/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/markets/groups/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEMarketsGroupsMarket_Group_Id { 
- 
 <# 
 .SYNOPSIS
 Get item group information
- 
 .DESCRIPTION
 Get information on an item group
 
@@ -433,9 +391,7 @@ Alternate route: `/v1/markets/groups/{market_group_id}/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/markets/groups/{market_group_id}/",
@@ -460,51 +416,45 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/markets/groups/{market_group_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/markets/groups/{market_group_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($language -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($language -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "language=" + $language
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "language=" + $language
-            }
         }
-        $Header = @{
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "language=" + $language
+        }
+    }
+    $Header = @{
         'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($market_group_id -ne "") { 
-            $URI = $URI -replace '\$market_group_id',"$market_group_id"
-        }
+    if ($market_group_id -ne "") { 
+        $URI = $URI -replace '\$market_group_id',"$market_group_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEMarketsPrices { 
- 
 <# 
 .SYNOPSIS
 List market prices
- 
 .DESCRIPTION
 Return a list of prices
 
@@ -517,9 +467,7 @@ Alternate route: `/v1/markets/prices/`
 
 ---
 This route is cached for up to 3600 seconds
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/markets/prices/",
@@ -533,38 +481,32 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/markets/prices/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/markets/prices/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEMarketsStructuresStructure_Id { 
- 
 <# 
 .SYNOPSIS
 List orders in a structure
- 
 .DESCRIPTION
 Return all orders in a structure
 
@@ -577,9 +519,7 @@ Alternate route: `/v1/markets/structures/{structure_id}/`
 
 ---
 This route is cached for up to 300 seconds
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/markets/structures/{structure_id}/",
@@ -602,58 +542,52 @@ This route is cached for up to 300 seconds
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/markets/structures/{structure_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/markets/structures/{structure_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($page -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "page=" + $page
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($structure_id -ne "") { 
-            $URI = $URI -replace '\$structure_id',"$structure_id"
-        }
+    if ($structure_id -ne "") { 
+        $URI = $URI -replace '\$structure_id',"$structure_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEMarketsRegion_IdHistory { 
- 
 <# 
 .SYNOPSIS
 List historical market statistics in a region
- 
 .DESCRIPTION
 Return a list of historical market statistics for the specified type in a region
 
@@ -666,9 +600,7 @@ Alternate route: `/v1/markets/{region_id}/history/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/markets/{region_id}/history/",
@@ -688,50 +620,44 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/markets/{region_id}/history/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/markets/{region_id}/history/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($type_id -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($type_id -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "type_id=" + $type_id
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "type_id=" + $type_id
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($region_id -ne "") { 
-            $URI = $URI -replace '\$region_id',"$region_id"
-        }
+    if ($region_id -ne "") { 
+        $URI = $URI -replace '\$region_id',"$region_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEMarketsRegion_IdOrders { 
- 
 <# 
 .SYNOPSIS
 List orders in a region
- 
 .DESCRIPTION
 Return a list of orders in a region
 
@@ -744,9 +670,7 @@ Alternate route: `/v1/markets/{region_id}/orders/`
 
 ---
 This route is cached for up to 300 seconds
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/markets/{region_id}/orders/",
@@ -773,66 +697,60 @@ This route is cached for up to 300 seconds
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/markets/{region_id}/orders/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/markets/{region_id}/orders/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($order_type -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($order_type -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "order_type=" + $order_type
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "order_type=" + $order_type
-            }
         }
-        if ($page -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "page=" + $page
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
-            }
         }
-        if ($type_id -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($type_id -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "type_id=" + $type_id
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "type_id=" + $type_id
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($region_id -ne "") { 
-            $URI = $URI -replace '\$region_id',"$region_id"
-        }
+    if ($region_id -ne "") { 
+        $URI = $URI -replace '\$region_id',"$region_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEMarketsRegion_IdTypes { 
- 
 <# 
 .SYNOPSIS
 List type IDs relevant to a market
- 
 .DESCRIPTION
 Return a list of type IDs that have active orders in the region, for efficient market indexing.
 
@@ -845,9 +763,7 @@ Alternate route: `/v1/markets/{region_id}/types/`
 
 ---
 This route is cached for up to 600 seconds
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/markets/{region_id}/types/",
@@ -867,39 +783,35 @@ This route is cached for up to 600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/markets/{region_id}/types/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/markets/{region_id}/types/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($page -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "page=" + $page
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($region_id -ne "") { 
-            $URI = $URI -replace '\$region_id',"$region_id"
-        }
+    if ($region_id -ne "") { 
+        $URI = $URI -replace '\$region_id',"$region_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }

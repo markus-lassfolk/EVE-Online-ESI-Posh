@@ -1,9 +1,7 @@
 function get-EVEUniverseAncestries { 
- 
 <# 
 .SYNOPSIS
 Get ancestries
- 
 .DESCRIPTION
 Get all character ancestries
 
@@ -16,9 +14,7 @@ Alternate route: `/v1/universe/ancestries/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/ancestries/",
@@ -40,47 +36,41 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/ancestries/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/ancestries/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($language -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($language -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "language=" + $language
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "language=" + $language
-            }
         }
-        $Header = @{
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "language=" + $language
+        }
+    }
+    $Header = @{
         'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseAsteroid_BeltsAsteroid_Belt_Id { 
- 
 <# 
 .SYNOPSIS
 Get asteroid belt information
- 
 .DESCRIPTION
 Get information on an asteroid belt
 
@@ -93,9 +83,7 @@ Alternate route: `/v1/universe/asteroid_belts/{asteroid_belt_id}/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/asteroid_belts/{asteroid_belt_id}/",
@@ -112,42 +100,36 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/asteroid_belts/{asteroid_belt_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/asteroid_belts/{asteroid_belt_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($asteroid_belt_id -ne "") { 
-            $URI = $URI -replace '\$asteroid_belt_id',"$asteroid_belt_id"
-        }
+    if ($asteroid_belt_id -ne "") { 
+        $URI = $URI -replace '\$asteroid_belt_id',"$asteroid_belt_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseBloodlines { 
- 
 <# 
 .SYNOPSIS
 Get bloodlines
- 
 .DESCRIPTION
 Get a list of bloodlines
 
@@ -160,9 +142,7 @@ Alternate route: `/v1/universe/bloodlines/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/bloodlines/",
@@ -184,47 +164,41 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/bloodlines/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/bloodlines/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($language -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($language -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "language=" + $language
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "language=" + $language
-            }
         }
-        $Header = @{
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "language=" + $language
+        }
+    }
+    $Header = @{
         'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseCategories { 
- 
 <# 
 .SYNOPSIS
 Get item categories
- 
 .DESCRIPTION
 Get a list of item categories
 
@@ -237,9 +211,7 @@ Alternate route: `/v1/universe/categories/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/categories/",
@@ -253,38 +225,32 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/categories/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/categories/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseCategoriesCategory_Id { 
- 
 <# 
 .SYNOPSIS
 Get item category information
- 
 .DESCRIPTION
 Get information of an item category
 
@@ -297,9 +263,7 @@ Alternate route: `/v1/universe/categories/{category_id}/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/categories/{category_id}/",
@@ -324,51 +288,45 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/categories/{category_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/categories/{category_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($language -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($language -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "language=" + $language
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "language=" + $language
-            }
         }
-        $Header = @{
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "language=" + $language
+        }
+    }
+    $Header = @{
         'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($category_id -ne "") { 
-            $URI = $URI -replace '\$category_id',"$category_id"
-        }
+    if ($category_id -ne "") { 
+        $URI = $URI -replace '\$category_id',"$category_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseConstellations { 
- 
 <# 
 .SYNOPSIS
 Get constellations
- 
 .DESCRIPTION
 Get a list of constellations
 
@@ -381,9 +339,7 @@ Alternate route: `/v1/universe/constellations/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/constellations/",
@@ -397,38 +353,32 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/constellations/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/constellations/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseConstellationsConstellation_Id { 
- 
 <# 
 .SYNOPSIS
 Get constellation information
- 
 .DESCRIPTION
 Get information on a constellation
 
@@ -441,9 +391,7 @@ Alternate route: `/v1/universe/constellations/{constellation_id}/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/constellations/{constellation_id}/",
@@ -468,51 +416,45 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/constellations/{constellation_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/constellations/{constellation_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($language -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($language -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "language=" + $language
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "language=" + $language
-            }
         }
-        $Header = @{
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "language=" + $language
+        }
+    }
+    $Header = @{
         'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($constellation_id -ne "") { 
-            $URI = $URI -replace '\$constellation_id',"$constellation_id"
-        }
+    if ($constellation_id -ne "") { 
+        $URI = $URI -replace '\$constellation_id',"$constellation_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseFactions { 
- 
 <# 
 .SYNOPSIS
 Get factions
- 
 .DESCRIPTION
 Get a list of factions
 
@@ -523,9 +465,7 @@ Alternate route: `/v2/universe/factions/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/factions/",
@@ -547,47 +487,41 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/factions/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/factions/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($language -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($language -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "language=" + $language
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "language=" + $language
-            }
         }
-        $Header = @{
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "language=" + $language
+        }
+    }
+    $Header = @{
         'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseGraphics { 
- 
 <# 
 .SYNOPSIS
 Get graphics
- 
 .DESCRIPTION
 Get a list of graphics
 
@@ -600,9 +534,7 @@ Alternate route: `/v1/universe/graphics/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/graphics/",
@@ -616,38 +548,32 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/graphics/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/graphics/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseGraphicsGraphic_Id { 
- 
 <# 
 .SYNOPSIS
 Get graphic information
- 
 .DESCRIPTION
 Get information on a graphic
 
@@ -660,9 +586,7 @@ Alternate route: `/v1/universe/graphics/{graphic_id}/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/graphics/{graphic_id}/",
@@ -679,42 +603,36 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/graphics/{graphic_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/graphics/{graphic_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($graphic_id -ne "") { 
-            $URI = $URI -replace '\$graphic_id',"$graphic_id"
-        }
+    if ($graphic_id -ne "") { 
+        $URI = $URI -replace '\$graphic_id',"$graphic_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseGroups { 
- 
 <# 
 .SYNOPSIS
 Get item groups
- 
 .DESCRIPTION
 Get a list of item groups
 
@@ -727,9 +645,7 @@ Alternate route: `/v1/universe/groups/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/groups/",
@@ -746,46 +662,40 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/groups/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/groups/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($page -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "page=" + $page
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseGroupsGroup_Id { 
- 
 <# 
 .SYNOPSIS
 Get item group information
- 
 .DESCRIPTION
 Get information on an item group
 
@@ -798,9 +708,7 @@ Alternate route: `/v1/universe/groups/{group_id}/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/groups/{group_id}/",
@@ -825,51 +733,45 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/groups/{group_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/groups/{group_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($language -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($language -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "language=" + $language
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "language=" + $language
-            }
         }
-        $Header = @{
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "language=" + $language
+        }
+    }
+    $Header = @{
         'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($group_id -ne "") { 
-            $URI = $URI -replace '\$group_id',"$group_id"
-        }
+    if ($group_id -ne "") { 
+        $URI = $URI -replace '\$group_id',"$group_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function post-EVEUniverseIds { 
- 
 <# 
 .SYNOPSIS
 Bulk names to IDs
- 
 .DESCRIPTION
 Resolve a set of names to IDs in the following categories: agents, alliances, characters, constellations, corporations factions, inventory_types, regions, stations, and systems. Only exact matches will be returned. All names searched for are cached for 12 hours.
 
@@ -880,9 +782,7 @@ Alternate route: `/legacy/universe/ids/`
 
 Alternate route: `/v1/universe/ids/`
 
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/ids/",
@@ -904,49 +804,43 @@ Alternate route: `/v1/universe/ids/`
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/ids/
+    $Method = "post"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/ids/
- 
-      $Method = "post"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($language -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($language -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "language=" + $language
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "language=" + $language
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'Accept-Language' = "$Accept_Language"
-        }
-        $Body = @{
+    }
+    $Body = @{
         'names' = "$names"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseMoonsMoon_Id { 
- 
 <# 
 .SYNOPSIS
 Get moon information
- 
 .DESCRIPTION
 Get information on a moon
 
@@ -959,9 +853,7 @@ Alternate route: `/v1/universe/moons/{moon_id}/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/moons/{moon_id}/",
@@ -978,42 +870,36 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/moons/{moon_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/moons/{moon_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($moon_id -ne "") { 
-            $URI = $URI -replace '\$moon_id',"$moon_id"
-        }
+    if ($moon_id -ne "") { 
+        $URI = $URI -replace '\$moon_id',"$moon_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function post-EVEUniverseNames { 
- 
 <# 
 .SYNOPSIS
 Get names and categories for a set of ID's
- 
 .DESCRIPTION
 Resolve a set of IDs to names and categories. Supported ID's for resolving are: Characters, Corporations, Alliances, Stations, Solar Systems, Constellations, Regions, Types.
 
@@ -1022,9 +908,7 @@ Alternate route: `/dev/universe/names/`
 
 Alternate route: `/v2/universe/names/`
 
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/names/",
@@ -1038,38 +922,32 @@ Alternate route: `/v2/universe/names/`
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/names/
+    $Method = "post"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/names/
- 
-      $Method = "post"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Body = @{
+    }
+    $Body = @{
         'ids' = "$ids"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniversePlanetsPlanet_Id { 
- 
 <# 
 .SYNOPSIS
 Get planet information
- 
 .DESCRIPTION
 Get information on a planet
 
@@ -1082,9 +960,7 @@ Alternate route: `/v1/universe/planets/{planet_id}/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/planets/{planet_id}/",
@@ -1101,42 +977,36 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/planets/{planet_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/planets/{planet_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($planet_id -ne "") { 
-            $URI = $URI -replace '\$planet_id',"$planet_id"
-        }
+    if ($planet_id -ne "") { 
+        $URI = $URI -replace '\$planet_id',"$planet_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseRaces { 
- 
 <# 
 .SYNOPSIS
 Get character races
- 
 .DESCRIPTION
 Get a list of character races
 
@@ -1149,9 +1019,7 @@ Alternate route: `/v1/universe/races/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/races/",
@@ -1173,47 +1041,41 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/races/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/races/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($language -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($language -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "language=" + $language
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "language=" + $language
-            }
         }
-        $Header = @{
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "language=" + $language
+        }
+    }
+    $Header = @{
         'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseRegions { 
- 
 <# 
 .SYNOPSIS
 Get regions
- 
 .DESCRIPTION
 Get a list of regions
 
@@ -1226,9 +1088,7 @@ Alternate route: `/v1/universe/regions/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/regions/",
@@ -1242,38 +1102,32 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/regions/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/regions/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseRegionsRegion_Id { 
- 
 <# 
 .SYNOPSIS
 Get region information
- 
 .DESCRIPTION
 Get information on a region
 
@@ -1286,9 +1140,7 @@ Alternate route: `/v1/universe/regions/{region_id}/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/regions/{region_id}/",
@@ -1313,51 +1165,45 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/regions/{region_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/regions/{region_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($language -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($language -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "language=" + $language
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "language=" + $language
-            }
         }
-        $Header = @{
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "language=" + $language
+        }
+    }
+    $Header = @{
         'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($region_id -ne "") { 
-            $URI = $URI -replace '\$region_id',"$region_id"
-        }
+    if ($region_id -ne "") { 
+        $URI = $URI -replace '\$region_id',"$region_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseStargatesStargate_Id { 
- 
 <# 
 .SYNOPSIS
 Get stargate information
- 
 .DESCRIPTION
 Get information on a stargate
 
@@ -1370,9 +1216,7 @@ Alternate route: `/v1/universe/stargates/{stargate_id}/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/stargates/{stargate_id}/",
@@ -1389,42 +1233,36 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/stargates/{stargate_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/stargates/{stargate_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($stargate_id -ne "") { 
-            $URI = $URI -replace '\$stargate_id',"$stargate_id"
-        }
+    if ($stargate_id -ne "") { 
+        $URI = $URI -replace '\$stargate_id',"$stargate_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseStarsStar_Id { 
- 
 <# 
 .SYNOPSIS
 Get star information
- 
 .DESCRIPTION
 Get information on a star
 
@@ -1437,9 +1275,7 @@ Alternate route: `/v1/universe/stars/{star_id}/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/stars/{star_id}/",
@@ -1456,42 +1292,36 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/stars/{star_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/stars/{star_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($star_id -ne "") { 
-            $URI = $URI -replace '\$star_id',"$star_id"
-        }
+    if ($star_id -ne "") { 
+        $URI = $URI -replace '\$star_id',"$star_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseStationsStation_Id { 
- 
 <# 
 .SYNOPSIS
 Get station information
- 
 .DESCRIPTION
 Get information on a station
 
@@ -1502,9 +1332,7 @@ Alternate route: `/v2/universe/stations/{station_id}/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/stations/{station_id}/",
@@ -1521,42 +1349,36 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/stations/{station_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/stations/{station_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($station_id -ne "") { 
-            $URI = $URI -replace '\$station_id',"$station_id"
-        }
+    if ($station_id -ne "") { 
+        $URI = $URI -replace '\$station_id',"$station_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseStructures { 
- 
 <# 
 .SYNOPSIS
 List all public structures
- 
 .DESCRIPTION
 List all public structures
 
@@ -1569,9 +1391,7 @@ Alternate route: `/v1/universe/structures/`
 
 ---
 This route is cached for up to 3600 seconds
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/structures/",
@@ -1585,38 +1405,32 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/structures/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/structures/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseStructuresStructure_Id { 
- 
 <# 
 .SYNOPSIS
 Get structure information
- 
 .DESCRIPTION
 Returns information on requested structure, if you are on the ACL. Otherwise, returns "Forbidden" for all inputs.
 
@@ -1633,9 +1447,7 @@ Warning: This route has an upgrade available.
 
 ---
 [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/universe/structures/{structure_id}/)
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/structures/{structure_id}/",
@@ -1655,50 +1467,44 @@ Warning: This route has an upgrade available.
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/structures/{structure_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/structures/{structure_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($token -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($token -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "token=" + $token
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($structure_id -ne "") { 
-            $URI = $URI -replace '\$structure_id',"$structure_id"
-        }
+    if ($structure_id -ne "") { 
+        $URI = $URI -replace '\$structure_id',"$structure_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseSystems { 
- 
 <# 
 .SYNOPSIS
 Get solar systems
- 
 .DESCRIPTION
 Get a list of solar systems
 
@@ -1711,9 +1517,7 @@ Alternate route: `/v1/universe/systems/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/systems/",
@@ -1727,38 +1531,32 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/systems/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/systems/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseSystemsSystem_Id { 
- 
 <# 
 .SYNOPSIS
 Get solar system information
- 
 .DESCRIPTION
 Get information on a solar system. NOTE: This route does not work with abyssal systems.
 
@@ -1773,9 +1571,7 @@ Warning: This route has an upgrade available.
 
 ---
 [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/universe/systems/{system_id}/)
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/systems/{system_id}/",
@@ -1800,51 +1596,45 @@ Warning: This route has an upgrade available.
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/systems/{system_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/systems/{system_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($language -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($language -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "language=" + $language
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "language=" + $language
-            }
         }
-        $Header = @{
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "language=" + $language
+        }
+    }
+    $Header = @{
         'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($system_id -ne "") { 
-            $URI = $URI -replace '\$system_id',"$system_id"
-        }
+    if ($system_id -ne "") { 
+        $URI = $URI -replace '\$system_id',"$system_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseSystem_Jumps { 
- 
 <# 
 .SYNOPSIS
 Get system jumps
- 
 .DESCRIPTION
 Get the number of jumps in solar systems within the last hour ending at the timestamp of the Last-Modified header, excluding wormhole space. Only systems with jumps will be listed
 
@@ -1857,9 +1647,7 @@ Alternate route: `/v1/universe/system_jumps/`
 
 ---
 This route is cached for up to 3600 seconds
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/system_jumps/",
@@ -1873,38 +1661,32 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/system_jumps/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/system_jumps/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseSystem_Kills { 
- 
 <# 
 .SYNOPSIS
 Get system kills
- 
 .DESCRIPTION
 Get the number of ship, pod and NPC kills per solar system within the last hour ending at the timestamp of the Last-Modified header, excluding wormhole space. Only systems with kills will be listed
 
@@ -1915,9 +1697,7 @@ Alternate route: `/v2/universe/system_kills/`
 
 ---
 This route is cached for up to 3600 seconds
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/system_kills/",
@@ -1931,38 +1711,32 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/system_kills/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/system_kills/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseTypes { 
- 
 <# 
 .SYNOPSIS
 Get types
- 
 .DESCRIPTION
 Get a list of type ids
 
@@ -1975,9 +1749,7 @@ Alternate route: `/v1/universe/types/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/types/",
@@ -1994,46 +1766,40 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/types/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/types/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($page -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($page -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "page=" + $page
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
-            }
         }
-        $Header = @{
+    }
+    $Header = @{
         'If-None-Match' = "$If_None_Match"
-        }
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
  
  
 function get-EVEUniverseTypesType_Id { 
- 
 <# 
 .SYNOPSIS
 Get type information
- 
 .DESCRIPTION
 Get information on a type
 
@@ -2044,9 +1810,7 @@ Alternate route: `/v3/universe/types/{type_id}/`
 
 ---
 This route expires daily at 11:05
- 
 #>
- 
     Param( 
             [string]
             $URI = "https://esi.tech.ccp.is/latest/universe/types/{type_id}/",
@@ -2071,40 +1835,36 @@ This route expires daily at 11:05
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]
             [ValidateSet("PS","json")]
             $OutputType = "PS"
- 
     ) #End of Param
+    #  Example URI
+    #  https://esi.tech.ccp.is/latest/universe/types/{type_id}/
+    $Method = "get"
+    $URI = $URI -replace "{","$" -replace "}",""
  
-#  Example URI
-#  https://esi.tech.ccp.is/latest/universe/types/{type_id}/
- 
-      $Method = "get"
-      $URI = $URI -replace "{","$" -replace "}",""
- 
- 
-        if ($datasource -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "datasource=" + $datasource
-            }
-            elseif ($URI.Contains('?') -eq $True) {
+        }
+        elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
-            }
         }
-        if ($language -ne "") { 
-            if ($URI.Contains('?') -eq $false) {  
+    }
+    if ($language -ne "") { 
+        if ($URI.Contains('?') -eq $false) {  
             $URI = $URI + "?" + "language=" + $language
-            }
-            elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "language=" + $language
-            }
         }
-        $Header = @{
+        elseif ($URI.Contains('?') -eq $True) {
+            $URI = $URI + "&" + "language=" + $language
+        }
+    }
+    $Header = @{
         'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
-        }
+    }
  
-        if ($type_id -ne "") { 
-            $URI = $URI -replace '\$type_id',"$type_id"
-        }
+    if ($type_id -ne "") { 
+        $URI = $URI -replace '\$type_id',"$type_id"
+    }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
