@@ -50,16 +50,14 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
 
         # Build Function
         Add-Content $NewESIFunctionFile "function $($NewFunction.FunctionName) { "
-        Add-Content $NewESIFunctionFile " "
-        Add-Content $NewESIFunctionFile "<# "
-        Add-Content $NewESIFunctionFile ".SYNOPSIS"
-        Add-Content $NewESIFunctionFile $NewFunction.ESISummary
-        Add-Content $NewESIFunctionFile " "
-        Add-Content $NewESIFunctionFile ".DESCRIPTION"
-        Add-Content $NewESIFunctionFile $NewFunction.ESIDescription
-        Add-Content $NewESIFunctionFile " "
-        Add-Content $NewESIFunctionFile "#>"
-        Add-Content $NewESIFunctionFile " "
+        Add-Content $NewESIFunctionFile "    <# "
+        Add-Content $NewESIFunctionFile "    .SYNOPSIS"
+        Add-Content $NewESIFunctionFile "    " + $NewFunction.ESISummary
+        Add-Content $NewESIFunctionFile "     "
+        Add-Content $NewESIFunctionFile "    .DESCRIPTION"
+        Add-Content $NewESIFunctionFile "    " + $NewFunction.ESIDescription
+        Add-Content $NewESIFunctionFile "     "
+        Add-Content $NewESIFunctionFile "    #>"
 
         # Build ParamBlock 
         Add-Content $NewESIFunctionFile "    Param( "
@@ -127,21 +125,19 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
         Add-Content $NewESIFunctionFile '            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result")]'
         Add-Content $NewESIFunctionFile '            [ValidateSet("PS","json")]'
         Add-Content $NewESIFunctionFile '            $OutputType = "PS"'
-        Add-Content $NewESIFunctionFile " "
         Add-Content $NewESIFunctionFile "    ) #End of Param"
-        Add-Content $NewESIFunctionFile " "
-        Add-Content $NewESIFunctionFile "#  Example URI"
-        Add-Content $NewESIFunctionFile "#  https://esi.tech.ccp.is/latest$($NewFunction.ESIPath)"
-        Add-Content $NewESIFunctionFile " "
+        Add-Content $NewESIFunctionFile "    "
+        Add-Content $NewESIFunctionFile "    #  Example URI"
+        Add-Content $NewESIFunctionFile "    #  https://esi.tech.ccp.is/latest$($NewFunction.ESIPath)"
+        Add-Content $NewESIFunctionFile "    "
 
-        $Newstring = '      $Method = "' + $NewFunction.ESIMethod + '"'
+        $Newstring = '    $Method = "' + $NewFunction.ESIMethod + '"'
         Add-Content $NewESIFunctionFile $newstring
 
         #$TempURI = "$URI" -replace "{","$" -replace "}",""
-        #$newstring = '      $URI' + ' = "' + $TempURI +'"'
-        $Newstring = '      $URI = $URI -replace "{","$" -replace "}",""'
+        #$newstring = '    $URI' + ' = "' + $TempURI +'"'
+        $Newstring = '    $URI = $URI -replace "{","$" -replace "}",""'
         Add-Content $NewESIFunctionFile $newstring
-        Add-Content $NewESIFunctionFile " "
         Add-Content $NewESIFunctionFile " "
 
         # Add Query Parameters 
@@ -150,43 +146,43 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
 
         foreach ($RequiredParameter in $NewFunction.ESIParameters | where { $_.in -eq "query" }) {
 
-            $newstring = "        if ($"+$($RequiredParameter.name).Trim() + ' -ne "") { '
+            $newstring = "    if ($"+$($RequiredParameter.name).Trim() + ' -ne "") { '
             Add-Content $NewESIFunctionFile $newstring
                 
-            $newstring = "            if ($"+"URI.Contains('?') -eq $"+"false) {  "
+            $newstring = "        if ($"+"URI.Contains('?') -eq $"+"false) {  "
             Add-Content $NewESIFunctionFile $newstring
 
             $newstring = '            $URI = $URI + "?" + "' + $($RequiredParameter.name).Trim() + '=" + $' + $($RequiredParameter.name).Trim() 
             Add-Content $NewESIFunctionFile $newstring
-            Add-Content $NewESIFunctionFile '            }' 
+            Add-Content $NewESIFunctionFile '        }' 
 
-            $newstring = '            elseif ($'+"URI.Contains('?') -eq $"+"True) {"  
+            $newstring = '        elseif ($'+"URI.Contains('?') -eq $"+"True) {"  
             Add-Content $NewESIFunctionFile $newstring
     
             $newstring = '            $URI = $URI + "&" + "' + $($RequiredParameter.name).Trim() + '=" + $' + $($RequiredParameter.name).Trim() 
             Add-Content $NewESIFunctionFile $newstring
-            Add-Content $NewESIFunctionFile "            }"
             Add-Content $NewESIFunctionFile "        }"
+            Add-Content $NewESIFunctionFile "    }"
         }
 
         # Build Headers
         if (($NewFunction.ESIParameters | where { $_.in -eq "header" } | Measure-Object).Count -gt 0) { 
 
-            $Newstring = '        $Header = @{'
+            $Newstring = '    $Header = @{'
             Add-Content $NewESIFunctionFile $newstring
 
             foreach ($RequiredParameter in $NewFunction.ESIParameters | where { $_.in -eq "header" }) {
                 $Newstring = '        '+"'"+$RequiredParameter.name +"'"+ ' = "$' + ($RequiredParameter.name -replace "-","_") +'"'
                 Add-Content $NewESIFunctionFile $newstring
             }
-            $Newstring = '        }'
+            $Newstring = '    }'
             Add-Content $NewESIFunctionFile $newstring
         }
 
         # Build Body
         if (($NewFunction.ESIParameters | where { $_.in -eq "body" } | Measure-Object).Count -gt 0) { 
 
-            $Newstring = '        $Body = @{'
+            $Newstring = '    $Body = @{'
             Add-Content $NewESIFunctionFile $newstring
 
             foreach ($RequiredParameter in $NewFunction.ESIParameters | where { $_.in -eq "body" }) {
@@ -194,7 +190,7 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
                 $Newstring = '        '+"'"+$RequiredParameter.name +"'"+ ' = "$' + ($RequiredParameter.name -replace "-","_") +'"'
                 Add-Content $NewESIFunctionFile $newstring
             }
-            $Newstring = '        }'
+            $Newstring = '    }'
             Add-Content $NewESIFunctionFile $newstring
         }
 
@@ -202,12 +198,12 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
         foreach ($RequiredParameter in $NewFunction.ESIParameters | where { $_.in -eq "path" }) {
             $Newstring = ' '
             Add-Content $NewESIFunctionFile $newstring
-            $newstring = "        if ($"+$($RequiredParameter.name).Trim() + ' -ne "") { '
+            $newstring = "    if ($"+$($RequiredParameter.name).Trim() + ' -ne "") { '
             Add-Content $NewESIFunctionFile $newstring
                 
-                $newstring = '            $URI = $URI -replace ''\$'+$($RequiredParameter.name).Trim() +"',"+'"$'+$($RequiredParameter.name).Trim()+'"'
+                $newstring = '        $URI = $URI -replace ''\$'+$($RequiredParameter.name).Trim() +"',"+'"$'+$($RequiredParameter.name).Trim()+'"'
                 Add-Content $NewESIFunctionFile $newstring
-                $Newstring = '        }'
+                $Newstring = '    }'
                 Add-Content $NewESIFunctionFile $newstring
         }
 

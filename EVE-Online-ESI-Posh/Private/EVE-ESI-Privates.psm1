@@ -110,6 +110,10 @@ function invoke-EVEWebRequest {
     if ($body.item_ids -notlike "") { 
         $newbody = "[" + $($body.item_ids -join ",") + "]"
     }
+    if (($body.ids | Measure-Object).count -gt 0 ) { 
+        $newbody = $Null
+        $body = "[" + $($body.ids -join ",") + "]"
+    }
     else { 
         #$body 
     }
