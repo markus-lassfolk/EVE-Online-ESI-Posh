@@ -3,43 +3,43 @@
 function test-EVE-ESI-Result ($result) {
     $VerbosePreference = $global:VerbosePreference
 
-    if ($result.Headers.'X-Esi-Error-Limit-Remain' -lt 10) { 
-        Write-Verbose "Error Limit reached, throttling" 
+    if ($result.Headers.'X-Esi-Error-Limit-Remain' -lt 10) {
+        Write-Verbose "Error Limit reached, throttling"
         start-sleep -Seconds $([int]$($result.Headers.'X-Esi-Error-Limit-Reset') + 2) -Verbose
     }
 
 
     # Is Result Valid
     if ($result.StatusCode -ne 200) {
-        Write-Verbose "ErrorCode: $($result.Statuscode)  ErrorMsg: $($result.StatusDescription)" ; 
-        Write-Verbose "ErrorCode: $($result.Statuscode)  ErrorMsg: $($result.StatusDescription)" ; 
+        Write-Verbose "ErrorCode: $($result.Statuscode)  ErrorMsg: $($result.StatusDescription)" ;
+        Write-Verbose "ErrorCode: $($result.Statuscode)  ErrorMsg: $($result.StatusDescription)" ;
         return $false
         break
     }
     if ($result.StatusCode -eq 200) {
         $VerifyResult = $true
         Write-Verbose "ErrorCode: $($result.Statuscode)  ErrorMsg: $($result.StatusDescription)" ;
-        Write-Verbose "VerifyResult: $VerifyResult" 
+        Write-Verbose "VerifyResult: $VerifyResult"
     }
 
-    # Is Result Data stale and should be refreshed? 
+    # Is Result Data stale and should be refreshed?
     if ($result.Headers.Expires -ne $null) {
-        if ($(get-date $result.Headers.Expires).ToUniversalTime() -gt $(get-date).ToUniversalTime()) { 
+        if ($(get-date $result.Headers.Expires).ToUniversalTime() -gt $(get-date).ToUniversalTime()) {
             $VerifyResult = $true
-            Write-Verbose "Expire Value: $($result.Headers.Expires)" ; 
+            Write-Verbose "Expire Value: $($result.Headers.Expires)" ;
             Write-Verbose "Data Cached - No need to get new data"
-            Write-Verbose "VerifyResult: $VerifyResult" 
+            Write-Verbose "VerifyResult: $VerifyResult"
         }
-        else { 
+        else {
             $VerifyResult = $false
-            Write-Verbose "Expire Value: $($result.Headers.Expires)" ; 
+            Write-Verbose "Expire Value: $($result.Headers.Expires)" ;
             Write-Verbose "Cache Expired - Get new Data"
             Write-Verbose "VerifyResult: $VerifyResult"
         }
     }
-    else { 
+    else {
         $VerifyResult = $true
-        Write-Verbose "Expire Value: No Expire value" ; 
+        Write-Verbose "Expire Value: No Expire value" ;
         Write-Verbose "VerifyResult: $VerifyResult"
     }
 
@@ -52,8 +52,8 @@ function out-EVE-ESI ($result, $OutputType) {
 
     Write-Verbose  "OutPut Format: $OutputType"
     Write-Verbose  "$result"
-    if ($OutputType -eq "json") { $newformat = $result } 
-    if ($OutputType -eq "PS") { $newformat = $result.content | ConvertFrom-Json  } 
+    if ($OutputType -eq "json") { $newformat = $result }
+    if ($OutputType -eq "PS") { $newformat = $result.content | ConvertFrom-Json  }
 
     return $newformat
 }
@@ -64,16 +64,16 @@ function set-verbose {
         [ValidateSet("continue", "SilentlyContinue")]
         [String]
         $verbose
-    ) 
+    )
 
-    $VerbosePreference = $verbose 
+    $VerbosePreference = $verbose
     Write-Host "Verbose set to: $global:VerbosePreference" -ForegroundColor Green
     Write-Verbose "Verbose Enabled"
 }
 
 
 function get-EveEsiStatus {
-    Param( 
+    Param(
         [string]
         $URI = 'https://esi.evetech.net/status.json?',
         [Parameter(Mandatory = $false, HelpMessage = "The version of metrics to request. Note that alternate versions are grouped together.")]
@@ -84,9 +84,9 @@ function get-EveEsiStatus {
         [ValidateSet("PS", "json","PSfull")]
         $OutputType = "PS"
     ) #End of Param
-    
+
     $URI = $URI + "version=$($version)"
-    invoke-EVEWebRequest -Uri $URI -Method Get -OutputType $OutputType   
+    invoke-EVEWebRequest -Uri $URI -Method Get -OutputType $OutputType
 }
 
 
@@ -133,7 +133,7 @@ function invoke-EVEWebRequest {
             Start-Sleep -Seconds $([int]$_.Exception.Response.Headers["X-Esi-Error-Limit-Reset"] + 2) -Verbose
         }
 
-        if (($_.ErrorDetails.Message | ConvertFrom-Json).error -eq "expired" -and ($_.ErrorDetails.Message | ConvertFrom-Json).sso_status -eq "400") { 
+        if (($_.ErrorDetails.Message | ConvertFrom-Json).error -eq "expired" -and ($_.ErrorDetails.Message | ConvertFrom-Json).sso_status -eq "400") {
             Write-Host "$($_.ErrorDetails.Message | ConvertFrom-Json)" -ForegroundColor Yellow
             Write-Host "Exception Message: $($_.Exception.Message)" -ForegroundColor Yellow
             Write-Host "URL Requested: $($_.Exception.Response.ResponseUri.AbsoluteUri)" -ForegroundColor Yellow
