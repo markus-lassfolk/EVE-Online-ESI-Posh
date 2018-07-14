@@ -1,5 +1,5 @@
-function get-EVEdogma_attributes { 
-<# 
+function get-EVEdogma_attributes {
+<#
 .SYNOPSIS
 Get attributes
 .DESCRIPTION
@@ -9,7 +9,7 @@ Get a list of dogma attribute ids
 
 This route expires daily at 11:05
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/dogma/attributes/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -27,9 +27,9 @@ This route expires daily at 11:05
     #  https://esi.tech.ccp.is/v1/dogma/attributes/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -42,10 +42,10 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEdogma_attributes_attribute_id { 
-<# 
+
+
+function get-EVEdogma_attributes_attribute_id {
+<#
 .SYNOPSIS
 Get attribute information
 .DESCRIPTION
@@ -55,7 +55,7 @@ Get information on a dogma attribute
 
 This route expires daily at 11:05
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/dogma/attributes/{attribute_id}/",
             [Parameter(Mandatory=$true, HelpMessage="A dogma attribute ID")]
@@ -76,9 +76,9 @@ This route expires daily at 11:05
     #  https://esi.tech.ccp.is/v1/dogma/attributes/{attribute_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -88,17 +88,17 @@ This route expires daily at 11:05
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($attribute_id -ne "") { 
+
+    if ($attribute_id -ne "") {
         $URI = $URI -replace '\$attribute_id',"$attribute_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEdogma_dynamic_items_type_id_item_id { 
-<# 
+
+
+function get-EVEdogma_dynamic_items_type_id_item_id {
+<#
 .SYNOPSIS
 Get dynamic item information
 .DESCRIPTION
@@ -108,7 +108,7 @@ Returns info about a dynamic item resulting from mutation with a mutaplasmid.
 
 This route expires daily at 11:05
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/dogma/dynamic/items/{type_id}/{item_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -132,9 +132,9 @@ This route expires daily at 11:05
     #  https://esi.tech.ccp.is/v1/dogma/dynamic/items/{type_id}/{item_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -144,21 +144,21 @@ This route expires daily at 11:05
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($item_id -ne "") { 
+
+    if ($item_id -ne "") {
         $URI = $URI -replace '\$item_id',"$item_id"
     }
- 
-    if ($type_id -ne "") { 
+
+    if ($type_id -ne "") {
         $URI = $URI -replace '\$type_id',"$type_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEdogma_effects { 
-<# 
+
+
+function get-EVEdogma_effects {
+<#
 .SYNOPSIS
 Get effects
 .DESCRIPTION
@@ -168,7 +168,7 @@ Get a list of dogma effect ids
 
 This route expires daily at 11:05
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/dogma/effects/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -186,9 +186,9 @@ This route expires daily at 11:05
     #  https://esi.tech.ccp.is/v1/dogma/effects/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -201,10 +201,10 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEdogma_effects_effect_id { 
-<# 
+
+
+function get-EVEdogma_effects_effect_id {
+<#
 .SYNOPSIS
 Get effect information
 .DESCRIPTION
@@ -214,7 +214,7 @@ Get information on a dogma effect
 
 This route expires daily at 11:05
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v2/dogma/effects/{effect_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -235,9 +235,9 @@ This route expires daily at 11:05
     #  https://esi.tech.ccp.is/v2/dogma/effects/{effect_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -247,12 +247,12 @@ This route expires daily at 11:05
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($effect_id -ne "") { 
+
+    if ($effect_id -ne "") {
         $URI = $URI -replace '\$effect_id',"$effect_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
+
+

@@ -1,5 +1,5 @@
-function delete-EVEfleets_fleet_id_members_member_id { 
-<# 
+function delete-EVEfleets_fleet_id_members_member_id {
+<#
 .SYNOPSIS
 Kick fleet member
 .DESCRIPTION
@@ -8,7 +8,7 @@ Kick a fleet member
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/members/{member_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -32,38 +32,38 @@ Kick a fleet member
     #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/members/{member_id}/
     $Method = "delete"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
         }
     }
- 
-    if ($fleet_id -ne "") { 
+
+    if ($fleet_id -ne "") {
         $URI = $URI -replace '\$fleet_id',"$fleet_id"
     }
- 
-    if ($member_id -ne "") { 
+
+    if ($member_id -ne "") {
         $URI = $URI -replace '\$member_id',"$member_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function delete-EVEfleets_fleet_id_squads_squad_id { 
-<# 
+
+
+function delete-EVEfleets_fleet_id_squads_squad_id {
+<#
 .SYNOPSIS
 Delete fleet squad
 .DESCRIPTION
@@ -72,7 +72,7 @@ Delete a fleet squad, only empty squads can be deleted
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/squads/{squad_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -96,38 +96,38 @@ Delete a fleet squad, only empty squads can be deleted
     #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/squads/{squad_id}/
     $Method = "delete"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
         }
     }
- 
-    if ($fleet_id -ne "") { 
+
+    if ($fleet_id -ne "") {
         $URI = $URI -replace '\$fleet_id',"$fleet_id"
     }
- 
-    if ($squad_id -ne "") { 
+
+    if ($squad_id -ne "") {
         $URI = $URI -replace '\$squad_id',"$squad_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function delete-EVEfleets_fleet_id_wings_wing_id { 
-<# 
+
+
+function delete-EVEfleets_fleet_id_wings_wing_id {
+<#
 .SYNOPSIS
 Delete fleet wing
 .DESCRIPTION
@@ -136,7 +136,7 @@ Delete a fleet wing, only empty wings can be deleted. The wing may contain squad
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/{wing_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -160,38 +160,38 @@ Delete a fleet wing, only empty wings can be deleted. The wing may contain squad
     #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/{wing_id}/
     $Method = "delete"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
         }
     }
- 
-    if ($fleet_id -ne "") { 
+
+    if ($fleet_id -ne "") {
         $URI = $URI -replace '\$fleet_id',"$fleet_id"
     }
- 
-    if ($wing_id -ne "") { 
+
+    if ($wing_id -ne "") {
         $URI = $URI -replace '\$wing_id',"$wing_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcharacters_character_id_fleet { 
-<# 
+
+
+function get-EVEcharacters_character_id_fleet {
+<#
 .SYNOPSIS
 Get character fleet info
 .DESCRIPTION
@@ -201,7 +201,7 @@ Return the fleet ID the character is in, if any.
 
 This route is cached for up to 60 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/fleet/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -225,17 +225,17 @@ This route is cached for up to 60 seconds
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/fleet/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -245,17 +245,17 @@ This route is cached for up to 60 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEfleets_fleet_id { 
-<# 
+
+
+function get-EVEfleets_fleet_id {
+<#
 .SYNOPSIS
 Get fleet information
 .DESCRIPTION
@@ -265,7 +265,7 @@ Return details about a fleet
 
 This route is cached for up to 5 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -289,17 +289,17 @@ This route is cached for up to 5 seconds
     #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -309,17 +309,17 @@ This route is cached for up to 5 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($fleet_id -ne "") { 
+
+    if ($fleet_id -ne "") {
         $URI = $URI -replace '\$fleet_id',"$fleet_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEfleets_fleet_id_members { 
-<# 
+
+
+function get-EVEfleets_fleet_id_members {
+<#
 .SYNOPSIS
 Get fleet members
 .DESCRIPTION
@@ -329,7 +329,7 @@ Return information about fleet members
 
 This route is cached for up to 5 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/members/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
@@ -361,25 +361,25 @@ This route is cached for up to 5 seconds
     #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/members/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($language -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($language -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "language=" + $language
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "language=" + $language
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -390,17 +390,17 @@ This route is cached for up to 5 seconds
         'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($fleet_id -ne "") { 
+
+    if ($fleet_id -ne "") {
         $URI = $URI -replace '\$fleet_id',"$fleet_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEfleets_fleet_id_wings { 
-<# 
+
+
+function get-EVEfleets_fleet_id_wings {
+<#
 .SYNOPSIS
 Get fleet wings
 .DESCRIPTION
@@ -410,7 +410,7 @@ Return information about wings in a fleet
 
 This route is cached for up to 5 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
@@ -442,25 +442,25 @@ This route is cached for up to 5 seconds
     #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($language -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($language -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "language=" + $language
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "language=" + $language
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -471,17 +471,17 @@ This route is cached for up to 5 seconds
         'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($fleet_id -ne "") { 
+
+    if ($fleet_id -ne "") {
         $URI = $URI -replace '\$fleet_id',"$fleet_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function post-EVEfleets_fleet_id_members { 
-<# 
+
+
+function post-EVEfleets_fleet_id_members {
+<#
 .SYNOPSIS
 Create fleet invitation
 .DESCRIPTION
@@ -490,7 +490,7 @@ Invite a character into the fleet. If a character has a CSPA charge set it is no
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/members/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -514,17 +514,17 @@ Invite a character into the fleet. If a character has a CSPA charge set it is no
     #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/members/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -534,17 +534,17 @@ Invite a character into the fleet. If a character has a CSPA charge set it is no
     $Body = @{
         'invitation' = "$invitation"
     }
- 
-    if ($fleet_id -ne "") { 
+
+    if ($fleet_id -ne "") {
         $URI = $URI -replace '\$fleet_id',"$fleet_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function post-EVEfleets_fleet_id_wings { 
-<# 
+
+
+function post-EVEfleets_fleet_id_wings {
+<#
 .SYNOPSIS
 Create fleet wing
 .DESCRIPTION
@@ -553,7 +553,7 @@ Create a new wing in a fleet
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -574,34 +574,34 @@ Create a new wing in a fleet
     #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
         }
     }
- 
-    if ($fleet_id -ne "") { 
+
+    if ($fleet_id -ne "") {
         $URI = $URI -replace '\$fleet_id',"$fleet_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function post-EVEfleets_fleet_id_wings_wing_id_squads { 
-<# 
+
+
+function post-EVEfleets_fleet_id_wings_wing_id_squads {
+<#
 .SYNOPSIS
 Create fleet squad
 .DESCRIPTION
@@ -610,7 +610,7 @@ Create a new squad in a fleet
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/{wing_id}/squads/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -634,38 +634,38 @@ Create a new squad in a fleet
     #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/{wing_id}/squads/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
         }
     }
- 
-    if ($fleet_id -ne "") { 
+
+    if ($fleet_id -ne "") {
         $URI = $URI -replace '\$fleet_id',"$fleet_id"
     }
- 
-    if ($wing_id -ne "") { 
+
+    if ($wing_id -ne "") {
         $URI = $URI -replace '\$wing_id',"$wing_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function put-EVEfleets_fleet_id { 
-<# 
+
+
+function put-EVEfleets_fleet_id {
+<#
 .SYNOPSIS
 Update fleet
 .DESCRIPTION
@@ -674,7 +674,7 @@ Update settings about a fleet
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -698,17 +698,17 @@ Update settings about a fleet
     #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/
     $Method = "put"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -718,17 +718,17 @@ Update settings about a fleet
     $Body = @{
         'new_settings' = "$new_settings"
     }
- 
-    if ($fleet_id -ne "") { 
+
+    if ($fleet_id -ne "") {
         $URI = $URI -replace '\$fleet_id',"$fleet_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function put-EVEfleets_fleet_id_members_member_id { 
-<# 
+
+
+function put-EVEfleets_fleet_id_members_member_id {
+<#
 .SYNOPSIS
 Move fleet member
 .DESCRIPTION
@@ -737,7 +737,7 @@ Move a fleet member around
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/members/{member_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -764,17 +764,17 @@ Move a fleet member around
     #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/members/{member_id}/
     $Method = "put"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -784,21 +784,21 @@ Move a fleet member around
     $Body = @{
         'movement' = "$movement"
     }
- 
-    if ($fleet_id -ne "") { 
+
+    if ($fleet_id -ne "") {
         $URI = $URI -replace '\$fleet_id',"$fleet_id"
     }
- 
-    if ($member_id -ne "") { 
+
+    if ($member_id -ne "") {
         $URI = $URI -replace '\$member_id',"$member_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function put-EVEfleets_fleet_id_squads_squad_id { 
-<# 
+
+
+function put-EVEfleets_fleet_id_squads_squad_id {
+<#
 .SYNOPSIS
 Rename fleet squad
 .DESCRIPTION
@@ -807,7 +807,7 @@ Rename a fleet squad
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/squads/{squad_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -834,17 +834,17 @@ Rename a fleet squad
     #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/squads/{squad_id}/
     $Method = "put"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -854,21 +854,21 @@ Rename a fleet squad
     $Body = @{
         'naming' = "$naming"
     }
- 
-    if ($fleet_id -ne "") { 
+
+    if ($fleet_id -ne "") {
         $URI = $URI -replace '\$fleet_id',"$fleet_id"
     }
- 
-    if ($squad_id -ne "") { 
+
+    if ($squad_id -ne "") {
         $URI = $URI -replace '\$squad_id',"$squad_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function put-EVEfleets_fleet_id_wings_wing_id { 
-<# 
+
+
+function put-EVEfleets_fleet_id_wings_wing_id {
+<#
 .SYNOPSIS
 Rename fleet wing
 .DESCRIPTION
@@ -877,7 +877,7 @@ Rename a fleet wing
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/{wing_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -904,17 +904,17 @@ Rename a fleet wing
     #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/{wing_id}/
     $Method = "put"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -924,16 +924,16 @@ Rename a fleet wing
     $Body = @{
         'naming' = "$naming"
     }
- 
-    if ($fleet_id -ne "") { 
+
+    if ($fleet_id -ne "") {
         $URI = $URI -replace '\$fleet_id',"$fleet_id"
     }
- 
-    if ($wing_id -ne "") { 
+
+    if ($wing_id -ne "") {
         $URI = $URI -replace '\$wing_id',"$wing_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
+
+

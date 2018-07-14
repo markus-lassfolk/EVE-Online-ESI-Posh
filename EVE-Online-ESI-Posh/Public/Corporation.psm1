@@ -1,5 +1,5 @@
-function get-EVEcorporations_corporation_id { 
-<# 
+function get-EVEcorporations_corporation_id {
+<#
 .SYNOPSIS
 Get corporation information
 .DESCRIPTION
@@ -9,7 +9,7 @@ Public information about a corporation
 
 This route is cached for up to 3600 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v4/corporations/{corporation_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -30,9 +30,9 @@ This route is cached for up to 3600 seconds
     #  https://esi.tech.ccp.is/v4/corporations/{corporation_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -42,17 +42,17 @@ This route is cached for up to 3600 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_alliancehistory { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_alliancehistory {
+<#
 .SYNOPSIS
 Get alliance history
 .DESCRIPTION
@@ -62,7 +62,7 @@ Get a list of all the alliances a corporation has been a member of
 
 This route is cached for up to 3600 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v2/corporations/{corporation_id}/alliancehistory/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -83,9 +83,9 @@ This route is cached for up to 3600 seconds
     #  https://esi.tech.ccp.is/v2/corporations/{corporation_id}/alliancehistory/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -95,17 +95,17 @@ This route is cached for up to 3600 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_blueprints { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_blueprints {
+<#
 .SYNOPSIS
 Get corporation blueprints
 .DESCRIPTION
@@ -118,7 +118,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v2/corporations/{corporation_id}/blueprints/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -145,25 +145,25 @@ Requires one of the following EVE corporation role(s): Director
     #  https://esi.tech.ccp.is/v2/corporations/{corporation_id}/blueprints/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($page -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "page=" + $page
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -173,17 +173,17 @@ Requires one of the following EVE corporation role(s): Director
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_containers_logs { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_containers_logs {
+<#
 .SYNOPSIS
 Get all corporation ALSC logs
 .DESCRIPTION
@@ -196,7 +196,7 @@ This route is cached for up to 600 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v2/corporations/{corporation_id}/containers/logs/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -223,25 +223,25 @@ Requires one of the following EVE corporation role(s): Director
     #  https://esi.tech.ccp.is/v2/corporations/{corporation_id}/containers/logs/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($page -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "page=" + $page
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -251,17 +251,17 @@ Requires one of the following EVE corporation role(s): Director
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_divisions { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_divisions {
+<#
 .SYNOPSIS
 Get corporation divisions
 .DESCRIPTION
@@ -274,7 +274,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/divisions/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -298,17 +298,17 @@ Requires one of the following EVE corporation role(s): Director
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/divisions/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -318,17 +318,17 @@ Requires one of the following EVE corporation role(s): Director
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_facilities { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_facilities {
+<#
 .SYNOPSIS
 Get corporation facilities
 .DESCRIPTION
@@ -341,7 +341,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Factory_Manager
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/facilities/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -365,17 +365,17 @@ Requires one of the following EVE corporation role(s): Factory_Manager
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/facilities/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -385,17 +385,17 @@ Requires one of the following EVE corporation role(s): Factory_Manager
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_icons { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_icons {
+<#
 .SYNOPSIS
 Get corporation icon
 .DESCRIPTION
@@ -405,7 +405,7 @@ Get the icon urls for a corporation
 
 This route is cached for up to 3600 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/icons/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -426,9 +426,9 @@ This route is cached for up to 3600 seconds
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/icons/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -438,17 +438,17 @@ This route is cached for up to 3600 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_medals { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_medals {
+<#
 .SYNOPSIS
 Get corporation medals
 .DESCRIPTION
@@ -458,7 +458,7 @@ Returns a corporation's medals
 
 This route is cached for up to 3600 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/medals/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -485,25 +485,25 @@ This route is cached for up to 3600 seconds
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/medals/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($page -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "page=" + $page
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -513,17 +513,17 @@ This route is cached for up to 3600 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_medals_issued { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_medals_issued {
+<#
 .SYNOPSIS
 Get corporation issued medals
 .DESCRIPTION
@@ -536,7 +536,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/medals/issued/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -563,25 +563,25 @@ Requires one of the following EVE corporation role(s): Director
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/medals/issued/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($page -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "page=" + $page
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -591,17 +591,17 @@ Requires one of the following EVE corporation role(s): Director
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_members { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_members {
+<#
 .SYNOPSIS
 Get corporation members
 .DESCRIPTION
@@ -611,7 +611,7 @@ Return the current member list of a corporation, the token's character need to b
 
 This route is cached for up to 3600 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v3/corporations/{corporation_id}/members/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -635,17 +635,17 @@ This route is cached for up to 3600 seconds
     #  https://esi.tech.ccp.is/v3/corporations/{corporation_id}/members/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -655,17 +655,17 @@ This route is cached for up to 3600 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_members_limit { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_members_limit {
+<#
 .SYNOPSIS
 Get corporation member limit
 .DESCRIPTION
@@ -678,7 +678,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/members/limit/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -702,17 +702,17 @@ Requires one of the following EVE corporation role(s): Director
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/members/limit/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -722,17 +722,17 @@ Requires one of the following EVE corporation role(s): Director
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_members_titles { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_members_titles {
+<#
 .SYNOPSIS
 Get corporation's members' titles
 .DESCRIPTION
@@ -745,7 +745,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/members/titles/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -769,17 +769,17 @@ Requires one of the following EVE corporation role(s): Director
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/members/titles/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -789,17 +789,17 @@ Requires one of the following EVE corporation role(s): Director
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_membertracking { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_membertracking {
+<#
 .SYNOPSIS
 Track corporation members
 .DESCRIPTION
@@ -812,7 +812,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/membertracking/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -836,17 +836,17 @@ Requires one of the following EVE corporation role(s): Director
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/membertracking/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -856,17 +856,17 @@ Requires one of the following EVE corporation role(s): Director
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_outposts { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_outposts {
+<#
 .SYNOPSIS
 Get corporation outposts
 .DESCRIPTION
@@ -882,7 +882,7 @@ Requires one of the following EVE corporation role(s): Director
 ---
 Warning: Outposts have been removed, this route will be deleted on 2018-07-08
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/outposts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -909,25 +909,25 @@ Warning: Outposts have been removed, this route will be deleted on 2018-07-08
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/outposts/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($page -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "page=" + $page
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -937,17 +937,17 @@ Warning: Outposts have been removed, this route will be deleted on 2018-07-08
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_outposts_outpost_id { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_outposts_outpost_id {
+<#
 .SYNOPSIS
 Get corporation outpost details
 .DESCRIPTION
@@ -963,7 +963,7 @@ Requires one of the following EVE corporation role(s): Director
 ---
 Warning: Outposts have been removed, this route will be deleted on 2018-07-08
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/outposts/{outpost_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -990,17 +990,17 @@ Warning: Outposts have been removed, this route will be deleted on 2018-07-08
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/outposts/{outpost_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -1010,21 +1010,21 @@ Warning: Outposts have been removed, this route will be deleted on 2018-07-08
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
- 
-    if ($outpost_id -ne "") { 
+
+    if ($outpost_id -ne "") {
         $URI = $URI -replace '\$outpost_id',"$outpost_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_roles { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_roles {
+<#
 .SYNOPSIS
 Get corporation member roles
 .DESCRIPTION
@@ -1034,7 +1034,7 @@ Return the roles of all members if the character has the personnel manager role 
 
 This route is cached for up to 3600 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/roles/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -1058,17 +1058,17 @@ This route is cached for up to 3600 seconds
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/roles/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -1078,17 +1078,17 @@ This route is cached for up to 3600 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_roles_history { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_roles_history {
+<#
 .SYNOPSIS
 Get corporation member roles history
 .DESCRIPTION
@@ -1101,7 +1101,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/roles/history/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -1128,25 +1128,25 @@ Requires one of the following EVE corporation role(s): Director
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/roles/history/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($page -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "page=" + $page
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -1156,17 +1156,17 @@ Requires one of the following EVE corporation role(s): Director
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_shareholders { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_shareholders {
+<#
 .SYNOPSIS
 Get corporation shareholders
 .DESCRIPTION
@@ -1179,7 +1179,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/shareholders/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -1206,25 +1206,25 @@ Requires one of the following EVE corporation role(s): Director
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/shareholders/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($page -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "page=" + $page
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -1234,17 +1234,17 @@ Requires one of the following EVE corporation role(s): Director
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_standings { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_standings {
+<#
 .SYNOPSIS
 Get corporation standings
 .DESCRIPTION
@@ -1254,7 +1254,7 @@ Return corporation standings from agents, NPC corporations, and factions
 
 This route is cached for up to 3600 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/standings/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -1281,25 +1281,25 @@ This route is cached for up to 3600 seconds
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/standings/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($page -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "page=" + $page
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -1309,17 +1309,17 @@ This route is cached for up to 3600 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_starbases { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_starbases {
+<#
 .SYNOPSIS
 Get corporation starbases (POSes)
 .DESCRIPTION
@@ -1332,7 +1332,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/starbases/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -1359,25 +1359,25 @@ Requires one of the following EVE corporation role(s): Director
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/starbases/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($page -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "page=" + $page
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -1387,17 +1387,17 @@ Requires one of the following EVE corporation role(s): Director
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_starbases_starbase_id { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_starbases_starbase_id {
+<#
 .SYNOPSIS
 Get starbase (POS) detail
 .DESCRIPTION
@@ -1410,7 +1410,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/starbases/{starbase_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -1440,25 +1440,25 @@ Requires one of the following EVE corporation role(s): Director
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/starbases/{starbase_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($system_id -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($system_id -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "system_id=" + $system_id
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "system_id=" + $system_id
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -1468,21 +1468,21 @@ Requires one of the following EVE corporation role(s): Director
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
- 
-    if ($starbase_id -ne "") { 
+
+    if ($starbase_id -ne "") {
         $URI = $URI -replace '\$starbase_id',"$starbase_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_structures { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_structures {
+<#
 .SYNOPSIS
 Get corporation structures
 .DESCRIPTION
@@ -1495,7 +1495,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): StationManager
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v2/corporations/{corporation_id}/structures/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
@@ -1530,33 +1530,33 @@ Requires one of the following EVE corporation role(s): StationManager
     #  https://esi.tech.ccp.is/v2/corporations/{corporation_id}/structures/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($language -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($language -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "language=" + $language
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "language=" + $language
         }
     }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($page -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "page=" + $page
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -1567,17 +1567,17 @@ Requires one of the following EVE corporation role(s): StationManager
         'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_titles { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_titles {
+<#
 .SYNOPSIS
 Get corporation titles
 .DESCRIPTION
@@ -1590,7 +1590,7 @@ This route is cached for up to 3600 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/titles/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -1614,17 +1614,17 @@ Requires one of the following EVE corporation role(s): Director
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/titles/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -1634,17 +1634,17 @@ Requires one of the following EVE corporation role(s): Director
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_npccorps { 
-<# 
+
+
+function get-EVEcorporations_npccorps {
+<#
 .SYNOPSIS
 Get npc corporations
 .DESCRIPTION
@@ -1654,7 +1654,7 @@ Get a list of npc corporations
 
 This route expires daily at 11:05
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/npccorps/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -1672,9 +1672,9 @@ This route expires daily at 11:05
     #  https://esi.tech.ccp.is/v1/corporations/npccorps/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -1687,5 +1687,5 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
+
+

@@ -1,5 +1,5 @@
-function get-EVEcharacters_character_id_calendar { 
-<# 
+function get-EVEcharacters_character_id_calendar {
+<#
 .SYNOPSIS
 List calendar event summaries
 .DESCRIPTION
@@ -9,7 +9,7 @@ Get 50 event summaries from the calendar. If no from_event ID is given, the reso
 
 This route is cached for up to 5 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/calendar/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -36,25 +36,25 @@ This route is cached for up to 5 seconds
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/calendar/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($from_event -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($from_event -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "from_event=" + $from_event
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "from_event=" + $from_event
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -64,17 +64,17 @@ This route is cached for up to 5 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcharacters_character_id_calendar_event_id { 
-<# 
+
+
+function get-EVEcharacters_character_id_calendar_event_id {
+<#
 .SYNOPSIS
 Get an event
 .DESCRIPTION
@@ -84,7 +84,7 @@ Get all the information for a specific event
 
 This route is cached for up to 5 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/calendar/{event_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -111,17 +111,17 @@ This route is cached for up to 5 seconds
     #  https://esi.tech.ccp.is/v3/characters/{character_id}/calendar/{event_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -131,21 +131,21 @@ This route is cached for up to 5 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
- 
-    if ($event_id -ne "") { 
+
+    if ($event_id -ne "") {
         $URI = $URI -replace '\$event_id',"$event_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcharacters_character_id_calendar_event_id_attendees { 
-<# 
+
+
+function get-EVEcharacters_character_id_calendar_event_id_attendees {
+<#
 .SYNOPSIS
 Get attendees
 .DESCRIPTION
@@ -155,7 +155,7 @@ Get all invited attendees for a given event
 
 This route is cached for up to 600 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/calendar/{event_id}/attendees/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -182,17 +182,17 @@ This route is cached for up to 600 seconds
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/calendar/{event_id}/attendees/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -202,21 +202,21 @@ This route is cached for up to 600 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
- 
-    if ($event_id -ne "") { 
+
+    if ($event_id -ne "") {
         $URI = $URI -replace '\$event_id',"$event_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function put-EVEcharacters_character_id_calendar_event_id { 
-<# 
+
+
+function put-EVEcharacters_character_id_calendar_event_id {
+<#
 .SYNOPSIS
 Respond to an event
 .DESCRIPTION
@@ -225,7 +225,7 @@ Set your response status to an event
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/calendar/{event_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -252,17 +252,17 @@ Set your response status to an event
     #  https://esi.tech.ccp.is/v3/characters/{character_id}/calendar/{event_id}/
     $Method = "put"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -272,16 +272,16 @@ Set your response status to an event
     $Body = @{
         'response' = "$response"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
- 
-    if ($event_id -ne "") { 
+
+    if ($event_id -ne "") {
         $URI = $URI -replace '\$event_id',"$event_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
+
+

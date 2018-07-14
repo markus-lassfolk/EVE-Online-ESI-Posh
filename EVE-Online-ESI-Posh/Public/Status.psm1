@@ -1,5 +1,5 @@
-function get-EVEstatus { 
-<# 
+function get-EVEstatus {
+<#
 .SYNOPSIS
 Retrieve the uptime and player counts
 .DESCRIPTION
@@ -9,7 +9,7 @@ EVE Server status
 
 This route is cached for up to 30 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/status/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -27,9 +27,9 @@ This route is cached for up to 30 seconds
     #  https://esi.tech.ccp.is/v1/status/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {

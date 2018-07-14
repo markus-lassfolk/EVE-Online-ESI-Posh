@@ -1,5 +1,5 @@
-function get-EVEcharacters_character_id_clones { 
-<# 
+function get-EVEcharacters_character_id_clones {
+<#
 .SYNOPSIS
 Get clones
 .DESCRIPTION
@@ -9,7 +9,7 @@ A list of the character's clones
 
 This route is cached for up to 120 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/clones/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -33,17 +33,17 @@ This route is cached for up to 120 seconds
     #  https://esi.tech.ccp.is/v3/characters/{character_id}/clones/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -53,17 +53,17 @@ This route is cached for up to 120 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcharacters_character_id_implants { 
-<# 
+
+
+function get-EVEcharacters_character_id_implants {
+<#
 .SYNOPSIS
 Get active implants
 .DESCRIPTION
@@ -73,7 +73,7 @@ Return implants on the active clone of a character
 
 This route is cached for up to 300 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/implants/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -97,17 +97,17 @@ This route is cached for up to 300 seconds
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/implants/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -117,12 +117,12 @@ This route is cached for up to 300 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
+
+

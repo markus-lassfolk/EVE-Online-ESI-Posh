@@ -1,5 +1,5 @@
-function get-EVEinsurance_prices { 
-<# 
+function get-EVEinsurance_prices {
+<#
 .SYNOPSIS
 List insurance levels
 .DESCRIPTION
@@ -9,7 +9,7 @@ Return available insurance levels for all ship types
 
 This route is cached for up to 3600 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/insurance/prices/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
@@ -35,17 +35,17 @@ This route is cached for up to 3600 seconds
     #  https://esi.tech.ccp.is/v1/insurance/prices/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($language -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($language -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "language=" + $language
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -59,5 +59,5 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
+
+

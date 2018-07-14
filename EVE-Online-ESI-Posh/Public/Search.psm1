@@ -1,5 +1,5 @@
-function get-EVEcharacters_character_id_search { 
-<# 
+function get-EVEcharacters_character_id_search {
+<#
 .SYNOPSIS
 Search on a string
 .DESCRIPTION
@@ -9,7 +9,7 @@ Search for entities that match a given sub-string.
 
 This route is cached for up to 3600 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/search/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
@@ -51,49 +51,49 @@ This route is cached for up to 3600 seconds
     #  https://esi.tech.ccp.is/v3/characters/{character_id}/search/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($categories -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($categories -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "categories=" + $categories
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "categories=" + $categories
         }
     }
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($language -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($language -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "language=" + $language
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "language=" + $language
         }
     }
-    if ($search -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($search -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "search=" + $search
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "search=" + $search
         }
     }
-    if ($strict -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($strict -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "strict=" + $strict
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "strict=" + $strict
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -104,17 +104,17 @@ This route is cached for up to 3600 seconds
         'Accept-Language' = "$Accept_Language"
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEsearch { 
-<# 
+
+
+function get-EVEsearch {
+<#
 .SYNOPSIS
 Search on a string
 .DESCRIPTION
@@ -124,7 +124,7 @@ Search for entities that match a given sub-string.
 
 This route is cached for up to 3600 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v2/search/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
@@ -160,41 +160,41 @@ This route is cached for up to 3600 seconds
     #  https://esi.tech.ccp.is/v2/search/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($categories -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($categories -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "categories=" + $categories
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "categories=" + $categories
         }
     }
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($language -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($language -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "language=" + $language
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "language=" + $language
         }
     }
-    if ($search -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($search -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "search=" + $search
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "search=" + $search
         }
     }
-    if ($strict -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($strict -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "strict=" + $strict
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -208,5 +208,5 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
+
+

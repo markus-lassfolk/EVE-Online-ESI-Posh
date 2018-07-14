@@ -1,5 +1,5 @@
-function get-EVEcharacters_character_id_loyalty_points { 
-<# 
+function get-EVEcharacters_character_id_loyalty_points {
+<#
 .SYNOPSIS
 Get loyalty points
 .DESCRIPTION
@@ -9,7 +9,7 @@ Return a list of loyalty points for all corporations the character has worked fo
 
 This route is cached for up to 3600 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/loyalty/points/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -33,17 +33,17 @@ This route is cached for up to 3600 seconds
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/loyalty/points/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -53,17 +53,17 @@ This route is cached for up to 3600 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEloyalty_stores_corporation_id_offers { 
-<# 
+
+
+function get-EVEloyalty_stores_corporation_id_offers {
+<#
 .SYNOPSIS
 List loyalty store offers
 .DESCRIPTION
@@ -73,7 +73,7 @@ Return a list of offers from a specific corporation's loyalty store
 
 This route expires daily at 11:05
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/loyalty/stores/{corporation_id}/offers/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -94,9 +94,9 @@ This route expires daily at 11:05
     #  https://esi.tech.ccp.is/v1/loyalty/stores/{corporation_id}/offers/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -106,12 +106,12 @@ This route expires daily at 11:05
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
+
+

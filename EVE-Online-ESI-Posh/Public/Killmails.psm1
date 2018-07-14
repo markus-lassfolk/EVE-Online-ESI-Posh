@@ -1,5 +1,5 @@
-function get-EVEcharacters_character_id_killmails_recent { 
-<# 
+function get-EVEcharacters_character_id_killmails_recent {
+<#
 .SYNOPSIS
 Get a character's recent kills and losses
 .DESCRIPTION
@@ -9,7 +9,7 @@ Return a list of a character's kills and losses going back 90 days
 
 This route is cached for up to 300 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/killmails/recent/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -36,25 +36,25 @@ This route is cached for up to 300 seconds
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/killmails/recent/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($page -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "page=" + $page
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -64,17 +64,17 @@ This route is cached for up to 300 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_killmails_recent { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_killmails_recent {
+<#
 .SYNOPSIS
 Get a corporation's recent kills and losses
 .DESCRIPTION
@@ -87,7 +87,7 @@ This route is cached for up to 300 seconds
 ---
 Requires one of the following EVE corporation role(s): Director
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/killmails/recent/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -114,25 +114,25 @@ Requires one of the following EVE corporation role(s): Director
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/killmails/recent/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($page -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "page=" + $page
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -142,17 +142,17 @@ Requires one of the following EVE corporation role(s): Director
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEkillmails_killmail_id_killmail_hash { 
-<# 
+
+
+function get-EVEkillmails_killmail_id_killmail_hash {
+<#
 .SYNOPSIS
 Get a single killmail
 .DESCRIPTION
@@ -162,7 +162,7 @@ Return a single killmail from its ID and hash
 
 This route is cached for up to 1209600 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/killmails/{killmail_id}/{killmail_hash}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -186,9 +186,9 @@ This route is cached for up to 1209600 seconds
     #  https://esi.tech.ccp.is/v1/killmails/{killmail_id}/{killmail_hash}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -198,16 +198,16 @@ This route is cached for up to 1209600 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($killmail_hash -ne "") { 
+
+    if ($killmail_hash -ne "") {
         $URI = $URI -replace '\$killmail_hash',"$killmail_hash"
     }
- 
-    if ($killmail_id -ne "") { 
+
+    if ($killmail_id -ne "") {
         $URI = $URI -replace '\$killmail_id',"$killmail_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
+
+

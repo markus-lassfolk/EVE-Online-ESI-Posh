@@ -19,14 +19,14 @@ s_batman: https://api.evetrace.com/api/v1/corporation/%7BCorpID%7D/
 
 
 $url = "https://t.co/ljeDwTwjZe"
-$ie = New-Object -comobject InternetExplorer.Application 
-$ie.visible = $true 
-$ie.silent = $true 
+$ie = New-Object -comobject InternetExplorer.Application
+$ie.visible = $true
+$ie.silent = $true
 $ie.Navigate( $url )
-while ( $ie.busy) {Start-Sleep 1} 
+while ( $ie.busy) {Start-Sleep 1}
 
 
 
-$ie.Document 
+$ie.Document
 
 #>

@@ -1,5 +1,5 @@
-function delete-EVEcharacters_character_id_contacts { 
-<# 
+function delete-EVEcharacters_character_id_contacts {
+<#
 .SYNOPSIS
 Delete contacts
 .DESCRIPTION
@@ -8,7 +8,7 @@ Bulk delete contacts
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/contacts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -32,42 +32,42 @@ Bulk delete contacts
     #  https://esi.tech.ccp.is/v2/characters/{character_id}/contacts/
     $Method = "delete"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($contact_ids -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($contact_ids -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "contact_ids=" + $contact_ids
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "contact_ids=" + $contact_ids
         }
     }
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
         }
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEalliances_alliance_id_contacts { 
-<# 
+
+
+function get-EVEalliances_alliance_id_contacts {
+<#
 .SYNOPSIS
 Get alliance contacts
 .DESCRIPTION
@@ -77,7 +77,7 @@ Return contacts of an alliance
 
 This route is cached for up to 300 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v2/alliances/{alliance_id}/contacts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE alliance ID")]
@@ -104,25 +104,25 @@ This route is cached for up to 300 seconds
     #  https://esi.tech.ccp.is/v2/alliances/{alliance_id}/contacts/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($page -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "page=" + $page
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -132,17 +132,17 @@ This route is cached for up to 300 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($alliance_id -ne "") { 
+
+    if ($alliance_id -ne "") {
         $URI = $URI -replace '\$alliance_id',"$alliance_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEalliances_alliance_id_contacts_labels { 
-<# 
+
+
+function get-EVEalliances_alliance_id_contacts_labels {
+<#
 .SYNOPSIS
 Get alliance contact labels
 .DESCRIPTION
@@ -152,7 +152,7 @@ Return custom labels for an alliance's contacts
 
 This route is cached for up to 300 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/alliances/{alliance_id}/contacts/labels/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE alliance ID")]
@@ -176,17 +176,17 @@ This route is cached for up to 300 seconds
     #  https://esi.tech.ccp.is/v1/alliances/{alliance_id}/contacts/labels/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -196,17 +196,17 @@ This route is cached for up to 300 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($alliance_id -ne "") { 
+
+    if ($alliance_id -ne "") {
         $URI = $URI -replace '\$alliance_id',"$alliance_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcharacters_character_id_contacts { 
-<# 
+
+
+function get-EVEcharacters_character_id_contacts {
+<#
 .SYNOPSIS
 Get contacts
 .DESCRIPTION
@@ -216,7 +216,7 @@ Return contacts of a character
 
 This route is cached for up to 300 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/contacts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -243,25 +243,25 @@ This route is cached for up to 300 seconds
     #  https://esi.tech.ccp.is/v2/characters/{character_id}/contacts/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($page -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "page=" + $page
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -271,17 +271,17 @@ This route is cached for up to 300 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcharacters_character_id_contacts_labels { 
-<# 
+
+
+function get-EVEcharacters_character_id_contacts_labels {
+<#
 .SYNOPSIS
 Get contact labels
 .DESCRIPTION
@@ -291,7 +291,7 @@ Return custom labels for a character's contacts
 
 This route is cached for up to 300 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/contacts/labels/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -315,17 +315,17 @@ This route is cached for up to 300 seconds
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/contacts/labels/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -335,17 +335,17 @@ This route is cached for up to 300 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_contacts { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_contacts {
+<#
 .SYNOPSIS
 Get corporation contacts
 .DESCRIPTION
@@ -355,7 +355,7 @@ Return contacts of a corporation
 
 This route is cached for up to 300 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v2/corporations/{corporation_id}/contacts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -382,25 +382,25 @@ This route is cached for up to 300 seconds
     #  https://esi.tech.ccp.is/v2/corporations/{corporation_id}/contacts/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($page -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "page=" + $page
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "page=" + $page
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -410,17 +410,17 @@ This route is cached for up to 300 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcorporations_corporation_id_contacts_labels { 
-<# 
+
+
+function get-EVEcorporations_corporation_id_contacts_labels {
+<#
 .SYNOPSIS
 Get corporation contact labels
 .DESCRIPTION
@@ -430,7 +430,7 @@ Return custom labels for a corporation's contacts
 
 This route is cached for up to 300 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/contacts/labels/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -454,17 +454,17 @@ This route is cached for up to 300 seconds
     #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/contacts/labels/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -474,17 +474,17 @@ This route is cached for up to 300 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($corporation_id -ne "") { 
+
+    if ($corporation_id -ne "") {
         $URI = $URI -replace '\$corporation_id',"$corporation_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function post-EVEcharacters_character_id_contacts { 
-<# 
+
+
+function post-EVEcharacters_character_id_contacts {
+<#
 .SYNOPSIS
 Add contacts
 .DESCRIPTION
@@ -493,7 +493,7 @@ Bulk add contacts with same settings
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/contacts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -527,41 +527,41 @@ Bulk add contacts with same settings
     #  https://esi.tech.ccp.is/v2/characters/{character_id}/contacts/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($label_ids -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($label_ids -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "label_ids=" + $label_ids
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "label_ids=" + $label_ids
         }
     }
-    if ($standing -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($standing -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "standing=" + $standing
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "standing=" + $standing
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
         }
     }
-    if ($watched -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($watched -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "watched=" + $watched
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -571,17 +571,17 @@ Bulk add contacts with same settings
     $Body = @{
         'contact_ids' = "$contact_ids"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function put-EVEcharacters_character_id_contacts { 
-<# 
+
+
+function put-EVEcharacters_character_id_contacts {
+<#
 .SYNOPSIS
 Edit contacts
 .DESCRIPTION
@@ -590,7 +590,7 @@ Bulk edit contacts with same settings
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/contacts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -624,41 +624,41 @@ Bulk edit contacts with same settings
     #  https://esi.tech.ccp.is/v2/characters/{character_id}/contacts/
     $Method = "put"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($label_ids -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($label_ids -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "label_ids=" + $label_ids
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "label_ids=" + $label_ids
         }
     }
-    if ($standing -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($standing -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "standing=" + $standing
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "standing=" + $standing
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
         }
     }
-    if ($watched -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($watched -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "watched=" + $watched
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -668,12 +668,12 @@ Bulk edit contacts with same settings
     $Body = @{
         'contact_ids' = "$contact_ids"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
+
+

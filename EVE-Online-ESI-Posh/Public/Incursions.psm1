@@ -1,5 +1,5 @@
-function get-EVEincursions { 
-<# 
+function get-EVEincursions {
+<#
 .SYNOPSIS
 List incursions
 .DESCRIPTION
@@ -9,7 +9,7 @@ Return a list of current incursions
 
 This route is cached for up to 300 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/incursions/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -27,9 +27,9 @@ This route is cached for up to 300 seconds
     #  https://esi.tech.ccp.is/v1/incursions/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -42,5 +42,5 @@ This route is cached for up to 300 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
+
+

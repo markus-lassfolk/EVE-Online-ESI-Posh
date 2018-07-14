@@ -1,5 +1,5 @@
-function delete-EVEcharacters_character_id_mail_labels_label_id { 
-<# 
+function delete-EVEcharacters_character_id_mail_labels_label_id {
+<#
 .SYNOPSIS
 Delete a mail label
 .DESCRIPTION
@@ -8,7 +8,7 @@ Delete a mail label
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/mail/labels/{label_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -32,38 +32,38 @@ Delete a mail label
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/mail/labels/{label_id}/
     $Method = "delete"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
         }
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
- 
-    if ($label_id -ne "") { 
+
+    if ($label_id -ne "") {
         $URI = $URI -replace '\$label_id',"$label_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function delete-EVEcharacters_character_id_mail_mail_id { 
-<# 
+
+
+function delete-EVEcharacters_character_id_mail_mail_id {
+<#
 .SYNOPSIS
 Delete a mail
 .DESCRIPTION
@@ -72,7 +72,7 @@ Delete a mail
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/mail/{mail_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -96,38 +96,38 @@ Delete a mail
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/mail/{mail_id}/
     $Method = "delete"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
         }
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
- 
-    if ($mail_id -ne "") { 
+
+    if ($mail_id -ne "") {
         $URI = $URI -replace '\$mail_id',"$mail_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcharacters_character_id_mail { 
-<# 
+
+
+function get-EVEcharacters_character_id_mail {
+<#
 .SYNOPSIS
 Return mail headers
 .DESCRIPTION
@@ -137,7 +137,7 @@ Return the 50 most recent mail headers belonging to the character that match the
 
 This route is cached for up to 30 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/mail/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -167,33 +167,33 @@ This route is cached for up to 30 seconds
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/mail/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($labels -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($labels -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "labels=" + $labels
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "labels=" + $labels
         }
     }
-    if ($last_mail_id -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($last_mail_id -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "last_mail_id=" + $last_mail_id
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "last_mail_id=" + $last_mail_id
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -203,17 +203,17 @@ This route is cached for up to 30 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcharacters_character_id_mail_labels { 
-<# 
+
+
+function get-EVEcharacters_character_id_mail_labels {
+<#
 .SYNOPSIS
 Get mail labels and unread counts
 .DESCRIPTION
@@ -223,7 +223,7 @@ Return a list of the users mail labels, unread counts for each label and a total
 
 This route is cached for up to 30 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/mail/labels/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -247,17 +247,17 @@ This route is cached for up to 30 seconds
     #  https://esi.tech.ccp.is/v3/characters/{character_id}/mail/labels/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -267,17 +267,17 @@ This route is cached for up to 30 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcharacters_character_id_mail_lists { 
-<# 
+
+
+function get-EVEcharacters_character_id_mail_lists {
+<#
 .SYNOPSIS
 Return mailing list subscriptions
 .DESCRIPTION
@@ -287,7 +287,7 @@ Return all mailing lists that the character is subscribed to
 
 This route is cached for up to 120 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/mail/lists/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -311,17 +311,17 @@ This route is cached for up to 120 seconds
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/mail/lists/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -331,17 +331,17 @@ This route is cached for up to 120 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEcharacters_character_id_mail_mail_id { 
-<# 
+
+
+function get-EVEcharacters_character_id_mail_mail_id {
+<#
 .SYNOPSIS
 Return a mail
 .DESCRIPTION
@@ -351,7 +351,7 @@ Return the contents of an EVE mail
 
 This route is cached for up to 30 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/mail/{mail_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -378,17 +378,17 @@ This route is cached for up to 30 seconds
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/mail/{mail_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -398,21 +398,21 @@ This route is cached for up to 30 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
- 
-    if ($mail_id -ne "") { 
+
+    if ($mail_id -ne "") {
         $URI = $URI -replace '\$mail_id',"$mail_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function post-EVEcharacters_character_id_mail { 
-<# 
+
+
+function post-EVEcharacters_character_id_mail {
+<#
 .SYNOPSIS
 Send a new mail
 .DESCRIPTION
@@ -421,7 +421,7 @@ Create and send a new mail
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/mail/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -445,17 +445,17 @@ Create and send a new mail
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/mail/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -465,17 +465,17 @@ Create and send a new mail
     $Body = @{
         'mail' = "$mail"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function post-EVEcharacters_character_id_mail_labels { 
-<# 
+
+
+function post-EVEcharacters_character_id_mail_labels {
+<#
 .SYNOPSIS
 Create a mail label
 .DESCRIPTION
@@ -484,7 +484,7 @@ Create a mail label
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/mail/labels/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -508,17 +508,17 @@ Create a mail label
     #  https://esi.tech.ccp.is/v2/characters/{character_id}/mail/labels/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -528,17 +528,17 @@ Create a mail label
     $Body = @{
         'label' = "$label"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function put-EVEcharacters_character_id_mail_mail_id { 
-<# 
+
+
+function put-EVEcharacters_character_id_mail_mail_id {
+<#
 .SYNOPSIS
 Update metadata about a mail
 .DESCRIPTION
@@ -547,7 +547,7 @@ Update metadata about a mail
 ---
 
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/mail/{mail_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
@@ -574,17 +574,17 @@ Update metadata about a mail
     #  https://esi.tech.ccp.is/v1/characters/{character_id}/mail/{mail_id}/
     $Method = "put"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($token -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($token -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "token=" + $token
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -594,16 +594,16 @@ Update metadata about a mail
     $Body = @{
         'contents' = "$contents"
     }
- 
-    if ($character_id -ne "") { 
+
+    if ($character_id -ne "") {
         $URI = $URI -replace '\$character_id',"$character_id"
     }
- 
-    if ($mail_id -ne "") { 
+
+    if ($mail_id -ne "") {
         $URI = $URI -replace '\$mail_id',"$mail_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
+
+

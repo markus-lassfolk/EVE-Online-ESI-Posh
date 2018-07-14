@@ -7,13 +7,13 @@ function login-EVESSOAuth ($clientid, $secretkey, $callbackURL, $Scopes) {
     $AuthUrl = "https://login.eveonline.com/oauth/authorize/"
     $URL = $($AuthUrl)+'?response_type=code&redirect_uri='+$($callbackURL)+'&client_id='+$($clientid)+'&scope='+$($ascope)+'&state=defaultState'
 
-    $ie = New-Object -comobject InternetExplorer.Application 
-    $ie.visible = $true 
-    $ie.silent = $true 
+    $ie = New-Object -comobject InternetExplorer.Application
+    $ie.visible = $true
+    $ie.silent = $true
     Start-Sleep -Seconds 1
     $ie.Navigate( $url )
-    while( $ie.busy){Start-Sleep 1}     
-    
+    while( $ie.busy){Start-Sleep 1}
+
     do {start-sleep -Milliseconds 500 } until ($ie.LocationURL -like $($callbackURL)+"?code*")
     while( $ie.busy){Start-Sleep 1}
 
@@ -22,10 +22,10 @@ function login-EVESSOAuth ($clientid, $secretkey, $callbackURL, $Scopes) {
     Write-Verbose "Returned Access Code: $($Code)"
 
 
-    $access_token = get-EVESSOToken -EncodedText -clientid $clientid -secretkey $secretkey -code $Code 
+    $access_token = get-EVESSOToken -EncodedText -clientid $clientid -secretkey $secretkey -code $Code
     Start-Sleep 2
     $ie.Quit()
-    return $access_token ; 
+    return $access_token ;
 }
 
 
@@ -39,12 +39,12 @@ function get-EVESSOToken ($clientid, $secretkey, $code) {
            'Host' = "login.eveonline.com"
      }
     $parameters = @{
-    'grant_type' = 'authorization_code'  
+    'grant_type' = 'authorization_code'
     'code' = $code
      }
 
-    $access_token = $parameters | Invoke-RestMethod -Uri $uri -Method Post -Headers $header -Verbose 
-    return $access_token ; 
+    $access_token = $parameters | Invoke-RestMethod -Uri $uri -Method Post -Headers $header -Verbose
+    return $access_token ;
 }
 
 
@@ -60,7 +60,7 @@ function refresh-EVESSOToken ($refreshtoken, $clientid, $secretkey) {
      }
 
     $parameters = @{
-     
+
      "grant_type" = "refresh_token"
      "refresh_token" = "$refreshtoken"
 
@@ -70,7 +70,7 @@ function refresh-EVESSOToken ($refreshtoken, $clientid, $secretkey) {
 
 
 
- 
+
 function verify-EVESSOAccessToken ($CharacterToken, $ClientID, $secretkey) {
     $Token = $CharacterToken.token
     if ($($CharacterToken.ExpiresOn -replace "T"," ") -lt $((get-date).ToUniversalTime().AddMinutes(+1) | get-date -Format "yyyy-MM-dd HH:mm:ss")) {
@@ -79,7 +79,7 @@ function verify-EVESSOAccessToken ($CharacterToken, $ClientID, $secretkey) {
         $CharacterToken = get-EVESSOCharacterID -Token $Token
     }
 
-    $CharacterToken 
+    $CharacterToken
 }
 
 
@@ -94,11 +94,11 @@ function get-EVESSOCharacterID ($Token) {
      }
 
     $parameters = $null
-     
+
     $CharacterToken = $parameters | Invoke-RestMethod -Uri $uri -Method Get -Headers $header -Verbose
- 
-    $CharacterToken | Add-Member -MemberType NoteProperty -Name Token -Value $token -Force 
-    return $CharacterToken ; 
+
+    $CharacterToken | Add-Member -MemberType NoteProperty -Name Token -Value $token -Force
+    return $CharacterToken ;
 }
 
 
