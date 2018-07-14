@@ -90,8 +90,9 @@ function get-EveEsiStatus {
 }
 
 
-function invoke-EVEWebRequest { 
-    Param( 
+
+function invoke-EVEWebRequest {
+    Param(
         $uri,
         [Parameter(Mandatory = $false)]
         $header,
@@ -105,50 +106,82 @@ function invoke-EVEWebRequest {
 
     # Build Body Paramter
     $newbody = $Null
-    if ($body.item_ids -notlike "") { 
+    if ($body.item_ids -notlike "") {
         $newbody = "[" + $($body.item_ids -join ",") + "]"
         $body = $newbody
     }
-    if (($body.ids | Measure-Object).count -gt 0 ) { 
+    if (($body.ids | Measure-Object).count -gt 0 ) {
         $body = "[" + $($body.ids -join ",") + "]"
     }
-    else { 
-        #$body 
+    else {
+        #$body
     }
 
+    $ESIReply = $Null
     try {
-        $ESIReply = Invoke-WebRequest -Uri $uri -Method $Method -Body $body -ContentType "application/json" 
+        Write-Verbose "Executing: Invoke-WebRequest -Uri '$($uri)' -Method '$($Method)' -Body '$($body)' -ContentType $("application/json")"
+        $ESIReply = Invoke-WebRequest -Uri $uri -Method $Method -Body $body -ContentType "application/json"
     }
     catch {
-#        $ESIMetaStatuses = get-EveEsiStatus -version latest -OutputType PS 
-        write-host "$($_ | format-list)"
-        $ESIReply = Invoke-WebRequest -Uri $uri -Method $Method -Body $body -ContentType "application/json" 
-        #$($_ | Format-List )
-        #$(get-EveEsiStatus -OutputType PS | Where-Object status -NotLike "green")
-        #start-sleep -Seconds 30
+
+        $Global:ESIError = $_
+        if ($_.Exception.Response.Headers["X-Esi-Error-Limit-Remain"] -ne $null -and [int]$_.Exception.Response.Headers["X-Esi-Error-Limit-Remain"] -lt 20) {
+            Write-Host "$($_.ErrorDetails.Message | ConvertFrom-Json)" -ForegroundColor Yellow
+            Write-Host "Exception Message: $($_.Exception.Message)" -ForegroundColor Yellow
+            Write-Host "URL Requested: $($_.Exception.Response.ResponseUri.AbsoluteUri)" -ForegroundColor Yellow
+            Write-host "Error Limit less than 20 - sleep" -ForegroundColor Yellow
+            Start-Sleep -Seconds $([int]$_.Exception.Response.Headers["X-Esi-Error-Limit-Reset"] + 2) -Verbose
+        }
+
+        if (($_.ErrorDetails.Message | ConvertFrom-Json).error -eq "expired" -and ($_.ErrorDetails.Message | ConvertFrom-Json).sso_status -eq "400") { 
+            Write-Host "$($_.ErrorDetails.Message | ConvertFrom-Json)" -ForegroundColor Yellow
+            Write-Host "Exception Message: $($_.Exception.Message)" -ForegroundColor Yellow
+            Write-Host "URL Requested: $($_.Exception.Response.ResponseUri.AbsoluteUri)" -ForegroundColor Yellow
+            Write-host "Token Expired" -ForegroundColor Yellow
+            return ($_.ErrorDetails.Message | ConvertFrom-Json).error ; break
+        }
+        if (($_.ErrorDetails.Message | ConvertFrom-Json).error -eq "Forbidden") {
+            Write-Host "$($_.ErrorDetails.Message | ConvertFrom-Json)" -ForegroundColor Yellow
+            Write-Host "Exception Message: $($_.Exception.Message)" -ForegroundColor Yellow
+            Write-Host "URL Requested: $($_.Exception.Response.ResponseUri.AbsoluteUri)" -ForegroundColor Yellow
+            Write-Host "Token has no Access" -ForegroundColor Yellow
+            return ($_.ErrorDetails.Message | ConvertFrom-Json).error ; break
+        }
+
+
+        #if (($Global:ESIError.ErrorDetails.Message | ConvertFrom-Json).error -like "Timeout contacting*" -and ($Global:ESIError.ErrorDetails.Message | ConvertFrom-Json).Timeout -gt 0) {
+        #   EVE-ESI-Privates\get-EveEsiStatus -version latest | where method -eq $Global:ESIError.Exception.Response.Method | where route -Match $Global:ESIError.Exception.Response.ResponseUri.Segments[2] | where status -ne "green"
+        #}
+
+        else {
+            Write-Host "$($_.ErrorDetails.Message | ConvertFrom-Json)" -ForegroundColor Yellow
+            Write-Host "Exception Message: $($_.Exception.Message)" -ForegroundColor Yellow
+            Write-Host "URL Requested: $($_.Exception.Response.ResponseUri.AbsoluteUri)" -ForegroundColor Yellow
+            return ($_.ErrorDetails.Message | ConvertFrom-Json).error ; break
+        }
     }
-    finally { 
+    finally {
     }
 
     # Altert if EndPoints got a Warning Message
-    if ($ESIReply.Headers.Warning -ne $null) { 
+    if ($ESIReply.Headers.Warning -ne $null) {
         write-host "$($ESIReply.Headers.Warning) $($ESIReply.BaseResponse.ResponseUri.AbsolutePath) " -ForegroundColor Red
     }
 
-    # Sleep if Error Limit is below 20. 
-    if ([int]$ESIReply.Headers.'X-Esi-Error-Limit-Remain' -lt 20) {
+    # Sleep if Error Limit is below 20.
+    if ($ESIReply.Headers -ne $null -and [int]$ESIReply.Headers.'X-Esi-Error-Limit-Remain' -lt 20) {
         Write-Host "X-Esi-Error-Limit-Remain at $($ESIReply.Headers.'X-Esi-Error-Limit-Remain') sleeping ($([int]$ESIReply.Headers.'X-Esi-Error-Limit-Reset'+2)) seconds" -ForegroundColor "Yellow"
         Write-host "Affected Call: $($ESIReply.BaseResponse.ResponseUri.AbsolutePath)" -ForegroundColor "Yellow"
-        Start-Sleep -Seconds $([int]$ESIReply.Headers.'X-Esi-Error-Limit-Reset'+2)
+        Start-Sleep -Seconds $([int]$ESIReply.Headers.'X-Esi-Error-Limit-Reset' + 2)
     }
-        
+
     if ($OutputType -eq "PS") {
-        return $($ESIReply.content | ConvertFrom-Json) 
+        return $($ESIReply.content | ConvertFrom-Json)
     }
     if ($OutputType -eq "PSfull") {
         $preOutput = @{
-        Content = $ESIReply.content | ConvertFrom-Json
-        Headers = $ESIReply.Headers
+            Content = $ESIReply.content | ConvertFrom-Json
+            Headers = $ESIReply.Headers
         }
         $NewOutPut = New-Object -TypeName psobject -Property $preOutput
 
@@ -162,4 +195,6 @@ function invoke-EVEWebRequest {
         return $ESIReply
     }
 }
+
+
 
