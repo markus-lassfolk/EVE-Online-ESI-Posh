@@ -150,16 +150,10 @@ This route is cached for up to 1200 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Accountant, Trader
-
----
-Warning: This route has an upgrade available.
-
----
-[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/orders/)
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/corporations/{corporation_id}/orders/",
+            $URI = "https://esi.tech.ccp.is/v3/corporations/{corporation_id}/orders/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -181,7 +175,7 @@ Warning: This route has an upgrade available.
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/corporations/{corporation_id}/orders/
+    #  https://esi.tech.ccp.is/v3/corporations/{corporation_id}/orders/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -234,16 +228,10 @@ This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Accountant, Trader
-
----
-Warning: This route has an upgrade available.
-
----
-[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/orders/history/)
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/orders/history/",
+            $URI = "https://esi.tech.ccp.is/v2/corporations/{corporation_id}/orders/history/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -265,7 +253,7 @@ Warning: This route has an upgrade available.
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/orders/history/
+    #  https://esi.tech.ccp.is/v2/corporations/{corporation_id}/orders/history/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

@@ -1,5 +1,5 @@
-function get-EVEwars { 
-<# 
+function get-EVEwars {
+<#
 .SYNOPSIS
 List wars
 .DESCRIPTION
@@ -9,7 +9,7 @@ Return a list of wars
 
 This route is cached for up to 3600 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/wars/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -30,17 +30,17 @@ This route is cached for up to 3600 seconds
     #  https://esi.tech.ccp.is/v1/wars/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($max_war_id -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($max_war_id -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "max_war_id=" + $max_war_id
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -53,10 +53,10 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEwars_war_id { 
-<# 
+
+
+function get-EVEwars_war_id {
+<#
 .SYNOPSIS
 Get war information
 .DESCRIPTION
@@ -66,7 +66,7 @@ Return details about a war
 
 This route is cached for up to 3600 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/wars/{war_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -87,9 +87,9 @@ This route is cached for up to 3600 seconds
     #  https://esi.tech.ccp.is/v1/wars/{war_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -99,17 +99,17 @@ This route is cached for up to 3600 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($war_id -ne "") { 
+
+    if ($war_id -ne "") {
         $URI = $URI -replace '\$war_id',"$war_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
-function get-EVEwars_war_id_killmails { 
-<# 
+
+
+function get-EVEwars_war_id_killmails {
+<#
 .SYNOPSIS
 List kills for a war
 .DESCRIPTION
@@ -119,7 +119,7 @@ Return a list of kills related to a war
 
 This route is cached for up to 3600 seconds
 #>
-    Param( 
+    Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/wars/{war_id}/killmails/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -143,17 +143,17 @@ This route is cached for up to 3600 seconds
     #  https://esi.tech.ccp.is/v1/wars/{war_id}/killmails/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
- 
-    if ($datasource -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+
+    if ($datasource -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "datasource=" + $datasource
         }
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "datasource=" + $datasource
         }
     }
-    if ($page -ne "") { 
-        if ($URI.Contains('?') -eq $false) {  
+    if ($page -ne "") {
+        if ($URI.Contains('?') -eq $false) {
             $URI = $URI + "?" + "page=" + $page
         }
         elseif ($URI.Contains('?') -eq $True) {
@@ -163,12 +163,12 @@ This route is cached for up to 3600 seconds
     $Header = @{
         'If-None-Match' = "$If_None_Match"
     }
- 
-    if ($war_id -ne "") { 
+
+    if ($war_id -ne "") {
         $URI = $URI -replace '\$war_id',"$war_id"
     }
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
- 
- 
+
+

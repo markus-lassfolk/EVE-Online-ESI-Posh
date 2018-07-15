@@ -52,8 +52,8 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
     foreach ($NewFunction in $BuildFunctions | Where-Object ESITags -like "$_" | Sort-Object { $_.FunctionName } ) {
 
         # Build Function
-        Add-Content $NewESIFunctionFile "function $($NewFunction.FunctionName) { "
-        Add-Content $NewESIFunctionFile "<# "
+        Add-Content $NewESIFunctionFile "function $($NewFunction.FunctionName) {"
+        Add-Content $NewESIFunctionFile "<#"
         Add-Content $NewESIFunctionFile ".SYNOPSIS"
         Add-Content $NewESIFunctionFile $NewFunction.ESISummary
         Add-Content $NewESIFunctionFile ".DESCRIPTION"
@@ -61,7 +61,7 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
         Add-Content $NewESIFunctionFile "#>"
 
         # Build ParamBlock
-        Add-Content $NewESIFunctionFile "    Param( "
+        Add-Content $NewESIFunctionFile "    Param("
 
         $Newstring = '            [string]'
         Add-Content $NewESIFunctionFile $Newstring
@@ -137,7 +137,7 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
         #$newstring = '    $URI' + ' = "' + $TempURI +'"'
         $Newstring = '    $URI = $URI -replace "{","$" -replace "}",""'
         Add-Content $NewESIFunctionFile $newstring
-        Add-Content $NewESIFunctionFile " "
+        Add-Content $NewESIFunctionFile ''
 
         # Add Query Parameters
         # curl -X GET "https://esi.tech.ccp.is/latest/universe/asteroid_belts/11111/?datasource=tranquility&user_agent=111" -H  "accept: application/json"
@@ -145,10 +145,10 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
 
         foreach ($RequiredParameter in $NewFunction.ESIParameters | Where-Object { $_.in -eq "query" }) {
 
-            $newstring = "    if ($"+$($RequiredParameter.name).Trim() + ' -ne "") { '
+            $newstring = "    if ($"+$($RequiredParameter.name).Trim() + ' -ne "") {'
             Add-Content $NewESIFunctionFile $newstring
 
-            $newstring = "        if ($"+"URI.Contains('?') -eq $"+"false) {  "
+            $newstring = "        if ($"+"URI.Contains('?') -eq $"+"false) {"
             Add-Content $NewESIFunctionFile $newstring
 
             $newstring = '            $URI = $URI + "?" + "' + $($RequiredParameter.name).Trim() + '=" + $' + $($RequiredParameter.name).Trim()
@@ -195,9 +195,9 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
 
         # Replace Paths
         foreach ($RequiredParameter in $NewFunction.ESIParameters | Where-Object { $_.in -eq "path" }) {
-            $Newstring = ' '
+            $Newstring = ''
             Add-Content $NewESIFunctionFile $newstring
-            $newstring = "    if ($"+$($RequiredParameter.name).Trim() + ' -ne "") { '
+            $newstring = "    if ($"+$($RequiredParameter.name).Trim() + ' -ne "") {'
             Add-Content $NewESIFunctionFile $newstring
 
                 $newstring = '        $URI = $URI -replace ''\$'+$($RequiredParameter.name).Trim() +"',"+'"$'+$($RequiredParameter.name).Trim()+'"'
@@ -215,9 +215,9 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
         # End of function
         $Newstring = '}'
         Add-Content $NewESIFunctionFile $newstring
-        $Newstring = ' '
+        $Newstring = ''
         Add-Content $NewESIFunctionFile $newstring
-        $Newstring = ' '
+        $Newstring = ''
         Add-Content $NewESIFunctionFile $newstring
 
     }

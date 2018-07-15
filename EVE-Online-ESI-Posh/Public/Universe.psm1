@@ -1193,21 +1193,15 @@ function get-EVEuniverse_structures_structure_id {
 .SYNOPSIS
 Get structure information
 .DESCRIPTION
-Returns information on requested structure, if you are on the ACL. Otherwise, returns "Forbidden" for all inputs.
+Returns information on requested structure if you are on the ACL. Otherwise, returns "Forbidden" for all inputs.
 
 ---
 
 This route is cached for up to 3600 seconds
-
----
-Warning: This route has an upgrade available.
-
----
-[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/universe/structures/{structure_id}/)
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/universe/structures/{structure_id}/",
+            $URI = "https://esi.tech.ccp.is/v2/universe/structures/{structure_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -1226,7 +1220,7 @@ Warning: This route has an upgrade available.
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/universe/structures/{structure_id}/
+    #  https://esi.tech.ccp.is/v2/universe/structures/{structure_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -1401,21 +1395,15 @@ function get-EVEuniverse_systems_system_id {
 .SYNOPSIS
 Get solar system information
 .DESCRIPTION
-Get information on a solar system. NOTE: This route does not work with abyssal systems.
+Get information on a solar system.
 
 ---
 
 This route expires daily at 11:05
-
----
-Warning: This route has an upgrade available.
-
----
-[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/universe/systems/{system_id}/)
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v3/universe/systems/{system_id}/",
+            $URI = "https://esi.tech.ccp.is/v4/universe/systems/{system_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -1439,7 +1427,7 @@ Warning: This route has an upgrade available.
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v3/universe/systems/{system_id}/
+    #  https://esi.tech.ccp.is/v4/universe/systems/{system_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
