@@ -22,7 +22,7 @@ This route is cached for up to 300 seconds
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Whether retrieve completed character industry jobs as well")]
+            [Parameter(Mandatory=$false, HelpMessage="Whether to retrieve completed character industry jobs. Only includes jobs from the past 90 days.")]
             [boolean]
             $include_completed,
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
@@ -416,7 +416,7 @@ Requires one of the following EVE corporation role(s): FactoryManager
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Whether retrieve completed industry jobs as well")]
+            [Parameter(Mandatory=$false, HelpMessage="Whether to retrieve completed corporation industry jobs. Only includes jobs from the past 90 days.")]
             [boolean]
             [ValidateSet($True,$False)]
             $include_completed = $false,
