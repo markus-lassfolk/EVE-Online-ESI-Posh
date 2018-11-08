@@ -344,9 +344,9 @@ Requires one of the following EVE corporation role(s): Director
 function post-EVEcorporations_corporation_id_assets_names {
 <#
 .SYNOPSIS
-Get coporation asset names
+Get corporation asset names
 .DESCRIPTION
-Return names for a set of item ids, which you can get from corporation assets endpoint. Only valid for items that can customize names, like containers or ships.
+Return names for a set of item ids, which you can get from corporation assets endpoint. Only valid for items that can customize names, like containers or ships
 
 ---
 

@@ -131,7 +131,7 @@ function get-EVEfw_leaderboards {
 .SYNOPSIS
 List of the top factions in faction warfare
 .DESCRIPTION
-Top 4 leaderboard of factions for kills and victory points separated by total, last week and yesterday.
+Top 4 leaderboard of factions for kills and victory points separated by total, last week and yesterday
 
 ---
 
@@ -177,7 +177,7 @@ function get-EVEfw_leaderboards_characters {
 .SYNOPSIS
 List of the top pilots in faction warfare
 .DESCRIPTION
-Top 100 leaderboard of pilots for kills and victory points separated by total, last week and yesterday.
+Top 100 leaderboard of pilots for kills and victory points separated by total, last week and yesterday
 
 ---
 
@@ -223,7 +223,7 @@ function get-EVEfw_leaderboards_corporations {
 .SYNOPSIS
 List of the top corporations in faction warfare
 .DESCRIPTION
-Top 10 leaderboard of corporations for kills and victory points separated by total, last week and yesterday.
+Top 10 leaderboard of corporations for kills and victory points separated by total, last week and yesterday
 
 ---
 

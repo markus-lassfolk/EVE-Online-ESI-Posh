@@ -383,14 +383,14 @@ Return character notifications
 This route is cached for up to 600 seconds
 
 ---
-Warning: This route has an upgrade available.
+Warning: This route has an upgrade available
 
 ---
 [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/notifications/)
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/notifications/",
+            $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/notifications/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -409,7 +409,7 @@ Warning: This route has an upgrade available.
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/characters/{character_id}/notifications/
+    #  https://esi.tech.ccp.is/v3/characters/{character_id}/notifications/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -828,7 +828,7 @@ This route is cached for up to 3600 seconds
     Param(
             [string]
             $URI = "https://esi.tech.ccp.is/v1/characters/affiliation/",
-            [Parameter(Mandatory=$true, HelpMessage="The character IDs to fetch affiliations for. All characters must exist, or none will be returned.")]
+            [Parameter(Mandatory=$true, HelpMessage="The character IDs to fetch affiliations for. All characters must exist, or none will be returned")]
             [array]
             $characters,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]

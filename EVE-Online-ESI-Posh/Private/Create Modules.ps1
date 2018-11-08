@@ -5,6 +5,8 @@
 $ModSwagger = Invoke-WebRequest -ContentType "application/json" -Uri https://esi.tech.ccp.is/_latest/swagger.json?datasource=tranquility -Verbose | ConvertFrom-Json
 $ModSwagger.host
 
+$ModSwagger
+
 
 $AllPathEndpoints = $ModSwagger.paths | get-member | Where-Object MemberType -eq "NoteProperty"
 

@@ -3,7 +3,7 @@ function get-EVEcharacters_character_id_calendar {
 .SYNOPSIS
 List calendar event summaries
 .DESCRIPTION
-Get 50 event summaries from the calendar. If no from_event ID is given, the resource will return the next 50 chronological event summaries from now. If a from_event ID is specified, it will return the next 50 chronological event summaries from after that event.
+Get 50 event summaries from the calendar. If no from_event ID is given, the resource will return the next 50 chronological event summaries from now. If a from_event ID is specified, it will return the next 50 chronological event summaries from after that event
 
 ---
 
@@ -238,7 +238,7 @@ Set your response status to an event
             [Parameter(Mandatory=$true, HelpMessage="The ID of the event requested")]
             [int32]
             $event_id,
-            [Parameter(Mandatory=$true, HelpMessage="The response value to set, overriding current value.")]
+            [Parameter(Mandatory=$true, HelpMessage="The response value to set, overriding current value")]
             [object]
             $response,
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]

@@ -22,7 +22,7 @@ This route is cached for up to 300 seconds
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Whether to retrieve completed character industry jobs. Only includes jobs from the past 90 days.")]
+            [Parameter(Mandatory=$false, HelpMessage="Whether to retrieve completed character industry jobs. Only includes jobs from the past 90 days")]
             [boolean]
             $include_completed,
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
@@ -160,7 +160,7 @@ Extraction timers for all moon chunks being extracted by refineries belonging to
 This route is cached for up to 1800 seconds
 
 ---
-Requires one of the following EVE corporation role(s): Structure_manager
+Requires one of the following EVE corporation role(s): Station_Manager
 #>
     Param(
             [string]
@@ -401,7 +401,7 @@ List industry jobs run by a corporation
 This route is cached for up to 300 seconds
 
 ---
-Requires one of the following EVE corporation role(s): FactoryManager
+Requires one of the following EVE corporation role(s): Factory_Manager
 #>
     Param(
             [string]
@@ -416,7 +416,7 @@ Requires one of the following EVE corporation role(s): FactoryManager
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Whether to retrieve completed corporation industry jobs. Only includes jobs from the past 90 days.")]
+            [Parameter(Mandatory=$false, HelpMessage="Whether to retrieve completed corporation industry jobs. Only includes jobs from the past 90 days")]
             [boolean]
             [ValidateSet($True,$False)]
             $include_completed = $false,

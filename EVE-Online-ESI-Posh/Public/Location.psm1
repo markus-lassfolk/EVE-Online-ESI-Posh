@@ -3,7 +3,7 @@ function get-EVEcharacters_character_id_location {
 .SYNOPSIS
 Get character location
 .DESCRIPTION
-Information about the characters current location. Returns the current solar system id, and also the current station or structure ID if applicable.
+Information about the characters current location. Returns the current solar system id, and also the current station or structure ID if applicable
 
 ---
 

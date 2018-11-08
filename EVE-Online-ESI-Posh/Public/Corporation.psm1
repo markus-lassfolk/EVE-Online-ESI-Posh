@@ -1335,7 +1335,7 @@ Get a list of corporation structures. This route's version includes the changes 
 This route is cached for up to 3600 seconds
 
 ---
-Requires one of the following EVE corporation role(s): StationManager
+Requires one of the following EVE corporation role(s): Station_Manager
 #>
     Param(
             [string]
