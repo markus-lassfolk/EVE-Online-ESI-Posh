@@ -49,6 +49,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id
 
 
 function get-EVEcharacters_character_id_agents_research {
@@ -113,6 +114,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_agents_research
 
 
 function get-EVEcharacters_character_id_blueprints {
@@ -188,6 +190,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_blueprints
 
 
 function get-EVEcharacters_character_id_corporationhistory {
@@ -241,6 +244,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_corporationhistory
 
 
 function get-EVEcharacters_character_id_fatigue {
@@ -305,6 +309,7 @@ This route is cached for up to 300 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_fatigue
 
 
 function get-EVEcharacters_character_id_medals {
@@ -369,6 +374,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_medals
 
 
 function get-EVEcharacters_character_id_notifications {
@@ -439,6 +445,7 @@ Warning: This route has an upgrade available
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_notifications
 
 
 function get-EVEcharacters_character_id_notifications_contacts {
@@ -503,6 +510,7 @@ This route is cached for up to 600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_notifications_contacts
 
 
 function get-EVEcharacters_character_id_portrait {
@@ -556,6 +564,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_portrait
 
 
 function get-EVEcharacters_character_id_roles {
@@ -620,6 +629,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_roles
 
 
 function get-EVEcharacters_character_id_standings {
@@ -684,6 +694,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_standings
 
 
 function get-EVEcharacters_character_id_stats {
@@ -748,6 +759,7 @@ This route is cached for up to 86400 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_stats
 
 
 function get-EVEcharacters_character_id_titles {
@@ -812,6 +824,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_titles
 
 
 function post-EVEcharacters_affiliation {
@@ -858,6 +871,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEcharacters_affiliation
 
 
 function post-EVEcharacters_character_id_cspa {
@@ -921,5 +935,6 @@ Takes a source character ID in the url and a set of target character ID's in the
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEcharacters_character_id_cspa
 
 

@@ -60,6 +60,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_attributes
 
 
 function get-EVEcharacters_character_id_skillqueue {
@@ -124,6 +125,7 @@ This route is cached for up to 120 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_skillqueue
 
 
 function get-EVEcharacters_character_id_skills {
@@ -188,5 +190,6 @@ This route is cached for up to 120 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_skills
 
 

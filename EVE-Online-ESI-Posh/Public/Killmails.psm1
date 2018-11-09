@@ -71,6 +71,7 @@ This route is cached for up to 300 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_killmails_recent
 
 
 function get-EVEcorporations_corporation_id_killmails_recent {
@@ -149,6 +150,7 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_killmails_recent
 
 
 function get-EVEkillmails_killmail_id_killmail_hash {
@@ -209,5 +211,6 @@ This route is cached for up to 1209600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEkillmails_killmail_id_killmail_hash
 
 

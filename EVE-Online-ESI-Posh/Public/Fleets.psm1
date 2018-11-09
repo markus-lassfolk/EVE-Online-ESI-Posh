@@ -60,6 +60,7 @@ Kick a fleet member
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function delete-EVEfleets_fleet_id_members_member_id
 
 
 function delete-EVEfleets_fleet_id_squads_squad_id {
@@ -124,6 +125,7 @@ Delete a fleet squad, only empty squads can be deleted
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function delete-EVEfleets_fleet_id_squads_squad_id
 
 
 function delete-EVEfleets_fleet_id_wings_wing_id {
@@ -188,6 +190,7 @@ Delete a fleet wing, only empty wings can be deleted. The wing may contain squad
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function delete-EVEfleets_fleet_id_wings_wing_id
 
 
 function get-EVEcharacters_character_id_fleet {
@@ -252,6 +255,7 @@ This route is cached for up to 60 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_fleet
 
 
 function get-EVEfleets_fleet_id {
@@ -316,6 +320,7 @@ This route is cached for up to 5 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEfleets_fleet_id
 
 
 function get-EVEfleets_fleet_id_members {
@@ -397,6 +402,7 @@ This route is cached for up to 5 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEfleets_fleet_id_members
 
 
 function get-EVEfleets_fleet_id_wings {
@@ -478,6 +484,7 @@ This route is cached for up to 5 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEfleets_fleet_id_wings
 
 
 function post-EVEfleets_fleet_id_members {
@@ -541,6 +548,7 @@ Invite a character into the fleet. If a character has a CSPA charge set it is no
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEfleets_fleet_id_members
 
 
 function post-EVEfleets_fleet_id_wings {
@@ -598,6 +606,7 @@ Create a new wing in a fleet
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEfleets_fleet_id_wings
 
 
 function post-EVEfleets_fleet_id_wings_wing_id_squads {
@@ -662,6 +671,7 @@ Create a new squad in a fleet
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEfleets_fleet_id_wings_wing_id_squads
 
 
 function put-EVEfleets_fleet_id {
@@ -725,6 +735,7 @@ Update settings about a fleet
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function put-EVEfleets_fleet_id
 
 
 function put-EVEfleets_fleet_id_members_member_id {
@@ -795,6 +806,7 @@ Move a fleet member around
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function put-EVEfleets_fleet_id_members_member_id
 
 
 function put-EVEfleets_fleet_id_squads_squad_id {
@@ -865,6 +877,7 @@ Rename a fleet squad
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function put-EVEfleets_fleet_id_squads_squad_id
 
 
 function put-EVEfleets_fleet_id_wings_wing_id {
@@ -935,5 +948,6 @@ Rename a fleet wing
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function put-EVEfleets_fleet_id_wings_wing_id
 
 

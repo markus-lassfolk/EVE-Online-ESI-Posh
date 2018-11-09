@@ -60,6 +60,7 @@ Delete a mail label
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function delete-EVEcharacters_character_id_mail_labels_label_id
 
 
 function delete-EVEcharacters_character_id_mail_mail_id {
@@ -124,6 +125,7 @@ Delete a mail
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function delete-EVEcharacters_character_id_mail_mail_id
 
 
 function get-EVEcharacters_character_id_mail {
@@ -131,7 +133,7 @@ function get-EVEcharacters_character_id_mail {
 .SYNOPSIS
 Return mail headers
 .DESCRIPTION
-Return the 50 most recent mail headers belonging to the character that match the query criteria. Queries can be filtered by label, and last_mail_id can be used to paginate backwards.
+Return the 50 most recent mail headers belonging to the character that match the query criteria. Queries can be filtered by label, and last_mail_id can be used to paginate backwards
 
 ---
 
@@ -210,6 +212,7 @@ This route is cached for up to 30 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_mail
 
 
 function get-EVEcharacters_character_id_mail_labels {
@@ -274,6 +277,7 @@ This route is cached for up to 30 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_mail_labels
 
 
 function get-EVEcharacters_character_id_mail_lists {
@@ -338,6 +342,7 @@ This route is cached for up to 120 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_mail_lists
 
 
 function get-EVEcharacters_character_id_mail_mail_id {
@@ -409,6 +414,7 @@ This route is cached for up to 30 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_mail_mail_id
 
 
 function post-EVEcharacters_character_id_mail {
@@ -472,6 +478,7 @@ Create and send a new mail
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEcharacters_character_id_mail
 
 
 function post-EVEcharacters_character_id_mail_labels {
@@ -535,6 +542,7 @@ Create a mail label
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEcharacters_character_id_mail_labels
 
 
 function put-EVEcharacters_character_id_mail_mail_id {
@@ -605,5 +613,6 @@ Update metadata about a mail
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function put-EVEcharacters_character_id_mail_mail_id
 
 

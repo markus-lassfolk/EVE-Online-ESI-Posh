@@ -71,6 +71,7 @@ This route is cached for up to 300 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_industry_jobs
 
 
 function get-EVEcharacters_character_id_mining {
@@ -146,6 +147,7 @@ This route is cached for up to 600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_mining
 
 
 function get-EVEcorporation_corporation_id_mining_extractions {
@@ -224,6 +226,7 @@ Requires one of the following EVE corporation role(s): Station_Manager
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporation_corporation_id_mining_extractions
 
 
 function get-EVEcorporation_corporation_id_mining_observers {
@@ -302,6 +305,7 @@ Requires one of the following EVE corporation role(s): Accountant
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporation_corporation_id_mining_observers
 
 
 function get-EVEcorporation_corporation_id_mining_observers_observer_id {
@@ -387,6 +391,7 @@ Requires one of the following EVE corporation role(s): Accountant
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporation_corporation_id_mining_observers_observer_id
 
 
 function get-EVEcorporations_corporation_id_industry_jobs {
@@ -477,6 +482,7 @@ Requires one of the following EVE corporation role(s): Factory_Manager
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_industry_jobs
 
 
 function get-EVEindustry_facilities {
@@ -523,6 +529,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEindustry_facilities
 
 
 function get-EVEindustry_systems {
@@ -569,5 +576,6 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEindustry_systems
 
 

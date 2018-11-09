@@ -60,6 +60,7 @@ Delete a fitting from a character
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function delete-EVEcharacters_character_id_fittings_fitting_id
 
 
 function get-EVEcharacters_character_id_fittings {
@@ -124,6 +125,7 @@ This route is cached for up to 300 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_fittings
 
 
 function post-EVEcharacters_character_id_fittings {
@@ -187,5 +189,6 @@ Save a new fitting for a character
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEcharacters_character_id_fittings
 
 

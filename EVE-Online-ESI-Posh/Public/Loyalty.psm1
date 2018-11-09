@@ -60,6 +60,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_loyalty_points
 
 
 function get-EVEloyalty_stores_corporation_id_offers {
@@ -113,5 +114,6 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEloyalty_stores_corporation_id_offers
 
 

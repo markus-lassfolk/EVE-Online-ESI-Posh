@@ -42,6 +42,7 @@ This route is cached for up to 5 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEsovereignty_campaigns
 
 
 function get-EVEsovereignty_map {
@@ -88,6 +89,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEsovereignty_map
 
 
 function get-EVEsovereignty_structures {
@@ -134,5 +136,6 @@ This route is cached for up to 120 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEsovereignty_structures
 
 

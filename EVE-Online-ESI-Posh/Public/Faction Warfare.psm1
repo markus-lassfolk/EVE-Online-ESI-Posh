@@ -60,6 +60,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_fw_stats
 
 
 function get-EVEcorporations_corporation_id_fw_stats {
@@ -124,6 +125,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_fw_stats
 
 
 function get-EVEfw_leaderboards {
@@ -170,6 +172,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEfw_leaderboards
 
 
 function get-EVEfw_leaderboards_characters {
@@ -216,6 +219,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEfw_leaderboards_characters
 
 
 function get-EVEfw_leaderboards_corporations {
@@ -262,6 +266,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEfw_leaderboards_corporations
 
 
 function get-EVEfw_stats {
@@ -308,6 +313,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEfw_stats
 
 
 function get-EVEfw_systems {
@@ -354,6 +360,7 @@ This route is cached for up to 1800 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEfw_systems
 
 
 function get-EVEfw_wars {
@@ -400,5 +407,6 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEfw_wars
 
 

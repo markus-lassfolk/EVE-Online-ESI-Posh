@@ -64,6 +64,7 @@ Bulk delete contacts
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function delete-EVEcharacters_character_id_contacts
 
 
 function get-EVEalliances_alliance_id_contacts {
@@ -139,6 +140,7 @@ This route is cached for up to 300 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEalliances_alliance_id_contacts
 
 
 function get-EVEalliances_alliance_id_contacts_labels {
@@ -203,6 +205,7 @@ This route is cached for up to 300 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEalliances_alliance_id_contacts_labels
 
 
 function get-EVEcharacters_character_id_contacts {
@@ -278,6 +281,7 @@ This route is cached for up to 300 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_contacts
 
 
 function get-EVEcharacters_character_id_contacts_labels {
@@ -342,6 +346,7 @@ This route is cached for up to 300 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_contacts_labels
 
 
 function get-EVEcorporations_corporation_id_contacts {
@@ -417,6 +422,7 @@ This route is cached for up to 300 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_contacts
 
 
 function get-EVEcorporations_corporation_id_contacts_labels {
@@ -481,6 +487,7 @@ This route is cached for up to 300 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_contacts_labels
 
 
 function post-EVEcharacters_character_id_contacts {
@@ -578,6 +585,7 @@ Bulk add contacts with same settings
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEcharacters_character_id_contacts
 
 
 function put-EVEcharacters_character_id_contacts {
@@ -675,5 +683,6 @@ Bulk edit contacts with same settings
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function put-EVEcharacters_character_id_contacts
 
 

@@ -81,6 +81,7 @@ Set a solar system as autopilot waypoint
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEui_autopilot_waypoint
 
 
 function post-EVEui_openwindow_contract {
@@ -142,6 +143,7 @@ Open the contract window inside the client
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEui_openwindow_contract
 
 
 function post-EVEui_openwindow_information {
@@ -203,6 +205,7 @@ Open the information window for a character, corporation or alliance inside the 
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEui_openwindow_information
 
 
 function post-EVEui_openwindow_marketdetails {
@@ -264,6 +267,7 @@ Open the market details window for a specific typeID inside the client
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEui_openwindow_marketdetails
 
 
 function post-EVEui_openwindow_newmail {
@@ -320,5 +324,6 @@ Open the New Mail window, according to settings from the request if applicable
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEui_openwindow_newmail
 
 

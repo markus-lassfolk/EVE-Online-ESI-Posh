@@ -60,6 +60,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_opportunities
 
 
 function get-EVEopportunities_groups {
@@ -106,6 +107,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEopportunities_groups
 
 
 function get-EVEopportunities_groups_group_id {
@@ -176,6 +178,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEopportunities_groups_group_id
 
 
 function get-EVEopportunities_tasks {
@@ -222,6 +225,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEopportunities_tasks
 
 
 function get-EVEopportunities_tasks_task_id {
@@ -275,5 +279,6 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEopportunities_tasks_task_id
 
 

@@ -42,6 +42,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEdogma_attributes
 
 
 function get-EVEdogma_attributes_attribute_id {
@@ -95,6 +96,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEdogma_attributes_attribute_id
 
 
 function get-EVEdogma_dynamic_items_type_id_item_id {
@@ -155,6 +157,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEdogma_dynamic_items_type_id_item_id
 
 
 function get-EVEdogma_effects {
@@ -201,6 +204,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEdogma_effects
 
 
 function get-EVEdogma_effects_effect_id {
@@ -254,5 +258,6 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEdogma_effects_effect_id
 
 

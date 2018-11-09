@@ -71,6 +71,7 @@ This route is cached for up to 5 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_calendar
 
 
 function get-EVEcharacters_character_id_calendar_event_id {
@@ -142,6 +143,7 @@ This route is cached for up to 5 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_calendar_event_id
 
 
 function get-EVEcharacters_character_id_calendar_event_id_attendees {
@@ -213,6 +215,7 @@ This route is cached for up to 600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_calendar_event_id_attendees
 
 
 function put-EVEcharacters_character_id_calendar_event_id {
@@ -283,5 +286,6 @@ Set your response status to an event
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function put-EVEcharacters_character_id_calendar_event_id
 
 

@@ -71,6 +71,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_assets
 
 
 function get-EVEcorporations_corporation_id_assets {
@@ -149,6 +150,7 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_assets
 
 
 function post-EVEcharacters_character_id_assets_locations {
@@ -212,6 +214,7 @@ Return locations for a set of item ids, which you can get from character assets 
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEcharacters_character_id_assets_locations
 
 
 function post-EVEcharacters_character_id_assets_names {
@@ -275,6 +278,7 @@ Return names for a set of item ids, which you can get from character assets endp
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEcharacters_character_id_assets_names
 
 
 function post-EVEcorporations_corporation_id_assets_locations {
@@ -339,6 +343,7 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEcorporations_corporation_id_assets_locations
 
 
 function post-EVEcorporations_corporation_id_assets_names {
@@ -403,5 +408,6 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEcorporations_corporation_id_assets_names
 
 

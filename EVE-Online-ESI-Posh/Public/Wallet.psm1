@@ -60,6 +60,7 @@ This route is cached for up to 120 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_wallet
 
 
 function get-EVEcharacters_character_id_wallet_journal {
@@ -135,6 +136,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_wallet_journal
 
 
 function get-EVEcharacters_character_id_wallet_transactions {
@@ -210,6 +212,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_wallet_transactions
 
 
 function get-EVEcorporations_corporation_id_wallets {
@@ -277,6 +280,7 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_wallets
 
 
 function get-EVEcorporations_corporation_id_wallets_division_journal {
@@ -362,6 +366,7 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_wallets_division_journal
 
 
 function get-EVEcorporations_corporation_id_wallets_division_transactions {
@@ -447,5 +452,6 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_wallets_division_transactions
 
 

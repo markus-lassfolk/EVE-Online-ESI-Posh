@@ -49,6 +49,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id
 
 
 function get-EVEcorporations_corporation_id_alliancehistory {
@@ -102,6 +103,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_alliancehistory
 
 
 function get-EVEcorporations_corporation_id_blueprints {
@@ -180,6 +182,7 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_blueprints
 
 
 function get-EVEcorporations_corporation_id_containers_logs {
@@ -258,6 +261,7 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_containers_logs
 
 
 function get-EVEcorporations_corporation_id_divisions {
@@ -325,6 +329,7 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_divisions
 
 
 function get-EVEcorporations_corporation_id_facilities {
@@ -392,6 +397,7 @@ Requires one of the following EVE corporation role(s): Factory_Manager
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_facilities
 
 
 function get-EVEcorporations_corporation_id_icons {
@@ -445,6 +451,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_icons
 
 
 function get-EVEcorporations_corporation_id_medals {
@@ -520,6 +527,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_medals
 
 
 function get-EVEcorporations_corporation_id_medals_issued {
@@ -598,6 +606,7 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_medals_issued
 
 
 function get-EVEcorporations_corporation_id_members {
@@ -662,6 +671,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_members
 
 
 function get-EVEcorporations_corporation_id_members_limit {
@@ -729,6 +739,7 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_members_limit
 
 
 function get-EVEcorporations_corporation_id_members_titles {
@@ -796,6 +807,7 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_members_titles
 
 
 function get-EVEcorporations_corporation_id_membertracking {
@@ -863,6 +875,7 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_membertracking
 
 
 function get-EVEcorporations_corporation_id_roles {
@@ -927,6 +940,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_roles
 
 
 function get-EVEcorporations_corporation_id_roles_history {
@@ -1005,6 +1019,7 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_roles_history
 
 
 function get-EVEcorporations_corporation_id_shareholders {
@@ -1083,6 +1098,7 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_shareholders
 
 
 function get-EVEcorporations_corporation_id_standings {
@@ -1158,6 +1174,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_standings
 
 
 function get-EVEcorporations_corporation_id_starbases {
@@ -1236,6 +1253,7 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_starbases
 
 
 function get-EVEcorporations_corporation_id_starbases_starbase_id {
@@ -1321,6 +1339,7 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_starbases_starbase_id
 
 
 function get-EVEcorporations_corporation_id_structures {
@@ -1416,6 +1435,7 @@ Requires one of the following EVE corporation role(s): Station_Manager
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_structures
 
 
 function get-EVEcorporations_corporation_id_titles {
@@ -1483,6 +1503,7 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_titles
 
 
 function get-EVEcorporations_npccorps {
@@ -1529,5 +1550,6 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_npccorps
 
 

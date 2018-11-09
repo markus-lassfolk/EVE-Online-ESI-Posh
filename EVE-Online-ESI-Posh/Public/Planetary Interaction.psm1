@@ -60,6 +60,7 @@ This route is cached for up to 600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_planets
 
 
 function get-EVEcharacters_character_id_planets_planet_id {
@@ -131,6 +132,7 @@ This route is cached for up to 600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_planets_planet_id
 
 
 function get-EVEcorporations_corporation_id_customs_offices {
@@ -209,6 +211,7 @@ Requires one of the following EVE corporation role(s): Director
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_customs_offices
 
 
 function get-EVEuniverse_schematics_schematic_id {
@@ -262,5 +265,6 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_schematics_schematic_id
 
 

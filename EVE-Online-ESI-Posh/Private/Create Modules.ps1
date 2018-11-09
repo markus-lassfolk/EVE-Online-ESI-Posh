@@ -1,11 +1,8 @@
 ﻿Set-Location "$ENV:USERPROFILE\Documents\GitHub\EVE-Online-ESI-Posh"
 
 
-
 $ModSwagger = Invoke-WebRequest -ContentType "application/json" -Uri https://esi.tech.ccp.is/_latest/swagger.json?datasource=tranquility -Verbose | ConvertFrom-Json
 $ModSwagger.host
-
-$ModSwagger
 
 
 $AllPathEndpoints = $ModSwagger.paths | get-member | Where-Object MemberType -eq "NoteProperty"
@@ -33,6 +30,8 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
 
         $NewFunction = @{
         'FunctionName' = $ESIFunctionName
+        'Version' = $ModSwagger.info.version
+        'Swagger_Version' = $ModSwagger.swagger
         'ESIMethod' = $Method
         'ESIPath' = $PathEndpoint.Name
         'ESIParameters' = $ESIParameters
@@ -45,6 +44,11 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
     }
 
 }
+
+$ManiFest = get-item .\EVE-Online-ESI-Posh\EVE-Online-ESI-Posh.psd1
+Update-ModuleManifest -Path $ManiFest.FullName -ModuleVersion $ModSwagger.info.version -Description $ModSwagger.info.description -Author "Markus Lassfolk"
+
+
 
 ($BuildFunctions).ESITags | Select-Object -Unique | Sort-Object | ForEach-Object {
 
@@ -118,6 +122,8 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
                 $NewFunctionParameterName = ($NewFunctionParameterName + ' = "'+ $NewFunctionParameter.default +'"') -replace '"True"','$True' -replace '"False"','$false'
 
             }
+
+
 
             #if ($NewFunctionParamterNumber -ne ($NewFunction.ESIParameters | Measure-Object).Count) {
                 $NewFunctionParameterName = $NewFunctionParameterName + ","
@@ -216,6 +222,8 @@ $BuildFunctions = foreach ($PathEndpoint in $AllPathEndpoints) {
 
         # End of function
         $Newstring = '}'
+        Add-Content $NewESIFunctionFile $newstring
+        $Newstring = "Export-ModuleMember -Function $($NewFunction.FunctionName)"
         Add-Content $NewESIFunctionFile $newstring
         $Newstring = ''
         Add-Content $NewESIFunctionFile $newstring

@@ -60,6 +60,7 @@ This route is cached for up to 1200 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_orders
 
 
 function get-EVEcharacters_character_id_orders_history {
@@ -135,6 +136,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcharacters_character_id_orders_history
 
 
 function get-EVEcorporations_corporation_id_orders {
@@ -213,6 +215,7 @@ Requires one of the following EVE corporation role(s): Accountant, Trader
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_orders
 
 
 function get-EVEcorporations_corporation_id_orders_history {
@@ -291,6 +294,7 @@ Requires one of the following EVE corporation role(s): Accountant, Trader
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEcorporations_corporation_id_orders_history
 
 
 function get-EVEmarkets_groups {
@@ -337,6 +341,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEmarkets_groups
 
 
 function get-EVEmarkets_groups_market_group_id {
@@ -407,6 +412,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEmarkets_groups_market_group_id
 
 
 function get-EVEmarkets_prices {
@@ -453,6 +459,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEmarkets_prices
 
 
 function get-EVEmarkets_region_id_history {
@@ -517,6 +524,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEmarkets_region_id_history
 
 
 function get-EVEmarkets_region_id_orders {
@@ -540,7 +548,7 @@ This route is cached for up to 300 seconds
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
-            [Parameter(Mandatory=$true, HelpMessage="Filter buy/sell orders, return all orders by default. If you query without type_id, we always return both buy and sell orders.")]
+            [Parameter(Mandatory=$true, HelpMessage="Filter buy/sell orders, return all orders by default. If you query without type_id, we always return both buy and sell orders")]
             [ValidateSet("buy","sell","all")]
             [string]
             $order_type = "all",
@@ -604,6 +612,7 @@ This route is cached for up to 300 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEmarkets_region_id_orders
 
 
 function get-EVEmarkets_region_id_types {
@@ -668,6 +677,7 @@ This route is cached for up to 600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEmarkets_region_id_types
 
 
 function get-EVEmarkets_structures_structure_id {
@@ -743,5 +753,6 @@ This route is cached for up to 300 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEmarkets_structures_structure_id
 
 

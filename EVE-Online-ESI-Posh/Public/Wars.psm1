@@ -19,7 +19,7 @@ This route is cached for up to 3600 seconds
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Only return wars with ID smaller than this.")]
+            [Parameter(Mandatory=$false, HelpMessage="Only return wars with ID smaller than this")]
             [int32]
             $max_war_id,
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
@@ -53,6 +53,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEwars
 
 
 function get-EVEwars_war_id {
@@ -106,6 +107,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEwars_war_id
 
 
 function get-EVEwars_war_id_killmails {
@@ -170,5 +172,6 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEwars_war_id_killmails
 
 

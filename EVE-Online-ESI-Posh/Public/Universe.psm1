@@ -59,6 +59,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_ancestries
 
 
 function get-EVEuniverse_asteroid_belts_asteroid_belt_id {
@@ -112,6 +113,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_asteroid_belts_asteroid_belt_id
 
 
 function get-EVEuniverse_bloodlines {
@@ -175,6 +177,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_bloodlines
 
 
 function get-EVEuniverse_categories {
@@ -221,6 +224,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_categories
 
 
 function get-EVEuniverse_categories_category_id {
@@ -291,6 +295,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_categories_category_id
 
 
 function get-EVEuniverse_constellations {
@@ -337,6 +342,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_constellations
 
 
 function get-EVEuniverse_constellations_constellation_id {
@@ -407,6 +413,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_constellations_constellation_id
 
 
 function get-EVEuniverse_factions {
@@ -470,6 +477,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_factions
 
 
 function get-EVEuniverse_graphics {
@@ -516,6 +524,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_graphics
 
 
 function get-EVEuniverse_graphics_graphic_id {
@@ -569,6 +578,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_graphics_graphic_id
 
 
 function get-EVEuniverse_groups {
@@ -626,6 +636,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_groups
 
 
 function get-EVEuniverse_groups_group_id {
@@ -696,6 +707,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_groups_group_id
 
 
 function get-EVEuniverse_moons_moon_id {
@@ -749,6 +761,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_moons_moon_id
 
 
 function get-EVEuniverse_planets_planet_id {
@@ -802,6 +815,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_planets_planet_id
 
 
 function get-EVEuniverse_races {
@@ -865,6 +879,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_races
 
 
 function get-EVEuniverse_regions {
@@ -911,6 +926,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_regions
 
 
 function get-EVEuniverse_regions_region_id {
@@ -981,6 +997,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_regions_region_id
 
 
 function get-EVEuniverse_stargates_stargate_id {
@@ -1034,6 +1051,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_stargates_stargate_id
 
 
 function get-EVEuniverse_stars_star_id {
@@ -1087,6 +1105,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_stars_star_id
 
 
 function get-EVEuniverse_stations_station_id {
@@ -1140,6 +1159,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_stations_station_id
 
 
 function get-EVEuniverse_structures {
@@ -1186,6 +1206,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_structures
 
 
 function get-EVEuniverse_structures_structure_id {
@@ -1250,6 +1271,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_structures_structure_id
 
 
 function get-EVEuniverse_system_jumps {
@@ -1296,6 +1318,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_system_jumps
 
 
 function get-EVEuniverse_system_kills {
@@ -1342,6 +1365,7 @@ This route is cached for up to 3600 seconds
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_system_kills
 
 
 function get-EVEuniverse_systems {
@@ -1388,6 +1412,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_systems
 
 
 function get-EVEuniverse_systems_system_id {
@@ -1458,6 +1483,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_systems_system_id
 
 
 function get-EVEuniverse_types {
@@ -1515,6 +1541,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_types
 
 
 function get-EVEuniverse_types_type_id {
@@ -1585,6 +1612,7 @@ This route expires daily at 11:05
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function get-EVEuniverse_types_type_id
 
 
 function post-EVEuniverse_ids {
@@ -1592,7 +1620,7 @@ function post-EVEuniverse_ids {
 .SYNOPSIS
 Bulk names to IDs
 .DESCRIPTION
-Resolve a set of names to IDs in the following categories: agents, alliances, characters, constellations, corporations factions, inventory_types, regions, stations, and systems. Only exact matches will be returned. All names searched for are cached for 12 hours.
+Resolve a set of names to IDs in the following categories: agents, alliances, characters, constellations, corporations factions, inventory_types, regions, stations, and systems. Only exact matches will be returned. All names searched for are cached for 12 hours
 
 ---
 
@@ -1649,6 +1677,7 @@ Resolve a set of names to IDs in the following categories: agents, alliances, ch
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEuniverse_ids
 
 
 function post-EVEuniverse_names {
@@ -1656,7 +1685,7 @@ function post-EVEuniverse_names {
 .SYNOPSIS
 Get names and categories for a set of ID's
 .DESCRIPTION
-Resolve a set of IDs to names and categories. Supported ID's for resolving are: Characters, Corporations, Alliances, Stations, Solar Systems, Constellations, Regions, Types.
+Resolve a set of IDs to names and categories. Supported ID's for resolving are: Characters, Corporations, Alliances, Stations, Solar Systems, Constellations, Regions, Types
 
 ---
 
@@ -1694,5 +1723,6 @@ Resolve a set of IDs to names and categories. Supported ID's for resolving are: 
     $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
+Export-ModuleMember -Function post-EVEuniverse_names
 
 
