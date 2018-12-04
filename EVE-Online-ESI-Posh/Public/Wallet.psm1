@@ -299,7 +299,7 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v3/corporations/{corporation_id}/wallets/{division}/journal/",
+            $URI = "https://esi.tech.ccp.is/v4/corporations/{corporation_id}/wallets/{division}/journal/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -324,7 +324,7 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v3/corporations/{corporation_id}/wallets/{division}/journal/
+    #  https://esi.tech.ccp.is/v4/corporations/{corporation_id}/wallets/{division}/journal/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
