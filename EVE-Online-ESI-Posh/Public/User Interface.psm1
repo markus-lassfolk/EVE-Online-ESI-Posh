@@ -10,7 +10,7 @@ Set a solar system as autopilot waypoint
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/ui/autopilot/waypoint/",
+            $URI = "https://esi.evetech.net/v2/ui/autopilot/waypoint/",
             [Parameter(Mandatory=$true, HelpMessage="Whether this solar system should be added to the beginning of all waypoints")]
             [boolean]
             [ValidateSet($True,$False)]
@@ -34,7 +34,7 @@ Set a solar system as autopilot waypoint
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/ui/autopilot/waypoint/
+    #  https://esi.evetech.net/v2/ui/autopilot/waypoint/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -96,7 +96,7 @@ Open the contract window inside the client
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/ui/openwindow/contract/",
+            $URI = "https://esi.evetech.net/v1/ui/openwindow/contract/",
             [Parameter(Mandatory=$true, HelpMessage="The contract to open")]
             [int32]
             $contract_id,
@@ -112,7 +112,7 @@ Open the contract window inside the client
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/ui/openwindow/contract/
+    #  https://esi.evetech.net/v1/ui/openwindow/contract/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -158,7 +158,7 @@ Open the information window for a character, corporation or alliance inside the 
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/ui/openwindow/information/",
+            $URI = "https://esi.evetech.net/v1/ui/openwindow/information/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -174,7 +174,7 @@ Open the information window for a character, corporation or alliance inside the 
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/ui/openwindow/information/
+    #  https://esi.evetech.net/v1/ui/openwindow/information/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -220,7 +220,7 @@ Open the market details window for a specific typeID inside the client
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/ui/openwindow/marketdetails/",
+            $URI = "https://esi.evetech.net/v1/ui/openwindow/marketdetails/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -236,7 +236,7 @@ Open the market details window for a specific typeID inside the client
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/ui/openwindow/marketdetails/
+    #  https://esi.evetech.net/v1/ui/openwindow/marketdetails/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -282,7 +282,7 @@ Open the New Mail window, according to settings from the request if applicable
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/ui/openwindow/newmail/",
+            $URI = "https://esi.evetech.net/v1/ui/openwindow/newmail/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -298,7 +298,7 @@ Open the New Mail window, according to settings from the request if applicable
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/ui/openwindow/newmail/
+    #  https://esi.evetech.net/v1/ui/openwindow/newmail/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 

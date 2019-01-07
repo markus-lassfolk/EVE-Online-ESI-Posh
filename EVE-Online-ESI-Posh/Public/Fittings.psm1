@@ -10,7 +10,7 @@ Delete a fitting from a character
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/fittings/{fitting_id}/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/fittings/{fitting_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -29,7 +29,7 @@ Delete a fitting from a character
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/fittings/{fitting_id}/
+    #  https://esi.evetech.net/v1/characters/{character_id}/fittings/{fitting_id}/
     $Method = "delete"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -76,7 +76,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/fittings/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/fittings/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -95,7 +95,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/fittings/
+    #  https://esi.evetech.net/v1/characters/{character_id}/fittings/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -140,7 +140,7 @@ Save a new fitting for a character
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/fittings/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/fittings/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -159,7 +159,7 @@ Save a new fitting for a character
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/fittings/
+    #  https://esi.evetech.net/v1/characters/{character_id}/fittings/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 

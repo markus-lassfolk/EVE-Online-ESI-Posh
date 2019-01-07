@@ -11,7 +11,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/search/",
+            $URI = "https://esi.evetech.net/v3/characters/{character_id}/search/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -48,7 +48,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v3/characters/{character_id}/search/
+    #  https://esi.evetech.net/v3/characters/{character_id}/search/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -127,7 +127,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/search/",
+            $URI = "https://esi.evetech.net/v2/search/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -158,7 +158,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/search/
+    #  https://esi.evetech.net/v2/search/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

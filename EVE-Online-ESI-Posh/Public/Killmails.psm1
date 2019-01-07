@@ -11,7 +11,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/killmails/recent/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/killmails/recent/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -33,7 +33,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/killmails/recent/
+    #  https://esi.evetech.net/v1/characters/{character_id}/killmails/recent/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -90,7 +90,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/killmails/recent/",
+            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/killmails/recent/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -112,7 +112,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/killmails/recent/
+    #  https://esi.evetech.net/v1/corporations/{corporation_id}/killmails/recent/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -166,7 +166,7 @@ This route is cached for up to 1209600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/killmails/{killmail_id}/{killmail_hash}/",
+            $URI = "https://esi.evetech.net/v1/killmails/{killmail_id}/{killmail_hash}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -185,7 +185,7 @@ This route is cached for up to 1209600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/killmails/{killmail_id}/{killmail_hash}/
+    #  https://esi.evetech.net/v1/killmails/{killmail_id}/{killmail_hash}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

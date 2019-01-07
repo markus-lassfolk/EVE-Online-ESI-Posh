@@ -11,7 +11,7 @@ This route is cached for up to 600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/planets/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/planets/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -30,7 +30,7 @@ This route is cached for up to 600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/planets/
+    #  https://esi.evetech.net/v1/characters/{character_id}/planets/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -76,7 +76,7 @@ This route is cached for up to 600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/planets/{planet_id}/",
+            $URI = "https://esi.evetech.net/v3/characters/{character_id}/planets/{planet_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -98,7 +98,7 @@ This route is cached for up to 600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v3/characters/{character_id}/planets/{planet_id}/
+    #  https://esi.evetech.net/v3/characters/{character_id}/planets/{planet_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -151,7 +151,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/customs_offices/",
+            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/customs_offices/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -173,7 +173,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/customs_offices/
+    #  https://esi.evetech.net/v1/corporations/{corporation_id}/customs_offices/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -227,7 +227,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/universe/schematics/{schematic_id}/",
+            $URI = "https://esi.evetech.net/v1/universe/schematics/{schematic_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -243,7 +243,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/universe/schematics/{schematic_id}/
+    #  https://esi.evetech.net/v1/universe/schematics/{schematic_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

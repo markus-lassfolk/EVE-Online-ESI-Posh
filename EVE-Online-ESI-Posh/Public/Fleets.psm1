@@ -10,7 +10,7 @@ Kick a fleet member
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/members/{member_id}/",
+            $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/members/{member_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -29,7 +29,7 @@ Kick a fleet member
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/members/{member_id}/
+    #  https://esi.evetech.net/v1/fleets/{fleet_id}/members/{member_id}/
     $Method = "delete"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -75,7 +75,7 @@ Delete a fleet squad, only empty squads can be deleted
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/squads/{squad_id}/",
+            $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/squads/{squad_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -94,7 +94,7 @@ Delete a fleet squad, only empty squads can be deleted
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/squads/{squad_id}/
+    #  https://esi.evetech.net/v1/fleets/{fleet_id}/squads/{squad_id}/
     $Method = "delete"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -140,7 +140,7 @@ Delete a fleet wing, only empty wings can be deleted. The wing may contain squad
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/{wing_id}/",
+            $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/wings/{wing_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -159,7 +159,7 @@ Delete a fleet wing, only empty wings can be deleted. The wing may contain squad
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/{wing_id}/
+    #  https://esi.evetech.net/v1/fleets/{fleet_id}/wings/{wing_id}/
     $Method = "delete"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -206,7 +206,7 @@ This route is cached for up to 60 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/fleet/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/fleet/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -225,7 +225,7 @@ This route is cached for up to 60 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/fleet/
+    #  https://esi.evetech.net/v1/characters/{character_id}/fleet/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -271,7 +271,7 @@ This route is cached for up to 5 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/",
+            $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -290,7 +290,7 @@ This route is cached for up to 5 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/
+    #  https://esi.evetech.net/v1/fleets/{fleet_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -336,7 +336,7 @@ This route is cached for up to 5 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/members/",
+            $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/members/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -363,7 +363,7 @@ This route is cached for up to 5 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/members/
+    #  https://esi.evetech.net/v1/fleets/{fleet_id}/members/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -418,7 +418,7 @@ This route is cached for up to 5 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/",
+            $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/wings/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -445,7 +445,7 @@ This route is cached for up to 5 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/
+    #  https://esi.evetech.net/v1/fleets/{fleet_id}/wings/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -499,7 +499,7 @@ Invite a character into the fleet. If a character has a CSPA charge set it is no
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/members/",
+            $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/members/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -518,7 +518,7 @@ Invite a character into the fleet. If a character has a CSPA charge set it is no
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/members/
+    #  https://esi.evetech.net/v1/fleets/{fleet_id}/members/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -563,7 +563,7 @@ Create a new wing in a fleet
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/",
+            $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/wings/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -579,7 +579,7 @@ Create a new wing in a fleet
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/
+    #  https://esi.evetech.net/v1/fleets/{fleet_id}/wings/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -621,7 +621,7 @@ Create a new squad in a fleet
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/{wing_id}/squads/",
+            $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/wings/{wing_id}/squads/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -640,7 +640,7 @@ Create a new squad in a fleet
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/{wing_id}/squads/
+    #  https://esi.evetech.net/v1/fleets/{fleet_id}/wings/{wing_id}/squads/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -686,7 +686,7 @@ Update settings about a fleet
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/",
+            $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -705,7 +705,7 @@ Update settings about a fleet
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/
+    #  https://esi.evetech.net/v1/fleets/{fleet_id}/
     $Method = "put"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -750,7 +750,7 @@ Move a fleet member around
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/members/{member_id}/",
+            $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/members/{member_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -772,7 +772,7 @@ Move a fleet member around
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/members/{member_id}/
+    #  https://esi.evetech.net/v1/fleets/{fleet_id}/members/{member_id}/
     $Method = "put"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -821,7 +821,7 @@ Rename a fleet squad
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/squads/{squad_id}/",
+            $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/squads/{squad_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -843,7 +843,7 @@ Rename a fleet squad
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/squads/{squad_id}/
+    #  https://esi.evetech.net/v1/fleets/{fleet_id}/squads/{squad_id}/
     $Method = "put"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -892,7 +892,7 @@ Rename a fleet wing
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/{wing_id}/",
+            $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/wings/{wing_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -914,7 +914,7 @@ Rename a fleet wing
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/fleets/{fleet_id}/wings/{wing_id}/
+    #  https://esi.evetech.net/v1/fleets/{fleet_id}/wings/{wing_id}/
     $Method = "put"
     $URI = $URI -replace "{","$" -replace "}",""
 

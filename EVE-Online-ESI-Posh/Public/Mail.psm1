@@ -10,7 +10,7 @@ Delete a mail label
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/mail/labels/{label_id}/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/mail/labels/{label_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -29,7 +29,7 @@ Delete a mail label
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/mail/labels/{label_id}/
+    #  https://esi.evetech.net/v1/characters/{character_id}/mail/labels/{label_id}/
     $Method = "delete"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -75,7 +75,7 @@ Delete a mail
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/mail/{mail_id}/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/mail/{mail_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -94,7 +94,7 @@ Delete a mail
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/mail/{mail_id}/
+    #  https://esi.evetech.net/v1/characters/{character_id}/mail/{mail_id}/
     $Method = "delete"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -141,7 +141,7 @@ This route is cached for up to 30 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/mail/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/mail/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -166,7 +166,7 @@ This route is cached for up to 30 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/mail/
+    #  https://esi.evetech.net/v1/characters/{character_id}/mail/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -228,7 +228,7 @@ This route is cached for up to 30 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/mail/labels/",
+            $URI = "https://esi.evetech.net/v3/characters/{character_id}/mail/labels/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -247,7 +247,7 @@ This route is cached for up to 30 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v3/characters/{character_id}/mail/labels/
+    #  https://esi.evetech.net/v3/characters/{character_id}/mail/labels/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -293,7 +293,7 @@ This route is cached for up to 120 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/mail/lists/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/mail/lists/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -312,7 +312,7 @@ This route is cached for up to 120 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/mail/lists/
+    #  https://esi.evetech.net/v1/characters/{character_id}/mail/lists/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -358,7 +358,7 @@ This route is cached for up to 30 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/mail/{mail_id}/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/mail/{mail_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -380,7 +380,7 @@ This route is cached for up to 30 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/mail/{mail_id}/
+    #  https://esi.evetech.net/v1/characters/{character_id}/mail/{mail_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -429,7 +429,7 @@ Create and send a new mail
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/mail/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/mail/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -448,7 +448,7 @@ Create and send a new mail
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/mail/
+    #  https://esi.evetech.net/v1/characters/{character_id}/mail/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -493,7 +493,7 @@ Create a mail label
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/mail/labels/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/mail/labels/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -512,7 +512,7 @@ Create a mail label
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/characters/{character_id}/mail/labels/
+    #  https://esi.evetech.net/v2/characters/{character_id}/mail/labels/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -557,7 +557,7 @@ Update metadata about a mail
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/mail/{mail_id}/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/mail/{mail_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -579,7 +579,7 @@ Update metadata about a mail
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/mail/{mail_id}/
+    #  https://esi.evetech.net/v1/characters/{character_id}/mail/{mail_id}/
     $Method = "put"
     $URI = $URI -replace "{","$" -replace "}",""
 

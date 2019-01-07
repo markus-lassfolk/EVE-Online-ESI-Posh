@@ -11,7 +11,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/opportunities/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/opportunities/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -30,7 +30,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/opportunities/
+    #  https://esi.evetech.net/v1/characters/{character_id}/opportunities/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -76,7 +76,7 @@ This route expires daily at 11:05
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/opportunities/groups/",
+            $URI = "https://esi.evetech.net/v1/opportunities/groups/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -89,7 +89,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/opportunities/groups/
+    #  https://esi.evetech.net/v1/opportunities/groups/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -123,7 +123,7 @@ This route expires daily at 11:05
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/opportunities/groups/{group_id}/",
+            $URI = "https://esi.evetech.net/v1/opportunities/groups/{group_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -147,7 +147,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/opportunities/groups/{group_id}/
+    #  https://esi.evetech.net/v1/opportunities/groups/{group_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -194,7 +194,7 @@ This route expires daily at 11:05
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/opportunities/tasks/",
+            $URI = "https://esi.evetech.net/v1/opportunities/tasks/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -207,7 +207,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/opportunities/tasks/
+    #  https://esi.evetech.net/v1/opportunities/tasks/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -241,7 +241,7 @@ This route expires daily at 11:05
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/opportunities/tasks/{task_id}/",
+            $URI = "https://esi.evetech.net/v1/opportunities/tasks/{task_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -257,7 +257,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/opportunities/tasks/{task_id}/
+    #  https://esi.evetech.net/v1/opportunities/tasks/{task_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

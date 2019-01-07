@@ -1,7 +1,7 @@
 ﻿Set-Location "$ENV:USERPROFILE\Documents\GitHub\EVE-Online-ESI-Posh"
 
 
-$ModSwagger = Invoke-WebRequest -ContentType "application/json" -Uri https://esi.tech.ccp.is/_latest/swagger.json?datasource=tranquility -Verbose | ConvertFrom-Json
+$ModSwagger = Invoke-WebRequest -ContentType "application/json" -Uri https://esi.evetech.net/_latest/swagger.json?datasource=tranquility -Verbose | ConvertFrom-Json
 $ModSwagger.host
 
 
@@ -71,7 +71,7 @@ Update-ModuleManifest -Path $ManiFest.FullName -ModuleVersion $ModSwagger.info.v
 
         $Newstring = '            [string]'
         Add-Content $NewESIFunctionFile $Newstring
-        $Newstring = '            $URI = "https://esi.tech.ccp.is'+$($NewFunction.ESIPath)+'",'
+        $Newstring = '            $URI = "https://esi.evetech.net'+$($NewFunction.ESIPath)+'",'
         Add-Content $NewESIFunctionFile $Newstring
 
         [int]$NewFunctionParamterNumber = "0"
@@ -136,7 +136,7 @@ Update-ModuleManifest -Path $ManiFest.FullName -ModuleVersion $ModSwagger.info.v
         Add-Content $NewESIFunctionFile '            $OutputType = "PS"'
         Add-Content $NewESIFunctionFile "    ) #End of Param"
         Add-Content $NewESIFunctionFile "    #  Example URI"
-        Add-Content $NewESIFunctionFile "    #  https://esi.tech.ccp.is$($NewFunction.ESIPath)"
+        Add-Content $NewESIFunctionFile "    #  https://esi.evetech.net$($NewFunction.ESIPath)"
 
         $Newstring = '    $Method = "' + $NewFunction.ESIMethod + '"'
         Add-Content $NewESIFunctionFile $newstring
@@ -148,7 +148,7 @@ Update-ModuleManifest -Path $ManiFest.FullName -ModuleVersion $ModSwagger.info.v
         Add-Content $NewESIFunctionFile ''
 
         # Add Query Parameters
-        # curl -X GET "https://esi.tech.ccp.is/latest/universe/asteroid_belts/11111/?datasource=tranquility&user_agent=111" -H  "accept: application/json"
+        # curl -X GET "https://esi.evetech.net/latest/universe/asteroid_belts/11111/?datasource=tranquility&user_agent=111" -H  "accept: application/json"
 
 
         foreach ($RequiredParameter in $NewFunction.ESIParameters | Where-Object { $_.in -eq "query" }) {

@@ -11,7 +11,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/alliances/",
+            $URI = "https://esi.evetech.net/v1/alliances/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -24,7 +24,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/alliances/
+    #  https://esi.evetech.net/v1/alliances/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -58,7 +58,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v3/alliances/{alliance_id}/",
+            $URI = "https://esi.evetech.net/v3/alliances/{alliance_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE alliance ID")]
             [int32]
             $alliance_id,
@@ -74,7 +74,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v3/alliances/{alliance_id}/
+    #  https://esi.evetech.net/v3/alliances/{alliance_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -112,7 +112,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/alliances/{alliance_id}/corporations/",
+            $URI = "https://esi.evetech.net/v1/alliances/{alliance_id}/corporations/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE alliance ID")]
             [int32]
             $alliance_id,
@@ -128,7 +128,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/alliances/{alliance_id}/corporations/
+    #  https://esi.evetech.net/v1/alliances/{alliance_id}/corporations/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -162,11 +162,11 @@ Get the icon urls for a alliance
 
 ---
 
-This route is cached for up to 3600 seconds
+This route expires daily at 11:05
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/alliances/{alliance_id}/icons/",
+            $URI = "https://esi.evetech.net/v1/alliances/{alliance_id}/icons/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE alliance ID")]
             [int32]
             $alliance_id,
@@ -182,7 +182,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/alliances/{alliance_id}/icons/
+    #  https://esi.evetech.net/v1/alliances/{alliance_id}/icons/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

@@ -11,7 +11,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/assets/",
+            $URI = "https://esi.evetech.net/v3/characters/{character_id}/assets/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -33,7 +33,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v3/characters/{character_id}/assets/
+    #  https://esi.evetech.net/v3/characters/{character_id}/assets/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -90,7 +90,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v3/corporations/{corporation_id}/assets/",
+            $URI = "https://esi.evetech.net/v3/corporations/{corporation_id}/assets/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -112,7 +112,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v3/corporations/{corporation_id}/assets/
+    #  https://esi.evetech.net/v3/corporations/{corporation_id}/assets/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -165,7 +165,7 @@ Return locations for a set of item ids, which you can get from character assets 
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/assets/locations/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/assets/locations/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -184,7 +184,7 @@ Return locations for a set of item ids, which you can get from character assets 
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/characters/{character_id}/assets/locations/
+    #  https://esi.evetech.net/v2/characters/{character_id}/assets/locations/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -229,7 +229,7 @@ Return names for a set of item ids, which you can get from character assets endp
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/assets/names/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/assets/names/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -248,7 +248,7 @@ Return names for a set of item ids, which you can get from character assets endp
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/assets/names/
+    #  https://esi.evetech.net/v1/characters/{character_id}/assets/names/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -294,7 +294,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/corporations/{corporation_id}/assets/locations/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/assets/locations/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -313,7 +313,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/corporations/{corporation_id}/assets/locations/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/assets/locations/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -359,7 +359,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/assets/names/",
+            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/assets/names/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -378,7 +378,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/assets/names/
+    #  https://esi.evetech.net/v1/corporations/{corporation_id}/assets/names/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 

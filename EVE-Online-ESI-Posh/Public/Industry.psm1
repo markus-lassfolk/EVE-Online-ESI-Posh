@@ -11,7 +11,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/industry/jobs/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/industry/jobs/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -33,7 +33,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/industry/jobs/
+    #  https://esi.evetech.net/v1/characters/{character_id}/industry/jobs/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -87,7 +87,7 @@ This route is cached for up to 600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/mining/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/mining/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -109,7 +109,7 @@ This route is cached for up to 600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/mining/
+    #  https://esi.evetech.net/v1/characters/{character_id}/mining/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -166,7 +166,7 @@ Requires one of the following EVE corporation role(s): Station_Manager
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporation/{corporation_id}/mining/extractions/",
+            $URI = "https://esi.evetech.net/v1/corporation/{corporation_id}/mining/extractions/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -188,7 +188,7 @@ Requires one of the following EVE corporation role(s): Station_Manager
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporation/{corporation_id}/mining/extractions/
+    #  https://esi.evetech.net/v1/corporation/{corporation_id}/mining/extractions/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -245,7 +245,7 @@ Requires one of the following EVE corporation role(s): Accountant
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporation/{corporation_id}/mining/observers/",
+            $URI = "https://esi.evetech.net/v1/corporation/{corporation_id}/mining/observers/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -267,7 +267,7 @@ Requires one of the following EVE corporation role(s): Accountant
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporation/{corporation_id}/mining/observers/
+    #  https://esi.evetech.net/v1/corporation/{corporation_id}/mining/observers/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -324,7 +324,7 @@ Requires one of the following EVE corporation role(s): Accountant
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporation/{corporation_id}/mining/observers/{observer_id}/",
+            $URI = "https://esi.evetech.net/v1/corporation/{corporation_id}/mining/observers/{observer_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -349,7 +349,7 @@ Requires one of the following EVE corporation role(s): Accountant
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporation/{corporation_id}/mining/observers/{observer_id}/
+    #  https://esi.evetech.net/v1/corporation/{corporation_id}/mining/observers/{observer_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -410,7 +410,7 @@ Requires one of the following EVE corporation role(s): Factory_Manager
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/industry/jobs/",
+            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/industry/jobs/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -436,7 +436,7 @@ Requires one of the following EVE corporation role(s): Factory_Manager
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/industry/jobs/
+    #  https://esi.evetech.net/v1/corporations/{corporation_id}/industry/jobs/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -498,7 +498,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/industry/facilities/",
+            $URI = "https://esi.evetech.net/v1/industry/facilities/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -511,7 +511,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/industry/facilities/
+    #  https://esi.evetech.net/v1/industry/facilities/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -545,7 +545,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/industry/systems/",
+            $URI = "https://esi.evetech.net/v1/industry/systems/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -558,7 +558,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/industry/systems/
+    #  https://esi.evetech.net/v1/industry/systems/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

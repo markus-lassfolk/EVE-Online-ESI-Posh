@@ -11,7 +11,7 @@ This route is cached for up to 5 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/sovereignty/campaigns/",
+            $URI = "https://esi.evetech.net/v1/sovereignty/campaigns/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -24,7 +24,7 @@ This route is cached for up to 5 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/sovereignty/campaigns/
+    #  https://esi.evetech.net/v1/sovereignty/campaigns/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -58,7 +58,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/sovereignty/map/",
+            $URI = "https://esi.evetech.net/v1/sovereignty/map/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -71,7 +71,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/sovereignty/map/
+    #  https://esi.evetech.net/v1/sovereignty/map/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -105,7 +105,7 @@ This route is cached for up to 120 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/sovereignty/structures/",
+            $URI = "https://esi.evetech.net/v1/sovereignty/structures/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -118,7 +118,7 @@ This route is cached for up to 120 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/sovereignty/structures/
+    #  https://esi.evetech.net/v1/sovereignty/structures/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

@@ -11,7 +11,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/bookmarks/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/bookmarks/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -33,7 +33,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/characters/{character_id}/bookmarks/
+    #  https://esi.evetech.net/v2/characters/{character_id}/bookmarks/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -87,7 +87,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/bookmarks/folders/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/bookmarks/folders/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -109,7 +109,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/characters/{character_id}/bookmarks/folders/
+    #  https://esi.evetech.net/v2/characters/{character_id}/bookmarks/folders/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -163,7 +163,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/bookmarks/",
+            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/bookmarks/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -185,7 +185,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/bookmarks/
+    #  https://esi.evetech.net/v1/corporations/{corporation_id}/bookmarks/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -239,7 +239,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/bookmarks/folders/",
+            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/bookmarks/folders/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -261,7 +261,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/bookmarks/folders/
+    #  https://esi.evetech.net/v1/corporations/{corporation_id}/bookmarks/folders/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

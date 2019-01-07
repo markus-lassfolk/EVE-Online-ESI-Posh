@@ -11,7 +11,7 @@ This route expires daily at 11:05
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/dogma/attributes/",
+            $URI = "https://esi.evetech.net/v1/dogma/attributes/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -24,7 +24,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/dogma/attributes/
+    #  https://esi.evetech.net/v1/dogma/attributes/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -58,7 +58,7 @@ This route expires daily at 11:05
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/dogma/attributes/{attribute_id}/",
+            $URI = "https://esi.evetech.net/v1/dogma/attributes/{attribute_id}/",
             [Parameter(Mandatory=$true, HelpMessage="A dogma attribute ID")]
             [int32]
             $attribute_id,
@@ -74,7 +74,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/dogma/attributes/{attribute_id}/
+    #  https://esi.evetech.net/v1/dogma/attributes/{attribute_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -112,7 +112,7 @@ This route expires daily at 11:05
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/dogma/dynamic/items/{type_id}/{item_id}/",
+            $URI = "https://esi.evetech.net/v1/dogma/dynamic/items/{type_id}/{item_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -131,7 +131,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/dogma/dynamic/items/{type_id}/{item_id}/
+    #  https://esi.evetech.net/v1/dogma/dynamic/items/{type_id}/{item_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -173,7 +173,7 @@ This route expires daily at 11:05
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/dogma/effects/",
+            $URI = "https://esi.evetech.net/v1/dogma/effects/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -186,7 +186,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/dogma/effects/
+    #  https://esi.evetech.net/v1/dogma/effects/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -220,7 +220,7 @@ This route expires daily at 11:05
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/dogma/effects/{effect_id}/",
+            $URI = "https://esi.evetech.net/v2/dogma/effects/{effect_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -236,7 +236,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/dogma/effects/{effect_id}/
+    #  https://esi.evetech.net/v2/dogma/effects/{effect_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

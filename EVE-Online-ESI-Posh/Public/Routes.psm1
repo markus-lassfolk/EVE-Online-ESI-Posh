@@ -11,7 +11,7 @@ This route is cached for up to 86400 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/route/{origin}/{destination}/",
+            $URI = "https://esi.evetech.net/v1/route/{origin}/{destination}/",
             [Parameter(Mandatory=$false, HelpMessage="avoid solar system ID(s)")]
             [array]
             $avoid,
@@ -40,7 +40,7 @@ This route is cached for up to 86400 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/route/{origin}/{destination}/
+    #  https://esi.evetech.net/v1/route/{origin}/{destination}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

@@ -1,7 +1,7 @@
 EVE-Online-ESI-Posh
 =============
 
-This ia a PowerShell module for querying the EVE Online ESI Api Restfull endpoint using the endpoints provided here : https://esi.tech.ccp.is/ 
+This ia a PowerShell module for querying the EVE Online ESI Api Restfull endpoint using the endpoints provided here : https://esi.evetech.net/ 
 There is also some experimental support for integrating with Discord.  
 
 This is not fully featured or tested, but pull requests would be welcome!

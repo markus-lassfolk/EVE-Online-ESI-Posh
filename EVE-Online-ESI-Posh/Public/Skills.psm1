@@ -11,7 +11,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/attributes/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/attributes/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -30,7 +30,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/attributes/
+    #  https://esi.evetech.net/v1/characters/{character_id}/attributes/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -76,7 +76,7 @@ This route is cached for up to 120 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/skillqueue/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/skillqueue/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -95,7 +95,7 @@ This route is cached for up to 120 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/characters/{character_id}/skillqueue/
+    #  https://esi.evetech.net/v2/characters/{character_id}/skillqueue/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -141,7 +141,7 @@ This route is cached for up to 120 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v4/characters/{character_id}/skills/",
+            $URI = "https://esi.evetech.net/v4/characters/{character_id}/skills/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -160,7 +160,7 @@ This route is cached for up to 120 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v4/characters/{character_id}/skills/
+    #  https://esi.evetech.net/v4/characters/{character_id}/skills/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

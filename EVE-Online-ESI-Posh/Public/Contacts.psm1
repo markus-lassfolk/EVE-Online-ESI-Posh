@@ -10,7 +10,7 @@ Bulk delete contacts
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/contacts/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/contacts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -29,7 +29,7 @@ Bulk delete contacts
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/characters/{character_id}/contacts/
+    #  https://esi.evetech.net/v2/characters/{character_id}/contacts/
     $Method = "delete"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -80,7 +80,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/alliances/{alliance_id}/contacts/",
+            $URI = "https://esi.evetech.net/v2/alliances/{alliance_id}/contacts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE alliance ID")]
             [int32]
             $alliance_id,
@@ -102,7 +102,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/alliances/{alliance_id}/contacts/
+    #  https://esi.evetech.net/v2/alliances/{alliance_id}/contacts/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -156,7 +156,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/alliances/{alliance_id}/contacts/labels/",
+            $URI = "https://esi.evetech.net/v1/alliances/{alliance_id}/contacts/labels/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE alliance ID")]
             [int32]
             $alliance_id,
@@ -175,7 +175,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/alliances/{alliance_id}/contacts/labels/
+    #  https://esi.evetech.net/v1/alliances/{alliance_id}/contacts/labels/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -221,7 +221,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/contacts/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/contacts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -243,7 +243,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/characters/{character_id}/contacts/
+    #  https://esi.evetech.net/v2/characters/{character_id}/contacts/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -297,7 +297,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/contacts/labels/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/contacts/labels/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -316,7 +316,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/contacts/labels/
+    #  https://esi.evetech.net/v1/characters/{character_id}/contacts/labels/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -362,7 +362,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/corporations/{corporation_id}/contacts/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/contacts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -384,7 +384,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/corporations/{corporation_id}/contacts/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/contacts/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -438,7 +438,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/contacts/labels/",
+            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/contacts/labels/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -457,7 +457,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/contacts/labels/
+    #  https://esi.evetech.net/v1/corporations/{corporation_id}/contacts/labels/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -502,7 +502,7 @@ Bulk add contacts with same settings
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/contacts/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/contacts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -531,7 +531,7 @@ Bulk add contacts with same settings
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/characters/{character_id}/contacts/
+    #  https://esi.evetech.net/v2/characters/{character_id}/contacts/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -600,7 +600,7 @@ Bulk edit contacts with same settings
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/contacts/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/contacts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -629,7 +629,7 @@ Bulk edit contacts with same settings
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/characters/{character_id}/contacts/
+    #  https://esi.evetech.net/v2/characters/{character_id}/contacts/
     $Method = "put"
     $URI = $URI -replace "{","$" -replace "}",""
 

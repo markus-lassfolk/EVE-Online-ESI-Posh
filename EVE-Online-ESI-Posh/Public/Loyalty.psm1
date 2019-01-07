@@ -11,7 +11,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/loyalty/points/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/loyalty/points/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -30,7 +30,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/loyalty/points/
+    #  https://esi.evetech.net/v1/characters/{character_id}/loyalty/points/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -76,7 +76,7 @@ This route expires daily at 11:05
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/loyalty/stores/{corporation_id}/offers/",
+            $URI = "https://esi.evetech.net/v1/loyalty/stores/{corporation_id}/offers/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -92,7 +92,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/loyalty/stores/{corporation_id}/offers/
+    #  https://esi.evetech.net/v1/loyalty/stores/{corporation_id}/offers/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

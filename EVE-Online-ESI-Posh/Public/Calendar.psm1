@@ -11,7 +11,7 @@ This route is cached for up to 5 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/calendar/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/calendar/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -33,7 +33,7 @@ This route is cached for up to 5 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/calendar/
+    #  https://esi.evetech.net/v1/characters/{character_id}/calendar/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -87,7 +87,7 @@ This route is cached for up to 5 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/calendar/{event_id}/",
+            $URI = "https://esi.evetech.net/v3/characters/{character_id}/calendar/{event_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -109,7 +109,7 @@ This route is cached for up to 5 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v3/characters/{character_id}/calendar/{event_id}/
+    #  https://esi.evetech.net/v3/characters/{character_id}/calendar/{event_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -159,7 +159,7 @@ This route is cached for up to 600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/calendar/{event_id}/attendees/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/calendar/{event_id}/attendees/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -181,7 +181,7 @@ This route is cached for up to 600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/calendar/{event_id}/attendees/
+    #  https://esi.evetech.net/v1/characters/{character_id}/calendar/{event_id}/attendees/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -230,7 +230,7 @@ Set your response status to an event
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v3/characters/{character_id}/calendar/{event_id}/",
+            $URI = "https://esi.evetech.net/v3/characters/{character_id}/calendar/{event_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -252,7 +252,7 @@ Set your response status to an event
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v3/characters/{character_id}/calendar/{event_id}/
+    #  https://esi.evetech.net/v3/characters/{character_id}/calendar/{event_id}/
     $Method = "put"
     $URI = $URI -replace "{","$" -replace "}",""
 

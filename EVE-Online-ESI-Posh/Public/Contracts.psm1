@@ -11,7 +11,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/contracts/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/contracts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -33,7 +33,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/contracts/
+    #  https://esi.evetech.net/v1/characters/{character_id}/contracts/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -87,7 +87,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/contracts/{contract_id}/bids/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/contracts/{contract_id}/bids/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -109,7 +109,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/contracts/{contract_id}/bids/
+    #  https://esi.evetech.net/v1/characters/{character_id}/contracts/{contract_id}/bids/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -159,7 +159,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/contracts/{contract_id}/items/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/contracts/{contract_id}/items/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -181,7 +181,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/contracts/{contract_id}/items/
+    #  https://esi.evetech.net/v1/characters/{character_id}/contracts/{contract_id}/items/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -231,7 +231,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/contracts/public/bids/{contract_id}/",
+            $URI = "https://esi.evetech.net/v1/contracts/public/bids/{contract_id}/",
             [Parameter(Mandatory=$true, HelpMessage="ID of a contract")]
             [int32]
             $contract_id,
@@ -250,7 +250,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/contracts/public/bids/{contract_id}/
+    #  https://esi.evetech.net/v1/contracts/public/bids/{contract_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -296,7 +296,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/contracts/public/items/{contract_id}/",
+            $URI = "https://esi.evetech.net/v1/contracts/public/items/{contract_id}/",
             [Parameter(Mandatory=$true, HelpMessage="ID of a contract")]
             [int32]
             $contract_id,
@@ -315,7 +315,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/contracts/public/items/{contract_id}/
+    #  https://esi.evetech.net/v1/contracts/public/items/{contract_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -361,7 +361,7 @@ This route is cached for up to 1800 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/contracts/public/{region_id}/",
+            $URI = "https://esi.evetech.net/v1/contracts/public/{region_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -380,7 +380,7 @@ This route is cached for up to 1800 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/contracts/public/{region_id}/
+    #  https://esi.evetech.net/v1/contracts/public/{region_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -426,7 +426,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/contracts/",
+            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/contracts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -448,7 +448,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/contracts/
+    #  https://esi.evetech.net/v1/corporations/{corporation_id}/contracts/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -502,7 +502,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/contracts/{contract_id}/bids/",
+            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/contracts/{contract_id}/bids/",
             [Parameter(Mandatory=$true, HelpMessage="ID of a contract")]
             [int32]
             $contract_id,
@@ -527,7 +527,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/contracts/{contract_id}/bids/
+    #  https://esi.evetech.net/v1/corporations/{corporation_id}/contracts/{contract_id}/bids/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -585,7 +585,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/contracts/{contract_id}/items/",
+            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/contracts/{contract_id}/items/",
             [Parameter(Mandatory=$true, HelpMessage="ID of a contract")]
             [int32]
             $contract_id,
@@ -607,7 +607,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/contracts/{contract_id}/items/
+    #  https://esi.evetech.net/v1/corporations/{corporation_id}/contracts/{contract_id}/items/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

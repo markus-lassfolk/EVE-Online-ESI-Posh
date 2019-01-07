@@ -11,7 +11,7 @@ This route is cached for up to 120 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/wallet/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/wallet/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -30,7 +30,7 @@ This route is cached for up to 120 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/wallet/
+    #  https://esi.evetech.net/v1/characters/{character_id}/wallet/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -73,10 +73,16 @@ Retrieve the given character's wallet journal going 30 days back
 ---
 
 This route is cached for up to 3600 seconds
+
+---
+Warning: This route has an upgrade available
+
+---
+[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/wallet/journal/)
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v4/characters/{character_id}/wallet/journal/",
+            $URI = "https://esi.evetech.net/v4/characters/{character_id}/wallet/journal/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -98,7 +104,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v4/characters/{character_id}/wallet/journal/
+    #  https://esi.evetech.net/v4/characters/{character_id}/wallet/journal/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -152,7 +158,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/wallet/transactions/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/wallet/transactions/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -174,7 +180,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/wallet/transactions/
+    #  https://esi.evetech.net/v1/characters/{character_id}/wallet/transactions/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -231,7 +237,7 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/wallets/",
+            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/wallets/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -250,7 +256,7 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/wallets/
+    #  https://esi.evetech.net/v1/corporations/{corporation_id}/wallets/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -288,7 +294,7 @@ function get-EVEcorporations_corporation_id_wallets_division_journal {
 .SYNOPSIS
 Get corporation wallet journal
 .DESCRIPTION
-Retrieve the given corporation's wallet journal for the given division going 30 days back
+Retrieve the given corporation's wallet journal for the given division going 30 days back. Note: any journal records having to do with the new navigation structures from the release of Onslaught will not show up in this version. To see those, use the v4 version of this route.
 
 ---
 
@@ -296,10 +302,16 @@ This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Accountant, Junior_Accountant
+
+---
+Warning: This route has an upgrade available
+
+---
+[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/wallets/{division}/journal/)
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v4/corporations/{corporation_id}/wallets/{division}/journal/",
+            $URI = "https://esi.evetech.net/v3/corporations/{corporation_id}/wallets/{division}/journal/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -324,7 +336,7 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v4/corporations/{corporation_id}/wallets/{division}/journal/
+    #  https://esi.evetech.net/v3/corporations/{corporation_id}/wallets/{division}/journal/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -385,7 +397,7 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/corporations/{corporation_id}/wallets/{division}/transactions/",
+            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/wallets/{division}/transactions/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -410,7 +422,7 @@ Requires one of the following EVE corporation role(s): Accountant, Junior_Accoun
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/corporations/{corporation_id}/wallets/{division}/transactions/
+    #  https://esi.evetech.net/v1/corporations/{corporation_id}/wallets/{division}/transactions/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

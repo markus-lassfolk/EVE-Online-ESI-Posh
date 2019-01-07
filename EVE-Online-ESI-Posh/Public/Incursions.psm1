@@ -11,7 +11,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/incursions/",
+            $URI = "https://esi.evetech.net/v1/incursions/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -24,7 +24,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/incursions/
+    #  https://esi.evetech.net/v1/incursions/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

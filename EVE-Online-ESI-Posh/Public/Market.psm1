@@ -11,7 +11,7 @@ This route is cached for up to 1200 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/characters/{character_id}/orders/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/orders/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -30,7 +30,7 @@ This route is cached for up to 1200 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/characters/{character_id}/orders/
+    #  https://esi.evetech.net/v2/characters/{character_id}/orders/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -76,7 +76,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/characters/{character_id}/orders/history/",
+            $URI = "https://esi.evetech.net/v1/characters/{character_id}/orders/history/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -98,7 +98,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/characters/{character_id}/orders/history/
+    #  https://esi.evetech.net/v1/characters/{character_id}/orders/history/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -155,7 +155,7 @@ Requires one of the following EVE corporation role(s): Accountant, Trader
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v3/corporations/{corporation_id}/orders/",
+            $URI = "https://esi.evetech.net/v3/corporations/{corporation_id}/orders/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -177,7 +177,7 @@ Requires one of the following EVE corporation role(s): Accountant, Trader
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v3/corporations/{corporation_id}/orders/
+    #  https://esi.evetech.net/v3/corporations/{corporation_id}/orders/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -234,7 +234,7 @@ Requires one of the following EVE corporation role(s): Accountant, Trader
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v2/corporations/{corporation_id}/orders/history/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/orders/history/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -256,7 +256,7 @@ Requires one of the following EVE corporation role(s): Accountant, Trader
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v2/corporations/{corporation_id}/orders/history/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/orders/history/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -310,7 +310,7 @@ This route expires daily at 11:05
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/markets/groups/",
+            $URI = "https://esi.evetech.net/v1/markets/groups/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -323,7 +323,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/markets/groups/
+    #  https://esi.evetech.net/v1/markets/groups/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -357,7 +357,7 @@ This route expires daily at 11:05
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/markets/groups/{market_group_id}/",
+            $URI = "https://esi.evetech.net/v1/markets/groups/{market_group_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -381,7 +381,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/markets/groups/{market_group_id}/
+    #  https://esi.evetech.net/v1/markets/groups/{market_group_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -428,7 +428,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/markets/prices/",
+            $URI = "https://esi.evetech.net/v1/markets/prices/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -441,7 +441,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/markets/prices/
+    #  https://esi.evetech.net/v1/markets/prices/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -475,7 +475,7 @@ This route expires daily at 11:05
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/markets/{region_id}/history/",
+            $URI = "https://esi.evetech.net/v1/markets/{region_id}/history/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -494,7 +494,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/markets/{region_id}/history/
+    #  https://esi.evetech.net/v1/markets/{region_id}/history/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -540,7 +540,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/markets/{region_id}/orders/",
+            $URI = "https://esi.evetech.net/v1/markets/{region_id}/orders/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -566,7 +566,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/markets/{region_id}/orders/
+    #  https://esi.evetech.net/v1/markets/{region_id}/orders/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -628,7 +628,7 @@ This route is cached for up to 600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/markets/{region_id}/types/",
+            $URI = "https://esi.evetech.net/v1/markets/{region_id}/types/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -647,7 +647,7 @@ This route is cached for up to 600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/markets/{region_id}/types/
+    #  https://esi.evetech.net/v1/markets/{region_id}/types/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -693,7 +693,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/markets/structures/{structure_id}/",
+            $URI = "https://esi.evetech.net/v1/markets/structures/{structure_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -715,7 +715,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/markets/structures/{structure_id}/
+    #  https://esi.evetech.net/v1/markets/structures/{structure_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

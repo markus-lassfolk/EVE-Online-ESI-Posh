@@ -11,7 +11,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/wars/",
+            $URI = "https://esi.evetech.net/v1/wars/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -27,7 +27,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/wars/
+    #  https://esi.evetech.net/v1/wars/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -69,7 +69,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/wars/{war_id}/",
+            $URI = "https://esi.evetech.net/v1/wars/{war_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -85,7 +85,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/wars/{war_id}/
+    #  https://esi.evetech.net/v1/wars/{war_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -123,7 +123,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.tech.ccp.is/v1/wars/{war_id}/killmails/",
+            $URI = "https://esi.evetech.net/v1/wars/{war_id}/killmails/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -142,7 +142,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.tech.ccp.is/v1/wars/{war_id}/killmails/
+    #  https://esi.evetech.net/v1/wars/{war_id}/killmails/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
