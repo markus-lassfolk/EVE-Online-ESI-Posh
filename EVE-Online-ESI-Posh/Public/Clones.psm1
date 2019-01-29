@@ -72,7 +72,7 @@ Return implants on the active clone of a character
 
 ---
 
-This route is cached for up to 300 seconds
+This route is cached for up to 120 seconds
 #>
     Param(
             [string]

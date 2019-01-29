@@ -1695,12 +1695,16 @@ Export-ModuleMember -Function post-EVEuniverse_ids
 function post-EVEuniverse_names {
 <#
 .SYNOPSIS
-Get names and categories for a set of ID's
+Get names and categories for a set of IDs
 .DESCRIPTION
 Resolve a set of IDs to names and categories. Supported ID's for resolving are: Characters, Corporations, Alliances, Stations, Solar Systems, Constellations, Regions, Types
 
 ---
 
+Warning: This route has an upgrade available
+
+---
+[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#POST-/universe/names/)
 #>
     Param(
             [string]

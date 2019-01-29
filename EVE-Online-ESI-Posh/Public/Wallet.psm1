@@ -73,16 +73,10 @@ Retrieve the given character's wallet journal going 30 days back
 ---
 
 This route is cached for up to 3600 seconds
-
----
-Warning: This route has an upgrade available
-
----
-[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/wallet/journal/)
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v4/characters/{character_id}/wallet/journal/",
+            $URI = "https://esi.evetech.net/v5/characters/{character_id}/wallet/journal/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -104,7 +98,7 @@ Warning: This route has an upgrade available
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v4/characters/{character_id}/wallet/journal/
+    #  https://esi.evetech.net/v5/characters/{character_id}/wallet/journal/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -294,7 +288,7 @@ function get-EVEcorporations_corporation_id_wallets_division_journal {
 .SYNOPSIS
 Get corporation wallet journal
 .DESCRIPTION
-Retrieve the given corporation's wallet journal for the given division going 30 days back. Note: any journal records having to do with the new navigation structures from the release of Onslaught will not show up in this version. To see those, use the v4 version of this route.
+Retrieve the given corporation's wallet journal for the given division going 30 days back
 
 ---
 
@@ -302,16 +296,10 @@ This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Accountant, Junior_Accountant
-
----
-Warning: This route has an upgrade available
-
----
-[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/wallets/{division}/journal/)
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v3/corporations/{corporation_id}/wallets/{division}/journal/",
+            $URI = "https://esi.evetech.net/v4/corporations/{corporation_id}/wallets/{division}/journal/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -336,7 +324,7 @@ Warning: This route has an upgrade available
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v3/corporations/{corporation_id}/wallets/{division}/journal/
+    #  https://esi.evetech.net/v4/corporations/{corporation_id}/wallets/{division}/journal/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

@@ -1347,7 +1347,7 @@ function get-EVEcorporations_corporation_id_structures {
 .SYNOPSIS
 Get corporation structures
 .DESCRIPTION
-Get a list of corporation structures. This route's version includes the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th Note: this route will not return any flex structures owned by a corporation, use the v3 route to have those included in the response. A list of FLEX structures can be found here: https://support.eveonline.com/hc/en-us/articles/213021829-Upwell-Structures
+Get a list of corporation structures. This route's version includes the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th
 
 ---
 
@@ -1355,16 +1355,10 @@ This route is cached for up to 3600 seconds
 
 ---
 Requires one of the following EVE corporation role(s): Station_Manager
-
----
-Warning: This route has an upgrade available
-
----
-[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/structures/)
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/structures/",
+            $URI = "https://esi.evetech.net/v3/corporations/{corporation_id}/structures/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
             [ValidateSet("de","en-us","fr","ja","ru","zh")]
             [string]
@@ -1394,7 +1388,7 @@ Warning: This route has an upgrade available
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v2/corporations/{corporation_id}/structures/
+    #  https://esi.evetech.net/v3/corporations/{corporation_id}/structures/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
