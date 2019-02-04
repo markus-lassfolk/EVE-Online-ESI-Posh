@@ -119,7 +119,7 @@ function invoke-EVEWebRequest {
 
     $ESIReply = $Null
     try {
-        Write-Verbose "Executing: Invoke-WebRequest -Uri '$($uri)' -Method '$($Method)' -Body '$($body)' -ContentType $("application/json")"
+        Write-Host "Executing: Invoke-WebRequest -Uri '$($uri)' -Method '$($Method)' -Body '$($body)' -ContentType $("application/json")"
         $ESIReply = Invoke-WebRequest -Uri $uri -Method $Method -Body $body -ContentType "application/json"
     }
     catch {
@@ -195,6 +195,7 @@ function invoke-EVEWebRequest {
         return $ESIReply
     }
 }
+
 
 
 
