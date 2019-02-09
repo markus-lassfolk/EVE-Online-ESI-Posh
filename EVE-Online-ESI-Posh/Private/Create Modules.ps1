@@ -9,7 +9,7 @@ $CurrentSwaggerVersion = (get-content $ManiFestFile.FullName | where { $_ -like 
 
 if ( $CurrentSwaggerVersion -eq $null -or $CurrentSwaggerVersion -eq "" -or $CurrentSwaggerVersion -eq $ModSwagger.info.version ) {
 
-    Write-Host "Nothing to do, version is the same as current swagger spec"
+    Write-Host "Nothing to do, version is the same as current swagger spec. Verion is $CurrentSwaggerVersion"
     break
 }
 else {
