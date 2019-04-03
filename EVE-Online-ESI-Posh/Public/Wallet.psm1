@@ -73,6 +73,12 @@ Retrieve the given character's wallet journal going 30 days back
 ---
 
 This route is cached for up to 3600 seconds
+
+---
+Warning: This route has an upgrade available
+
+---
+[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/wallet/journal/)
 #>
     Param(
             [string]

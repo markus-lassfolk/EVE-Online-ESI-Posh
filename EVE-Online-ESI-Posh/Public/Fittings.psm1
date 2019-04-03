@@ -73,16 +73,10 @@ Return fittings of a character
 ---
 
 This route is cached for up to 300 seconds
-
----
-Warning: This route has an upgrade available
-
----
-[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/fittings/)
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/characters/{character_id}/fittings/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/fittings/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -101,7 +95,7 @@ Warning: This route has an upgrade available
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/characters/{character_id}/fittings/
+    #  https://esi.evetech.net/v2/characters/{character_id}/fittings/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -143,14 +137,10 @@ Save a new fitting for a character
 
 ---
 
-Warning: This route has an upgrade available
-
----
-[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#POST-/characters/{character_id}/fittings/)
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/characters/{character_id}/fittings/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/fittings/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -169,7 +159,7 @@ Warning: This route has an upgrade available
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/characters/{character_id}/fittings/
+    #  https://esi.evetech.net/v2/characters/{character_id}/fittings/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 

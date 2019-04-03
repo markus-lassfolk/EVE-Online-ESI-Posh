@@ -1697,18 +1697,14 @@ function post-EVEuniverse_names {
 .SYNOPSIS
 Get names and categories for a set of IDs
 .DESCRIPTION
-Resolve a set of IDs to names and categories. Supported ID's for resolving are: Characters, Corporations, Alliances, Stations, Solar Systems, Constellations, Regions, Types
+Resolve a set of IDs to names and categories. Supported ID's for resolving are: Characters, Corporations, Alliances, Stations, Solar Systems, Constellations, Regions, Types, Factions
 
 ---
 
-Warning: This route has an upgrade available
-
----
-[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#POST-/universe/names/)
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v2/universe/names/",
+            $URI = "https://esi.evetech.net/v3/universe/names/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility","singularity")]
             [string]
@@ -1721,7 +1717,7 @@ Warning: This route has an upgrade available
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v2/universe/names/
+    #  https://esi.evetech.net/v3/universe/names/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 
