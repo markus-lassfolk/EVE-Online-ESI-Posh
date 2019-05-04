@@ -203,6 +203,12 @@ Return the fleet ID the character is in, if any.
 ---
 
 This route is cached for up to 60 seconds
+
+---
+Warning: This route has an upgrade available
+
+---
+[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/fleet/)
 #>
     Param(
             [string]
