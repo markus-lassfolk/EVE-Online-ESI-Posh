@@ -1,5 +1,5 @@
 function get-EVEcharacters_character_id {
-    <#
+<#
 .SYNOPSIS
 Get character's public information
 .DESCRIPTION
@@ -10,26 +10,26 @@ Public information about a character
 This route is cached for up to 3600 seconds
 #>
     Param(
-        [string]
-        $URI = "https://esi.evetech.net/v4/characters/{character_id}/",
-        [Parameter(Mandatory = $true, HelpMessage = "An EVE character ID")]
-        [int32]
-        $character_id,
-        [Parameter(Mandatory = $false, HelpMessage = "The server name you would like data from")]
-        [ValidateSet("tranquility", "singularity")]
-        [string]
-        $datasource = "tranquility",
-        [Parameter(Mandatory = $false, HelpMessage = "ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-        [string]
-        $If_None_Match,
-        [Parameter(Mandatory = $false, HelpMessage = "Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
-        [ValidateSet("PS", "json", "PSfull")]
-        $OutputType = "PS"
+            [string]
+            $URI = "https://esi.evetech.net/v4/characters/{character_id}/",
+            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
+            [int32]
+            $character_id,
+            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
+            [ValidateSet("tranquility","singularity")]
+            [string]
+            $datasource = "tranquility",
+            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
+            [string]
+            $If_None_Match,
+            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
+            [ValidateSet("PS","json","PSfull")]
+            $OutputType = "PS"
     ) #End of Param
     #  Example URI
     #  https://esi.evetech.net/v4/characters/{character_id}/
     $Method = "get"
-    $URI = $URI -replace "{", "$" -replace "}", ""
+    $URI = $URI -replace "{","$" -replace "}",""
 
     if ($datasource -ne "") {
         if ($URI.Contains('?') -eq $false) {
@@ -44,13 +44,12 @@ This route is cached for up to 3600 seconds
     }
 
     if ($character_id -ne "") {
-        $URI = $URI -replace '\$character_id', "$character_id"
+        $URI = $URI -replace '\$character_id',"$character_id"
     }
-    $URI = $URI -replace "$True", "True" -replace "$False", "False"
+    $URI = $URI -replace "$True","True" -replace "$False","False"
     invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
 }
 Export-ModuleMember -Function get-EVEcharacters_character_id
-
 
 
 function get-EVEcharacters_character_id_agents_research {
@@ -391,7 +390,7 @@ This route is cached for up to 600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v4/characters/{character_id}/notifications/",
+            $URI = "https://esi.evetech.net/v5/characters/{character_id}/notifications/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -410,7 +409,7 @@ This route is cached for up to 600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v4/characters/{character_id}/notifications/
+    #  https://esi.evetech.net/v5/characters/{character_id}/notifications/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

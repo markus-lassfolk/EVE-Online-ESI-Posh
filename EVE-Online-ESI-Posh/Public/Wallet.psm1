@@ -73,16 +73,10 @@ Retrieve the given character's wallet journal going 30 days back
 ---
 
 This route is cached for up to 3600 seconds
-
----
-Warning: This route has an upgrade available
-
----
-[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/wallet/journal/)
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v5/characters/{character_id}/wallet/journal/",
+            $URI = "https://esi.evetech.net/v6/characters/{character_id}/wallet/journal/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -104,7 +98,7 @@ Warning: This route has an upgrade available
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v5/characters/{character_id}/wallet/journal/
+    #  https://esi.evetech.net/v6/characters/{character_id}/wallet/journal/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
