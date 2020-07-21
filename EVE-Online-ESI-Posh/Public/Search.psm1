@@ -13,7 +13,7 @@ This route is cached for up to 3600 seconds
             [string]
             $URI = "https://esi.evetech.net/v3/characters/{character_id}/search/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="Type of entities to search for")]
@@ -30,7 +30,7 @@ This route is cached for up to 3600 seconds
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="The string to search on")]
@@ -129,7 +129,7 @@ This route is cached for up to 3600 seconds
             [string]
             $URI = "https://esi.evetech.net/v2/search/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="Type of entities to search for")]
@@ -143,7 +143,7 @@ This route is cached for up to 3600 seconds
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="The string to search on")]

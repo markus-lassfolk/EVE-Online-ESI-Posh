@@ -13,7 +13,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/ancestries/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -24,7 +24,7 @@ This route expires daily at 11:05
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
@@ -131,7 +131,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/bloodlines/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -142,7 +142,7 @@ This route expires daily at 11:05
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
@@ -242,7 +242,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/categories/{category_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="An Eve item category ID")]
@@ -256,7 +256,7 @@ This route expires daily at 11:05
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
@@ -360,7 +360,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/constellations/{constellation_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="constellation_id integer")]
@@ -374,7 +374,7 @@ This route expires daily at 11:05
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
@@ -431,7 +431,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v2/universe/factions/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -442,7 +442,7 @@ This route expires daily at 11:05
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
@@ -654,7 +654,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/groups/{group_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -668,7 +668,7 @@ This route expires daily at 11:05
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
@@ -833,7 +833,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/races/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -844,7 +844,7 @@ This route expires daily at 11:05
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
@@ -944,7 +944,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/regions/{region_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -955,7 +955,7 @@ This route expires daily at 11:05
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="region_id integer")]
@@ -1442,7 +1442,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v4/universe/systems/{system_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -1453,7 +1453,7 @@ This route expires daily at 11:05
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="system_id integer")]
@@ -1571,7 +1571,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v3/universe/types/{type_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -1582,7 +1582,7 @@ This route expires daily at 11:05
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="An Eve item type ID")]
@@ -1641,7 +1641,7 @@ Resolve a set of names to IDs in the following categories: agents, alliances, ch
             [string]
             $URI = "https://esi.evetech.net/v1/universe/ids/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -1649,7 +1649,7 @@ Resolve a set of names to IDs in the following categories: agents, alliances, ch
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="The names to resolve")]

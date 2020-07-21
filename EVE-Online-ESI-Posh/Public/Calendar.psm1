@@ -227,6 +227,7 @@ Set your response status to an event
 
 ---
 
+This route is cached for up to 5 seconds
 #>
     Param(
             [string]

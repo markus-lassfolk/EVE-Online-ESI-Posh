@@ -11,7 +11,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v3/characters/{character_id}/assets/",
+            $URI = "https://esi.evetech.net/v5/characters/{character_id}/assets/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -33,7 +33,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v3/characters/{character_id}/assets/
+    #  https://esi.evetech.net/v5/characters/{character_id}/assets/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -90,7 +90,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v3/corporations/{corporation_id}/assets/",
+            $URI = "https://esi.evetech.net/v5/corporations/{corporation_id}/assets/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -112,7 +112,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v3/corporations/{corporation_id}/assets/
+    #  https://esi.evetech.net/v5/corporations/{corporation_id}/assets/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

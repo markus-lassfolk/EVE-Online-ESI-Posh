@@ -410,6 +410,9 @@ Get the icon urls for a corporation
 ---
 
 This route is cached for up to 3600 seconds
+
+---
+[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/icons/)
 #>
     Param(
             [string]
@@ -1360,7 +1363,7 @@ Requires one of the following EVE corporation role(s): Station_Manager
             [string]
             $URI = "https://esi.evetech.net/v3/corporations/{corporation_id}/structures/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
@@ -1374,7 +1377,7 @@ Requires one of the following EVE corporation role(s): Station_Manager
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]

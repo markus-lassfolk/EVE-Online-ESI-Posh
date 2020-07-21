@@ -162,7 +162,7 @@ Return a single killmail from its ID and hash
 
 ---
 
-This route is cached for up to 1209600 seconds
+This route is cached for up to 30758400 seconds
 #>
     Param(
             [string]

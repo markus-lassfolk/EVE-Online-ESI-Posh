@@ -359,7 +359,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/markets/groups/{market_group_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
@@ -370,7 +370,7 @@ This route expires daily at 11:05
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh")]
+            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="An Eve item group ID")]

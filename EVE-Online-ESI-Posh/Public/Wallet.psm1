@@ -8,6 +8,9 @@ Returns a character's wallet balance
 ---
 
 This route is cached for up to 120 seconds
+
+---
+[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/wallet/)
 #>
     Param(
             [string]

@@ -72,7 +72,6 @@ Returns full details on the layout of a single planetary colony, including links
 
 ---
 
-This route is cached for up to 600 seconds
 #>
     Param(
             [string]
@@ -84,9 +83,6 @@ This route is cached for up to 600 seconds
             [ValidateSet("tranquility","singularity")]
             [string]
             $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
             [Parameter(Mandatory=$true, HelpMessage="Planet id of the target planet")]
             [int32]
             $planet_id,
@@ -117,9 +113,6 @@ This route is cached for up to 600 seconds
         elseif ($URI.Contains('?') -eq $True) {
             $URI = $URI + "&" + "token=" + $token
         }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
     }
 
     if ($character_id -ne "") {
