@@ -61,13 +61,15 @@ function refresh-EVESSOToken ($refreshtoken, $clientid, $secretkey) {
 
     $parameters = @{
 
-     "grant_type" = "refresh_token"
-     "refresh_token" = "$refreshtoken"
+      'grant_type' = 'refresh_token'
+      'refresh_token' = [string]$($refreshtoken)
 
      }
-     $parameters | Invoke-RestMethod -Uri $uri -Method Post -Headers $header -Verbose
+     $parameters | Invoke-RestMethod -Uri $uri -Method Post -Headers $header -Verbose 
  }
 
+
+ 
 
 
 
