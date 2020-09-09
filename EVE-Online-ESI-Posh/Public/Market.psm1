@@ -16,7 +16,7 @@ This route is cached for up to 1200 seconds
             [int32]
             $character_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -81,7 +81,7 @@ This route is cached for up to 3600 seconds
             [int32]
             $character_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -160,7 +160,7 @@ Requires one of the following EVE corporation role(s): Accountant, Trader
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -239,7 +239,7 @@ Requires one of the following EVE corporation role(s): Accountant, Trader
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -312,7 +312,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/markets/groups/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -359,18 +359,18 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/markets/groups/{market_group_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="An Eve item group ID")]
@@ -430,7 +430,7 @@ This route is cached for up to 3600 seconds
             [string]
             $URI = "https://esi.evetech.net/v1/markets/prices/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -477,7 +477,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/markets/{region_id}/history/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -542,7 +542,7 @@ This route is cached for up to 300 seconds
             [string]
             $URI = "https://esi.evetech.net/v1/markets/{region_id}/orders/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -630,7 +630,7 @@ This route is cached for up to 600 seconds
             [string]
             $URI = "https://esi.evetech.net/v1/markets/{region_id}/types/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -695,7 +695,7 @@ This route is cached for up to 300 seconds
             [string]
             $URI = "https://esi.evetech.net/v1/markets/structures/{structure_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]

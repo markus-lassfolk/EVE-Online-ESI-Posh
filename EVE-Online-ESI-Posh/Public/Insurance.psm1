@@ -13,18 +13,18 @@ This route is cached for up to 3600 seconds
             [string]
             $URI = "https://esi.evetech.net/v1/insurance/prices/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]

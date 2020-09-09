@@ -20,7 +20,7 @@ Set a solar system as autopilot waypoint
             [ValidateSet($True,$False)]
             $clear_other_waypoints = $false,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="The destination to travel to, can be solar system, station or structure's id")]
@@ -101,7 +101,7 @@ Open the contract window inside the client
             [int32]
             $contract_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
@@ -160,7 +160,7 @@ Open the information window for a character, corporation or alliance inside the 
             [string]
             $URI = "https://esi.evetech.net/v1/ui/openwindow/information/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="The target to open")]
@@ -222,7 +222,7 @@ Open the market details window for a specific typeID inside the client
             [string]
             $URI = "https://esi.evetech.net/v1/ui/openwindow/marketdetails/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
@@ -284,7 +284,7 @@ Open the New Mail window, according to settings from the request if applicable
             [string]
             $URI = "https://esi.evetech.net/v1/ui/openwindow/newmail/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="The details of mail to create")]

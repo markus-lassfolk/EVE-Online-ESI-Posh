@@ -12,7 +12,7 @@ Kick a fleet member
             [string]
             $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/members/{member_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="ID for a fleet")]
@@ -77,7 +77,7 @@ Delete a fleet squad, only empty squads can be deleted
             [string]
             $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/squads/{squad_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="ID for a fleet")]
@@ -142,7 +142,7 @@ Delete a fleet wing, only empty wings can be deleted. The wing may contain squad
             [string]
             $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/wings/{wing_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="ID for a fleet")]
@@ -217,7 +217,7 @@ Warning: This route has an upgrade available
             [int32]
             $character_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -279,7 +279,7 @@ This route is cached for up to 5 seconds
             [string]
             $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="ID for a fleet")]
@@ -344,11 +344,11 @@ This route is cached for up to 5 seconds
             [string]
             $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/members/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="ID for a fleet")]
@@ -358,7 +358,7 @@ This route is cached for up to 5 seconds
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
@@ -426,11 +426,11 @@ This route is cached for up to 5 seconds
             [string]
             $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/wings/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="ID for a fleet")]
@@ -440,7 +440,7 @@ This route is cached for up to 5 seconds
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
@@ -507,7 +507,7 @@ Invite a character into the fleet. If a character has a CSPA charge set it is no
             [string]
             $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/members/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="ID for a fleet")]
@@ -571,7 +571,7 @@ Create a new wing in a fleet
             [string]
             $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/wings/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="ID for a fleet")]
@@ -629,7 +629,7 @@ Create a new squad in a fleet
             [string]
             $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/wings/{wing_id}/squads/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="ID for a fleet")]
@@ -694,7 +694,7 @@ Update settings about a fleet
             [string]
             $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="ID for a fleet")]
@@ -758,7 +758,7 @@ Move a fleet member around
             [string]
             $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/members/{member_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="ID for a fleet")]
@@ -829,7 +829,7 @@ Rename a fleet squad
             [string]
             $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/squads/{squad_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="ID for a fleet")]
@@ -900,7 +900,7 @@ Rename a fleet wing
             [string]
             $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/wings/{wing_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="ID for a fleet")]

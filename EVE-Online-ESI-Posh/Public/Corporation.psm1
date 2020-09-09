@@ -16,7 +16,7 @@ This route is cached for up to 3600 seconds
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -70,7 +70,7 @@ This route is cached for up to 3600 seconds
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -127,7 +127,7 @@ Requires one of the following EVE corporation role(s): Director
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -206,7 +206,7 @@ Requires one of the following EVE corporation role(s): Director
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -285,7 +285,7 @@ Requires one of the following EVE corporation role(s): Director
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -353,7 +353,7 @@ Requires one of the following EVE corporation role(s): Factory_Manager
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -421,7 +421,7 @@ This route is cached for up to 3600 seconds
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -475,7 +475,7 @@ This route is cached for up to 3600 seconds
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -554,7 +554,7 @@ Requires one of the following EVE corporation role(s): Director
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -630,7 +630,7 @@ This route is cached for up to 3600 seconds
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -698,7 +698,7 @@ Requires one of the following EVE corporation role(s): Director
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -766,7 +766,7 @@ Requires one of the following EVE corporation role(s): Director
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -834,7 +834,7 @@ Requires one of the following EVE corporation role(s): Director
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -899,7 +899,7 @@ This route is cached for up to 3600 seconds
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -967,7 +967,7 @@ Requires one of the following EVE corporation role(s): Director
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -1046,7 +1046,7 @@ Requires one of the following EVE corporation role(s): Director
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -1122,7 +1122,7 @@ This route is cached for up to 3600 seconds
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -1201,7 +1201,7 @@ Requires one of the following EVE corporation role(s): Director
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -1280,7 +1280,7 @@ Requires one of the following EVE corporation role(s): Director
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -1363,21 +1363,21 @@ Requires one of the following EVE corporation role(s): Station_Manager
             [string]
             $URI = "https://esi.evetech.net/v3/corporations/{corporation_id}/structures/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
@@ -1462,7 +1462,7 @@ Requires one of the following EVE corporation role(s): Director
             [int32]
             $corporation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -1524,7 +1524,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/corporations/npccorps/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]

@@ -16,7 +16,7 @@ This route is cached for up to 5 seconds
             [int32]
             $character_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="The event ID to retrieve events from")]
@@ -92,7 +92,7 @@ This route is cached for up to 5 seconds
             [int32]
             $character_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="The id of the event requested")]
@@ -164,7 +164,7 @@ This route is cached for up to 600 seconds
             [int32]
             $character_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="The id of the event requested")]
@@ -236,7 +236,7 @@ This route is cached for up to 5 seconds
             [int32]
             $character_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="The ID of the event requested")]

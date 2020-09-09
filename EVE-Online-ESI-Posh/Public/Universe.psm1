@@ -13,18 +13,18 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/ancestries/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
@@ -80,7 +80,7 @@ This route expires daily at 11:05
             [int32]
             $asteroid_belt_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -131,18 +131,18 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/bloodlines/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
@@ -195,7 +195,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/categories/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -242,21 +242,21 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/categories/{category_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="An Eve item category ID")]
             [int32]
             $category_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
@@ -313,7 +313,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/constellations/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -360,21 +360,21 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/constellations/{constellation_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="constellation_id integer")]
             [int32]
             $constellation_id,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
@@ -431,18 +431,18 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v2/universe/factions/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
@@ -495,7 +495,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/graphics/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -542,7 +542,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/graphics/{graphic_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="graphic_id integer")]
@@ -596,7 +596,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/groups/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -654,11 +654,11 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/groups/{group_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="An Eve item group ID")]
@@ -668,7 +668,7 @@ This route expires daily at 11:05
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
@@ -725,7 +725,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/moons/{moon_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -779,7 +779,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/planets/{planet_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -833,18 +833,18 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/races/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
@@ -897,7 +897,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/regions/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -944,18 +944,18 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/regions/{region_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="region_id integer")]
@@ -1015,7 +1015,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/stargates/{stargate_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -1069,7 +1069,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/stars/{star_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -1123,7 +1123,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v2/universe/stations/{station_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -1177,7 +1177,7 @@ This route is cached for up to 3600 seconds
             [string]
             $URI = "https://esi.evetech.net/v1/universe/structures/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="Only list public structures that have this service online")]
@@ -1236,7 +1236,7 @@ This route is cached for up to 3600 seconds
             [string]
             $URI = "https://esi.evetech.net/v2/universe/structures/{structure_id}/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -1301,7 +1301,7 @@ This route is cached for up to 3600 seconds
             [string]
             $URI = "https://esi.evetech.net/v1/universe/system_jumps/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -1348,7 +1348,7 @@ This route is cached for up to 3600 seconds
             [string]
             $URI = "https://esi.evetech.net/v2/universe/system_kills/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -1395,7 +1395,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/systems/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -1442,18 +1442,18 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v4/universe/systems/{system_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="system_id integer")]
@@ -1513,7 +1513,7 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v1/universe/types/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
@@ -1571,18 +1571,18 @@ This route expires daily at 11:05
             [string]
             $URI = "https://esi.evetech.net/v3/universe/types/{type_id}/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="An Eve item type ID")]
@@ -1641,15 +1641,15 @@ Resolve a set of names to IDs in the following categories: agents, alliances, ch
             [string]
             $URI = "https://esi.evetech.net/v1/universe/ids/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $Accept_Language = "en-us",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","zh","ko")]
+            [ValidateSet("de","en-us","fr","ja","ru","ko")]
             [string]
             $language = "en-us",
             [Parameter(Mandatory=$true, HelpMessage="The names to resolve")]
@@ -1706,7 +1706,7 @@ Resolve a set of IDs to names and categories. Supported ID's for resolving are: 
             [string]
             $URI = "https://esi.evetech.net/v3/universe/names/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="The ids to resolve")]

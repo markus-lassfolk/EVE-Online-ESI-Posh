@@ -19,7 +19,7 @@ This route is cached for up to 86400 seconds
             [array]
             $connections,
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility","singularity")]
+            [ValidateSet("tranquility")]
             [string]
             $datasource = "tranquility",
             [Parameter(Mandatory=$true, HelpMessage="destination solar system ID")]
