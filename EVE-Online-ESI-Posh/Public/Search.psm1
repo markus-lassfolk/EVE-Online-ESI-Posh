@@ -13,9 +13,9 @@ This route is cached for up to 3600 seconds
             [string]
             $URI = "https://esi.evetech.net/v3/characters/{character_id}/search/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","ko")]
+            [ValidateSet("en","en-us","de","fr","ja","ru","zh","ko","es")]
             [string]
-            $Accept_Language = "en-us",
+            $Accept_Language = "en",
             [Parameter(Mandatory=$true, HelpMessage="Type of entities to search for")]
             [array]
             $categories,
@@ -30,9 +30,9 @@ This route is cached for up to 3600 seconds
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","ko")]
+            [ValidateSet("en","en-us","de","fr","ja","ru","zh","ko","es")]
             [string]
-            $language = "en-us",
+            $language = "en",
             [Parameter(Mandatory=$true, HelpMessage="The string to search on")]
             [string]
             $search,
@@ -129,9 +129,9 @@ This route is cached for up to 3600 seconds
             [string]
             $URI = "https://esi.evetech.net/v2/search/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","ko")]
+            [ValidateSet("en","en-us","de","fr","ja","ru","zh","ko","es")]
             [string]
-            $Accept_Language = "en-us",
+            $Accept_Language = "en",
             [Parameter(Mandatory=$true, HelpMessage="Type of entities to search for")]
             [array]
             $categories,
@@ -143,9 +143,9 @@ This route is cached for up to 3600 seconds
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","ko")]
+            [ValidateSet("en","en-us","de","fr","ja","ru","zh","ko","es")]
             [string]
-            $language = "en-us",
+            $language = "en",
             [Parameter(Mandatory=$true, HelpMessage="The string to search on")]
             [string]
             $search,

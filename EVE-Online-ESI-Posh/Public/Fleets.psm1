@@ -344,9 +344,9 @@ This route is cached for up to 5 seconds
             [string]
             $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/members/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","ko")]
+            [ValidateSet("en","en-us","de","fr","ja","ru","zh","ko","es")]
             [string]
-            $Accept_Language = "en-us",
+            $Accept_Language = "en",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility")]
             [string]
@@ -358,9 +358,9 @@ This route is cached for up to 5 seconds
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","ko")]
+            [ValidateSet("en","en-us","de","fr","ja","ru","zh","ko","es")]
             [string]
-            $language = "en-us",
+            $language = "en",
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,
@@ -426,9 +426,9 @@ This route is cached for up to 5 seconds
             [string]
             $URI = "https://esi.evetech.net/v1/fleets/{fleet_id}/wings/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","ko")]
+            [ValidateSet("en","en-us","de","fr","ja","ru","zh","ko","es")]
             [string]
-            $Accept_Language = "en-us",
+            $Accept_Language = "en",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility")]
             [string]
@@ -440,9 +440,9 @@ This route is cached for up to 5 seconds
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","ko")]
+            [ValidateSet("en","en-us","de","fr","ja","ru","zh","ko","es")]
             [string]
-            $language = "en-us",
+            $language = "en",
             [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
             [string]
             $token,

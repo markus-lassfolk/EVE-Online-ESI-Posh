@@ -11,7 +11,7 @@ This route is cached for up to 86400 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v4/characters/{character_id}/",
+            $URI = "https://esi.evetech.net/v5/characters/{character_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -27,7 +27,7 @@ This route is cached for up to 86400 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v4/characters/{character_id}/
+    #  https://esi.evetech.net/v5/characters/{character_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -65,7 +65,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/characters/{character_id}/agents_research/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/agents_research/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -84,7 +84,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/characters/{character_id}/agents_research/
+    #  https://esi.evetech.net/v2/characters/{character_id}/agents_research/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -130,7 +130,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v2/characters/{character_id}/blueprints/",
+            $URI = "https://esi.evetech.net/v3/characters/{character_id}/blueprints/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -152,7 +152,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v2/characters/{character_id}/blueprints/
+    #  https://esi.evetech.net/v3/characters/{character_id}/blueprints/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -206,7 +206,7 @@ This route is cached for up to 86400 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/characters/{character_id}/corporationhistory/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/corporationhistory/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -222,7 +222,7 @@ This route is cached for up to 86400 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/characters/{character_id}/corporationhistory/
+    #  https://esi.evetech.net/v2/characters/{character_id}/corporationhistory/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -260,7 +260,7 @@ This route is cached for up to 300 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/characters/{character_id}/fatigue/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/fatigue/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -279,7 +279,7 @@ This route is cached for up to 300 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/characters/{character_id}/fatigue/
+    #  https://esi.evetech.net/v2/characters/{character_id}/fatigue/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -325,7 +325,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/characters/{character_id}/medals/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/medals/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -344,7 +344,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/characters/{character_id}/medals/
+    #  https://esi.evetech.net/v2/characters/{character_id}/medals/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -455,7 +455,7 @@ This route is cached for up to 600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/characters/{character_id}/notifications/contacts/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/notifications/contacts/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -474,7 +474,7 @@ This route is cached for up to 600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/characters/{character_id}/notifications/contacts/
+    #  https://esi.evetech.net/v2/characters/{character_id}/notifications/contacts/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -574,7 +574,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v2/characters/{character_id}/roles/",
+            $URI = "https://esi.evetech.net/v3/characters/{character_id}/roles/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -593,7 +593,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v2/characters/{character_id}/roles/
+    #  https://esi.evetech.net/v3/characters/{character_id}/roles/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -639,7 +639,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/characters/{character_id}/standings/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/standings/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -658,7 +658,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/characters/{character_id}/standings/
+    #  https://esi.evetech.net/v2/characters/{character_id}/standings/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -691,71 +691,6 @@ This route is cached for up to 3600 seconds
 Export-ModuleMember -Function get-EVEcharacters_character_id_standings
 
 
-function get-EVEcharacters_character_id_stats {
-<#
-.SYNOPSIS
-Yearly aggregate stats
-.DESCRIPTION
-Returns aggregate yearly stats for a character
-
----
-
-This route is cached for up to 86400 seconds
-#>
-    Param(
-            [string]
-            $URI = "https://esi.evetech.net/v2/characters/{character_id}/stats/",
-            [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
-            [int32]
-            $character_id,
-            [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
-            [ValidateSet("tranquility")]
-            [string]
-            $datasource = "tranquility",
-            [Parameter(Mandatory=$false, HelpMessage="ETag from a previous request. A 304 will be returned if this matches the current ETag")]
-            [string]
-            $If_None_Match,
-            [Parameter(Mandatory=$false, HelpMessage="Access token to use if unable to set a header")]
-            [string]
-            $token,
-            [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
-            [ValidateSet("PS","json","PSfull")]
-            $OutputType = "PS"
-    ) #End of Param
-    #  Example URI
-    #  https://esi.evetech.net/v2/characters/{character_id}/stats/
-    $Method = "get"
-    $URI = $URI -replace "{","$" -replace "}",""
-
-    if ($datasource -ne "") {
-        if ($URI.Contains('?') -eq $false) {
-            $URI = $URI + "?" + "datasource=" + $datasource
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "datasource=" + $datasource
-        }
-    }
-    if ($token -ne "") {
-        if ($URI.Contains('?') -eq $false) {
-            $URI = $URI + "?" + "token=" + $token
-        }
-        elseif ($URI.Contains('?') -eq $True) {
-            $URI = $URI + "&" + "token=" + $token
-        }
-    }
-    $Header = @{
-        'If-None-Match' = "$If_None_Match"
-    }
-
-    if ($character_id -ne "") {
-        $URI = $URI -replace '\$character_id',"$character_id"
-    }
-    $URI = $URI -replace "$True","True" -replace "$False","False"
-    invoke-EVEWebRequest -URI $URI -method $method -header $Header -body $body -OutputType $OutputType
-}
-Export-ModuleMember -Function get-EVEcharacters_character_id_stats
-
-
 function get-EVEcharacters_character_id_titles {
 <#
 .SYNOPSIS
@@ -769,7 +704,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/characters/{character_id}/titles/",
+            $URI = "https://esi.evetech.net/v2/characters/{character_id}/titles/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -788,7 +723,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/characters/{character_id}/titles/
+    #  https://esi.evetech.net/v2/characters/{character_id}/titles/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -831,13 +766,10 @@ Bulk lookup of character IDs to corporation, alliance and faction
 ---
 
 This route is cached for up to 3600 seconds
-
----
-[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#POST-/characters/affiliation/)
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/characters/affiliation/",
+            $URI = "https://esi.evetech.net/v2/characters/affiliation/",
             [Parameter(Mandatory=$true, HelpMessage="The character IDs to fetch affiliations for. All characters must exist, or none will be returned")]
             [array]
             $characters,
@@ -850,7 +782,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/characters/affiliation/
+    #  https://esi.evetech.net/v2/characters/affiliation/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -879,10 +811,11 @@ Calculate a CSPA charge cost
 Takes a source character ID in the url and a set of target character ID's in the body, returns a CSPA charge cost
 
 ---
+
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v4/characters/{character_id}/cspa/",
+            $URI = "https://esi.evetech.net/v5/characters/{character_id}/cspa/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE character ID")]
             [int32]
             $character_id,
@@ -901,7 +834,7 @@ Takes a source character ID in the url and a set of target character ID's in the
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v4/characters/{character_id}/cspa/
+    #  https://esi.evetech.net/v5/characters/{character_id}/cspa/
     $Method = "post"
     $URI = $URI -replace "{","$" -replace "}",""
 

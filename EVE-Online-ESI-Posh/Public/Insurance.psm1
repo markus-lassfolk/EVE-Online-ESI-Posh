@@ -13,9 +13,9 @@ This route is cached for up to 3600 seconds
             [string]
             $URI = "https://esi.evetech.net/v1/insurance/prices/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","ko")]
+            [ValidateSet("en","en-us","de","fr","ja","ru","zh","ko","es")]
             [string]
-            $Accept_Language = "en-us",
+            $Accept_Language = "en",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility")]
             [string]
@@ -24,9 +24,9 @@ This route is cached for up to 3600 seconds
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","ko")]
+            [ValidateSet("en","en-us","de","fr","ja","ru","zh","ko","es")]
             [string]
-            $language = "en-us",
+            $language = "en",
             [Parameter(Mandatory=$false, HelpMessage="Output Format of Result. PS Returns an PBObject with just the content. JSON Returns the raw json object. PSfull returns a PSObject with the content plus headers that can be used for more advanced scripts.")]
             [ValidateSet("PS","json","PSfull")]
             $OutputType = "PS"

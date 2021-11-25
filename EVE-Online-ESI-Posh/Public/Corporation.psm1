@@ -11,7 +11,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v4/corporations/{corporation_id}/",
+            $URI = "https://esi.evetech.net/v5/corporations/{corporation_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -27,7 +27,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v4/corporations/{corporation_id}/
+    #  https://esi.evetech.net/v5/corporations/{corporation_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -65,7 +65,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/alliancehistory/",
+            $URI = "https://esi.evetech.net/v3/corporations/{corporation_id}/alliancehistory/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -81,7 +81,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v2/corporations/{corporation_id}/alliancehistory/
+    #  https://esi.evetech.net/v3/corporations/{corporation_id}/alliancehistory/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -122,7 +122,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/blueprints/",
+            $URI = "https://esi.evetech.net/v3/corporations/{corporation_id}/blueprints/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -144,7 +144,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v2/corporations/{corporation_id}/blueprints/
+    #  https://esi.evetech.net/v3/corporations/{corporation_id}/blueprints/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -201,7 +201,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/containers/logs/",
+            $URI = "https://esi.evetech.net/v3/corporations/{corporation_id}/containers/logs/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -223,7 +223,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v2/corporations/{corporation_id}/containers/logs/
+    #  https://esi.evetech.net/v3/corporations/{corporation_id}/containers/logs/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -280,7 +280,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/divisions/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/divisions/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -299,7 +299,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/corporations/{corporation_id}/divisions/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/divisions/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -348,7 +348,7 @@ Requires one of the following EVE corporation role(s): Factory_Manager
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/facilities/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/facilities/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -367,7 +367,7 @@ Requires one of the following EVE corporation role(s): Factory_Manager
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/corporations/{corporation_id}/facilities/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/facilities/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -410,13 +410,10 @@ Get the icon urls for a corporation
 ---
 
 This route is cached for up to 3600 seconds
-
----
-[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/icons/)
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/icons/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/icons/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -432,7 +429,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/corporations/{corporation_id}/icons/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/icons/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -470,7 +467,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/medals/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/medals/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -492,7 +489,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/corporations/{corporation_id}/medals/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/medals/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -549,7 +546,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/medals/issued/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/medals/issued/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -571,7 +568,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/corporations/{corporation_id}/medals/issued/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/medals/issued/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -625,7 +622,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v3/corporations/{corporation_id}/members/",
+            $URI = "https://esi.evetech.net/v4/corporations/{corporation_id}/members/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -644,7 +641,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v3/corporations/{corporation_id}/members/
+    #  https://esi.evetech.net/v4/corporations/{corporation_id}/members/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -693,7 +690,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/members/limit/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/members/limit/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -712,7 +709,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/corporations/{corporation_id}/members/limit/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/members/limit/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -761,7 +758,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/members/titles/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/members/titles/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -780,7 +777,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/corporations/{corporation_id}/members/titles/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/members/titles/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -829,7 +826,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/membertracking/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/membertracking/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -848,7 +845,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/corporations/{corporation_id}/membertracking/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/membertracking/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -894,7 +891,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/roles/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/roles/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -913,7 +910,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/corporations/{corporation_id}/roles/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/roles/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -962,7 +959,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/roles/history/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/roles/history/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -984,7 +981,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/corporations/{corporation_id}/roles/history/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/roles/history/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -1117,7 +1114,7 @@ This route is cached for up to 3600 seconds
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/standings/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/standings/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -1139,7 +1136,7 @@ This route is cached for up to 3600 seconds
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/corporations/{corporation_id}/standings/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/standings/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -1196,7 +1193,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/starbases/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/starbases/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -1218,7 +1215,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/corporations/{corporation_id}/starbases/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/starbases/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -1275,7 +1272,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/starbases/{starbase_id}/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/starbases/{starbase_id}/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -1300,7 +1297,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/corporations/{corporation_id}/starbases/{starbase_id}/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/starbases/{starbase_id}/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -1361,11 +1358,11 @@ Requires one of the following EVE corporation role(s): Station_Manager
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v3/corporations/{corporation_id}/structures/",
+            $URI = "https://esi.evetech.net/v4/corporations/{corporation_id}/structures/",
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response")]
-            [ValidateSet("de","en-us","fr","ja","ru","ko")]
+            [ValidateSet("en","en-us","de","fr","ja","ru","zh","ko","es")]
             [string]
-            $Accept_Language = "en-us",
+            $Accept_Language = "en",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -1377,9 +1374,9 @@ Requires one of the following EVE corporation role(s): Station_Manager
             [string]
             $If_None_Match,
             [Parameter(Mandatory=$false, HelpMessage="Language to use in the response, takes precedence over Accept-Language")]
-            [ValidateSet("de","en-us","fr","ja","ru","ko")]
+            [ValidateSet("en","en-us","de","fr","ja","ru","zh","ko","es")]
             [string]
-            $language = "en-us",
+            $language = "en",
             [Parameter(Mandatory=$false, HelpMessage="Which page of results to return")]
             [int32]
             $page = "1",
@@ -1391,7 +1388,7 @@ Requires one of the following EVE corporation role(s): Station_Manager
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v3/corporations/{corporation_id}/structures/
+    #  https://esi.evetech.net/v4/corporations/{corporation_id}/structures/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -1457,7 +1454,7 @@ Requires one of the following EVE corporation role(s): Director
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/corporations/{corporation_id}/titles/",
+            $URI = "https://esi.evetech.net/v2/corporations/{corporation_id}/titles/",
             [Parameter(Mandatory=$true, HelpMessage="An EVE corporation ID")]
             [int32]
             $corporation_id,
@@ -1476,7 +1473,7 @@ Requires one of the following EVE corporation role(s): Director
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/corporations/{corporation_id}/titles/
+    #  https://esi.evetech.net/v2/corporations/{corporation_id}/titles/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 
@@ -1522,7 +1519,7 @@ This route expires daily at 11:05
 #>
     Param(
             [string]
-            $URI = "https://esi.evetech.net/v1/corporations/npccorps/",
+            $URI = "https://esi.evetech.net/v2/corporations/npccorps/",
             [Parameter(Mandatory=$false, HelpMessage="The server name you would like data from")]
             [ValidateSet("tranquility")]
             [string]
@@ -1535,7 +1532,7 @@ This route expires daily at 11:05
             $OutputType = "PS"
     ) #End of Param
     #  Example URI
-    #  https://esi.evetech.net/v1/corporations/npccorps/
+    #  https://esi.evetech.net/v2/corporations/npccorps/
     $Method = "get"
     $URI = $URI -replace "{","$" -replace "}",""
 

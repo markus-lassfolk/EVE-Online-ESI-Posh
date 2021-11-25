@@ -1,5 +1,5 @@
-﻿Set-Location "$ENV:USERPROFILE\Documents\GitHub\EVE-Online-ESI-Posh"
-
+﻿#Set-Location "$ENV:USERPROFILE\Documents\GitHub\EVE-Online-ESI-Posh"
+Set-Location "F:\GitHub\EVE-Online-ESI-Posh\"
 
 $ModSwagger = Invoke-WebRequest -ContentType "application/json" -Uri https://esi.evetech.net/_latest/swagger.json?datasource=tranquility -Verbose | ConvertFrom-Json
 $ModSwagger.host
