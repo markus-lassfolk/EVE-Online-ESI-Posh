@@ -7,7 +7,7 @@ Public information about a character
 
 ---
 
-This route is cached for up to 86400 seconds
+This route is cached for up to 604800 seconds
 #>
     Param(
             [string]
