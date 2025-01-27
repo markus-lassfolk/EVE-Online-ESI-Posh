@@ -76,7 +76,7 @@ function refresh-EVESSOToken ($refreshtoken, $clientid, $secretkey) {
 function verify-EVESSOAccessToken ($CharacterToken, $ClientID, $secretkey) {
     $Token = $CharacterToken.token
     if ($($CharacterToken.ExpiresOn -replace "T"," ") -lt $((get-date).ToUniversalTime().AddMinutes(+1) | get-date -Format "yyyy-MM-dd HH:mm:ss")) {
-        $Token = refresh-EVESSOToken -refreshtoken $token.refresh_token -clientid $ClientID -secretkey $secretkey
+        $Token = refresh-EVESSOToken -refreshtoken $token -clientid $ClientID -secretkey $secretkey
 
         $CharacterToken = get-EVESSOCharacterID -Token $Token
     }
